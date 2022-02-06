@@ -4,6 +4,7 @@ import { SliderDefaultComponent } from './sections/slider-default/slider-default
 import { HomePageComponent } from './home-page/home-page.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HomeRoutingModule } from './home-routing.module';
+import { H1AboutSectionComponent } from './sections/h1-about-section/h1-about-section.component';
 
 
 
@@ -11,6 +12,7 @@ import { HomeRoutingModule } from './home-routing.module';
   declarations: [
     SliderDefaultComponent,
     HomePageComponent,
+    H1AboutSectionComponent,
   ],
   imports: [
     CommonModule,
