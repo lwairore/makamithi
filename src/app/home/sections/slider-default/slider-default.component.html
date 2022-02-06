@@ -1,1 +1,54 @@
-<p>slider-default works!</p>
+<div ngClass="slider-area">
+    <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide>
+            <div ngClass="single-slider">
+                <div class="slider-height  d-flex align-items-center"
+                    [style.background-image]="'url(assets/img/slider/slider1.jpg)'">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <h1>Organic Food Is <br /> Good For Health</h1>
+                                <p>Lorem ipsum dolor sit amet,
+                                    consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco.</p>
+
+                                <div class="slider-button">
+                                    <a class="btn" [routerLink]="null">Our Services</a>
+                                    <a class="btn active" [routerLink]="null">Contact Us</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template carouselSlide>
+            <div ngClass="single-slider">
+                <div class="slider-height  d-flex align-items-center"
+                    [style.background-image]="'url(assets/img/slider/slider1-2.jpg)'">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <h1>Organic Food Is <br /> Good For Health</h1>
+                                <p>Lorem ipsum dolor sit amet,
+                                    consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco.</p>
+
+                                <div class="slider-button">
+                                    <a class="btn" [routerLink]="null">Our Services</a>
+                                    <a class="btn active" [routerLink]="null">Contact Us</a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+    </owl-carousel-o>
+</div>

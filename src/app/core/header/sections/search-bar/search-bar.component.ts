@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mak-pit-home-page',
-  templateUrl: './home-page.component.html',
+  selector: 'mak-pit-search-bar',
+  templateUrl: './search-bar.component.html',
   styles: [
   ]
 })
-export class HomePageComponent implements OnInit {
+export class SearchBarComponent implements OnInit {
 
   constructor() { }
 

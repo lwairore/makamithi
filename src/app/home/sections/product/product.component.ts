@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mak-pit-home-page',
-  templateUrl: './home-page.component.html',
+  selector: 'mak-pit-product',
+  templateUrl: './product.component.html',
   styles: [
   ]
 })
-export class HomePageComponent implements OnInit {
+export class ProductComponent implements OnInit {
 
   constructor() { }
 
