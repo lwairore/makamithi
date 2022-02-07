@@ -6,6 +6,8 @@ import { Directive, Input } from '@angular/core';
 export class AccordionItemDirective {
   @Input() title = '';
 
+  @Input() disabled = false;
+
   constructor() { }
 
 }
