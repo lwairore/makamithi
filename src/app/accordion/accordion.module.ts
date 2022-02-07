@@ -4,11 +4,12 @@ import { AccordionItemDirective } from './directives/accordion-item.directive';
 import { AccordionContentDirective } from './directives/accordion-content.directive';
 import { AccordionTitleDirective } from './directives/accordion-title.directive';
 import { AccordionHeaderDirective } from './directives/accordion-header.directive';
+import { AccordionComponent } from './accordion.component';
 
 
 
 @NgModule({
-  declarations: [AccordionItemDirective, AccordionContentDirective, AccordionTitleDirective, AccordionHeaderDirective],
+  declarations: [AccordionItemDirective, AccordionContentDirective, AccordionTitleDirective, AccordionHeaderDirective, AccordionComponent],
   imports: [
     CommonModule
   ]
