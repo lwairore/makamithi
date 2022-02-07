@@ -5,6 +5,7 @@ import { ServicesComponent } from './services.component';
 import { SharedModule } from '../shared/shared.module';
 import { SPStyleOneComponent } from './sections/spstyle-one/spstyle-one.component';
 import { SPStyleTwoComponent } from './sections/spstyle-two/spstyle-two.component';
+import { SPVideoSectionComponent } from './sections/spvideo-section/spvideo-section.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { SPStyleTwoComponent } from './sections/spstyle-two/spstyle-two.componen
     ServicesComponent,
     SPStyleOneComponent,
     SPStyleTwoComponent,
+    SPVideoSectionComponent,
   ],
   imports: [
     CommonModule,
