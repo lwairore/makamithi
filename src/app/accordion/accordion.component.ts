@@ -1,5 +1,6 @@
 import { Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { AccordionItemDirective } from './directives/accordion-item.directive';
+import {memoize} from 'lodash-es';
 
 @Component({
   selector: 'mak-pit-accordion',
@@ -32,9 +33,9 @@ export class AccordionComponent implements OnInit {
    * outside.
    * @param index - Index of the accordion item
    */
-  getToggleState = (index: number) => {
+  getToggleState = memoize((index: number) => {
     return this.toggleState.bind(this, index);
-  };
+  });
 
   toggleState = (index: number) => {
     if (this.expanded.has(index)) {
