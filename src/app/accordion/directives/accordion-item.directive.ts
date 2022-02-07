@@ -4,7 +4,7 @@ import { AccordionHeaderDirective } from './accordion-header.directive';
 import { AccordionTitleDirective } from './accordion-title.directive';
 
 @Directive({
-  selector: '[makPitAccordionItem]'
+  selector: 'makPitAccordionItem'
 })
 export class AccordionItemDirective {
   @Input() title = '';
