@@ -6,6 +6,7 @@ import { BurgerMenusComponent } from './header/sections/burger-menus/burger-menu
 import { SidebarComponent } from './header/sections/sidebar/sidebar.component';
 import { SearchBarComponent } from './header/sections/search-bar/search-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
   exports: [
     HeaderComponent,

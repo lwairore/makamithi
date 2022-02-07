@@ -15,6 +15,9 @@ import { CounterDefaultComponent } from './sections/counter-default/counter-defa
 import { ClientSliderComponent } from './sections/client-slider/client-slider.component';
 import { H1BlogSectionComponent } from './sections/h1-blog-section/h1-blog-section.component';
 import { BrandComponent } from './sections/brand/brand.component';
+import { TabListComponent } from './sections/tab-list/tab-list.component';
+import { TabComponent } from './sections/tab/tab.component';
+import { TabPanelComponent } from './sections/tab-panel/tab-panel.component';
 
 
 
@@ -33,6 +36,9 @@ import { BrandComponent } from './sections/brand/brand.component';
     ClientSliderComponent,
     H1BlogSectionComponent,
     BrandComponent,
+    TabListComponent,
+    TabComponent,
+    TabPanelComponent,
   ],
   imports: [
     CommonModule,

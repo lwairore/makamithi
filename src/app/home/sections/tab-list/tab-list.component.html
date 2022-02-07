@@ -1,0 +1,13 @@
+<ul class="nav product-tab justify-content-center mb-75" role="tablist">
+    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" ngClass="nav-item" [class.active]="tab.active" #tab>
+        <!-- <a [routerLink]="null">{{tab.tabTitle}}</a> -->
+        <div class="product-tab-content text-center">
+            <div class="product-tab-img">
+                <i [ngClass]="'flaticon-'+ tab.flaticon"></i>
+            </div>
+            <h4>{{tab.tabTitle}}</h4>
+        </div>
+    </li>
+</ul>
+
+<ng-content></ng-content>

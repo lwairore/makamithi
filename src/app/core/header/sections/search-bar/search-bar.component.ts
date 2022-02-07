@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'mak-pit-search-bar',
@@ -7,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class SearchBarComponent implements OnInit {
+  @Input() searchBarOpen = false;
+
+  @Output() setSearchBarOpen = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  dispatchSetSearchBarOpen() {
+    this.setSearchBarOpen.emit(!this.searchBarOpen);
   }
 
 }
