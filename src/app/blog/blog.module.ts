@@ -5,7 +5,9 @@ import { BlogComponent } from './blog.component';
 
 
 @NgModule({
-  declarations: [BlogComponent],
+  declarations: [
+    BlogComponent,
+  ],
   imports: [
     CommonModule,
     BlogRoutingModule
