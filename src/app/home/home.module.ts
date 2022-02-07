@@ -18,6 +18,7 @@ import { BrandComponent } from './sections/brand/brand.component';
 import { TabListComponent } from './sections/tab-list/tab-list.component';
 import { TabComponent } from './sections/tab/tab.component';
 import { TabPanelComponent } from './sections/tab-panel/tab-panel.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -45,6 +46,7 @@ import { TabPanelComponent } from './sections/tab-panel/tab-panel.component';
     // BrowserAnimationsModule,
     HomeRoutingModule,
     CarouselModule,
+    SharedModule,
   ]
 })
 export class HomeModule { }
