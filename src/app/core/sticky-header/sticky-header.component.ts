@@ -9,6 +9,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class StickyHeaderComponent implements OnInit {
   @Input() menuOpen = false;
 
+  @Input() searchBarOpen = false;
+
   @Output() setMenuOpen = new EventEmitter<boolean>();
 
   constructor() { }
