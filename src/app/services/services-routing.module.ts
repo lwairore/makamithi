@@ -12,7 +12,12 @@ const routes: Routes = [
       {
         path: '',
         component: ServiceOneMainComponent,
-      }
+      },
+      {
+        path: 'services-details',
+        loadChildren: () => import('./services-details/services-details.module')
+          .then(s => s.ServicesDetailsModule),
+      },
     ]
   }
 ];
