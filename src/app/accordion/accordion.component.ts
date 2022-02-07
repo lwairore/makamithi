@@ -27,4 +27,13 @@ export class AccordionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Make the toggle function available to be called from
+   * outside.
+   * @param index - Index of the accordion item
+   */
+  getToggleState = (index: number) => {
+    return this.toggleState.bind(this, index);
+  };
+
 }
