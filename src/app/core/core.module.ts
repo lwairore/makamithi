@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { TopHeaderComponent } from './header/sections/top-header/top-header.component';
 import { BurgerMenusComponent } from './common/burger-menus/burger-menus.component';
-import { SidebarComponent } from './header/sections/sidebar/sidebar.component';
+import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { SearchBarComponent } from './header/sections/search-bar/search-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
