@@ -11,6 +11,8 @@ export class HeaderStyleTwoComponent implements OnInit {
 
   menuOpen = false;
 
+  sidebarOpen = false;
+
   constructor() { }
 
   ngOnInit(): void {
