@@ -1,9 +1,9 @@
-<main class="flex flex-col justify-center items-center py-6 h-screen overflow-y-auto" style="min-height: 600px;">
-    <div style="max-width: 800px; width: 90%; height: 100%;" class="py-20">
+<main>
+    <div class="py-20">
         <!-- Accordion Start -->
         <mak-pit-accordion [collapsing]="collapsing">
             <makPitAccordionItem title="Super simple Accordion">
-                <ng-template accordionContent>
+                <ng-template makPitAccordionContent>
                     <div class="p-4">
                         A simple and customizable accordion component made with
                         functionalities provided by angular without having to use any 3rd
@@ -12,7 +12,7 @@
                 </ng-template>
             </makPitAccordionItem>
             <makPitAccordionItem>
-                <ng-template accordionHeader let-toggle="toggle">
+                <ng-template makPitAccordionHeader let-toggle="toggle">
                     <div class="flex items-center justify-between px-4 h-12 bg-purple-200">
                         <p> Custom Header <span class="text-xs text-gray-700">(with custom toggle button)</span>
                         </p>
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </ng-template>
-                <ng-template accordionContent>
+                <ng-template makPitAccordionContent>
                     <div class="p-4">
                         This is a <strong>complete custom header</strong> implementation. The
                         whole header section can be customized to you liking. Toggle method
@@ -30,7 +30,7 @@
                 </ng-template>
             </makPitAccordionItem>
             <makPitAccordionItem>
-                <ng-template accordionTitle>
+                <ng-template makPitAccordionTitle>
                     <div class="flex space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
                             <path fill="none" d="M0 0h24v24H0z" />
@@ -40,7 +40,7 @@
                         <p>Custom Title</p>
                     </div>
                 </ng-template>
-                <ng-template accordionContent>
+                <ng-template makPitAccordionContent>
                     <div class="p-4">
                         This is a simple implementation where the
                         <strong>title part is custom</strong>. The header design and the
@@ -50,7 +50,7 @@
                 </ng-template>
             </makPitAccordionItem>
             <makPitAccordionItem title="Disabled" [disabled]="true">
-                <ng-template accordionContent>
+                <ng-template makPitAccordionContent>
                     Test 3
                 </ng-template>
             </makPitAccordionItem>
