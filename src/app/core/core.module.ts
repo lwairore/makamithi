@@ -7,6 +7,7 @@ import { SidebarComponent } from './header/sections/sidebar/sidebar.component';
 import { SearchBarComponent } from './header/sections/search-bar/search-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { HeaderStyleTwoComponent } from './header-style-two/header-style-two.component';
 
 
 
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     SearchBarComponent,
     FooterComponent,
+    HeaderStyleTwoComponent,
   ],
   imports: [
     CommonModule,
