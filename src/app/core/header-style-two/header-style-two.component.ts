@@ -26,4 +26,8 @@ export class HeaderStyleTwoComponent implements OnInit {
     this.menuOpen = open; ;
   }
 
+  setSidebarOpen(open: boolean) {
+    this.sidebarOpen = open;
+  }
+
 }
