@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderStyleTwoComponent implements OnInit {
   searchBarOpen = false;
 
+  menuOpen = false;
+
   constructor() { }
 
   ngOnInit(): void {
