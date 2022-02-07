@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { AccordionItemDirective } from './directives/accordion-item.directive';
 import { memoize } from 'lodash-es';
 import { trigger, state, style, transition, animate } from "@angular/animations";
@@ -15,7 +15,8 @@ import { trigger, state, style, transition, animate } from "@angular/animations"
       transition('expanded <=> collapsed',
         animate('200ms cubic-bezier(.37,1.04,.68,.98)')),
     ])
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccordionComponent implements OnInit {
   // A Set is used to maintain the state of currently expanded
@@ -44,6 +45,12 @@ export class AccordionComponent implements OnInit {
    */
   getToggleState = memoize((index: number) => {
     console.log('Callled getToggleState');
+
+    console.log("getToggleState", index)
+    console.log("expanded")
+    console.log(this.expanded)
+    console.log("items")
+    console.log(this.items)
     return this.toggleState.bind(this, index);
   });
 
