@@ -6,7 +6,9 @@ import { ServiceDetailsMainComponent } from './service-details-main/service-deta
 
 
 @NgModule({
-  declarations: [ServiceDetailsMainComponent],
+  declarations: [
+    ServiceDetailsMainComponent,
+  ],
   imports: [
     CommonModule,
     ServicesDetailsRoutingModule
