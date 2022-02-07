@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   ]
 })
 export class StickyHeaderComponent implements OnInit {
+  @Input() stickerHeaderExtraClasses = '';
+
   @Input() menuOpen = false;
 
   @Input() searchBarOpen = false;
