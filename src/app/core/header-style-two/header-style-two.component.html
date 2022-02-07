@@ -7,4 +7,6 @@
         (setSidebarOpen)="setSidebarOpen($event)"></mak-pit-sticky-header>
 
     <mak-pit-burger-menus [menuOpen]="menuOpen" (setMenuOpen)="setMenuOpen($event)"></mak-pit-burger-menus>
+
+    <div class="body-overlay" [class.show]="menuOpen" (click)="setMenuOpen(false)"></div>
 </header>
