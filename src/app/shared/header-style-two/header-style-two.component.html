@@ -1,0 +1,17 @@
+<header>
+    <mak-pit-top-header2></mak-pit-top-header2>
+
+    <mak-pit-sticky-header stickerHeaderExtraClasses="menu-area-2" [menuOpen]="menuOpen"
+        (setMenuOpen)="setMenuOpen($event)" [searchBarOpen]="searchBarOpen"
+        (setSearchBarOpen)="setSearchBarOpen($event)" [sidebarOpen]="sidebarOpen"
+        (setSidebarOpen)="setSidebarOpen($event)"></mak-pit-sticky-header>
+
+    <mak-pit-burger-menus [menuOpen]="menuOpen" (setMenuOpen)="setMenuOpen($event)"></mak-pit-burger-menus>
+
+    <div class="body-overlay" [class.show]="menuOpen" (click)="setMenuOpen(false)"></div>
+
+    <mak-pit-sidebar [sidebarOpen]="sidebarOpen" (setSidebarOpen)="setSidebarOpen($event)"></mak-pit-sidebar>
+
+    <mak-pit-search-bar [searchBarOpen]="searchBarOpen" (setSearchBarOpen)="setSearchBarOpen($event)">
+    </mak-pit-search-bar>
+</header>
