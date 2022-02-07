@@ -22,4 +22,8 @@ export class HeaderStyleTwoComponent implements OnInit {
     this.searchBarOpen = open;
   }
 
+  setMenuOpen(open: boolean) {
+    this.menuOpen = open; ;
+  }
+
 }
