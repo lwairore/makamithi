@@ -15,19 +15,19 @@ export class ClientSlider2Component implements OnInit {
     dots: false,
     center: false,
     // nav: false,
-    items: 2,
+    items: 1,
     slideBy: 1,
     responsive: {
-      480: {
-        items: 1,
-        slideBy: 1,
-      },
-      991: {
-        items: 1,
+      768: {
+        items: 2,
         slideBy: 1,
       },
       1024: {
         items: 2,
+        slideBy: 1,
+      },
+      1440: {
+        items: 3,
         slideBy: 1,
       }
     },
