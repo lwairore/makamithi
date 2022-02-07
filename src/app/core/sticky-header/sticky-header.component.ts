@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'mak-pit-sticky-header',
@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StickyHeaderComponent implements OnInit {
   @Input() menuOpen = false;
+
+  @Output() setMenuOpen = new EventEmitter<boolean>();
 
   constructor() { }
 
