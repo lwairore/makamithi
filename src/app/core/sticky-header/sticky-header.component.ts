@@ -11,6 +11,8 @@ export class StickyHeaderComponent implements OnInit {
 
   @Input() searchBarOpen = false;
 
+  @Input() sidebarOpen = false;
+
   @Output() setMenuOpen = new EventEmitter<boolean>();
 
   @Output() setSearchBarOpen = new EventEmitter<boolean>();
