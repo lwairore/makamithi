@@ -7,7 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   ]
 })
 export class ArticleLayoutComponent implements OnInit {
-  @Input() post = {}
+  @Input() post = {
+    url: '',
+    image: '',
+    title: '',
+    text: '',
+  }
 
   constructor() { }
 
