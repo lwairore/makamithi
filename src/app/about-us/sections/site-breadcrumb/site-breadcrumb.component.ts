@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mak-pit-site-breadcrumb',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class SiteBreadcrumbComponent implements OnInit {
+  @Input() pageTitle = '';
 
   constructor() { }
 
