@@ -11,4 +11,7 @@
     <div class="body-overlay" [class.show]="menuOpen" (click)="setMenuOpen(false)"></div>
 
     <mak-pit-sidebar [sidebarOpen]="sidebarOpen" (setSidebarOpen)="setSidebarOpen($event)"></mak-pit-sidebar>
+
+    <mak-pit-search-bar [searchBarOpen]="searchBarOpen" (setSearchBarOpen)="setSearchBarOpen($event)">
+    </mak-pit-search-bar>
 </header>
