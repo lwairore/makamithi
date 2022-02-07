@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   ]
 })
 export class SiteBreadcrumbComponent implements OnInit {
-  @Input() pageTitle = '';
+  @Input() pageTitle = 'Blog';
 
   constructor() { }
 
