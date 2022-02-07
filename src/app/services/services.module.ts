@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SPStyleOneComponent } from './sections/spstyle-one/spstyle-one.component';
 import { SPStyleTwoComponent } from './sections/spstyle-two/spstyle-two.component';
 import { SPVideoSectionComponent } from './sections/spvideo-section/spvideo-section.component';
+import { SPAboutSectionComponent } from './sections/spabout-section/spabout-section.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { SPVideoSectionComponent } from './sections/spvideo-section/spvideo-sect
     SPStyleOneComponent,
     SPStyleTwoComponent,
     SPVideoSectionComponent,
+    SPAboutSectionComponent,
   ],
   imports: [
     CommonModule,
