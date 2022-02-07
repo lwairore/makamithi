@@ -1,5 +1,4 @@
-<div
-    [ngClass]="menuOpen ? 'side-mobile-menu d-block d-xl-done d-lg-none open': 'side-mobile-menu d-block d-xl-done d-lg-none'">
+<div class="side-mobile-menu d-block d-xl-done d-lg-none" [class.open]="menuOpen">
     <div class="close-mobile-menu" (click)="dispatchSetMenuOpenEvt()">
         <span>
             <i>
