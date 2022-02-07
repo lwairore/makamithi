@@ -8,6 +8,7 @@ import { FaqComponent } from './sections/faq/faq.component';
 import { AccordionModule } from '../accordion/accordion.module';
 import { ApWhatWeDo2SectionComponent } from './sections/ap-what-we-do2-section/ap-what-we-do2-section.component';
 import { APTeam4SectionComponent } from './sections/apteam4-section/apteam4-section.component';
+import { ClientSlider2Component } from './sections/client-slider2/client-slider2.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { APTeam4SectionComponent } from './sections/apteam4-section/apteam4-sect
     FaqComponent,
     ApWhatWeDo2SectionComponent,
     APTeam4SectionComponent,
+    ClientSlider2Component,
   ],
   imports: [
     CommonModule,
