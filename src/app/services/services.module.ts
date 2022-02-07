@@ -7,6 +7,7 @@ import { SPStyleOneComponent } from './sections/spstyle-one/spstyle-one.componen
 import { SPStyleTwoComponent } from './sections/spstyle-two/spstyle-two.component';
 import { SPVideoSectionComponent } from './sections/spvideo-section/spvideo-section.component';
 import { SPAboutSectionComponent } from './sections/spabout-section/spabout-section.component';
+import { SPPricingComponent } from './sections/sppricing/sppricing.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SPAboutSectionComponent } from './sections/spabout-section/spabout-sect
     SPStyleTwoComponent,
     SPVideoSectionComponent,
     SPAboutSectionComponent,
+    SPPricingComponent,
   ],
   imports: [
     CommonModule,
