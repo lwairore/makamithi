@@ -24,4 +24,8 @@ export class StickyHeaderComponent implements OnInit {
     this.setMenuOpen.emit(!this.menuOpen);
   }
 
+  dispatchSetSearchBarOpenEvt() {
+    this.setSearchBarOpen.emit(!this.searchBarOpen);
+  }
+
 }
