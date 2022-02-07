@@ -1,11 +1,20 @@
 import { Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { AccordionItemDirective } from './directives/accordion-item.directive';
 import { memoize } from 'lodash-es';
+import { trigger, state, style, transition, animate } from "@angular/animations";
 
 @Component({
   selector: 'mak-pit-accordion',
   templateUrl: './accordion.component.html',
   styles: [
+  ],
+  animations: [
+    trigger('contentExpansion', [
+      state('expanded', style({ height: '*', opacity: 1, visibility: 'visible' })),
+      state('collapsed', style({ height: '0px', opacity: 0, visibility: 'hidden' })),
+      transition('expanded <=> collapsed',
+        animate('200ms cubic-bezier(.37,1.04,.68,.98)')),
+    ])
   ]
 })
 export class AccordionComponent implements OnInit {
