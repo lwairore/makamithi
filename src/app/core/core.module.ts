@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { HeaderStyleTwoComponent } from './header-style-two/header-style-two.component';
 import { TopHeader2Component } from './header-style-two/sections/top-header2/top-header2.component';
+import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
 
 
 
@@ -22,6 +23,7 @@ import { TopHeader2Component } from './header-style-two/sections/top-header2/top
     FooterComponent,
     HeaderStyleTwoComponent,
     TopHeader2Component,
+    StickyHeaderComponent,
   ],
   imports: [
     CommonModule,
