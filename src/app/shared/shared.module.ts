@@ -9,6 +9,7 @@ import { HeaderStyleTwoComponent } from './header-style-two/header-style-two.com
 import { SearchBarComponent } from './common/search-bar/search-bar.component';
 import { StickyHeaderComponent } from './common/sticky-header/sticky-header.component';
 import { TopHeader2Component } from './header-style-two/sections/top-header2/top-header2.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -25,7 +26,8 @@ import { TopHeader2Component } from './header-style-two/sections/top-header2/top
     StickyHeaderComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
   exports: [
     SiteBreadcrumbComponent,
