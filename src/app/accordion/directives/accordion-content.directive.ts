@@ -1,10 +1,12 @@
-import { Directive } from '@angular/core';
+import { Directive, TemplateRef } from '@angular/core';
 
 @Directive({
   selector: '[makPitAccordionContent]'
 })
 export class AccordionContentDirective {
 
-  constructor() { }
+  constructor(
+    public templateRef: TemplateRef<any>
+  ) { }
 
 }
