@@ -36,4 +36,15 @@ export class AccordionComponent implements OnInit {
     return this.toggleState.bind(this, index);
   };
 
+  toggleState = (index: number) => {
+    if (this.expanded.has(index)) {
+      this.expanded.delete(index);
+    } else {
+      if (this.collapsing) {
+        this.expanded.clear();
+      }
+      this.expanded.add(index);
+    }
+  };
+
 }
