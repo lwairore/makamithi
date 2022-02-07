@@ -27,6 +27,14 @@
     </div>
 </section>
 
+<!-- 
+    When `let-item` is called, it refers to the implicit property that we
+    attached (`{$implicit: item}`). It just means that its the `default` value to
+    use when the user didn't specify which property they want (see how `index` is queried).
+
+    By adding `let-index="index"`, we are assigning the index property to a variable called `index`.
+    This would make the variable available to use within the template.
+ -->
 <ng-template #defaultHeader let-item let-index="index">
     <header class="accordion__header" (click)="item.disabled ? {} :toggleState(index)">
         <ng-container *ngTemplateOutlet="item?.customTitle?.templateRef || defaultTitle"></ng-container>
