@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AccordionItemDirective } from './directives/accordion-item.directive';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AccordionItemDirective],
   imports: [
     CommonModule
   ]
