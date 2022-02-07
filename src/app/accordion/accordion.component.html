@@ -1,6 +1,23 @@
 <section class="accordion">
     <div *ngFor="let item of items;index as i" class="accordion__item" [class.disabled]="item.disabled"
         [class.active]="expanded.has(i)">
+
+        <!-- If the user has provided a custom header, we use that template or we
+        use our `defaultHeader`. We use something called `ngTemplateOutlet` (ref `https://angular.io/api/common/NgTemplateOutlet`)
+        to project the template into the view.
+
+        `ngTemplateOutletContext` is used to pass some information into the template. We pass:
+
+            * `item` - the current accordion item.
+            * `index` - index of the accordion item (required for toggling it).
+            * `toggle` - a function that can be called to toggle the accordion item. 
+
+        The `toggle` property is a function that has the current context and the index bound to it.
+        So whenever it's called, that particular item will automatically be toggle without passing the index value to the
+        function.
+
+        Also, see that it's an `arrow` function, that is the reason we can call
+        the `toggleState` funciton with the propert context (`this`). -->
         <ng-container [ngTemplateOutlet]="(item?.customHeader?.templateRef || defaultHeader)"
             [ngTemplateOutletContext]="{$implicit: item, index: i, toggle: getToggleState(i)}"></ng-container>
         <div class="accordion__content" [class.expanded]="expanded.has(i)"
