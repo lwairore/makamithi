@@ -5,6 +5,7 @@ import { AboutMainComponent } from './about-main/about-main.component';
 import { APAbout4SectionComponent } from './sections/apabout4-section/apabout4-section.component';
 import { SharedModule } from '../shared/shared.module';
 import { FaqComponent } from './sections/faq/faq.component';
+import { AccordionComponent } from './sections/accordion/accordion.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { FaqComponent } from './sections/faq/faq.component';
     AboutMainComponent,
     APAbout4SectionComponent,
     FaqComponent,
+    AccordionComponent,
   ],
   imports: [
     CommonModule,
