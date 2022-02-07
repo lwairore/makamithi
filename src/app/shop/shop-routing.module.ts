@@ -13,6 +13,11 @@ const routes: Routes = [
         path: '',
         component: ShopMainComponent,
       },
+      {
+        path: 'shop-details',
+        loadChildren: () => import('./shop-details/shop-details.module')
+          .then(s => s.ShopDetailsModule),
+      },
     ]
   }
 ];
