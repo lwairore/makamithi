@@ -18,4 +18,8 @@ export class HeaderStyleTwoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setSearchBarOpen(open: boolean) {
+    this.searchBarOpen = open;
+  }
+
 }
