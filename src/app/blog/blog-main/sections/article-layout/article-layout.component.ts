@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mak-pit-article-layout',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class ArticleLayoutComponent implements OnInit {
+  @Input() post = {}
 
   constructor() { }
 
