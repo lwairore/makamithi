@@ -9,4 +9,6 @@
     <mak-pit-burger-menus [menuOpen]="menuOpen" (setMenuOpen)="setMenuOpen($event)"></mak-pit-burger-menus>
 
     <div class="body-overlay" [class.show]="menuOpen" (click)="setMenuOpen(false)"></div>
+
+    <mak-pit-sidebar [sidebarOpen]="sidebarOpen" (setSidebarOpen)="setSidebarOpen($event)"></mak-pit-sidebar>
 </header>
