@@ -17,6 +17,8 @@ export class StickyHeaderComponent implements OnInit {
 
   @Output() setSearchBarOpen = new EventEmitter<boolean>();
 
+  @Output() setSidebarOpen = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
