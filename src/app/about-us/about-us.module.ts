@@ -9,6 +9,7 @@ import { AccordionModule } from '../accordion/accordion.module';
 import { ApWhatWeDo2SectionComponent } from './sections/ap-what-we-do2-section/ap-what-we-do2-section.component';
 import { APTeam4SectionComponent } from './sections/apteam4-section/apteam4-section.component';
 import { ClientSlider2Component } from './sections/client-slider2/client-slider2.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ClientSlider2Component } from './sections/client-slider2/client-slider2
     AboutUsRoutingModule,
     SharedModule,
     AccordionModule,
+    CarouselModule,
   ]
 })
 export class AboutUsModule { }
