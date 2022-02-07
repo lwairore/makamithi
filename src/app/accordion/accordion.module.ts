@@ -21,6 +21,7 @@ import { AccordionComponent } from './accordion.component';
   ],
   exports: [
     AccordionComponent,
+    AccordionItemDirective,
   ]
 })
 export class AccordionModule { }
