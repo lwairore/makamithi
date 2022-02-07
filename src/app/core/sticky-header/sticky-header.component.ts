@@ -16,4 +16,8 @@ export class StickyHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  dispatchSetMenuOpenEvt() {
+    this.setMenuOpen.emit(!this.menuOpen);
+  }
+
 }
