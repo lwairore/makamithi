@@ -9,7 +9,13 @@ import { AccordionComponent } from './accordion.component';
 
 
 @NgModule({
-  declarations: [AccordionItemDirective, AccordionContentDirective, AccordionTitleDirective, AccordionHeaderDirective, AccordionComponent],
+  declarations: [
+    AccordionItemDirective,
+    AccordionContentDirective,
+    AccordionTitleDirective,
+    AccordionHeaderDirective,
+    AccordionComponent,
+  ],
   imports: [
     CommonModule
   ]
