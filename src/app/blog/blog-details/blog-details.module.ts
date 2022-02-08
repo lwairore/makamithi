@@ -14,6 +14,7 @@ import { BlogWidgetFeedsComponent } from './blog-details-main/sections/widgets/b
 import { BlogWidgetCateComponent } from './blog-details-main/sections/widgets/blog-widget-cate/blog-widget-cate.component';
 import { BlogWidgetSocialComponent } from './blog-details-main/sections/widgets/blog-widget-social/blog-widget-social.component';
 import { BlogWidgetTagsComponent } from './blog-details-main/sections/widgets/blog-widget-tags/blog-widget-tags.component';
+import { BlogWidgetBannerComponent } from './blog-details-main/sections/widgets/blog-widget-banner/blog-widget-banner.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { BlogWidgetTagsComponent } from './blog-details-main/sections/widgets/bl
     BlogWidgetCateComponent,
     BlogWidgetSocialComponent,
     BlogWidgetTagsComponent,
+    BlogWidgetBannerComponent,
   ],
   imports: [
     CommonModule,
