@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[makPitTabItem]'
+  selector: 'makPitTabItem'
 })
 export class TabItemDirective {
 
