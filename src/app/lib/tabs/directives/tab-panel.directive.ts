@@ -1,10 +1,13 @@
-import { Directive } from '@angular/core';
+import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
   selector: '[makPitTabPanel]'
 })
 export class TabPanelDirective {
+  @Input() className = '';
 
-  constructor() { }
+  @Input() isSelected = false;
+
+  constructor(public templateRef: TemplateRef<any>) { }
 
 }
