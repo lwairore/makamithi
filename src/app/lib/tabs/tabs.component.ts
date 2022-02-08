@@ -1,7 +1,5 @@
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, ContentChildren, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { memoize } from 'lodash';
-import { TabItemDirective } from './directives/tab-item.directive';
-import { TabListDirective } from './directives/tab-list.directive';
 import { TabPanelDirective } from './directives/tab-panel.directive';
 import { TabDirective } from './directives/tab.directive';
 import { TabItemComponent } from './tab-item/tab-item.component';
@@ -21,16 +19,16 @@ export class TabsComponent implements OnInit, AfterContentInit {
 
   tabPanels: QueryList<TabPanelDirective>;
 
-  tabListTabs: QueryList<TabDirective>;
+  // tabListTabs: QueryList<TabDirective>;
 
-  // @ContentChild(TabListComponent)
-  // tabList: TabListComponent;
+  @ContentChild(TabListComponent)
+  tabList: TabListComponent;
 
   @ContentChild(TabItemComponent)
   tabItem: TabItemComponent;
 
-  @ContentChild(TabListDirective)
-  newTabList: TabListDirective;
+  // @ContentChild(TabListDirective)
+  // newTabList: TabListDirective;
 
   expanded = new Set<number>();
 
@@ -43,37 +41,18 @@ export class TabsComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit(): void {
     this.getTabs();
-
-    this.ifNoActivateTabSetActivateFirst();
   }
 
-  ifNoActivateTabSetActivateFirst() {
-    // get all active tabs
-    let activeTabs = this.tabListTabs.filter((tab) => tab.active);
-
-    console.log({ activeTabs })
-
-    // if there is no active tab set, activate the first
-    if (activeTabs.length === 0) {
-      this.selectTab(this.tabListTabs.first, 0);
-    }
-  }
-
-  selectTab(tab: TabDirective, index: number) {
-    console.log({ tab })
-    // deactivate all tabs
-    this.tabListTabs.toArray().forEach(tab => tab.active = false);
-
-    // activate the tab the user has clicked on.
-    tab.active = true;
-
-    this.tabItem.isPanelTabsSelected(index);
+  isPanelTabsSelected(index: number) {
+    this.tabItem.isPanelTabsSelected(index)
   }
 
   getTabs() {
-    this.tabListTabs = this.newTabList.tabs;
+    this.tabList.tabItem = this.tabItem;
 
-    this.tabItem.tabListTabs = this.tabListTabs;
+    this.tabList.selectedTabClassName = this.selectedTabClassName;
+
+    this.tabItem.tabListTabs = this.tabList.tabs;
   }
 
   showTabsPanels = () => {
@@ -86,10 +65,10 @@ export class TabsComponent implements OnInit, AfterContentInit {
     // console.log("this.panels")
     // console.log(this.panels)
 
-    console.log("this.newTabList")
-    console.log(this.newTabList);
-    console.log('tabs ')
-    console.log(this.newTabList.tabs.toArray());
+    // console.log("this.newTabList")
+    // console.log(this.newTabList);
+    // console.log('tabs ')
+    // console.log(this.newTabList.tabs.toArray());
   }
 
 

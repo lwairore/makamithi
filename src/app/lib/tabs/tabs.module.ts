@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TabDirective } from './directives/tab.directive';
 import { TabPanelDirective } from './directives/tab-panel.directive';
 import { TabsComponent } from './tabs.component';
-import { TabItemDirective } from './directives/tab-item.directive';
 import { TabListComponent } from './tab-list/tab-list.component';
-import { TabListDirective } from './directives/tab-list.directive';
 import { TabItemComponent } from './tab-item/tab-item.component';
 
 
@@ -15,9 +13,7 @@ import { TabItemComponent } from './tab-item/tab-item.component';
     TabDirective,
     TabPanelDirective,
     TabsComponent,
-    TabItemDirective,
     TabListComponent,
-    TabListDirective,
     TabItemComponent,
   ],
   imports: [
@@ -27,9 +23,7 @@ import { TabItemComponent } from './tab-item/tab-item.component';
     TabsComponent,
     TabDirective,
     TabPanelDirective,
-    TabItemDirective,
     TabListComponent,
-    TabListDirective,
     TabItemComponent,
   ]
 })

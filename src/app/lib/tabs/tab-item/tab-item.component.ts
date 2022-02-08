@@ -1,4 +1,4 @@
-import { Component, ContentChildren, OnInit, QueryList } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, OnInit, QueryList } from '@angular/core';
 import { TabPanelDirective } from '../directives/tab-panel.directive';
 import { TabDirective } from '../directives/tab.directive';
 import { TabsComponent } from '../tabs.component';
@@ -7,7 +7,8 @@ import { TabsComponent } from '../tabs.component';
   selector: 'mak-pit-tab-item',
   templateUrl: './tab-item.component.html',
   styles: [
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabItemComponent implements OnInit {
   @ContentChildren(TabPanelDirective)
@@ -16,7 +17,7 @@ export class TabItemComponent implements OnInit {
   tabListTabs: QueryList<TabDirective>;
 
   constructor(
-  ) { }
+    private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +28,10 @@ export class TabItemComponent implements OnInit {
     console.log(panelTab)
 
     return panelTab?.active;
+  }
 
+  manuallyTriggerChangeDetection() {
+    this.ref.detectChanges();
   }
 
 }

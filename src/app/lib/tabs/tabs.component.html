@@ -1,13 +1,4 @@
 <div class="react-tabs" [ngClass]="className">
     <ng-content></ng-content>
-    
-
-    <ul [ngClass]="newTabList.className" role="tablist">
-        <li class="react-tabs__tab" role="tab" *ngFor="let tab of tabListTabs;index as tapIndex" (click)="selectTab(tab, tapIndex)"
-            [ngClass]="tab?.active ? selectedTabClassName:  '' ">
-            <ng-container *ngTemplateOutlet="tab?.templateRef"></ng-container>
-        </li>
-    </ul>
-
     <button (click)="showTabsPanels()">Print tabs panels</button>
 </div>
