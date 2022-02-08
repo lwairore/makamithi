@@ -8,6 +8,7 @@ import { BlogPostArrowComponent } from './blog-details-main/sections/blog-post-a
 import { BlogPostAuthorComponent } from './blog-details-main/sections/blog-post-author/blog-post-author.component';
 import { BlogPostCommentsComponent } from './blog-details-main/sections/blog-post-comments/blog-post-comments.component';
 import { BlogCommentsFormComponent } from './blog-details-main/sections/blog-comments-form/blog-comments-form.component';
+import { BlogWidgetSearchComponent } from './blog-details-main/sections/widgets/blog-widget-search/blog-widget-search.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { BlogCommentsFormComponent } from './blog-details-main/sections/blog-com
     BlogPostAuthorComponent,
     BlogPostCommentsComponent,
     BlogCommentsFormComponent,
+    BlogWidgetSearchComponent,
   ],
   imports: [
     CommonModule,
