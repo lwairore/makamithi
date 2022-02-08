@@ -5,7 +5,7 @@ import { AboutMainComponent } from './about-main/about-main.component';
 import { APAbout4SectionComponent } from './about-main/sections/apabout4-section/apabout4-section.component';
 import { SharedModule } from '../shared/shared.module';
 import { FaqComponent } from './about-main/sections/faq/faq.component';
-import { AccordionModule } from '../accordion/accordion.module';
+import { AccordionModule } from '../lib/accordion/accordion.module';
 import { ApWhatWeDo2SectionComponent } from './about-main/sections/ap-what-we-do2-section/ap-what-we-do2-section.component';
 import { APTeam4SectionComponent } from './about-main/sections/apteam4-section/apteam4-section.component';
 import { ClientSlider2Component } from './about-main/sections/client-slider2/client-slider2.component';
