@@ -4,6 +4,7 @@ import { GalleryRoutingModule } from './gallery-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { GalleryComponent } from './gallery.component';
 import { GalleryOneMainComponent } from './gallery-one-main/gallery-one-main.component';
+import { TabsModule } from '../lib/tabs/tabs.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { GalleryOneMainComponent } from './gallery-one-main/gallery-one-main.com
     CommonModule,
     GalleryRoutingModule,
     SharedModule,
+    TabsModule,
   ]
 })
 export class GalleryModule { }
