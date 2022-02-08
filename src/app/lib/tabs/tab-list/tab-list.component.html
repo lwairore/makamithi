@@ -1,5 +1,5 @@
 <ul [ngClass]="className" role="tablist">
-    <li *ngFor="let tab of tabItems" (click)="selectTab(tab)" [ngClass]="tabListLiClass" [class.active]="tab.active">
+    <li *ngFor="let tab of tabItems" (click)="selectTab(tab)" class="react-tabs__tab" [class.active]="tab.active">
         {{ tab.tabTitle }}
     </li>
 </ul>

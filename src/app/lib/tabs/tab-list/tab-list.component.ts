@@ -10,8 +10,6 @@ import { TabDirective } from '../directives/tab.directive';
 export class TabListComponent implements AfterViewInit {
   @Input() className = '';
 
-  @Input() tabListLiClass = '';
-
   @ContentChildren(TabDirective)
   tabItems: QueryList<TabDirective>;
 
