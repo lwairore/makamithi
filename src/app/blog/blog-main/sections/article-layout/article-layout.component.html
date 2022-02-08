@@ -17,7 +17,7 @@
             </span>
         </div>
         <h3 class="blog-title">
-            <a [routerLink]="['.', post.url]">
+            <a routerLink="./blog-details">
                 {{ post.title }}
             </a>
         </h3>
@@ -27,7 +27,7 @@
             </p>
         </div>
         <div class="read-more mt-30">
-            <a class="btn theme-btn" [routerLink]="['.', post.url]">Read
+            <a class="btn theme-btn" routerLink="./blog-details">Read
                 More</a>
         </div>
     </div>
