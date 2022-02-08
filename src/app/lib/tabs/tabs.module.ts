@@ -4,6 +4,7 @@ import { TabListDirective } from './directives/tab-list.directive';
 import { TabDirective } from './directives/tab.directive';
 import { TabPanelDirective } from './directives/tab-panel.directive';
 import { TabsComponent } from './tabs.component';
+import { TabItemDirective } from './directives/tab-item.directive';
 
 
 
@@ -13,6 +14,7 @@ import { TabsComponent } from './tabs.component';
     TabDirective,
     TabPanelDirective,
     TabsComponent,
+    TabItemDirective,
   ],
   imports: [
     CommonModule
@@ -22,6 +24,7 @@ import { TabsComponent } from './tabs.component';
     TabListDirective,
     TabDirective,
     TabPanelDirective,
+    TabItemDirective,
   ]
 })
 export class TabsModule { }
