@@ -1,4 +1,4 @@
-<ul [ngClass]="tabListUlClass" role="tablist">
+<ul [ngClass]="className" role="tablist">
     <li *ngFor="let tab of tabItems" (click)="selectTab(tab)" [ngClass]="tabListLiClass" [class.active]="tab.active">
         {{ tab.tabTitle }}
     </li>

@@ -8,7 +8,7 @@ import { TabDirective } from '../directives/tab.directive';
   ]
 })
 export class TabListComponent implements AfterViewInit {
-  @Input() tabListUlClass = '';
+  @Input() className = '';
 
   @Input() tabListLiClass = '';
 
