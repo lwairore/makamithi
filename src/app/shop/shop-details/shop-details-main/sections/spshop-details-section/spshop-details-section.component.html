@@ -1,1 +1,51 @@
-<p>spshop-details-section works!</p>
+<section class="shop-banner-area pt-120 pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <mak-pit-tabs selectedTabClassName="active">
+                    <div class="product-details-img mb-20">
+                        <mak-pit-tab-item>
+                            <ng-template makPitTabPanel>
+                                <div class="product-large-img">
+                                    <img src="/assets/img/product/lg1.jpg" alt="image" />
+                                </div>
+                            </ng-template>
+                            <ng-template makPitTabPanel>
+                                <div class="product-large-img">
+                                    <img src="/assets/img/product/lg2.jpg" alt="image" />
+                                </div>
+                            </ng-template>
+                            <ng-template makPitTabPanel>
+                                <div class="product-large-img">
+                                    <img src="/assets/img/product/lg3.jpg" alt="image" />
+                                </div>
+                            </ng-template>
+                        </mak-pit-tab-item>
+                        
+                    </div>
+
+                    <makPitTabList className="shop-thumb-tab mb-30">
+                        <ng-template makPitTab>
+                            <a class="nav-link">
+                                <img src="assets/img/product/lg1.jpg" alt="image" />
+                            </a>
+                        </ng-template>
+
+                        <ng-template makPitTab>
+                            <a class="nav-link">
+                                <img src="assets/img/product/lg2.jpg" alt="image" />
+                            </a>
+                        </ng-template>
+
+                        <ng-template makPitTab>
+                            <a class="nav-link">
+                                <img src="assets/img/product/lg3.jpg" alt="image" />
+                            </a>
+                        </ng-template>
+                    </makPitTabList>
+
+                </mak-pit-tabs>
+            </div>
+        </div>
+    </div>
+</section>

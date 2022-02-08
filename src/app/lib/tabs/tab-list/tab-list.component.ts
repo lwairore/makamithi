@@ -1,11 +1,12 @@
-import { AfterViewInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { TabDirective } from '../directives/tab.directive';
 
 @Component({
   selector: 'mak-pit-tab-list',
   templateUrl: './tab-list.component.html',
   styles: [
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabListComponent implements AfterViewInit {
   @Input() className = '';

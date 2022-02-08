@@ -1,4 +1,4 @@
-import { ContentChild, Directive, Input } from '@angular/core';
+import { ContentChild, ContentChildren, Directive, Input, QueryList } from '@angular/core';
 import { TabListComponent } from '../tab-list/tab-list.component';
 import { TabPanelDirective } from './tab-panel.directive';
 
@@ -13,8 +13,8 @@ export class TabItemDirective {
   @ContentChild(TabListComponent)
   tabList: TabListComponent;
 
-  @ContentChild(TabPanelDirective)
-  tabPanel: TabPanelDirective;
+  @ContentChildren(TabPanelDirective)
+  tabPanel: QueryList<TabPanelDirective>;
 
   constructor() { }
 
