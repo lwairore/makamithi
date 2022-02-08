@@ -6,6 +6,8 @@ import { Directive, Input } from '@angular/core';
 export class TabDirective {
   @Input() tabTitle = '';
 
+  @Input() active = false;
+
   constructor() { }
 
 }
