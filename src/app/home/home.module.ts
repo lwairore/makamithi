@@ -19,6 +19,7 @@ import { TabListComponent } from './home-page/sections/tab-list/tab-list.compone
 import { TabComponent } from './home-page/sections/tab/tab.component';
 import { TabPanelComponent } from './home-page/sections/tab-panel/tab-panel.component';
 import { SharedModule } from '../shared/shared.module';
+import { TabsModule } from '../lib/tabs/tabs.module';
 
 
 
@@ -47,6 +48,7 @@ import { SharedModule } from '../shared/shared.module';
     HomeRoutingModule,
     CarouselModule,
     SharedModule,
+    TabsModule,
   ]
 })
 export class HomeModule { }
