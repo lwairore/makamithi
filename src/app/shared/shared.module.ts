@@ -10,6 +10,7 @@ import { SearchBarComponent } from './common/search-bar/search-bar.component';
 import { StickyHeaderComponent } from './common/sticky-header/sticky-header.component';
 import { TopHeader2Component } from './header-style-two/sections/top-header2/top-header2.component';
 import { RouterModule } from '@angular/router';
+import { GPCtaSectionComponent } from './gpcta-section/gpcta-section.component';
 
 
 
@@ -24,6 +25,7 @@ import { RouterModule } from '@angular/router';
     HeaderStyleTwoComponent,
     TopHeader2Component,
     StickyHeaderComponent,
+    GPCtaSectionComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { RouterModule } from '@angular/router';
     SiteBreadcrumbComponent,
     HeaderComponent,
     HeaderStyleTwoComponent,
+    GPCtaSectionComponent,
   ]
 })
 export class SharedModule { }
