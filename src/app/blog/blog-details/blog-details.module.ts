@@ -13,6 +13,7 @@ import { BlogWidgetAboutComponent } from './blog-details-main/sections/widgets/b
 import { BlogWidgetFeedsComponent } from './blog-details-main/sections/widgets/blog-widget-feeds/blog-widget-feeds.component';
 import { BlogWidgetCateComponent } from './blog-details-main/sections/widgets/blog-widget-cate/blog-widget-cate.component';
 import { BlogWidgetSocialComponent } from './blog-details-main/sections/widgets/blog-widget-social/blog-widget-social.component';
+import { BlogWidgetTagsComponent } from './blog-details-main/sections/widgets/blog-widget-tags/blog-widget-tags.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { BlogWidgetSocialComponent } from './blog-details-main/sections/widgets/
     BlogWidgetFeedsComponent,
     BlogWidgetCateComponent,
     BlogWidgetSocialComponent,
+    BlogWidgetTagsComponent,
   ],
   imports: [
     CommonModule,
