@@ -35,11 +35,6 @@ const routes: Routes = [
   },
   {
     path: 'gallery',
-    loadChildren: () => import('./gallery-two/gallery-two.module')
-      .then(g => g.GalleryTwoModule),
-  },
-  {
-    path: 'gallery-1',
     loadChildren: () => import('./gallery/gallery.module')
       .then(g => g.GalleryModule),
   },
