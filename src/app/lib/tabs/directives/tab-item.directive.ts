@@ -1,5 +1,5 @@
 import { ContentChild, Directive, Input } from '@angular/core';
-import { TabListDirective } from './tab-list.directive';
+import { TabListComponent } from '../tab-list/tab-list.component';
 import { TabPanelDirective } from './tab-panel.directive';
 
 @Directive({
@@ -10,8 +10,8 @@ export class TabItemDirective {
 
   @Input() disabled = false;
 
-  @ContentChild(TabListDirective)
-  tabList: TabListDirective;
+  @ContentChild(TabListComponent)
+  tabList: TabListComponent;
 
   @ContentChild(TabPanelDirective)
   tabPanel: TabPanelDirective;
