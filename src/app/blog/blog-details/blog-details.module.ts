@@ -9,6 +9,7 @@ import { BlogPostAuthorComponent } from './blog-details-main/sections/blog-post-
 import { BlogPostCommentsComponent } from './blog-details-main/sections/blog-post-comments/blog-post-comments.component';
 import { BlogCommentsFormComponent } from './blog-details-main/sections/blog-comments-form/blog-comments-form.component';
 import { BlogWidgetSearchComponent } from './blog-details-main/sections/widgets/blog-widget-search/blog-widget-search.component';
+import { BlogWidgetAboutComponent } from './blog-details-main/sections/widgets/blog-widget-about/blog-widget-about.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { BlogWidgetSearchComponent } from './blog-details-main/sections/widgets/
     BlogPostCommentsComponent,
     BlogCommentsFormComponent,
     BlogWidgetSearchComponent,
+    BlogWidgetAboutComponent,
   ],
   imports: [
     CommonModule,
