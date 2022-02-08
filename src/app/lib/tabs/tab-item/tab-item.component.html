@@ -1,5 +1,5 @@
-<div *ngFor="let panel of tabPanels;index as i" [ngClass]="panel?.className"
-    [class.react-tabs__tab-panel--selected]="isPanelTabsSelected(i)">
+<div *ngFor="let panel of tabPanels;index as i" 
+[ngClass]="[panel?.className, isPanelTabsSelected(i) ? 'react-tabs__tab-panel--selected': '']">
 
     <ng-container *ngIf="isPanelTabsSelected(i)">
         <ng-container *ngTemplateOutlet="panel?.templateRef"></ng-container>

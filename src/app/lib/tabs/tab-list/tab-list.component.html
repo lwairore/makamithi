@@ -1,6 +1,6 @@
 <ul [ngClass]="className" role="tablist">
     <li role="tab" *ngFor="let tab of tabs;index as tabIndex" (click)="selectTab(tab, tabIndex)"
-        [ngClass]="tab?.active ? selectedTabClassName:  ''" [ngClass]="tab?.className">
+        [ngClass]="[tab?.className, tab?.active ? selectedTabClassName:  '']">
         <ng-container *ngTemplateOutlet="tab?.templateRef"></ng-container>
     </li>
 </ul>

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { TabDirective } from '../directives/tab.directive';
 import { TabItemComponent } from '../tab-item/tab-item.component';
 
@@ -19,7 +19,9 @@ export class TabListComponent implements AfterViewInit {
 
   tabItem: TabItemComponent;
 
-  constructor() { }
+  constructor(
+    private ref: ChangeDetectorRef
+  ) { }
 
   ngAfterViewInit(): void {
     this.ifNoActivateTabSetActivateFirst();
@@ -37,6 +39,10 @@ export class TabListComponent implements AfterViewInit {
     }
   }
 
+  private _manuallyTriggerChangeDetection() {
+    this.ref.detectChanges();
+  }
+
   selectTab(tab: TabDirective, index: number) {
     console.log({ tab })
     // deactivate all tabs
@@ -44,6 +50,10 @@ export class TabListComponent implements AfterViewInit {
 
     // activate the tab the user has clicked on.
     tab.active = true;
+
+    console.log({ tab });
+
+    this._manuallyTriggerChangeDetection();
 
     this.tabItem.isPanelTabsSelected(index);
 
