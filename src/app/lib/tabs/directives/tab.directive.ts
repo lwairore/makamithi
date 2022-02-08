@@ -10,6 +10,8 @@ export class TabDirective {
 
   @Input() flaticon = '';
 
+  @Input() className = '';
+
   constructor(public templateRef: TemplateRef<any>) { }
 
 }
