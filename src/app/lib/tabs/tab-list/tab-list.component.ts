@@ -7,7 +7,7 @@ import { TabDirective } from '../directives/tab.directive';
   styles: [
   ]
 })
-export class TabListComponent implements OnInit, AfterViewInit {
+export class TabListComponent implements  AfterViewInit {
   @Input() tabListUlClass = '';
 
   @Input() tabListLiClass = '';
@@ -16,9 +16,6 @@ export class TabListComponent implements OnInit, AfterViewInit {
   tabItems: QueryList<TabDirective>;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit(): void { }
 
