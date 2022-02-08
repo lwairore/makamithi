@@ -21,6 +21,7 @@ import { TabsComponent } from './tabs.component';
     TabsComponent,
     TabListDirective,
     TabDirective,
+    TabPanelDirective,
   ]
 })
 export class TabsModule { }
