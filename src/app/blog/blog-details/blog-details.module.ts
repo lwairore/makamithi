@@ -6,6 +6,7 @@ import { BlogDetailsMainComponent } from './blog-details-main/blog-details-main.
 import { BlogPostRelatedComponent } from './blog-details-main/sections/blog-post-related/blog-post-related.component';
 import { BlogPostArrowComponent } from './blog-details-main/sections/blog-post-arrow/blog-post-arrow.component';
 import { BlogPostAuthorComponent } from './blog-details-main/sections/blog-post-author/blog-post-author.component';
+import { BlogPostCommentsComponent } from './blog-details-main/sections/blog-post-comments/blog-post-comments.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { BlogPostAuthorComponent } from './blog-details-main/sections/blog-post-
     BlogPostRelatedComponent,
     BlogPostArrowComponent,
     BlogPostAuthorComponent,
+    BlogPostCommentsComponent,
   ],
   imports: [
     CommonModule,
