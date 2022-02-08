@@ -29,4 +29,14 @@ export class TabListComponent implements AfterViewInit {
     }
   }
 
+  selectTab(tab: TabDirective) {
+    console.log({ tab })
+    // deactivate all tabs
+    this.tabItems.toArray().forEach(tab => tab.active = false);
+
+    // activate the tab the user has clicked on.
+    tab.active = true;
+  }
+
+
 }
