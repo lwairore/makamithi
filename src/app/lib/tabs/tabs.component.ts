@@ -9,6 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TabsComponent implements OnInit {
   @Input() className = '';
 
+  @Input() selectedTabClassName = '';
+
   constructor() { }
 
   ngOnInit(): void {
