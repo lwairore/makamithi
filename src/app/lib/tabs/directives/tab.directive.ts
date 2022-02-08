@@ -10,7 +10,7 @@ export class TabDirective {
 
   @Input() flaticon = '';
 
-  @Input() className = '';
+  @Input() className = 'react-tabs__tab';
 
   constructor(public templateRef: TemplateRef<any>) { }
 
