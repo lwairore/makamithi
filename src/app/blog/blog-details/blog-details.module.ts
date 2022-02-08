@@ -12,6 +12,7 @@ import { BlogWidgetSearchComponent } from './blog-details-main/sections/widgets/
 import { BlogWidgetAboutComponent } from './blog-details-main/sections/widgets/blog-widget-about/blog-widget-about.component';
 import { BlogWidgetFeedsComponent } from './blog-details-main/sections/widgets/blog-widget-feeds/blog-widget-feeds.component';
 import { BlogWidgetCateComponent } from './blog-details-main/sections/widgets/blog-widget-cate/blog-widget-cate.component';
+import { BlogWidgetSocialComponent } from './blog-details-main/sections/widgets/blog-widget-social/blog-widget-social.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { BlogWidgetCateComponent } from './blog-details-main/sections/widgets/bl
     BlogWidgetAboutComponent,
     BlogWidgetFeedsComponent,
     BlogWidgetCateComponent,
+    BlogWidgetSocialComponent,
   ],
   imports: [
     CommonModule,
