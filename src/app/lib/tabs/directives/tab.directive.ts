@@ -8,6 +8,8 @@ export class TabDirective {
 
   @Input() active = false;
 
+  @Input() flaticon = '';
+
   constructor() { }
 
 }
