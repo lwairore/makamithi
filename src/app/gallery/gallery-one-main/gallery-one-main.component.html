@@ -1,3 +1,61 @@
 <mak-pit-site-breadcrumb pageTitle="Gallery 01"></mak-pit-site-breadcrumb>
 
-<main></main>
+<main>
+    <mak-pit-tabs className="row" selectedTabClassName="active">
+        <div class="col-xl-12">
+            <mak-pit-tab-list className="portfolio-menu mb-70 text-center">
+                <ng-template makPitTab>All</ng-template>
+                <ng-template makPitTab>Vegetables</ng-template>
+                <ng-template makPitTab>Orange</ng-template>
+                <ng-template makPitTab>Shallot</ng-template>
+                <ng-template makPitTab>Pumpkin</ng-template>
+            </mak-pit-tab-list>
+        </div>
+
+        <ng-template makPitTabPanel className="col-xl-12">
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="gallery-wrapper mb-30">
+                    <div class="gallery-img"><a href="#"><img
+                                src="/_next/static/images/gallery1-07ba720c74dc7c3b18b2e5ecd5eee0a6.jpg"
+                                alt="image"></a>
+                        <div class="gallery-icon"><a class="popup-image" href="img/gallery/gallery1.jpg"><i
+                                    class="ti-plus"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="gallery-wrapper mb-30">
+                    <div class="gallery-img"><a href="#"><img
+                                src="/_next/static/images/gallery2-5fd99b886c28782250dd36b22503d3d8.jpg"
+                                alt="image"></a>
+                        <div class="gallery-icon"><a class="popup-image" href="img/gallery/gallery2.jpg"><i
+                                    class="ti-plus"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template makPitTabPanel className="col-xl-12">
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="gallery-wrapper mb-30">
+                    <div class="gallery-img"><a href="#"><img
+                                src="/_next/static/images/gallery3-b20b1cfac4a23d1919ebc58669e03303.jpg"
+                                alt="image"></a>
+                        <div class="gallery-icon"><a class="popup-image" href="img/gallery/gallery3.jpg"><i
+                                    class="ti-plus"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="gallery-wrapper mb-30">
+                    <div class="gallery-img"><a href="#"><img
+                                src="/_next/static/images/gallery4-6095654acb01596c6c6edf6df60af50b.jpg"
+                                alt="image"></a>
+                        <div class="gallery-icon"><a class="popup-image" href="img/gallery/gallery4.jpg"><i
+                                    class="ti-plus"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </mak-pit-tabs>
+</main>

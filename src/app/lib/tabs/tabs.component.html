@@ -1,1 +1,8 @@
-<p>tabs works!</p>
+<div [ngClass]="className">
+    <!-- <ng-content></ng-content> -->
+
+    <div *ngFor="let panel of panels;index as i" [ngClass]="panel?.className"
+        [class.react-tabs__tab-panel--selected]="isPanelSelected(i)">
+        <ng-container *ngTemplateOutlet="panel?.templateRef"></ng-container>
+    </div>
+</div>
