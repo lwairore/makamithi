@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { TabDirective } from '../directives/tab.directive';
 
 @Component({
   selector: 'mak-pit-tab-list',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class TabListComponent implements OnInit {
+  @Input() tabListClass = '';
+
+  @ContentChildren(TabDirective)
+  tabItems: QueryList<TabDirective>;
 
   constructor() { }
 
