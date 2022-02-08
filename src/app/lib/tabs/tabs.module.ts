@@ -19,6 +19,7 @@ import { TabsComponent } from './tabs.component';
   ],
   exports: [
     TabsComponent,
+    TabListDirective,
   ]
 })
 export class TabsModule { }
