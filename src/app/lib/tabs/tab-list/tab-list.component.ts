@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { TabDirective } from '../directives/tab.directive';
 
 @Component({
@@ -7,7 +7,7 @@ import { TabDirective } from '../directives/tab.directive';
   styles: [
   ]
 })
-export class TabListComponent implements OnInit {
+export class TabListComponent implements OnInit, AfterViewInit {
   @Input() tabListUlClass = '';
 
   @Input() tabListLiClass = '';
@@ -19,5 +19,7 @@ export class TabListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void { }
 
 }
