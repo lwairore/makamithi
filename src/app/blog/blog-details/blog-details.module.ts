@@ -11,6 +11,7 @@ import { BlogCommentsFormComponent } from './blog-details-main/sections/blog-com
 import { BlogWidgetSearchComponent } from './blog-details-main/sections/widgets/blog-widget-search/blog-widget-search.component';
 import { BlogWidgetAboutComponent } from './blog-details-main/sections/widgets/blog-widget-about/blog-widget-about.component';
 import { BlogWidgetFeedsComponent } from './blog-details-main/sections/widgets/blog-widget-feeds/blog-widget-feeds.component';
+import { BlogWidgetCateComponent } from './blog-details-main/sections/widgets/blog-widget-cate/blog-widget-cate.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { BlogWidgetFeedsComponent } from './blog-details-main/sections/widgets/b
     BlogWidgetSearchComponent,
     BlogWidgetAboutComponent,
     BlogWidgetFeedsComponent,
+    BlogWidgetCateComponent,
   ],
   imports: [
     CommonModule,
