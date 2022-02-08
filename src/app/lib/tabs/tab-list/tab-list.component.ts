@@ -7,7 +7,7 @@ import { TabDirective } from '../directives/tab.directive';
   styles: [
   ]
 })
-export class TabListComponent implements  AfterViewInit {
+export class TabListComponent implements AfterViewInit {
   @Input() tabListUlClass = '';
 
   @Input() tabListLiClass = '';
@@ -17,6 +17,16 @@ export class TabListComponent implements  AfterViewInit {
 
   constructor() { }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    // get all active tabs
+    let activeTabs = this.tabItems.filter((tab) => tab.active);
+
+    console.log({ activeTabs })
+
+    // if there is no active tab set, activate the first
+    if (activeTabs.length === 0) {
+      this.selectTab(this.tabItems.first);
+    }
+  }
 
 }
