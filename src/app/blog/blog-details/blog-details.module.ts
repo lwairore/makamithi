@@ -7,6 +7,7 @@ import { BlogPostRelatedComponent } from './blog-details-main/sections/blog-post
 import { BlogPostArrowComponent } from './blog-details-main/sections/blog-post-arrow/blog-post-arrow.component';
 import { BlogPostAuthorComponent } from './blog-details-main/sections/blog-post-author/blog-post-author.component';
 import { BlogPostCommentsComponent } from './blog-details-main/sections/blog-post-comments/blog-post-comments.component';
+import { BlogCommentsFormComponent } from './blog-details-main/sections/blog-comments-form/blog-comments-form.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { BlogPostCommentsComponent } from './blog-details-main/sections/blog-pos
     BlogPostArrowComponent,
     BlogPostAuthorComponent,
     BlogPostCommentsComponent,
+    BlogCommentsFormComponent,
   ],
   imports: [
     CommonModule,
