@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
   selector: '[makPitTab]'
@@ -10,6 +10,6 @@ export class TabDirective {
 
   @Input() flaticon = '';
 
-  constructor() { }
+  constructor(public templateRef: TemplateRef<any>) { }
 
 }
