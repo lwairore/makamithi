@@ -10,6 +10,7 @@ import { BlogPostCommentsComponent } from './blog-details-main/sections/blog-pos
 import { BlogCommentsFormComponent } from './blog-details-main/sections/blog-comments-form/blog-comments-form.component';
 import { BlogWidgetSearchComponent } from './blog-details-main/sections/widgets/blog-widget-search/blog-widget-search.component';
 import { BlogWidgetAboutComponent } from './blog-details-main/sections/widgets/blog-widget-about/blog-widget-about.component';
+import { BlogWidgetFeedsComponent } from './blog-details-main/sections/widgets/blog-widget-feeds/blog-widget-feeds.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { BlogWidgetAboutComponent } from './blog-details-main/sections/widgets/b
     BlogCommentsFormComponent,
     BlogWidgetSearchComponent,
     BlogWidgetAboutComponent,
+    BlogWidgetFeedsComponent,
   ],
   imports: [
     CommonModule,
