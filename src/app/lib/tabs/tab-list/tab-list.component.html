@@ -1,1 +1,14 @@
-<p>tab-list works!</p>
+<ul [ngClass]="tabListUlClass" role="tablist">
+    <li *ngFor="let tab of tabItems"  (click)="selectTab(tab)"
+    [ngClass]="tabListLiClass"
+    class="react-tabs__tab active" role="tab" id="react-tabs-68862" aria-selected="true" aria-disabled="false"
+        aria-controls="react-tabs-68863" tabindex="0">All</li>
+    <li class="react-tabs__tab" role="tab" id="react-tabs-68864" aria-selected="false" aria-disabled="false"
+        aria-controls="react-tabs-68865">Vegetables</li>
+    <li class="react-tabs__tab" role="tab" id="react-tabs-68866" aria-selected="false" aria-disabled="false"
+        aria-controls="react-tabs-68867">Orange</li>
+    <li class="react-tabs__tab" role="tab" id="react-tabs-68868" aria-selected="false" aria-disabled="false"
+        aria-controls="react-tabs-68869">Shallot</li>
+    <li class="react-tabs__tab" role="tab" id="react-tabs-68870" aria-selected="false" aria-disabled="false"
+        aria-controls="react-tabs-68871">Pumpkin</li>
+</ul>

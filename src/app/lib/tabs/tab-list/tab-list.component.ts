@@ -8,7 +8,7 @@ import { TabDirective } from '../directives/tab.directive';
   ]
 })
 export class TabListComponent implements OnInit {
-  @Input() tabListClass = '';
+  @Input() tabListUlClass = '';
 
   @Input() tabListLiClass = '';
 
