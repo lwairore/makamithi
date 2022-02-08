@@ -13,6 +13,11 @@ const routes: Routes = [
         path: '',
         component: GalleryOneMainComponent
       },
+      {
+        path: 'gallery-details',
+        loadChildren: () => import('./gallery-details1/gallery-details1.module')
+          .then(g => g.GalleryDetails1Module),
+      },
     ]
   }
 ];
