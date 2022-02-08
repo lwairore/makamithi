@@ -19,20 +19,11 @@ export class TabsComponent implements OnInit, AfterContentInit {
 
   tabPanels: QueryList<TabPanelDirective>;
 
-  // tabListTabs: QueryList<TabDirective>;
-
   @ContentChild(TabListComponent)
   tabList: TabListComponent;
 
   @ContentChild(TabItemComponent)
   tabItem: TabItemComponent;
-
-  // @ContentChild(TabListDirective)
-  // newTabList: TabListDirective;
-
-  expanded = new Set<number>();
-
-
 
   constructor() { }
 
@@ -54,23 +45,5 @@ export class TabsComponent implements OnInit, AfterContentInit {
 
     this.tabItem.tabListTabs = this.tabList.tabs;
   }
-
-  showTabsPanels = () => {
-    // console.log("this.tabItem")
-    // console.log(this.tabItem)
-
-    // console.log('Tab panels')
-    // console.log(this.tabItem.tabPanel.toArray())
-
-    // console.log("this.panels")
-    // console.log(this.panels)
-
-    // console.log("this.newTabList")
-    // console.log(this.newTabList);
-    // console.log('tabs ')
-    // console.log(this.newTabList.tabs.toArray());
-  }
-
-
 
 }
