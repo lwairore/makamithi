@@ -6,6 +6,8 @@ import { Directive, Input } from '@angular/core';
 export class TabItemDirective {
   @Input() title = '';
 
+  @Input() disabled = false;
+
   constructor() { }
 
 }
