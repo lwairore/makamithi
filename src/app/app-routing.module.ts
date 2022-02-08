@@ -34,6 +34,11 @@ const routes: Routes = [
       .then(t => t.TeamModule),
   },
   {
+    path: 'gallery',
+    loadChildren: () => import('./gallery-two/gallery-two.module')
+    .then(g => g.GalleryTwoModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   }
