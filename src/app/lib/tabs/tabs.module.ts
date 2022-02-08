@@ -8,7 +8,12 @@ import { TabsComponent } from './tabs.component';
 
 
 @NgModule({
-  declarations: [TabListDirective, TabDirective, TabPanelDirective, TabsComponent],
+  declarations: [
+    TabListDirective,
+    TabDirective,
+    TabPanelDirective,
+    TabsComponent,
+  ],
   imports: [
     CommonModule
   ]
