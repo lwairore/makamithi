@@ -6,7 +6,9 @@ import { BlogDetailsComponent } from './blog-details.component';
 
 
 @NgModule({
-  declarations: [BlogDetailsComponent],
+  declarations: [
+    BlogDetailsComponent,
+  ],
   imports: [
     CommonModule,
     BlogDetailsRoutingModule
