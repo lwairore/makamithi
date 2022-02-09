@@ -26,15 +26,536 @@
         </div>
         <div class="row" data-tabs="true">
             <div class="col-xl-12">
-                <mak-pit-tab-list>
-                    <mak-pit-tab *ngFor="let tabItem of tabLists;" [tabTitle]="tabItem.tabTitle"
-                        [flaticon]="tabItem.flaticon">
+                <mak-pit-tabs   selectedTabClassName="active">
+                    <mak-pit-tab-list className="nav product-tab justify-content-center mb-75">
+                        <ng-template makPitTab className="nav-item">
+                            <div class="product-tab-content text-center">
+                                <div class="product-tab-img">
+                                    <i class="flaticon-diet"></i>
+                                </div>
+                                <h4>Vegetables</h4>
+                            </div>
+                        </ng-template>
 
-                        <mak-pit-tab-panel [panels]="tabItem.tabPanel">
+                        <ng-template makPitTab className="nav-item">
+                            <div class="product-tab-content text-center">
+                                <div class="product-tab-img">
+                                    <i class="flaticon-tomato"></i>
+                                </div>
+                                <h4> Shallot</h4>
+                            </div>
+                        </ng-template>
 
-                        </mak-pit-tab-panel>
-                    </mak-pit-tab>
-                </mak-pit-tab-list>
+                        <ng-template makPitTab className="nav-item">
+                            <div class="product-tab-content text-center">
+                                <div class="product-tab-img">
+                                    <i class="flaticon-pumpkin"></i>
+                                </div>
+                                <h4> Pumpkin</h4>
+                            </div>
+                        </ng-template>
+
+                        <ng-template makPitTab className="nav-item">
+                            <div class="product-tab-content text-center">
+                                <div class="product-tab-img">
+                                    <i class="flaticon-vegetarian"></i>
+                                </div>
+                                <h4>Orange</h4>
+                            </div>
+                        </ng-template>
+                    </mak-pit-tab-list>
+
+                    <mak-pit-tab-item>
+                        <ng-template makPitTabPanel>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product1.png" alt="product" /></a>
+
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+                                                <a routerLink="/shop/shop-details">Broccoli Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$49.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product2.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Avocado Head</a>
+
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$29.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product3.png" alt="image" /></a>
+
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Breadfruit Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$25.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product4.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+                                                <a routerLink="/shop/shop-details">Blackberries Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$49.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+
+                        <ng-template makPitTabPanel>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product4.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+                                                <a routerLink="/shop/shop-details">Blackberries Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$49.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product1.png" alt="product" /></a>
+
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Broccoli Head</a>
+
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$49.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product2.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Avocado Head</a>
+
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$29.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product3.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Breadfruit Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$25.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+
+                        <ng-template makPitTabPanel>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product3.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Breadfruit Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$25.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product4.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+                                                <a routerLink="/shop/shop-details">Blackberries Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$49.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product1.png" alt="product" /></a>
+
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Broccoli Head</a>
+
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$49.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product2.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Avocado Head</a>
+
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$29.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+
+                        <ng-template makPitTabPanel>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product1.png" alt="product" /></a>
+
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+                                                <a routerLink="/shop/shop-details">Broccoli Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$49.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product3.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Breadfruit Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$25.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product4.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+                                                <a routerLink="/shop/shop-details">Blackberries Head</a>
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$49.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-6">
+                                    <div class="product-wrapper text-center mb-30">
+                                        <div class="product-img">
+                                            <a routerLink="/shop/shop-details"><img
+                                                    src="/assets/img/product/product2.png" alt="image" /></a>
+                                            <div class="product-action">
+                                                <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-text">
+                                            <h4>
+
+                                                <a routerLink="/shop/shop-details">Avocado Head</a>
+
+                                            </h4>
+                                            <div class="pro-rating">
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                                <i class="far far-star"></i>
+                                            </div>
+                                            <div class="pro-price">
+                                                <span>$29.99</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mak-pit-tab-item>
+                </mak-pit-tabs>
             </div>
         </div>
     </div>
