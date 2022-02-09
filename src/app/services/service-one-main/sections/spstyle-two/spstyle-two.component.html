@@ -10,7 +10,9 @@
                     </div>
                     <div class="services-text text-center">
                         <h3>
-                            <a routerLink="/services/services-details">Technical support from our agronomists</a>
+                            <a routerLink="/services/services-details">
+                                {{ service.title | slice:0:17 }}
+                            </a>
                         </h3>
                         <p>
                             {{ service.description }}
