@@ -17,33 +17,16 @@
                             ut labore et dolore magna aliqua. Ut enim minim veniam quis nostrud
                             exercitation.</p>
                     </div>
-                    <div class="choose-content mb-40">
+                    <div class="choose-content mb-40" *ngFor="let coreValue of listCoreValue; let isLast=last"
+                    [class.mb-40]="!isLast">
                         <div class="choose-us-img">
-                            <img src="assets/img/icon/1.png" alt="" />
+                            <img [src]="coreValue.image" [alt]="coreValue.title" />
                         </div>
                         <div class="choose-text">
-                            <h4>Natural Process</h4>
-                            <p>Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor
-                                incidide.</p>
-                        </div>
-                    </div>
-                    <div class="choose-content mb-40">
-                        <div class="choose-us-img">
-                            <img src="assets/img/icon/2.png" alt="" />
-                        </div>
-                        <div class="choose-text">
-                            <h4>100% Organic Products</h4>
-                            <p>Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor
-                                incidide.</p>
-                        </div>
-                    </div>
-                    <div class="choose-content">
-                        <div class="choose-us-img">
-                            <img src="assets/img/icon/3.png" alt="" /></div>
-                        <div class="choose-text">
-                            <h4>Homegrown Goodness</h4>
-                            <p>Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor
-                                incidide.</p>
+                            <h4>{{ coreValue.title }}</h4>
+                            <p>
+                                {{ coreValue.description }}
+                            </p>
                         </div>
                     </div>
                 </div>
