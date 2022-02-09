@@ -7,47 +7,24 @@
                         <img src="assets/img/shape/1.png" alt="shape" />
                     </div>
                     <h1>Our Features</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmotempor
-                        incididunt ut labore et dolore magna aliqua enim minim veniam</p>
+                    <p>We offer consultative services to farmers by our professional team with 25years experience in the
+                        industry and in collaboration with key partners and stakeholders in the industry.
+                    </p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="col-xl-4 col-lg-4 col-md-6"  *ngFor="let service of listOurFeature;">
                 <div class="features-wrapper text-center mb-30">
                     <div class="features-img">
-                        <img src="assets/img/features/1.png" alt="features" />
+                        <img [src]="service.image" alt="features" />
                     </div>
                     <div class="features-text">
-                        <h4>Natarul Food</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
-                            incididunt ut labore et dolore magna aliqua.</p><a routerLink="/services/services-details">Read
-                            More <i class="dripicons-arrow-thin-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="features-wrapper text-center mb-30">
-                    <div class="features-img">
-                        <img src="assets/img/features/2.png" alt="features" />
-                    </div>
-                    <div class="features-text">
-                        <h4>Biologically Safe</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
-                            incididunt ut labore et dolore magna aliqua.</p><a routerLink="/services/services-details">Read
-                            More <i class="dripicons-arrow-thin-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="features-wrapper text-center mb-30">
-                    <div class="features-img">
-                        <img src="assets/img/features/3.png" alt="features" />
-                    </div>
-                    <div class="features-text">
-                        <h4>Conserve Biodiversity</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te
-                            incididunt ut labore et dolore magna aliqua.</p><a routerLink="/services/services-details">Read
+                        <h4>{{ service.title }}</h4>
+                        <p>
+                            {{ service.description }}
+                        </p><a
+                            routerLink="/services/services-details">Read
                             More <i class="dripicons-arrow-thin-right"></i></a>
                     </div>
                 </div>
