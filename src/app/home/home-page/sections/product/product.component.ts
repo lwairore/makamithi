@@ -35,4 +35,8 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  trackById(loopIndex: number, item: any) {
+    return item.id;
+  }
+
 }
