@@ -13,11 +13,12 @@
                 <div class="choose-wrapper mb-30">
                     <div class="choose-section">
                         <h1>Why Choose Us</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing eliseei ustempor incididunt
-                            ut labore et dolore magna aliqua. Ut enim minim veniam quis nostrud
-                            exercitation.</p>
+                        <p>
+                            To be the most reliable and affordable agri-inputs provider in the region and to improve livelihoods using agriculture by improving the agriculture systems,
+                            inputs quality and availability in the region.
+                        </p>
                     </div>
-                    <div class="choose-content mb-40" *ngFor="let coreValue of listCoreValue; let isLast=last"
+                    <div class="choose-content" *ngFor="let coreValue of listCoreValue; let isLast=last"
                     [class.mb-40]="!isLast">
                         <div class="choose-us-img">
                             <img [src]="coreValue.image" [alt]="coreValue.title" />
