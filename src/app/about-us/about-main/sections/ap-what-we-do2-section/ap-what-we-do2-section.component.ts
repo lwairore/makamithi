@@ -24,13 +24,13 @@ export class ApWhatWeDo2SectionComponent implements OnInit {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt ut labore et dolore magna aliqua.'
     },
     {
-      image: 'assets/img/icon/icon3.png',
+      image: 'assets/img/icon/icon1.png',
       title: 'Policy implementation',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt ut labore et dolore magna aliqua.'
     },
     {
       title: 'Business advisory',
-      image: 'assets/img/icon/icon1.png',
+      image: 'assets/img/icon/icon2.png',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt ut labore et dolore magna aliqua.'
     },
   ]

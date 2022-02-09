@@ -13,49 +13,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let service of listService;">
                 <div class="we-do-wrapper text-center mb-30">
                     <div class="we-do-img">
-                        <img src="assets/img/icon/icon1.png" alt="icon">
+                        <img [src]="service.image" alt="icon">
                     </div>
                     <div class="we-do-text">
                         <h4>
-                            <a [routerLink]="null">Natarul Food</a>
+                            <a [routerLink]="null">{{ service.title }}</a>
                         </h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt ut
-                            labore et dolore magna aliqua.</p>
-                        <a routerLink="/services/services-details">Read More <i
-                                class="dripicons-arrow-thin-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="we-do-wrapper text-center  mb-30">
-                    <div class="we-do-img">
-                        <img src="assets/img/icon/icon2.png" alt="icon">
-                    </div>
-                    <div class="we-do-text">
-                        <h4>
-                            <a [routerLink]="null">Biologically Safe</a>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt ut
-                            labore et dolore magna aliqua.</p>
-                        <a routerLink="/services/services-details">Read More <i
-                                class="dripicons-arrow-thin-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="we-do-wrapper text-center mb-30">
-                    <div class="we-do-img">
-                        <img src="assets/img/icon/icon3.png" alt="icon">
-                    </div>
-                    <div class="we-do-text">
-                        <h4>
-                            <a [routerLink]="null">Conserve Biodiversity</a>
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt ut
-                            labore et dolore magna aliqua.</p>
+                        <p>
+                            {{ service.description }}
+                        </p>
                         <a routerLink="/services/services-details">Read More <i
                                 class="dripicons-arrow-thin-right"></i></a>
                     </div>
