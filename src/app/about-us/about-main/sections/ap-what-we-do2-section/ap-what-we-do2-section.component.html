@@ -20,7 +20,7 @@
                     </div>
                     <div class="we-do-text">
                         <h4>
-                            <a [routerLink]="null">{{ service.title }}</a>
+                            <a routerLink="/services/services-details">{{ service.title | slice: 0:17}}</a>
                         </h4>
                         <p>
                             {{ service.description }}
