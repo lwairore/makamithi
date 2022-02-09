@@ -39,6 +39,11 @@ const routes: Routes = [
       .then(g => g.GalleryModule),
   },
   {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module')
+      .then(c => c.ContactModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   }
