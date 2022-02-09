@@ -4,8 +4,8 @@
             <div class="col-xl-2 col-lg-2 col-md-4 col-6">
                 <div class="logo">
                     <a routerLink="/">
-                        <img class="standard-logo" src="/assets/img/logo/logo.jpg" alt="logo" />
-                        <img class="retina-logo" src="/assets/img/logo/logo@2x.jpg" alt="logo@2x" />
+                        <img class="standard-logo" src="/assets/img/logo/logo.png" alt="logo" />
+                        <img class="retina-logo" src="/assets/img/logo/logo@2x.png" alt="logo@2x" />
                     </a>
                 </div>
             </div>
@@ -38,19 +38,8 @@
                 <div class="main-menu text-right f-right">
                     <nav id="mobile-menu">
                         <ul>
-                            <li>
-                                <a routerLink="/">home</a>
-                                <ul class="sub-menu text-left">
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/">Home 1</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/home-2">Home 2</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/home-3">Home 3</a>
-                                    </li>
-                                </ul>
+                            <li routerLinkActive="active">
+                                <a routerLink="/">Home</a>
                             </li>
                             <li routerLinkActive="active">
                                 <a routerLink="/about-us">About</a>
@@ -64,47 +53,11 @@
                             <li routerLinkActive="active">
                                 <a routerLink="/blog">Blog</a>
                             </li>
-                            <li>
-                                <a [routerLink]="null">Pages</a>
-
-                                <ul class="sub-menu text-left">
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/gallery-1">Gallery 01</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/gallery-2">Gallery 02</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/gallery-3">Gallery 03</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/gallery-details-1">Gallery Details 01</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/gallery-details-2">Gallery Details 02</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/gallery-details-3">Gallery Details 03</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/gallery-details-4">Gallery Details 04</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/blog/blog-details">Blog Details</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/services/services-details">Service Details</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/shop-details">Shop Details</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/team">Team</a>
-                                    </li>
-                                    <li routerLinkActive="active">
-                                        <a routerLink="/404">404 Error</a>
-                                    </li>
-                                </ul>
+                            <li routerLinkActive="active">
+                                <a routerLink="/gallery">Gallery</a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a routerLink="/team">Team</a>
                             </li>
                             <li routerLinkActive="active">
                                 <a routerLink="/contact">Contact</a>

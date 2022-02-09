@@ -14,20 +14,8 @@
     </div>
     <div class="mm-menu">
         <ul>
-            <li class="has-droupdown" [class.active]="home">
-                <a routerLinkActive="/" (click)="toggleMenu('home')">home</a>
-
-                <ul class="sub-menu" [class.active]="home">
-                    <li routerLinkActive="active">
-                        <a routerLink="/">Home 1</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/home-2">Home 2</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/home-3">Home 3</a>
-                    </li>
-                </ul>
+            <li routerLinkActive="active">
+                <a routerLinkActive="/" (click)="toggleMenu('home')">Home</a>
             </li>
             <li routerLinkActive="active">
                 <a routerLink="/about-us">About</a>
@@ -36,52 +24,15 @@
                 <a routerLink="/services">Services</a>
             </li>
             <li routerLinkActive="active">
-                <a routerLink="/shop">shop</a>
+                <a routerLink="/shop">Shop</a>
             </li>
             <li routerLinkActive="active">
                 <a routerLink="/blog">Blog</a>
             </li>
-            <li class="has-droupdown" [class.active]="pages">
-                <a [routerLink]="null" (click)="toggleMenu('pages')">Pages</a>
-                <ul class="sub-menu" [class.active]="pages">
-                    <li routerLinkActive="active">
-                        <a routerLink="/gallery-1">Gallery 01</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/gallery-2">Gallery 02</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/gallery-3">Gallery 03</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/gallery-details-1">Gallery Details 01</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/gallery-details-2">Gallery Details 02</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/gallery-details-3">Gallery Details 03</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/gallery-details-4">Gallery Details 04</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/blog/blog-details">Blog Details</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/services/services-details">Service Details</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/shop-details">Shop Details</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/team">Team</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/404">404 Error</a>
-                    </li>
-                </ul>
+            <li routerLinkActive="active">
+                <a routerLink="/gallery">Gallery</a>
             </li>
+           
             <li routerLinkActive="active">
                 <a routerLink="/contact">Contact</a>
             </li>
