@@ -14,64 +14,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let plan of listPlans;">
                 <div class="pricing-wrapper text-center mb-30">
                     <div class="pricing-top-text">
-                        <img src="assets/img/icon/p1.png" alt="image" />
-                        <h1>$25.95</h1>
+                        <img [src]="plan.image" [alt]="plan.title" />
+                        <h1>
+                            {{ plan.price | currency:'KES':'symbol':'.2-2' }}
+                        </h1>
                     </div>
                     <div class="pricing-text">
-                        <h2>Regular Plan</h2>
-                        <p>Money Back Guarantee</p>
-                        <p>India Organic Foods</p>
-                        <p>BD Pineaple Juice</p>
-                        <p>USA Organic Juice</p>
-                        <p>Fresh Food Item</p>
-                        <p>100% Pure Item</p>
-                    </div>
-                    <div class="pricing-button">
-                        <a class="btn" [routerLink]="null">
-                            Select Plan
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="pricing-wrapper active text-center mb-30">
-                    <div class="pricing-top-text">
-                        <img src="assets/img/icon/p2.png" alt="image" />
-                        <h1>$45.95</h1>
-                    </div>
-                    <div class="pricing-text">
-                        <h2>Premium Plan</h2>
-                        <p>Money Back Guarantee</p>
-                        <p>India Organic Foods</p>
-                        <p>BD Pineaple Juice</p>
-                        <p>USA Organic Juice</p>
-                        <p>Fresh Food Item</p>
-                        <p>100% Pure Item</p>
-                    </div>
-                    <div class="pricing-button active">
-                        <a class="btn" [routerLink]="null">
-                            Select Plan
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="pricing-wrapper text-center mb-30">
-                    <div class="pricing-top-text">
-                        <img src="assets/img/icon/p3.png" alt="image" />
-                        <h1>$95.95</h1>
-                    </div>
-                    <div class="pricing-text">
-                        <h2>Diamond Plan</h2>
-                        <p>Money Back Guarantee</p>
-                        <p>India Organic Foods</p>
-                        <p>BD Pineaple Juice</p>
-                        <p>USA Organic Juice</p>
-                        <p>Fresh Food Item</p>
-                        <p>100% Pure Item</p>
+                        <h2>
+                            {{ plan.title }}
+                        </h2>
+                        <p *ngFor="let benefit of plan.benefits">
+                            {{ benefit.title }}
+                        </p>
                     </div>
                     <div class="pricing-button">
                         <a class="btn" [routerLink]="null">
