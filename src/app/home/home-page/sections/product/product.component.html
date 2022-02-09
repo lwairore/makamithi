@@ -28,52 +28,17 @@
             <div class="col-xl-12">
                 <mak-pit-tabs selectedTabClassName="active">
                     <mak-pit-tab-list className="nav product-tab justify-content-center mb-75">
-                        <ng-template makPitTab className="nav-item">
+                        <ng-template makPitTab className="nav-item" ngFor let-product [ngForOf]="products"
+                            [ngForTrackBy]="trackById">
                             <div class="product-tab-content text-center">
                                 <div class="product-tab-img">
-                                    <i class="flaticon-diet"></i>
+                                    <i class="flaticon-{{ product.flaticon }}"></i>
                                 </div>
-                                <h4>Animal feeds</h4>
+                                <h4>
+                                    {{ product.title }}
+                                </h4>
                             </div>
                         </ng-template>
-
-                        <ng-template makPitTab className="nav-item">
-                            <div class="product-tab-content text-center">
-                                <div class="product-tab-img">
-                                    <i class="flaticon-tomato"></i>
-                                </div>
-                                <h4>Fertilizers</h4>
-                            </div>
-                        </ng-template>
-
-                        <ng-template makPitTab className="nav-item">
-                            <div class="product-tab-content text-center">
-                                <div class="product-tab-img">
-                                    <i class="flaticon-pumpkin"></i>
-                                </div>
-                                <h4>Seeds</h4>
-                            </div>
-                        </ng-template>
-
-                        <ng-template makPitTab className="nav-item">
-                            <div class="product-tab-content text-center">
-                                <div class="product-tab-img">
-                                    <i class="flaticon-vegetarian"></i>
-                                </div>
-                                <h4>Veterinary Products</h4>
-                            </div>
-                        </ng-template>
-
-                        <ng-template makPitTab className="nav-item">
-                            <div class="product-tab-content text-center">
-                                <div class="product-tab-img">
-                                    <i class="flaticon-diet"></i>
-                                </div>
-                                <h4>Agro - Chemicals </h4>
-                            </div>
-                        </ng-template>
-
-                        
                     </mak-pit-tab-list>
 
                     <mak-pit-tab-item>
@@ -689,7 +654,7 @@
                             </div>
                         </ng-template>
 
-                        
+
                     </mak-pit-tab-item>
                 </mak-pit-tabs>
             </div>
