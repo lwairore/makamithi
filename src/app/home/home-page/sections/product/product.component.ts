@@ -7,6 +7,28 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class ProductComponent implements OnInit {
+  products = [
+    {
+      flaticon: 'diet',
+      title: 'Animal feeds'
+    },
+    {
+      flaticon: 'tomato',
+      title: 'Fertilizers'
+    },
+    {
+      flaticon: 'pumpkin',
+      title: 'Seeds'
+    },
+    {
+      flaticon: 'vegetarian',
+      title: 'Veterinary Products'
+    },
+    {
+      flaticon: 'diet',
+      title: 'Agro - Chemicals'
+    },
+  ]
 
   constructor() { }
 
