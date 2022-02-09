@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
           id: 1,
           img: {
             alt: 'product',
-            src: '/assets/img/product/product1.png'
+            src: 'assets/img/product/product1.png'
           },
           href: '/shop-details',
           price: '$49.99',
@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
           id: 2,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product3.png'
+            src: 'assets/img/product/product3.png'
           },
           href: '/shop-details',
           price: '$25.99',
@@ -36,7 +36,7 @@ export class ProductComponent implements OnInit {
           id: 3,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product4.png'
+            src: 'assets/img/product/product4.png'
           },
           href: '/shop-details',
           price: '$49.99',
@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
           id: 1,
           img: {
             alt: 'product',
-            src: '/assets/img/product/product4.png'
+            src: 'assets/img/product/product4.png'
           },
           href: '/shop-details',
           price: '$49.99',
@@ -63,7 +63,7 @@ export class ProductComponent implements OnInit {
           id: 2,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product1.png'
+            src: 'assets/img/product/product1.png'
           },
           href: '/shop-details',
           price: '$49.99',
@@ -73,7 +73,7 @@ export class ProductComponent implements OnInit {
           id: 3,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product2.png'
+            src: 'assets/img/product/product2.png'
           },
           href: '/shop-details',
           price: '$29.99',
@@ -83,7 +83,7 @@ export class ProductComponent implements OnInit {
           id: 4,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product3.png'
+            src: 'assets/img/product/product3.png'
           },
           href: '/shop-details',
           price: '$25.99',
@@ -99,7 +99,7 @@ export class ProductComponent implements OnInit {
           id: 2,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product1.png'
+            src: 'assets/img/product/product1.png'
           },
           href: '/shop-details',
           price: '$49.99',
@@ -109,7 +109,7 @@ export class ProductComponent implements OnInit {
           id: 1,
           img: {
             alt: 'product',
-            src: '/assets/img/product/product4.png'
+            src: 'assets/img/product/product4.png'
           },
           href: '/shop-details',
           price: '$49.99',
@@ -119,7 +119,7 @@ export class ProductComponent implements OnInit {
           id: 4,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product3.png'
+            src: 'assets/img/product/product3.png'
           },
           href: '/shop-details',
           price: '$25.99',
@@ -129,7 +129,7 @@ export class ProductComponent implements OnInit {
           id: 3,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product2.png'
+            src: 'assets/img/product/product2.png'
           },
           href: '/shop-details',
           price: '$29.99',
@@ -145,7 +145,7 @@ export class ProductComponent implements OnInit {
           id: 1,
           img: {
             alt: 'product',
-            src: '/assets/img/product/product4.png'
+            src: 'assets/img/product/product4.png'
           },
           href: '/shop-details',
           price: '$49.99',
@@ -155,7 +155,7 @@ export class ProductComponent implements OnInit {
           id: 2,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product1.png'
+            src: 'assets/img/product/product1.png'
           },
           href: '/shop-details',
           price: '$49.99',
@@ -165,7 +165,7 @@ export class ProductComponent implements OnInit {
           id: 4,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product3.png'
+            src: 'assets/img/product/product3.png'
           },
           href: '/shop-details',
           price: '$25.99',
@@ -175,7 +175,7 @@ export class ProductComponent implements OnInit {
           id: 3,
           img: {
             alt: 'image',
-            src: '/assets/img/product/product2.png'
+            src: 'assets/img/product/product2.png'
           },
           href: '/shop-details',
           price: '$29.99',
