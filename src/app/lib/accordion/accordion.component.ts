@@ -31,7 +31,7 @@ export class AccordionComponent implements OnInit {
   @Input() collapsing = true;
 
   @ContentChildren(AccordionItemDirective)
-  items: QueryList<AccordionItemDirective>;
+  items: QueryList<AccordionItemDirective> | undefined;
 
   constructor() { }
 
