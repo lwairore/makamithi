@@ -1,3 +1,4 @@
 export type ItemPreviewHttpResponse = Readonly<{
-    image: string;
+    image?: string;
+    caption?: string;
 }>
