@@ -4,7 +4,7 @@
             <ng-template carouselSlide>
                 <div ngClass="single-slider">
                     <div class="slider-height  d-flex align-items-center"
-                        [style.background-image]="'url(' + ad.get('src')+')'">
+                        [style.background-image]="'url(' + ad.getIn(['photo','src'])+')'">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-12">

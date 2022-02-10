@@ -12,9 +12,9 @@ import { TabsComponent } from '../tabs.component';
 })
 export class TabItemComponent implements OnInit {
   @ContentChildren(TabPanelDirective)
-  tabPanels: QueryList<TabPanelDirective>;
+  tabPanels: QueryList<TabPanelDirective>|undefined;
 
-  tabListTabs: QueryList<TabDirective>;
+  tabListTabs: QueryList<TabDirective>|undefined;
 
   constructor(
     private ref: ChangeDetectorRef) { }

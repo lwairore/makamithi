@@ -15,9 +15,9 @@ export class TabListComponent implements AfterViewInit {
   @Input() selectedTabClassName = '';
 
   @ContentChildren(TabDirective)
-  tabs: QueryList<TabDirective>;
+  tabs: QueryList<TabDirective> | undefined;
 
-  tabItem: TabItemComponent;
+  tabItem: TabItemComponent | undefined;
 
   constructor(
     private ref: ChangeDetectorRef
@@ -28,14 +28,16 @@ export class TabListComponent implements AfterViewInit {
   }
 
   ifNoActivateTabSetActivateFirst() {
-    // get all active tabs
-    let activeTabs = this.tabs.filter((tab) => tab.active);
+    if (this.tabs instanceof QueryList) {
+      // get all active tabs
+      let activeTabs = this.tabs.filter((tab) => tab.active);
 
-    console.log({ activeTabs })
+      console.log({ activeTabs })
 
-    // if there is no active tab set, activate the first
-    if (activeTabs.length === 0) {
-      this.selectTab(this.tabs.first, 0);
+      // if there is no active tab set, activate the first
+      if (activeTabs.length === 0) {
+        this.selectTab(this.tabs.first, 0);
+      }
     }
   }
 
@@ -44,19 +46,23 @@ export class TabListComponent implements AfterViewInit {
   }
 
   selectTab(tab: TabDirective, index: number) {
-    console.log({ tab })
-    // deactivate all tabs
-    this.tabs.toArray().forEach(tab => tab.active = false);
+    if (this.tabs instanceof QueryList) {
+      console.log({ tab })
+      // deactivate all tabs
+      this.tabs.toArray().forEach(tab => tab.active = false);
 
-    // activate the tab the user has clicked on.
-    tab.active = true;
+      // activate the tab the user has clicked on.
+      tab.active = true;
 
-    console.log({ tab });
+      console.log({ tab });
 
-    this._manuallyTriggerChangeDetection();
+      this._manuallyTriggerChangeDetection();
 
-    this.tabItem.isPanelTabsSelected(index);
+      if (this.tabItem instanceof TabItemComponent) {
+        this.tabItem.isPanelTabsSelected(index);
 
-    this.tabItem.manuallyTriggerChangeDetection();
+        this.tabItem.manuallyTriggerChangeDetection();
+      }
+    }
   }
 }

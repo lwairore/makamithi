@@ -41,11 +41,15 @@ export class TabsComponent implements OnInit, AfterContentInit {
   }
 
   getTabs() {
-    this.tabList.tabItem = this.tabItem;
+    if (this.tabList instanceof TabListComponent) {
+      this.tabList.tabItem = this.tabItem;
 
-    this.tabList.selectedTabClassName = this.selectedTabClassName;
+      this.tabList.selectedTabClassName = this.selectedTabClassName;
 
-    this.tabItem.tabListTabs = this.tabList.tabs;
+      if (this.tabItem instanceof TabItemComponent) {
+        this.tabItem.tabListTabs = this.tabList.tabs;
+      }
+    }
   }
 
 }

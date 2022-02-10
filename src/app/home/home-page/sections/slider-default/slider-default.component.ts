@@ -67,7 +67,10 @@ export class SliderDefaultComponent implements OnInit, AfterViewInit, OnDestroy 
   private _listBannerAds() {
     this._listBannerAdSubscription = this._homeService.listBannerAds$()
       .subscribe(ads =>
-        this.bannerAds = Immutable.fromJS([ads]),
+        {
+          console.log({ads})
+          this.bannerAds = Immutable.fromJS(ads)
+        },
         err => console.error(err));
   }
 
