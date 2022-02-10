@@ -1,2 +1,2 @@
-export type BannerAdFormatHttpResponse = {
-}
+export type BannerAdFormatHttpResponse = Readonly<{
+}>
