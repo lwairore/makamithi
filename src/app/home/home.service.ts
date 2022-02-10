@@ -52,7 +52,7 @@ export class HomeService {
             const formattedAd: BannerAdFormatHttpResponse = {
               title: convertItemToString(ad.title),
               description: convertItemToString(ad.description),
-              photos: this._formatShowcaseItemWithPhoto(ad.photos)
+              photo: this._formatShowcaseItemWithPhoto(ad.photo)
             };
 
             return formattedAd;
