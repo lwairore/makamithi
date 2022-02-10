@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServicesRoutingModule } from './services-routing.module';
 import { ServicesComponent } from './services.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@sharedModule/shared.module';
 import { SPStyleOneComponent } from './service-one-main/sections/spstyle-one/spstyle-one.component';
 import { SPStyleTwoComponent } from './service-one-main/sections/spstyle-two/spstyle-two.component';
 import { SPVideoSectionComponent } from './service-one-main/sections/spvideo-section/spvideo-section.component';

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShopRoutingModule } from './shop-routing.module';
 import { ShopComponent } from './shop.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@sharedModule/shared.module';
 import { ShopMainComponent } from './shop-main/shop-main.component';
 import { SPProductSectionComponent } from './shop-main/sections/spproduct-section/spproduct-section.component';
 

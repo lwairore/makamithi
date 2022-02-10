@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutMainComponent } from './about-main/about-main.component';
 import { APAbout4SectionComponent } from './about-main/sections/apabout4-section/apabout4-section.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@sharedModule/shared.module';
 import { FaqComponent } from './about-main/sections/faq/faq.component';
 import { AccordionModule } from '../lib/accordion/accordion.module';
 import { ApWhatWeDo2SectionComponent } from './about-main/sections/ap-what-we-do2-section/ap-what-we-do2-section.component';

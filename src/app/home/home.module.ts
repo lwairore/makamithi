@@ -16,7 +16,7 @@ import { CounterDefaultComponent } from './home-page/sections/counter-default/co
 import { ClientSliderComponent } from './home-page/sections/client-slider/client-slider.component';
 import { H1BlogSectionComponent } from './home-page/sections/h1-blog-section/h1-blog-section.component';
 import { BrandComponent } from './home-page/sections/brand/brand.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@sharedModule/shared.module';
 import { TabsModule } from '../lib/tabs/tabs.module';
 
 
