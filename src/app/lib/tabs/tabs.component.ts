@@ -17,7 +17,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
 
   @Input() selectedTabClassName = '';
 
-  tabPanels: QueryList<TabPanelDirective>;
+  tabPanels: QueryList<TabPanelDirective> | undefined;
 
   @ContentChild(TabListComponent)
   tabList: TabListComponent;
