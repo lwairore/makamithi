@@ -20,7 +20,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
   tabPanels: QueryList<TabPanelDirective> | undefined;
 
   @ContentChild(TabListComponent)
-  tabList: TabListComponent;
+  tabList: TabListComponent | undefined;
 
   @ContentChild(TabItemComponent)
   tabItem: TabItemComponent;
