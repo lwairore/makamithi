@@ -23,7 +23,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
   tabList: TabListComponent | undefined;
 
   @ContentChild(TabItemComponent)
-  tabItem: TabItemComponent;
+  tabItem: TabItemComponent | undefined;
 
   constructor() { }
 
