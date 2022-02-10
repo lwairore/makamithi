@@ -5,7 +5,7 @@ import { convertItemToString, isObjectEmpty, stringIsEmpty } from '@sharedModule
 import { memoize } from 'lodash';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -42,7 +42,7 @@ export class HomeService {
   listBannerAds$() {
     const api = environment.baseURL +
       environment.home.rootURL +
-      environment.home.bannerAd.listBannerAd();
+      environment.home.bannerAd;
 
     return this._httpClient.get<Array<BannerAdHttpResponse>>(
       api).pipe(
@@ -61,5 +61,26 @@ export class HomeService {
           return formattedAds;
         })
       );
+  }
+
+  retrieveAboutSection$() {
+    const api = environment.baseURL +
+      environment.home.rootURL +
+      environment.home.aboutSection;
+
+    return this._httpClient.get<AboutSectionHttpResponse>(
+      api)
+      .pipe(
+        retryWithBackoff<AboutSectionHttpResponse>(1000, 5),
+        map(details => {
+          const formattedDetails: AboutSectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
+            subheading: convertItemToString(details.subheading),
+            description: convertItemToString(details.description),
+            photo: this._formatShowcaseItemWithPhoto(details.photo)
+          }
+
+          return formattedDetails;
+        }));
   }
 }
