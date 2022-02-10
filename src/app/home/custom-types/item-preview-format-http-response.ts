@@ -1,2 +1,2 @@
-export type ItemPreviewFormatHttpResponse = {
-}
+export type ItemPreviewFormatHttpResponse = Readonly<{
+}>
