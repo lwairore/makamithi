@@ -23,7 +23,7 @@ export class H1AboutSectionComponent implements OnInit, AfterViewInit, OnDestroy
 
   ngAfterViewInit(): void {
     this._retrieveAboutSection();
-   }
+  }
 
   ngOnDestroy(): void {
     this._unsubscribeRetrieveAboutSectionSubscription();
@@ -36,7 +36,11 @@ export class H1AboutSectionComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   private _retrieveAboutSection() {
-
+    this._retrieveAboutSectionSubscription = this._homeService
+      .retrieveAboutSection$().subscribe(
+        details => {
+          this.aboutSectionDetails = Immutable.fromJS(details);
+        }, err => console.error(err));
   }
 
 }
