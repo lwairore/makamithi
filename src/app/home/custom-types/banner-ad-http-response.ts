@@ -1,2 +1,2 @@
-export interface BannerAdHttpResponse {
+export type BannerAdHttpResponse = {
 }
