@@ -3,5 +3,5 @@ import { ItemPreviewFormatHttpResponse } from "./item-preview-format-http-respon
 export type BannerAdFormatHttpResponse = Readonly<{
     title: string;
     description: string;
-    photos: ReadonlyArray<ItemPreviewFormatHttpResponse>
+    photo: ReadonlyArray<ItemPreviewFormatHttpResponse>
 }>
