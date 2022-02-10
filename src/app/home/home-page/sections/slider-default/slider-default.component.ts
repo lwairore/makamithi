@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import * as Immutable from 'immutable';
 import { HomeService } from 'src/app/home/home.service';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styles: [
   ]
 })
-export class SliderDefaultComponent implements OnInit {
+export class SliderDefaultComponent implements OnInit, OnDestroy {
   customOptions: OwlOptions = {
     loop: true,
     margin: 10,
@@ -49,5 +49,7 @@ export class SliderDefaultComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void { }
 
 }
