@@ -18,4 +18,10 @@ export class H1AboutSectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private _unsubscribeRetrieveAboutSectionSubscription() {
+    if (this._retrieveAboutSectionSubscription instanceof Subscription) {
+      this._retrieveAboutSectionSubscription.unsubscribe();
+    }
+  }
+
 }
