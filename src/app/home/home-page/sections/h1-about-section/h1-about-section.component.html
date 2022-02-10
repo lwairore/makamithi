@@ -3,19 +3,16 @@
         <div class="row">
             <div class="col-xl-6 col-lg-6">
                 <div class="about-us-img mb-30">
-                    <img src="assets/img/about/1.png" alt="about" />
+                    <img [src]="aboutSectionDetails.getIn(['photo', 'src'])"
+                        [alt]="aboutSectionDetails.getIn(['photo', 'alt'])" />
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 ">
                 <div class="about-us-text mb-30">
-                    <h1>Welcome To <br /> Makamithi Agrovet</h1>
-                    <span>Farmer's choice</span>
+                    <h1 [innerHTML]="aboutSectionDetails.get('heading')"> </h1>
+                    <span>{{ aboutSectionDetails.get('subheading') }}</span>
                     <p>
-                        Makamithi Agrovet is the leading distributor and retailer of farming products in the Ukambani
-                        region. Covering Machakos, Makueni and Kitui Counties. We currently have 5 retail branches in
-                        Machakos, Emali and Wote Town. All branches have a qualified agronomist and veterinary
-                        specialist to support local farmers, ensuring they carry out sustainable farming practices. Our
-                        wholesales & distribution fuction operates from Machakos Town and delivers across the region.
+                        {{ aboutSectionDetails.get('description') }}
                     </p>
                     <a class="btn" routerLink="/about-us">Learn
                         More</a>
