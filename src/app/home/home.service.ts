@@ -30,22 +30,13 @@ export class HomeService {
   })
 
   private _formatShowcaseItemWithPhoto(
-    photoGallery?: ReadonlyArray<ItemPreviewHttpResponse>) {
-    if (!Array.isArray(photoGallery)) {
-      return Array();
+    photo?: ItemPreviewHttpResponse) {
+    const formattedPhoto: ItemPreviewFormatHttpResponse = {
+      alt: convertItemToString(photo?.caption),
+      src: this.constructMediaSrc(photo?.image),
     }
 
-    const formatGallery = photoGallery
-      .map(galleryItem => {
-        const formatGalleryItem: ItemPreviewFormatHttpResponse = {
-          alt: convertItemToString(galleryItem.caption),
-          src: this.constructMediaSrc(galleryItem.image),
-        };
-
-        return formatGalleryItem;
-      }).filter(item => !isObjectEmpty(item));
-
-    return formatGallery;
+    return formattedPhoto;
   }
 
   listBannerAds$() {
