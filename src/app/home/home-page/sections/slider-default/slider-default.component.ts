@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import * as Immutable from 'immutable';
 import { HomeService } from 'src/app/home/home.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mak-pit-slider-default',
@@ -39,6 +40,8 @@ export class SliderDefaultComponent implements OnInit {
   }
 
   bannerAds = Immutable.fromJS([]);
+
+  listBannerAdSubscription: Subscription | undefined;
 
   constructor(
     private _homeService: HomeService
