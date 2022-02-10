@@ -18,7 +18,9 @@ export class H1AboutSectionComponent implements OnInit, AfterViewInit, OnDestroy
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    this._retrieveAboutSection();
+   }
 
   ngOnDestroy(): void {
     this._unsubscribeRetrieveAboutSectionSubscription();
