@@ -1,2 +1,2 @@
-export type AboutSectionHttpResponse = {
-}
+export type AboutSectionHttpResponse = Readonly<{
+}>
