@@ -1,2 +1,2 @@
-export interface AboutSectionHttpResponse {
+export type AboutSectionHttpResponse = {
 }
