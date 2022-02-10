@@ -1,2 +1,2 @@
-export interface ItemPreviewHttpResponse {
+export type ItemPreviewHttpResponse = {
 }
