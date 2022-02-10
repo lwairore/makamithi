@@ -2,6 +2,6 @@ import { ItemPreviewHttpResponse } from ".";
 
 export type BannerAdHttpResponse = Readonly<{
     title?: string;
-    description: string;
+    description?: string;
     photos?: ReadonlyArray<ItemPreviewHttpResponse>;
 }>
