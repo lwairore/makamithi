@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mak-pit-h1-about-section',
@@ -9,6 +10,8 @@ import * as Immutable from 'immutable';
 })
 export class H1AboutSectionComponent implements OnInit {
   aboutSectionDetails = Immutable.fromJS({});
+
+  private _retrieveAboutSectionSubscription: Subscription | undefined;
 
   constructor() { }
 
