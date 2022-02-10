@@ -35,7 +35,9 @@ export class TabsComponent implements OnInit, AfterContentInit {
   }
 
   isPanelTabsSelected(index: number) {
-    this.tabItem.isPanelTabsSelected(index)
+    if (this.tabItem instanceof TabItemComponent) {
+      this.tabItem.isPanelTabsSelected(index)
+    }
   }
 
   getTabs() {
