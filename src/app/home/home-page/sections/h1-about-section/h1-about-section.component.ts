@@ -28,4 +28,8 @@ export class H1AboutSectionComponent implements OnInit, OnDestroy {
     }
   }
 
+  private _retrieveAboutSection() {
+    
+  }
+
 }
