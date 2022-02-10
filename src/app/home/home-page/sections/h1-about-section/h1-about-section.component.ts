@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as Immutable from 'immutable';
 
 @Component({
   selector: 'mak-pit-h1-about-section',
