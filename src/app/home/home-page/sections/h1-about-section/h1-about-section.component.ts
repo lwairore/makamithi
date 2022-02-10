@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styles: [
   ]
 })
-export class H1AboutSectionComponent implements OnInit, OnDestroy {
+export class H1AboutSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   aboutSectionDetails = Immutable.fromJS({});
 
   private _retrieveAboutSectionSubscription: Subscription | undefined;
@@ -18,7 +18,9 @@ export class H1AboutSectionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void { 
+  ngAfterViewInit(): void { }
+
+  ngOnDestroy(): void {
     this._unsubscribeRetrieveAboutSectionSubscription();
   }
 
@@ -29,7 +31,7 @@ export class H1AboutSectionComponent implements OnInit, OnDestroy {
   }
 
   private _retrieveAboutSection() {
-    
+
   }
 
 }
