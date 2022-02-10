@@ -52,12 +52,19 @@ export class SliderDefaultComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._unsubscribeListBannerAdSubscription();
-   }
+  }
 
   private _unsubscribeListBannerAdSubscription() {
     if (this.listBannerAdSubscription instanceof Subscription) {
       this.listBannerAdSubscription.unsubscribe();
     }
+  }
+
+  private _listBannerAds() {
+    this.listBannerAdSubscription = this._homeService.listBannerAds$()
+      .subscribe(ads =>
+        this.bannerAds = Immutable.fromJS([ads]),
+        err => console.error(err));
   }
 
 }
