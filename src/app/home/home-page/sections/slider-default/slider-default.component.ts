@@ -41,7 +41,7 @@ export class SliderDefaultComponent implements OnInit, OnDestroy {
 
   bannerAds = Immutable.fromJS([]);
 
-  listBannerAdSubscription: Subscription | undefined;
+  private _listBannerAdSubscription: Subscription | undefined;
 
   constructor(
     private _homeService: HomeService
@@ -55,13 +55,13 @@ export class SliderDefaultComponent implements OnInit, OnDestroy {
   }
 
   private _unsubscribeListBannerAdSubscription() {
-    if (this.listBannerAdSubscription instanceof Subscription) {
-      this.listBannerAdSubscription.unsubscribe();
+    if (this._listBannerAdSubscription instanceof Subscription) {
+      this._listBannerAdSubscription.unsubscribe();
     }
   }
 
   private _listBannerAds() {
-    this.listBannerAdSubscription = this._homeService.listBannerAds$()
+    this._listBannerAdSubscription = this._homeService.listBannerAds$()
       .subscribe(ads =>
         this.bannerAds = Immutable.fromJS([ads]),
         err => console.error(err));
