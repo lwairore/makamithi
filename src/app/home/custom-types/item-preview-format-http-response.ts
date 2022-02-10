@@ -1,2 +1,2 @@
-export interface ItemPreviewFormatHttpResponse {
+export type ItemPreviewFormatHttpResponse = {
 }
