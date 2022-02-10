@@ -1,54 +1,29 @@
 <div ngClass="slider-area">
     <owl-carousel-o [options]="customOptions">
-        <ng-template carouselSlide>
-            <div ngClass="single-slider">
-                <div class="slider-height  d-flex align-items-center"
-                    [style.background-image]="'url(assets/img/slider/slider1.jpg)'">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <h1>Agrochemicals supplier <br /> in Machakos, Kenya</h1>
-                                <p>Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco.</p>
+        <ng-container *ngFor="let ad of bannerAds;">
+            <ng-template carouselSlide>
+                <div ngClass="single-slider">
+                    <div class="slider-height  d-flex align-items-center"
+                        [style.background-image]="'url(' + ad.get('src')+')'">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <h1 [innerHTML]="ad.get('title')"> </h1>
+                                    <p>
+                                        {{ ad.get('description') }}
+                                    </p>
 
-                                <div class="slider-button">
-                                    <a class="btn" routerLink="/services">Our Services</a>
-                                    <a class="btn active" [routerLink]="null">Contact Us</a>
+                                    <div class="slider-button">
+                                        <a class="btn" routerLink="/services">Our Services</a>
+                                        <a class="btn active" [routerLink]="null">Contact Us</a>
+                                    </div>
+
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </ng-template>
-        <ng-template carouselSlide>
-            <div ngClass="single-slider">
-                <div class="slider-height  d-flex align-items-center"
-                    [style.background-image]="'url(assets/img/slider/slider1-2.jpg)'">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <h1>Agrochemicals supplier <br /> in Machakos, Kenya</h1>
-                                <p>Lorem ipsum dolor sit amet,
-                                    consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco.</p>
-
-                                <div class="slider-button">
-                                    <a class="btn" routerLink="/services">Our Services</a>
-                                    <a class="btn active" [routerLink]="null">Contact Us</a>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ng-template>
-
+            </ng-template>
+        </ng-container>
     </owl-carousel-o>
 </div>
