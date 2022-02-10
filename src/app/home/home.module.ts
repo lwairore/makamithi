@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { SliderDefaultComponent } from './home-page/sections/slider-default/slider-default.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -38,6 +39,7 @@ import { TabsModule } from '../lib/tabs/tabs.module';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     // BrowserAnimationsModule,
     HomeRoutingModule,
     CarouselModule,
