@@ -18,7 +18,9 @@ export class H1AboutSectionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy(): void { 
+    this._unsubscribeRetrieveAboutSectionSubscription();
+  }
 
   private _unsubscribeRetrieveAboutSectionSubscription() {
     if (this._retrieveAboutSectionSubscription instanceof Subscription) {
