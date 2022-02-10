@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
+import { HomeService } from 'src/app/home/home.service';
 
 @Component({
   selector: 'mak-pit-h1-about-section',
@@ -13,7 +14,9 @@ export class H1AboutSectionComponent implements OnInit, AfterViewInit, OnDestroy
 
   private _retrieveAboutSectionSubscription: Subscription | undefined;
 
-  constructor() { }
+  constructor(
+    private _homeService: HomeService
+  ) { }
 
   ngOnInit(): void {
   }
