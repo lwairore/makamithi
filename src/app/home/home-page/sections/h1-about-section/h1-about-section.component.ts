@@ -8,6 +8,7 @@ import * as Immutable from 'immutable';
   ]
 })
 export class H1AboutSectionComponent implements OnInit {
+  aboutSectionDetails = Immutable.fromJS({});
 
   constructor() { }
 
