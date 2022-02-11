@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
+import { HomeService } from 'src/app/home/home.service';
 
 @Component({
   selector: 'mak-pit-h1-features-section',
@@ -13,7 +14,9 @@ export class H1FeaturesSectionComponent implements OnInit {
 
   private _listOurFeatureSubscription: Subscription | undefined;
 
-  constructor() { }
+  constructor(
+    private _homeService: HomeService
+  ) { }
 
   ngOnInit(): void {
   }
