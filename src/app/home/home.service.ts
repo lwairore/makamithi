@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { retryWithBackoff } from '@sharedModule/operators';
-import { convertItemToString, isObjectEmpty, stringIsEmpty } from '@sharedModule/utilities';
+import { convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty, stringIsEmpty } from '@sharedModule/utilities';
 import { memoize } from 'lodash';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -61,6 +61,37 @@ export class HomeService {
           return formattedAds;
         })
       );
+  }
+
+  listOurFeature$() {
+    const api = environment.baseURL +
+      environment.service.rootURL +
+      environment.service.ourFeature;
+
+    return this._httpClient.get<Array<ServiceHttpResponse>>(api)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = details.map(
+            item => {
+              const itemID = convertItemToNumeric(item.id);
+              if (!isANumber(itemID)) {
+                return null;
+              }
+
+              const formattedItem: ServiceFormatHttpResponse = {
+                photo: this._formatShowcaseItemWithPhoto(item.photo),
+                title: convertItemToString(item.title),
+                summary: convertItemToString(item.summary),
+                id: itemID
+              };
+
+              return formattedItem;
+            }).filter(item => !isObjectEmpty(item));
+
+          return formattedDetails;
+        })
+      )
   }
 
   retrieveAboutSection$() {
