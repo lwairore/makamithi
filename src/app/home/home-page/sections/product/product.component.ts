@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
+import { HomeService } from 'src/app/home/home.service';
 
 @Component({
   selector: 'mak-pit-product',
@@ -146,7 +147,9 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   private _listProductCategoriesSubscription: Subscription | undefined;
 
-  constructor() { }
+  constructor(
+    private _homeService: HomeService
+  ) { }
 
   ngOnInit(): void {
   }
