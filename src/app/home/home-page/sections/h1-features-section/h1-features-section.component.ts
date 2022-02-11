@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
-import { Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HomeService } from 'src/app/home/home.service';
 
 @Component({
@@ -36,10 +37,25 @@ export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDest
   }
 
   private _loadRequiredData() {
-    this._listOurFeatureSubscription = this._homeService
-      .listOurFeature$()
+    const listOurFeature$ = this._homeService
+      .listOurFeature$();
+
+    const retrieveFeatureSection$ = this._homeService
+      .retrieveFeatureSection$();
+
+    this._listOurFeatureSubscription = forkJoin([
+      listOurFeature$.pipe(
+        tap(details => {
+          this.listOurFeature = Immutable.fromJS(details);
+        })),
+      retrieveFeatureSection$.pipe(
+        tap(details => {
+          this.featureSection = Immutable.fromJS(details);
+        })
+      )
+    ])
       .subscribe(details => {
-        this.listOurFeature = Immutable.fromJS(details);
+
       }, err => console.error(err))
   }
 
