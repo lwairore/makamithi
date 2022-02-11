@@ -5,7 +5,7 @@ import { convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty, st
 import { memoize } from 'lodash';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -56,11 +56,40 @@ export class HomeService {
             };
 
             return formattedAd;
-          }).filter(item => !isObjectEmpty(item));;
+          }).filter(item => !isObjectEmpty(item));
 
           return formattedAds;
         })
       );
+  }
+
+  listProductCategory$() {
+    const api = environment.baseURL +
+      environment.shop.rootURL +
+      environment.shop.listProductCategory;
+
+    return this._httpClient.get<Array<ProductCategoryHttpResponse>>(api)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = details.map(detail => {
+            const detailID = convertItemToNumeric(detail.id);
+            if (!isANumber(detailID)) {
+              return null;
+            }
+
+            const formattedDetail: ProductCategoryFormatHttpResponse = {
+              title: convertItemToString(detail.title),
+              description: convertItemToString(detail.description),
+              flaticon: convertItemToString(detail.flaticon),
+              id: detailID
+            }
+
+            return formattedDetail;
+          }).filter(item => !isObjectEmpty(item));
+
+          return formattedDetails;
+        }))
   }
 
   listOurFeature$() {
