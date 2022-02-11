@@ -5,3 +5,4 @@ export { AboutSectionFormatHttpResponse } from './about-section-format-http-resp
 export { ServiceFormatHttpResponse } from './service-format-http-response';
 export { ServiceHttpResponse } from './service-http-response';
 export { FeatureSectionFormatHttpResponse } from './feature-section-format-http-response';
+export { FeatureSectionHttpResponse } from './feature-section-http-response';
