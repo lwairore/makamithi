@@ -160,4 +160,10 @@ export class ProductComponent implements OnInit, OnDestroy {
     return item.id;
   }
 
+  private _unsubscribeListProductCategoriesSubscription() {
+    if (this._listProductCategoriesSubscription instanceof Subscription) {
+      this._listProductCategoriesSubscription.unsubscribe();
+    }
+  }
+
 }
