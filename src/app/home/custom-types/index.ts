@@ -4,3 +4,4 @@ export { AboutSectionHttpResponse } from './about-section-http-response';
 export { AboutSectionFormatHttpResponse } from './about-section-format-http-response';
 export { ServiceFormatHttpResponse } from './service-format-http-response';
 export { ServiceHttpResponse } from './service-http-response';
+export { FeatureSectionFormatHttpResponse } from './feature-section-format-http-response';
