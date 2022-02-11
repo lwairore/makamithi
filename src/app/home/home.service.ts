@@ -5,7 +5,7 @@ import { convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty, st
 import { memoize } from 'lodash';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -92,6 +92,25 @@ export class HomeService {
           return formattedDetails;
         })
       )
+  }
+
+  retrieveFeatureSection$() {
+    const api = environment.baseURL +
+      environment.home.rootURL +
+      environment.home.featureSection;
+
+    return this._httpClient.get<FeatureSectionHttpResponse>(
+      api).pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails: FeatureSectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
+            description: convertItemToString(details.description),
+            photo: this._formatShowcaseItemWithPhoto(details.photo)
+          }
+
+          return formattedDetails;
+        }));
   }
 
   retrieveAboutSection$() {
