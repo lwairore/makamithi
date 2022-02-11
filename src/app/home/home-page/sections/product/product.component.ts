@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mak-pit-product',
@@ -142,6 +143,8 @@ export class ProductComponent implements OnInit {
   ]
 
   productCategories = Immutable.fromJS([]);
+
+  private _listProductCategoriesSubscription: Subscription | undefined;
 
   constructor() { }
 
