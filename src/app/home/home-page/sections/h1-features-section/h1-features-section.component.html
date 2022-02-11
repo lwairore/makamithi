@@ -14,17 +14,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6"  *ngFor="let service of listOurFeature;">
+            <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let service of listOurFeature;">
                 <div class="features-wrapper text-center mb-30">
                     <div class="features-img">
-                        <img [src]="service.image" alt="features" />
+                        <img [src]="service.getIn(['photo', 'src'])" [alt]="service.getIn(['photo', 'alt'])" />
                     </div>
                     <div class="features-text">
-                        <h4>{{ service.title }}</h4>
+                        <h4>{{ service.get('title') }}</h4>
                         <p>
-                            {{ service.description }}
-                        </p><a
-                            routerLink="/services/services-details">Read
+                            {{ service.get('description') }}
+                        </p>
+                        <a routerLink="/services/services-details">Read
                             More <i class="dripicons-arrow-thin-right"></i></a>
                     </div>
                 </div>
