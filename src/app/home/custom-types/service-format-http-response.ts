@@ -1,2 +1,2 @@
-export type ServiceFormatHttpResponse = {
-}
+export type ServiceFormatHttpResponse = Readonly<{
+}>
