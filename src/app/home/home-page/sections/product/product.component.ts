@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as Immutable from 'immutable';
 
 @Component({
   selector: 'mak-pit-product',
@@ -32,7 +33,7 @@ export class ProductComponent implements OnInit {
           title: 'Blackberries Head',
           price: 4999
         },
-      ] 
+      ]
     },
     {
       flaticon: 'tomato',
@@ -58,7 +59,7 @@ export class ProductComponent implements OnInit {
           title: 'Breadfruit Head',
           price: 2859
         },
-      ] 
+      ]
     },
     {
       flaticon: 'pumpkin',
@@ -84,7 +85,7 @@ export class ProductComponent implements OnInit {
           title: 'Avocado Head',
           price: 3299
         },
-      ] 
+      ]
     },
     {
       flaticon: 'vegetarian',
@@ -110,7 +111,7 @@ export class ProductComponent implements OnInit {
           title: 'Avocado Head',
           price: 3299
         },
-      ] 
+      ]
     },
     {
       flaticon: 'diet',
@@ -136,9 +137,11 @@ export class ProductComponent implements OnInit {
           title: 'Breadfruit Head',
           price: 2859
         },
-      ] 
+      ]
     },
   ]
+
+  productCategories = Immutable.fromJS([]);
 
   constructor() { }
 
