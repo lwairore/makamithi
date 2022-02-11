@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 import { HomeService } from 'src/app/home/home.service';
@@ -9,7 +9,7 @@ import { HomeService } from 'src/app/home/home.service';
   styles: [
   ]
 })
-export class H1FeaturesSectionComponent implements OnInit, OnDestroy {
+export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   listOurFeature = Immutable.fromJS([]);
 
   private _listOurFeatureSubscription: Subscription | undefined;
@@ -20,6 +20,8 @@ export class H1FeaturesSectionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void { }
 
   ngOnDestroy(): void { }
 
