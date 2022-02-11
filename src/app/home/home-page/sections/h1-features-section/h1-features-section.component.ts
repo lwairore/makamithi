@@ -21,7 +21,9 @@ export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDest
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    this._listOurFeature();
+  }
 
   ngOnDestroy(): void {
     this._unsubscribeListOurFeatureSubscription();
