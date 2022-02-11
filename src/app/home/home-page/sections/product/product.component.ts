@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styles: [
   ],
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
   products = [
     {
       flaticon: 'diet',
@@ -150,6 +150,8 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void { }
 
   trackById(loopIndex: number, item: any) {
     return item.id;
