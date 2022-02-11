@@ -170,4 +170,12 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  private _listProductCategory() {
+    this._listProductCategoriesSubscription = this._homeService
+      .listProductCategory$()
+      .subscribe(details => {
+        this.productCategories = Immutable.fromJS(details);
+      }, err => console.error(err));
+  }
+
 }
