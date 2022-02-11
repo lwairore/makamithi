@@ -1,2 +1,2 @@
-export interface FeatureSectionHttpResponse {
+export type FeatureSectionHttpResponse = {
 }
