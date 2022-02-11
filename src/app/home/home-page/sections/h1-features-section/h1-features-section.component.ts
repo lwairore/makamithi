@@ -15,7 +15,7 @@ export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDest
 
   featureSection = Immutable.fromJS({});
 
-  private _listOurFeatureSubscription: Subscription | undefined;
+  private _loadRequiredDataSubscription: Subscription | undefined;
 
   constructor(
     private _homeService: HomeService
@@ -33,8 +33,8 @@ export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDest
   }
 
   private _unsubscribeListOurFeatureSubscription() {
-    if (this._listOurFeatureSubscription instanceof Subscription) {
-      this._listOurFeatureSubscription.unsubscribe();
+    if (this._loadRequiredDataSubscription instanceof Subscription) {
+      this._loadRequiredDataSubscription.unsubscribe();
     }
   }
 
@@ -45,7 +45,7 @@ export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDest
     const retrieveFeatureSection$ = this._homeService
       .retrieveFeatureSection$();
 
-    this._listOurFeatureSubscription = forkJoin([
+    this._loadRequiredDataSubscription = forkJoin([
       listOurFeature$.pipe(
         tap(details => {
           this.listOurFeature = Immutable.fromJS(details);
