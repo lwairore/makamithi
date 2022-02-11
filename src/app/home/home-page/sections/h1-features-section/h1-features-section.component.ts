@@ -35,4 +35,12 @@ export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDest
     }
   }
 
+  private _listOurFeature() {
+    this._listOurFeatureSubscription = this._homeService
+      .listOurFeature$()
+      .subscribe(details => {
+        this.listOurFeature = Immutable.fromJS(details);
+      }, err => console.error(err))
+  }
+
 }
