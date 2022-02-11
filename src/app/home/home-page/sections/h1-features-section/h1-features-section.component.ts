@@ -25,4 +25,10 @@ export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDest
 
   ngOnDestroy(): void { }
 
+  private _unsubscribeListOurFeatureSubscription() {
+    if (this._listOurFeatureSubscription instanceof Subscription) {
+      this._listOurFeatureSubscription.unsubscribe();
+    }
+  }
+
 }
