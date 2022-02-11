@@ -1,2 +1,2 @@
-export type FeatureSectionHttpResponse = {
-}
+export type FeatureSectionHttpResponse = Readonly<{
+}>
