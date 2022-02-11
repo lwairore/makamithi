@@ -1,2 +1,2 @@
-export interface ServiceHttpResponse {
+export type ServiceHttpResponse = {
 }
