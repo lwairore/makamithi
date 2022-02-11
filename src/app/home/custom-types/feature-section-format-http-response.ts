@@ -1,2 +1,2 @@
-export interface FeatureSectionFormatHttpResponse {
+export type FeatureSectionFormatHttpResponse = {
 }
