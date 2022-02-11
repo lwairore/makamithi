@@ -1,2 +1,2 @@
-export interface ProductCategoryFormatHttpResponse {
+export type ProductCategoryFormatHttpResponse = {
 }
