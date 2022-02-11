@@ -105,7 +105,8 @@ export class HomeService {
         map(details => {
           const formattedDetails: FeatureSectionFormatHttpResponse = {
             summary: convertItemToString(details.summary),
-            photo: this._formatShowcaseItemWithPhoto(details.photo)
+            backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
+            sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
           }
 
           return formattedDetails;
