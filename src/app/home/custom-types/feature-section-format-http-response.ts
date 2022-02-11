@@ -2,6 +2,6 @@ import { ItemPreviewFormatHttpResponse } from "./item-preview-format-http-respon
 
 export type FeatureSectionFormatHttpResponse = Readonly<{
     summary: string;
-    photo: ItemPreviewFormatHttpResponse;
+    sectionImage: ItemPreviewFormatHttpResponse;
     backgroundImage: ItemPreviewFormatHttpResponse;
 }>
