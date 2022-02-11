@@ -22,7 +22,7 @@ export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDest
   }
 
   ngAfterViewInit(): void {
-    this._listOurFeature();
+    this._loadRequiredData();
   }
 
   ngOnDestroy(): void {
@@ -35,7 +35,7 @@ export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDest
     }
   }
 
-  private _listOurFeature() {
+  private _loadRequiredData() {
     this._listOurFeatureSubscription = this._homeService
       .listOurFeature$()
       .subscribe(details => {
