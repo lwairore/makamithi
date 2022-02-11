@@ -1,6 +1,6 @@
 import { ItemPreviewHttpResponse } from "./item-preview-http-response";
 
 export type FeatureSectionHttpResponse = Readonly<{
-    description?: string;
+    summary?: string;
     photo?: ItemPreviewHttpResponse;
 }>

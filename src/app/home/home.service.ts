@@ -104,7 +104,7 @@ export class HomeService {
         retryWithBackoff(1000, 5),
         map(details => {
           const formattedDetails: FeatureSectionFormatHttpResponse = {
-            description: convertItemToString(details.description),
+            summary: convertItemToString(details.summary),
             photo: this._formatShowcaseItemWithPhoto(details.photo)
           }
 
