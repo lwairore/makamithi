@@ -13,6 +13,8 @@ import { HomeService } from 'src/app/home/home.service';
 export class H1FeaturesSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   listOurFeature = Immutable.fromJS([]);
 
+  featureSection = Immutable.fromJS({});
+
   private _listOurFeatureSubscription: Subscription | undefined;
 
   constructor(
