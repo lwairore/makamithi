@@ -179,6 +179,10 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
       .listProductCategory$()
       .subscribe(details => {
         this.productCategories = Immutable.fromJS(details);
+
+        if (!this.productCategories.isEmpty()) {
+          this._manuallyTriggerChangeDetection();
+        }
       }, err => console.error(err));
   }
 
