@@ -82,6 +82,7 @@ export class HomeService {
 
             const formattedDetail: ProductFormatHttpResponse = {
               title: convertItemToString(detail.title),
+              photo: this._formatShowcaseItemWithPhoto(detail.photo),
               id: detailID
             }
 
