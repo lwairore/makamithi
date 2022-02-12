@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
-import { Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HomeService } from 'src/app/home/home.service';
 
 @Component({
@@ -58,7 +59,7 @@ export class H1ChooseUsSectionComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._unsubscribeLoadRequiredDetailsSubscription();
-   }
+  }
 
   private _unsubscribeLoadRequiredDetailsSubscription() {
     if (this._loadRequiredDetailsSubscription instanceof Subscription) {
@@ -68,5 +69,22 @@ export class H1ChooseUsSectionComponent implements OnInit, OnDestroy {
 
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
+  }
+
+  private _loadRequiredDetails() {
+    const RETRIEVE_WHY_CHOOSE_US_SECTION$ = this._homeService
+      .retrieveWhyChooseUsSection$();
+
+    this._loadRequiredDetailsSubscription = forkJoin([
+      RETRIEVE_WHY_CHOOSE_US_SECTION$
+        .pipe(
+          tap(details => {
+            this.chooseUsSectionDetails = Immutable.fromJS(details);
+          })),
+    ]).subscribe(details => {
+      if (!this.chooseUsSectionDetails.isEmpty()) {
+        this._manuallyTriggerChangeDetection();
+      }
+    }, err => console.error(err))
   }
 }
