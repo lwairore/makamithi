@@ -145,7 +145,7 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     },
   ]
 
-  productsAvailable = Immutable.fromJS({});
+  productsAvailable = Immutable.Map({});
 
   productCategories = Immutable.fromJS([]);
 
@@ -199,17 +199,22 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
       }, err => console.error(err));
   }
 
-  private _listProduct(productID?: number) {
+  handleTabSelectedEvent(productID?: number) {
     if (!isANumber(productID)) {
       return;
     }
 
+    this._listProduct(
+      convertItemToString(productID));
+  }
+
+  private _listProduct(productID: string) {
     this._listProductSubscription = this._homeService.listProduct$(
       convertItemToString(productID))
       .subscribe(details => {
         this.productsAvailable = this.productsAvailable
           .set(
-            convertItemToString(productID), details);
+            productID, details);
 
         console.log("this.productsAvailable");
         console.log(this.productsAvailable);
