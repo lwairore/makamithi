@@ -35,4 +35,7 @@ export class H1CtaSectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  private _manuallyTriggerChangeDetection() {
+    this._changeDetectorRef.detectChanges();
+  }
 }
