@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 import { HomeService } from 'src/app/home/home.service';
@@ -10,7 +10,7 @@ import { HomeService } from 'src/app/home/home.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class H1ChooseUsSectionComponent implements OnInit {
+export class H1ChooseUsSectionComponent implements OnInit, OnDestroy {
   listCoreValue = [
     {
       title: 'Integrity',
@@ -55,6 +55,8 @@ export class H1ChooseUsSectionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void { }
 
   private _unsubscribeLoadRequiredDetailsSubscription() {
     if (this._loadRequiredDetailsSubscription instanceof Subscription) {
