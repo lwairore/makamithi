@@ -63,10 +63,12 @@ export class HomeService {
       );
   }
 
-  listProduct$() {
-    const api = environment.baseURL +
+  listProduct$(productCategoryID: number) {
+    const api = (environment.baseURL +
       environment.shop.rootURL +
-      environment.shop.listProduct;
+      environment.shop.listProduct)
+      .replace(':productCategoryID',
+        convertItemToString(productCategoryID));
 
     return this._httpClient.get<Array<ProductHttpResponse>>(api)
       .pipe(
