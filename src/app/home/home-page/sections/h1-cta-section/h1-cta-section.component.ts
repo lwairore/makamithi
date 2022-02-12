@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
+import { HomeService } from 'src/app/home/home.service';
 
 @Component({
   selector: 'mak-pit-h1-cta-section',
@@ -14,7 +15,9 @@ export class H1CtaSectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _retrieveVisitNowCtaSectionSubscription: Subscription | undefined;
 
-  constructor() { }
+  constructor(
+    private _homeService: HomeService,
+  ) { }
 
   ngOnInit(): void {
   }
