@@ -186,6 +186,10 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
       }, err => console.error(err));
   }
 
+  private _listProduct() {
+    
+  }
+
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
