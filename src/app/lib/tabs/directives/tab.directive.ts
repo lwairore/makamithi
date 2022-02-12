@@ -12,6 +12,8 @@ export class TabDirective {
 
   @Input() className = 'react-tabs__tab';
 
+  @Input() tabID: number | undefined;
+
   constructor(public templateRef: TemplateRef<any>) { }
 
 }
