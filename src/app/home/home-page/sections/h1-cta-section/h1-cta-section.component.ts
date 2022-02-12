@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styles: [
   ]
 })
-export class H1CtaSectionComponent implements OnInit {
+export class H1CtaSectionComponent implements OnInit, OnDestroy {
   ctaSectionDetails = Immutable.fromJS({});
 
   private _retrieveVisitNowCtaSectionSubscription: Subscription | undefined;
@@ -17,6 +17,8 @@ export class H1CtaSectionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void { }
 
   private _unsubscribeRetrieveVisitNowCtaSectionSubscription() {
     if (this._retrieveVisitNowCtaSectionSubscription instanceof Subscription) {
