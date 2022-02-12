@@ -18,6 +18,7 @@ import { H1BlogSectionComponent } from './home-page/sections/h1-blog-section/h1-
 import { BrandComponent } from './home-page/sections/brand/brand.component';
 import { SharedModule } from '@sharedModule/shared.module';
 import { TabsModule } from '../lib/tabs/tabs.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -45,6 +46,7 @@ import { TabsModule } from '../lib/tabs/tabs.module';
     CarouselModule,
     SharedModule,
     TabsModule,
+    NgxSkeletonLoaderModule,
   ]
 })
 export class HomeModule { }
