@@ -47,12 +47,12 @@
                         <ng-container *ngFor="let category of productCategories;">
                             <ng-template makPitTabPanel>
                                 <div class="row">
-                                    <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let item of productsAvailable.get(
+                                    <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let product of productsAvailable.get(
                                         category.get('id')?.toString() );">
                                         <div class="product-wrapper text-center mb-30">
                                             <div class="product-img">
                                                 <a routerLink="/shop/shop-details">
-                                                    <img [src]="item.image" [alt]="item.title" /></a>
+                                                    <img [src]="product?.photo?.src" [alt]="product?.photo?.alt" /></a>
 
                                                 <div class="product-action">
                                                     <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
@@ -63,7 +63,7 @@
                                             <div class="product-text">
                                                 <h4>
                                                     <a routerLink="/shop/shop-details">
-                                                        {{ item.title }}
+                                                        {{ product.title }}
                                                     </a>
                                                 </h4>
                                                 <div class="pro-rating">
@@ -75,7 +75,7 @@
                                                 </div>
                                                 <div class="pro-price">
                                                     <span>
-                                                        {{ item.price | currency:'KES':'symbol':'.2-2' }}
+                                                        {{ product.price | currency:'KES':'symbol':'.2-2' }}
                                                     </span>
                                                 </div>
                                             </div>
