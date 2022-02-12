@@ -11,3 +11,4 @@ export { ProductCategoryFormatHttpResponse } from './product-category-format-htt
 export { ProductFormatHttpResponse } from './product-format-http-response';
 export { ProductHttpResponse } from './product-http-response';
 export { VisitNowCtaSectionFormatHttpResponse } from './visit-now-cta-section-format-http-response';
+export { VisitNowCtaSectionHttpResponse } from './visit-now-cta-section-http-response';
