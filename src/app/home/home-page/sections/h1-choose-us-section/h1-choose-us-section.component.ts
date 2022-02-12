@@ -85,7 +85,7 @@ export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDest
           tap(details => {
             this.chooseUsSectionDetails = Immutable.fromJS(details);
           })),
-    ]).subscribe(details => {
+    ]).subscribe(_ => {
       if (!this.chooseUsSectionDetails.isEmpty()) {
         this._manuallyTriggerChangeDetection();
       }
