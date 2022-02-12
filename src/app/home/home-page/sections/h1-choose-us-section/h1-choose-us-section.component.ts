@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { HomeService } from 'src/app/home/home.service';
 
@@ -47,6 +47,7 @@ export class H1ChooseUsSectionComponent implements OnInit {
 
   constructor(
     private _homeService: HomeService,
+    private _changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
