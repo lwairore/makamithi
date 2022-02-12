@@ -6,7 +6,8 @@
         <div class="row">
             <div class="col-xl-7 col-lg-12">
                 <div class="choose-img mb-30">
-                    <img src="assets/img/choose/01.jpg" alt="" />
+                    <img [src]="chooseUsSectionDetails.getIn(['sectionImage', 'src'])"
+                        [alt]="chooseUsSectionDetails.getIn(['sectionImage', 'alt'])" />
                 </div>
             </div>
             <div class="col-xl-5 col-lg-12">
