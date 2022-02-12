@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
@@ -6,7 +6,8 @@ import { Subscription } from 'rxjs';
   selector: 'mak-pit-h1-cta-section',
   templateUrl: './h1-cta-section.component.html',
   styles: [
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class H1CtaSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   ctaSectionDetails = Immutable.fromJS({});
