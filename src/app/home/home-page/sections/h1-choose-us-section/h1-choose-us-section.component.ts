@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { forkJoin, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { HomeService } from 'src/app/home/home.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class H1ChooseUsSectionComponent implements OnInit, OnDestroy {
+export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   listCoreValue = [
     {
       title: 'Integrity',
@@ -56,6 +56,8 @@ export class H1ChooseUsSectionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void { }
 
   ngOnDestroy(): void {
     this._unsubscribeLoadRequiredDetailsSubscription();
