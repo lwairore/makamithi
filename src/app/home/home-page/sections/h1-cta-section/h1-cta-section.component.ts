@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as Immutable from 'immutable';
 
 @Component({
   selector: 'mak-pit-h1-cta-section',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class H1CtaSectionComponent implements OnInit {
+  ctaSectionDetails = Immutable.fromJS({});
 
   constructor() { }
 
