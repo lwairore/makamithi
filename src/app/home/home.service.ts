@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { retryWithBackoff } from '@sharedModule/operators';
 import { convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty, stringIsEmpty } from '@sharedModule/utilities';
+import { ExpectedType, whichValueShouldIUse } from '@sharedModule/utilities/which-value-should-i-use.util';
 import { memoize } from 'lodash';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -83,7 +84,8 @@ export class HomeService {
             const formattedDetail: ProductFormatHttpResponse = {
               title: convertItemToString(detail.title),
               photo: this._formatShowcaseItemWithPhoto(detail.photo),
-              id: detailID
+              id: detailID,
+              price: whichValueShouldIUse(detail.price, 0, ExpectedType.NUMBER),
             }
 
             return formattedDetail;
