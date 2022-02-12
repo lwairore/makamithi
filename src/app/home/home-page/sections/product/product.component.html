@@ -47,40 +47,73 @@
                         <ng-container *ngFor="let category of productCategories;">
                             <ng-template makPitTabPanel>
                                 <div class="row">
-                                    <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let product of productsAvailable.get(
+                                    <ng-container *ngIf="productsAvailable.get(
+                                        category.get('id')?.toString() ); else productsAreLoading">
+                                        <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let product of productsAvailable.get(
                                         category.get('id')?.toString() );">
-                                        <div class="product-wrapper text-center mb-30">
-                                            <div class="product-img">
-                                                <a routerLink="/shop/shop-details">
-                                                    <img [src]="product?.photo?.src" [alt]="product?.photo?.alt" /></a>
-
-                                                <div class="product-action">
-                                                    <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
-                                                    <a [routerLink]="null"><i class="fas fa-heart"></i></a>
-                                                    <a [routerLink]="null"><i class="fas fa-search"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-text">
-                                                <h4>
+                                            <div class="product-wrapper text-center mb-30">
+                                                <div class="product-img">
                                                     <a routerLink="/shop/shop-details">
-                                                        {{ product.title }}
+                                                        <img [src]="product?.photo?.src" [alt]="product?.photo?.alt" />
                                                     </a>
-                                                </h4>
-                                                <div class="pro-rating">
-                                                    <i class="far far-star"></i>
-                                                    <i class="far far-star"></i>
-                                                    <i class="far far-star"></i>
-                                                    <i class="far far-star"></i>
-                                                    <i class="far far-star"></i>
+
+                                                    <div class="product-action">
+                                                        <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
+                                                        <a [routerLink]="null"><i class="fas fa-heart"></i></a>
+                                                        <a [routerLink]="null"><i class="fas fa-search"></i></a>
+                                                    </div>
                                                 </div>
-                                                <div class="pro-price">
-                                                    <span>
-                                                        {{ product.price | currency:'KES':'symbol':'.2-2' }}
-                                                    </span>
+                                                <div class="product-text">
+                                                    <h4>
+                                                        <a routerLink="/shop/shop-details">
+                                                            {{ product.title }}
+                                                        </a>
+                                                    </h4>
+                                                    <div class="pro-rating">
+                                                        <i class="far far-star"></i>
+                                                        <i class="far far-star"></i>
+                                                        <i class="far far-star"></i>
+                                                        <i class="far far-star"></i>
+                                                        <i class="far far-star"></i>
+                                                    </div>
+                                                    <div class="pro-price">
+                                                        <span>
+                                                            {{ product.price | currency:'KES':'symbol':'.2-2' }}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </ng-container>
+                                    <ng-template #productsAreLoading>
+                                        <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let item of fakeObjectArray;">
+                                            <div class="product-wrapper text-center mb-30">
+                                                <ngx-skeleton-loader [theme]="{
+                                                    width: '100%',
+                                                    height: '280px'
+                                                }"></ngx-skeleton-loader>
+                                                <div class="product-text">
+                                                    <h4>
+                                                        <a routerLink="/shop/shop-details">
+                                                            <ngx-skeleton-loader></ngx-skeleton-loader>
+                                                        </a>
+                                                    </h4>
+                                                    <div class="pro-rating">
+                                                        <i class="far far-star"></i>
+                                                        <i class="far far-star"></i>
+                                                        <i class="far far-star"></i>
+                                                        <i class="far far-star"></i>
+                                                        <i class="far far-star"></i>
+                                                    </div>
+                                                    <div class="pro-price">
+                                                        <span>
+                                                            <ngx-skeleton-loader></ngx-skeleton-loader>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
                                 </div>
                             </ng-template>
                         </ng-container>
