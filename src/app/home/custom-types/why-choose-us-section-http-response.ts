@@ -1,2 +1,2 @@
-export interface WhyChooseUsSectionHttpResponse {
+export type WhyChooseUsSectionHttpResponse = {
 }
