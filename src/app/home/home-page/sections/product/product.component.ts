@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { convertItemToString, isANumber } from '@sharedModule/utilities';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 import { HomeService } from 'src/app/home/home.service';
@@ -196,8 +197,21 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
       }, err => console.error(err));
   }
 
-  private _listProduct() {
+  private _listProduct(productID?: number) {
+    if (!isANumber(productID)) {
+      return;
+    }
 
+    this._listProductSubscription = this._homeService.listProduct$(
+      convertItemToString(productID))
+      .subscribe(details => {
+        this.productsAvailable = this.productsAvailable
+          .set(
+            convertItemToString(productID), details);
+
+        console.log("this.productsAvailable");
+        console.log(this.productsAvailable);
+      }, err => console.error(err))
   }
 
   private _manuallyTriggerChangeDetection() {
