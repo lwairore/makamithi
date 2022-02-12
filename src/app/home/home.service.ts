@@ -5,7 +5,7 @@ import { convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty, st
 import { memoize } from 'lodash';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -61,6 +61,33 @@ export class HomeService {
           return formattedAds;
         })
       );
+  }
+
+  listProduct$() {
+    const api = environment.baseURL +
+      environment.shop.rootURL +
+      environment.shop.listProduct;
+
+    return this._httpClient.get<Array<ProductHttpResponse>>(api)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = details.map(detail => {
+            const detailID = convertItemToNumeric(detail.id);
+            if (!isANumber(detailID)) {
+              return null;
+            }
+
+            const formattedDetail: ProductFormatHttpResponse = {
+              title: convertItemToString(detail.title),
+              id: detailID
+            }
+
+            return formattedDetail;
+          }).filter(item => !isObjectEmpty(item));
+
+          return formattedDetails;
+        }))
   }
 
   listProductCategory$() {
