@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { HomeService } from 'src/app/home/home.service';
 
@@ -6,7 +6,8 @@ import { HomeService } from 'src/app/home/home.service';
   selector: 'mak-pit-h1-choose-us-section',
   templateUrl: './h1-choose-us-section.component.html',
   styles: [
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class H1ChooseUsSectionComponent implements OnInit {
   listCoreValue = [
