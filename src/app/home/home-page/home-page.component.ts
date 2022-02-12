@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoSocialShareService } from 'ngx-seo';
 import { HomeService } from '../home.service';
 
 @Component({
@@ -12,7 +13,9 @@ import { HomeService } from '../home.service';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private seoService: SeoSocialShareService
+  ) { }
 
   ngOnInit(): void {
   }
