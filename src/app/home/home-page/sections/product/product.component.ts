@@ -176,6 +176,12 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  private _unsubscribeListProductSubscription() {
+    if (this._listProductSubscription instanceof Subscription) {
+      this._listProductSubscription.unsubscribe();
+    }
+  }
+
   private _listProductCategory() {
     this._listProductCategoriesSubscription = this._homeService
       .listProductCategory$()
