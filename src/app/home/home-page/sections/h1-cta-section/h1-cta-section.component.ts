@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mak-pit-h1-cta-section',
@@ -9,6 +10,8 @@ import * as Immutable from 'immutable';
 })
 export class H1CtaSectionComponent implements OnInit {
   ctaSectionDetails = Immutable.fromJS({});
+
+  private _retrieveVisitNowCtaSectionSubscription: Subscription | undefined;
 
   constructor() { }
 
