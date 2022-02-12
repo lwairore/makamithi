@@ -12,3 +12,4 @@ export { ProductFormatHttpResponse } from './product-format-http-response';
 export { ProductHttpResponse } from './product-http-response';
 export { VisitNowCtaSectionFormatHttpResponse } from './visit-now-cta-section-format-http-response';
 export { VisitNowCtaSectionHttpResponse } from './visit-now-cta-section-http-response';
+export { WhyChooseUsSectionFormatHttpResponse } from './why-choose-us-section-format-http-response';
