@@ -62,7 +62,8 @@ export class TabListComponent implements AfterViewInit {
 
       console.log({ tab });
 
-      this._manuallyTriggerChangeDetection();
+      // this._manuallyTriggerChangeDetection();
+      this._emitTabSelectedEvent(tab.tabID);
 
       if (this.tabItem instanceof TabItemComponent) {
         this.tabItem.isPanelTabsSelected(index);
