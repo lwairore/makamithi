@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { convertItemToString, isANumber } from '@sharedModule/utilities';
+import { generateFakeObjectArray } from '@sharedModule/utilities/generate-fake-objects.util';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 import { HomeService } from 'src/app/home/home.service';
@@ -152,6 +153,8 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   private _listProductCategoriesSubscription: Subscription | undefined;
 
   private _listProductSubscription: Subscription | undefined;
+
+  fakeObjectArray = generateFakeObjectArray();
 
   constructor(
     private _homeService: HomeService,
