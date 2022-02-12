@@ -47,6 +47,10 @@ export class TabListComponent implements AfterViewInit {
     this._changeDetectorRef.detectChanges();
   }
 
+  private _emitTabSelectedEvent(tabID?: number) {
+    this.tabSelectedEvent.emit(tabID);
+  }
+
   selectTab(tab: TabDirective, index: number) {
     if (this.tabs instanceof QueryList) {
       console.log({ tab })
