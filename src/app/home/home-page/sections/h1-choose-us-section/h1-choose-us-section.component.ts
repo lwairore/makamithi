@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
+import { HomeService } from 'src/app/home/home.service';
 
 @Component({
   selector: 'mak-pit-h1-choose-us-section',
@@ -43,7 +44,9 @@ export class H1ChooseUsSectionComponent implements OnInit {
 
   chooseUsSectionDetails = Immutable.fromJS({});
 
-  constructor() { }
+  constructor(
+    private _homeService: HomeService,
+  ) { }
 
   ngOnInit(): void {
   }
