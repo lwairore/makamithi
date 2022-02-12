@@ -164,6 +164,8 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._unsubscribeListProductCategoriesSubscription();
+
+    this._unsubscribeListProductSubscription();
   }
 
   trackById(loopIndex: number, item: any) {
