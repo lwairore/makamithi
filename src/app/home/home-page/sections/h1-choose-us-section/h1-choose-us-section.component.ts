@@ -56,6 +56,12 @@ export class H1ChooseUsSectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private _unsubscribeLoadRequiredDetailsSubscription() {
+    if (this._loadRequiredDetailsSubscription instanceof Subscription) {
+      this._loadRequiredDetailsSubscription.unsubscribe();
+    }
+  }
+
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
