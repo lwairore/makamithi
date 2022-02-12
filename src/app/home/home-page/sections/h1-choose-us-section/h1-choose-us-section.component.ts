@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
+import { Subscription } from 'rxjs';
 import { HomeService } from 'src/app/home/home.service';
 
 @Component({
@@ -44,6 +45,8 @@ export class H1ChooseUsSectionComponent implements OnInit {
   ]
 
   chooseUsSectionDetails = Immutable.fromJS({});
+
+  private _loadRequiredDetailsSubscription: Subscription | undefined;
 
   constructor(
     private _homeService: HomeService,
