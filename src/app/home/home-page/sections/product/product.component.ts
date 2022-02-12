@@ -148,6 +148,8 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _listProductCategoriesSubscription: Subscription | undefined;
 
+  private _listProductSubscription: Subscription | undefined;
+
   constructor(
     private _homeService: HomeService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -187,7 +189,7 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _listProduct() {
-    
+
   }
 
   private _manuallyTriggerChangeDetection() {
