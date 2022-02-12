@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Input, OnInit, Output, QueryList } from '@angular/core';
 import { TabDirective } from '../directives/tab.directive';
 import { TabItemComponent } from '../tab-item/tab-item.component';
 
@@ -18,6 +18,8 @@ export class TabListComponent implements AfterViewInit {
   tabs: QueryList<TabDirective> | undefined;
 
   tabItem: TabItemComponent | undefined;
+
+  @Output() tabSelectedEvent = new EventEmitter<number>();
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef
