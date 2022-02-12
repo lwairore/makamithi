@@ -6,7 +6,7 @@ import { ExpectedType, whichValueShouldIUse } from '@sharedModule/utilities/whic
 import { memoize } from 'lodash';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse, WhyChooseUsSectionFormatHttpResponse, WhyChooseUsSectionHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -143,6 +143,25 @@ export class HomeService {
 
           return FORMATTED_DETAILS;
         }))
+  }
+
+  retrieveWhyChooseUsSection$() {
+    const API = environment.baseURL +
+      environment.home.rootURL +
+      environment.home.whyChooseUsSection;
+
+    return this._httpClient.get<WhyChooseUsSectionHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS: WhyChooseUsSectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
+            description: convertItemToString(details.description),
+            sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
+          }
+
+          return FORMATTED_DETAILS
+        }));
   }
 
   listOurFeature$() {
