@@ -145,6 +145,8 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     },
   ]
 
+  productsAvailable = Immutable.fromJS({});
+
   productCategories = Immutable.fromJS([]);
 
   private _listProductCategoriesSubscription: Subscription | undefined;
