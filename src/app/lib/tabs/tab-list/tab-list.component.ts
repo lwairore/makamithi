@@ -19,7 +19,7 @@ export class TabListComponent implements AfterViewInit {
 
   tabItem: TabItemComponent | undefined;
 
-  @Output() tabSelectedEvent = new EventEmitter<number>();
+  @Output() tabSelectedEvent = new EventEmitter<number | undefined>();
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef
@@ -63,7 +63,7 @@ export class TabListComponent implements AfterViewInit {
       console.log({ tab });
 
       this._manuallyTriggerChangeDetection();
-      
+
       this._emitTabSelectedEvent(tab.tabID);
 
       if (this.tabItem instanceof TabItemComponent) {
