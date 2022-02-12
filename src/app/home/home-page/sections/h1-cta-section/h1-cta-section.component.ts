@@ -35,6 +35,18 @@ export class H1CtaSectionComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  private _retrieveCtaSectionDetails() {
+    this._retrieveVisitNowCtaSectionSubscription = this._homeService
+      .retrieveVisitNowCtaSection$()
+      .subscribe(details => {
+        this.ctaSectionDetails = Immutable.fromJS(details);
+
+        if (!this.ctaSectionDetails.isEmpty()) {
+          this._manuallyTriggerChangeDetection();
+        }
+      }, err => console.error(err));
+  }
+
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
