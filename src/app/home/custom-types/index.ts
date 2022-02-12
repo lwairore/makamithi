@@ -8,3 +8,4 @@ export { FeatureSectionFormatHttpResponse } from './feature-section-format-http-
 export { FeatureSectionHttpResponse } from './feature-section-http-response';
 export { ProductCategoryHttpResponse } from './product-category-http-response';
 export { ProductCategoryFormatHttpResponse } from './product-category-format-http-response';
+export { ProductFormatHttpResponse } from './product-format-http-response';
