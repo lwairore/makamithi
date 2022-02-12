@@ -57,7 +57,9 @@ export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDest
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    this._loadRequiredDetails();
+  }
 
   ngOnDestroy(): void {
     this._unsubscribeLoadRequiredDetailsSubscription();
