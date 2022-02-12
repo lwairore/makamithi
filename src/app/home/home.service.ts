@@ -6,7 +6,7 @@ import { ExpectedType, whichValueShouldIUse } from '@sharedModule/utilities/whic
 import { memoize } from 'lodash';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -121,6 +121,27 @@ export class HomeService {
           }).filter(item => !isObjectEmpty(item));
 
           return formattedDetails;
+        }))
+  }
+
+  retrieveVisitNowCtaSection$() {
+    const api = environment.baseURL +
+      environment.home.rootURL +
+      environment.home.visitNowCtaSection;
+
+    return this._httpClient.get<VisitNowCtaSectionHttpResponse>(
+      api)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS: VisitNowCtaSectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
+            description: convertItemToString(details.description),
+            backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
+            sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
+          }
+
+          return FORMATTED_DETAILS;
         }))
   }
 
