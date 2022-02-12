@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as Immutable from 'immutable';
 
 @Component({
   selector: 'mak-pit-h1-choose-us-section',
@@ -39,6 +40,8 @@ export class H1ChooseUsSectionComponent implements OnInit {
       description: 'Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor incidide.'
     },
   ]
+
+  chooseUsSectionDetails = Immutable.fromJS({});
 
   constructor() { }
 
