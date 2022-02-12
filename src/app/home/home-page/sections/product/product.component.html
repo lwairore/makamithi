@@ -29,7 +29,7 @@
                 <mak-pit-tabs selectedTabClassName="active" *ngIf="!productCategories.isEmpty()">
                     <mak-pit-tab-list className="nav product-tab justify-content-center mb-75">
                         <ng-container *ngFor="let product of productCategories">
-                            <ng-template makPitTab className="nav-item">
+                            <ng-template makPitTab className="nav-item" [tabID]="product.get('id')">
                                 <div class="product-tab-content text-center">
                                     <div class="product-tab-img">
                                         <i class="flaticon-{{ product.get('flaticon') }}"></i>
