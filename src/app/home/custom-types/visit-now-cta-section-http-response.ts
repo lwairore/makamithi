@@ -1,2 +1,2 @@
-export interface VisitNowCtaSectionHttpResponse {
+export type VisitNowCtaSectionHttpResponse = {
 }
