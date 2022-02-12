@@ -1,26 +1,31 @@
-<div class="cta-area pt-100 pb-90" [style.background-image]="'url(assets/img/bg/bg2.jpg)'">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-8 col-lg-8 col-md-8">
-                <div class="cta-wrapper mb-15">
-                    <div class="cta-img">
-                        <img src="assets/img/shape/3.png" alt="shape" />
-                    </div>
-                    <div class="cta-text">
-                        <h1>Visit Our Makamithi Agrovet</h1>
-                        <p>
-                            We also do consultation for stockists as we understand the challenges faced by them. We go
-                            out of our way to offer world class customer service with utmost professionalism and
-                            integrity while maintaining a personal relationship with all our customers.
-                        </p>
+<ng-container *ngIf="ctaSectionDetails.isEmpty(); else showCtaSectionDetails;"></ng-container>
+<ng-template #showCtaSectionDetails>
+    <div class="cta-area pt-100 pb-90"
+        [style.background-image]="'url('+ ctaSectionDetails.getIn(['backgroundImage', 'src']) +')'">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-8">
+                    <div class="cta-wrapper mb-15">
+                        <div class="cta-img">
+                            <img [src]="ctaSectionDetails.getIn(['sectionImage', 'src'])"
+                                [alt]="ctaSectionDetails.getIn(['sectionImage', 'alt'])" />
+                        </div>
+                        <div class="cta-text">
+                            <h1>
+                                {{ ctaSectionDetails.get('heading') }}
+                            </h1>
+                            <p>
+                                {{ ctaSectionDetails.get('description') }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4">
-                <div class="cta-button mb-15 text-md-right">
-                    <a class="btn" href="/about-us">Visit Now</a>
+                <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="cta-button mb-15 text-md-right">
+                        <a class="btn" href="/about-us">Visit Now</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

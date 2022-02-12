@@ -23,7 +23,9 @@ export class H1CtaSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void { 
+    this._retrieveCtaSectionDetails();
+  }
 
   ngOnDestroy(): void {
     this._unsubscribeRetrieveVisitNowCtaSectionSubscription();
