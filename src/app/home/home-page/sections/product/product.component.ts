@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 import { HomeService } from 'src/app/home/home.service';
@@ -149,7 +149,8 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   private _listProductCategoriesSubscription: Subscription | undefined;
 
   constructor(
-    private _homeService: HomeService
+    private _homeService: HomeService,
+    private _changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
