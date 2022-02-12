@@ -1,2 +1,2 @@
-export interface ProductFormatHttpResponse {
+export type ProductFormatHttpResponse = {
 }
