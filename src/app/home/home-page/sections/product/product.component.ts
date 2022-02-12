@@ -209,8 +209,12 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _listProduct(productID: string) {
+    if (this.productsAvailable.has(productID)) {
+      return;
+    }
+
     this._listProductSubscription = this._homeService.listProduct$(
-      convertItemToString(productID))
+      productID)
       .subscribe(details => {
         this.productsAvailable = this.productsAvailable
           .set(
@@ -218,6 +222,9 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
 
         console.log("this.productsAvailable");
         console.log(this.productsAvailable);
+        console.log(this.productsAvailable.get(productID))
+
+        this._manuallyTriggerChangeDetection();
       }, err => console.error(err))
   }
 
