@@ -1,2 +1,2 @@
-export type VisitNowCtaSectionHttpResponse = {
-}
+export type VisitNowCtaSectionHttpResponse = Readonly<{
+}>
