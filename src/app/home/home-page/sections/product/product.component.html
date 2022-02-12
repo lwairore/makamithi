@@ -27,7 +27,8 @@
         <div class="row" data-tabs="true">
             <div class="col-xl-12">
                 <mak-pit-tabs selectedTabClassName="active" *ngIf="!productCategories.isEmpty()">
-                    <mak-pit-tab-list className="nav product-tab justify-content-center mb-75">
+                    <mak-pit-tab-list className="nav product-tab justify-content-center mb-75"
+                        (tabSelectedEvent)="handleTabSelectedEvent($event)">
                         <ng-container *ngFor="let product of productCategories">
                             <ng-template makPitTab className="nav-item" [tabID]="product.get('id')">
                                 <div class="product-tab-content text-center">
