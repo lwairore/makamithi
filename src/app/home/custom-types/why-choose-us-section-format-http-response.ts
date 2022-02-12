@@ -1,2 +1,2 @@
-export type WhyChooseUsSectionFormatHttpResponse = {
-}
+export type WhyChooseUsSectionFormatHttpResponse = Readonly<{
+}>
