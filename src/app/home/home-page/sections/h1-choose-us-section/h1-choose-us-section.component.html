@@ -12,13 +12,15 @@
             <div class="col-xl-5 col-lg-12">
                 <div class="choose-wrapper mb-30">
                     <div class="choose-section">
-                        <h1>Why Choose Us</h1>
+                        <h1>
+                            {{ chooseUsSectionDetails.get('heading') }}
+                        </h1>
                         <p>
                             To be the most reliable and affordable agri-inputs provider in the region.
                         </p>
                     </div>
                     <div class="choose-content" *ngFor="let coreValue of listCoreValue; let isLast=last"
-                    [class.mb-40]="!isLast">
+                        [class.mb-40]="!isLast">
                         <div class="choose-us-img">
                             <img [src]="coreValue.image" [alt]="coreValue.title" />
                         </div>
