@@ -20,7 +20,7 @@ export class TabListComponent implements AfterViewInit {
   tabItem: TabItemComponent | undefined;
 
   constructor(
-    private ref: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngAfterViewInit(): void {
@@ -42,7 +42,7 @@ export class TabListComponent implements AfterViewInit {
   }
 
   private _manuallyTriggerChangeDetection() {
-    this.ref.detectChanges();
+    this._changeDetectorRef.detectChanges();
   }
 
   selectTab(tab: TabDirective, index: number) {
