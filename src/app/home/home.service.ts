@@ -180,9 +180,7 @@ export class HomeService {
           }
 
           return FORMATTED_DETAILS;
-        })
-      )
-
+        }));
   }
 
   retrieveWhyChooseUsSection$() {
