@@ -1,2 +1,2 @@
-export interface CoreValueFormatHttpResponse {
+export type CoreValueFormatHttpResponse = {
 }
