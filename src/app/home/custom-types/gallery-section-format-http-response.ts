@@ -1,2 +1,2 @@
-export interface GallerySectionFormatHttpResponse {
+export type GallerySectionFormatHttpResponse = {
 }
