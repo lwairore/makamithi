@@ -39,7 +39,23 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this._retrieveHomeSEODetailsSubscription = this._seoService
       .retrieveHomeSEODetails$()
       .subscribe(details => {
-
+        this._seoSocialShareService.setData({
+          title: details.title,
+          keywords: details.keywords,
+          description: details.description,
+          image: details.image.src,
+          imageAuxData: {
+            width: details.image.width,
+            height: details.image.height,
+            secureUrl: details.image.src,
+            alt: details.image.alt,
+          },
+          type: details.type,
+          author: details.author,
+          section: details.section,
+          published: details.published,
+          modified: details.modified,
+        })
       }, err => console.error(err))
   }
 }
