@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
-import { Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HomeService } from 'src/app/home/home.service';
 
 @Component({
@@ -26,7 +27,7 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
 
   ngAfterViewInit(): void {
     this._loadRequiredDetails();
-   }
+  }
 
   ngOnDestroy(): void {
     this._unsubscribeLoadRequiredDetailsSubscription();
@@ -43,5 +44,18 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   private _loadRequiredDetails() {
+    const RETRIEVE_GALLERY_SECTION$ = this._homeService.retrieveGallerySection$();
+
+    this._loadRequiredDetailsSubscription = forkJoin([
+      RETRIEVE_GALLERY_SECTION$.pipe(
+        tap(details => this.gallerySectionDetails = Immutable.fromJS(details))
+      ),
+    ])
+      .subscribe(_ => {
+        if (!this.gallerySectionDetails.isEmpty()) {
+          this._manuallyTriggerChangeDetection();
+        }
+      }, err => console.error(err));
+
   }
 }
