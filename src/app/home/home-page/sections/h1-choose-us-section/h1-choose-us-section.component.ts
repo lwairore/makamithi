@@ -67,4 +67,8 @@ export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDest
       }
     }, err => console.error(err))
   }
+
+  coreValueTrackByFn(loopIndex: number, item: any) {
+    return item.get('id');
+  }
 }
