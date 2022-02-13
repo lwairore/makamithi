@@ -79,12 +79,19 @@ export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDest
     const RETRIEVE_WHY_CHOOSE_US_SECTION$ = this._homeService
       .retrieveWhyChooseUsSection$();
 
+    const LIST_CORE_VALUE$ = this._homeService.listCoreValue$();
+
     this._loadRequiredDetailsSubscription = forkJoin([
       RETRIEVE_WHY_CHOOSE_US_SECTION$
         .pipe(
           tap(details => {
             this.chooseUsSectionDetails = Immutable.fromJS(details);
           })),
+          LIST_CORE_VALUE$
+          .pipe(
+            tap(details => {
+              this.listCoreValue = Immutable.fromJS(details);
+            }))
     ]).subscribe(_ => {
       if (!this.chooseUsSectionDetails.isEmpty()) {
         this._manuallyTriggerChangeDetection();
