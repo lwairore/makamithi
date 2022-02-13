@@ -5,7 +5,7 @@ import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber
 import { ExpectedType, whichValueShouldIUse } from '@sharedModule/utilities/which-value-should-i-use.util';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, CoreValueFormatHttpResponse, CoreValueHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, GallerySectionFormatHttpResponse, GallerySectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse, WhyChooseUsSectionFormatHttpResponse, WhyChooseUsSectionHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, CoreValueFormatHttpResponse, CoreValueHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, GallerySectionFormatHttpResponse, GallerySectionHttpResponse, HomeGalleryFormatHttpResponse, HomeGalleryHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse, WhyChooseUsSectionFormatHttpResponse, WhyChooseUsSectionHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -178,6 +178,33 @@ export class HomeService {
             sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
             backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
           }
+
+          return FORMATTED_DETAILS;
+        }));
+  }
+
+  listHomeGallerySection$() {
+    const API = environment.baseURL
+      + environment.gallery.rootURL
+      + environment.gallery.listHomeGallery;
+
+    return this._httpClient.get<Array<HomeGalleryHttpResponse>>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS = details.map(detail => {
+            const DETAIL_ID = convertItemToNumeric(detail.id);
+            if (!isANumber(DETAIL_ID)) {
+              return null;
+            }
+
+            const FORMATTED_DETAIL: HomeGalleryFormatHttpResponse = {
+              image: this._formatShowcaseItemWithPhoto(detail.image),
+              id: DETAIL_ID
+            };
+
+            return FORMATTED_DETAIL;
+          }).filter(item => !isObjectEmpty(item));
 
           return FORMATTED_DETAILS;
         }));
