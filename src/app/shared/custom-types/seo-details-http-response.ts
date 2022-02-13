@@ -9,4 +9,5 @@ export type SeoDetailsHttpResponse = Readonly<{
     published?: string;
     section?: string;
     modified?: string;
+    type?: string;
 }>
