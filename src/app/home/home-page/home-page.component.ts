@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { SeoService } from '@sharedModule/seo.service';
 import * as Immutable from 'immutable';
 import { SeoSocialShareData, SeoSocialShareService } from 'ngx-seo';
@@ -14,7 +14,7 @@ import { HomeService } from '../home.service';
     HomeService,
   ]
 })
-export class HomePageComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   private _retrieveHomeSEODetailsSubscription: Subscription | undefined;
 
   constructor(
@@ -24,6 +24,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void { }
 
   ngOnDestroy(): void {
     this._unsubscribeRetrieveHomeSEODetailsSubscription();
