@@ -1,2 +1,2 @@
-export interface SeoDetailsHttpResponse {
+export type SeoDetailsHttpResponse = {
 }
