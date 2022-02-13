@@ -46,10 +46,14 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
   private _loadRequiredDetails() {
     const RETRIEVE_GALLERY_SECTION$ = this._homeService.retrieveGallerySection$();
 
+    const LIST_HOME_GALLERY$ = this._homeService.listHomeGallerySection$();
+
     this._loadRequiredDetailsSubscription = forkJoin([
       RETRIEVE_GALLERY_SECTION$.pipe(
         tap(details => this.gallerySectionDetails = Immutable.fromJS(details))
       ),
+      LIST_HOME_GALLERY$.pipe(
+        tap(details => this.homeGalley = Immutable.fromJS(details)))
     ])
       .subscribe(_ => {
         if (!this.gallerySectionDetails.isEmpty()) {
