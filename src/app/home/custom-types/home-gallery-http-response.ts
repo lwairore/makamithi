@@ -1,2 +1,2 @@
-export type HomeGalleryHttpResponse = {
-}
+export type HomeGalleryHttpResponse = Readonly<{
+}>
