@@ -23,4 +23,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void { }
 
+  private _unsubscribeRetrieveHomeSEODetailsSubscription() {
+    if (this._retrieveHomeSEODetailsSubscription instanceof Subscription) {
+      this._retrieveHomeSEODetailsSubscription.unsubscribe();
+    }
+  }
 }
