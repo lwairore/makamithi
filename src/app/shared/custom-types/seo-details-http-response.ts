@@ -1,2 +1,2 @@
-export type SeoDetailsHttpResponse = {
-}
+export type SeoDetailsHttpResponse = Readonly<{
+}>
