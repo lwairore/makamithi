@@ -19,3 +19,4 @@ export { CoreValueHttpResponse } from './core-value-http-response';
 export { GallerySectionHttpResponse } from './gallery-section-http-response';
 export { GallerySectionFormatHttpResponse } from './gallery-section-format-http-response';
 export { HomeGalleryFormatHttpResponse } from './home-gallery-format-http-response';
+export { HomeGalleryHttpResponse } from './home-gallery-http-response';
