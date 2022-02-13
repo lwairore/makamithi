@@ -37,4 +37,7 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
+
+  private _loadRequiredDetails() {
+  }
 }
