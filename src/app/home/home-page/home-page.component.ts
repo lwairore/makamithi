@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SeoService } from '@sharedModule/seo.service';
+import * as Immutable from 'immutable';
 import { SeoSocialShareData, SeoSocialShareService } from 'ngx-seo';
 import { Subscription } from 'rxjs';
 import { HomeService } from '../home.service';
@@ -34,5 +35,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   private _retrieveHomeSEODetails() {
+    this._retrieveHomeSEODetailsSubscription = this._seoService
+    .retrieveHomeSEODetails$()
+    .subscribe(details => {
+      
+    }, err=>console.error(err))
   }
 }
