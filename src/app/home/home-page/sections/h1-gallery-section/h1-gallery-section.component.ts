@@ -24,6 +24,12 @@ export class H1GallerySectionComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void { }
 
+  private _unsubscribeLoadRequiredDetailsSubscription() {
+    if (this._loadRequiredDetailsSubscription instanceof Subscription) {
+      this._loadRequiredDetailsSubscription.unsubscribe();
+    }
+  }
+
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
