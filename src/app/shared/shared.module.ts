@@ -11,6 +11,7 @@ import { StickyHeaderComponent } from './common/sticky-header/sticky-header.comp
 import { TopHeader2Component } from './header-style-two/sections/top-header2/top-header2.component';
 import { RouterModule } from '@angular/router';
 import { GPCtaSectionComponent } from './gpcta-section/gpcta-section.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -29,6 +30,7 @@ import { GPCtaSectionComponent } from './gpcta-section/gpcta-section.component';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule,
   ],
   exports: [
