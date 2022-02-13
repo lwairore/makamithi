@@ -1,2 +1,2 @@
-export interface HomeGalleryFormatHttpResponse {
+export type HomeGalleryFormatHttpResponse = {
 }
