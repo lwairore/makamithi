@@ -22,7 +22,9 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    this._loadRequiredDetails();
+   }
 
   ngOnDestroy(): void {
     this._unsubscribeLoadRequiredDetailsSubscription();
