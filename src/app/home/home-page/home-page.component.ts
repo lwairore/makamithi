@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SeoSocialShareData, SeoSocialShareService } from 'ngx-seo';
 import { Subscription } from 'rxjs';
 import { HomeService } from '../home.service';
@@ -12,7 +12,7 @@ import { HomeService } from '../home.service';
     HomeService,
   ]
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
   private _retrieveHomeSEODetailsSubscription: Subscription | undefined;
 
   constructor(
@@ -20,5 +20,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void { }
 
 }
