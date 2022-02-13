@@ -1,2 +1,2 @@
-export interface ImageAuxDataHttpResponse {
+export type ImageAuxDataHttpResponse = {
 }
