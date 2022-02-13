@@ -6,4 +6,5 @@ export type SeoDetailsHttpResponse = Readonly<{
     description?: string;
     image?: ImageAuxDataHttpResponse;
     author?: string;
+    section?: string;
 }>
