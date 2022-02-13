@@ -42,6 +42,8 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _retrieveHomeSEODetails() {
+    console.log("this._location.path()")
+    console.log(this._location.path())
     this._retrieveHomeSEODetailsSubscription = this._seoService
       .retrieveHomeSEODetails$()
       .subscribe(details => {
@@ -61,6 +63,7 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
           section: details.section,
           published: details.published,
           modified: details.modified,
+          url: this._location.path(),
         })
       }, err => console.error(err))
   }
