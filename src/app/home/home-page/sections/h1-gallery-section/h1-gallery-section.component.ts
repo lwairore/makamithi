@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class H1GallerySectionComponent implements OnInit, OnDestroy {
+export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestroy {
   gallerySectionDetails = Immutable.fromJS({});
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
@@ -22,7 +22,9 @@ export class H1GallerySectionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void { 
+  ngAfterViewInit(): void { }
+
+  ngOnDestroy(): void {
     this._unsubscribeLoadRequiredDetailsSubscription();
   }
 
