@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { SeoDetailsHttpResponse } from './custom-types';
 import { retryWithBackoff } from './operators';
-import { convertItemToString } from './utilities';
+import { constructMediaSrc, convertItemToString } from './utilities';
 import { ExpectedType, whichValueShouldIUse } from './utilities/which-value-should-i-use.util';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class SeoService {
       image: {
         width: whichValueShouldIUse(seoDetails.image?.width, null, ExpectedType.NUMBER),
         height: whichValueShouldIUse(seoDetails.image?.height, null, ExpectedType.NUMBER),
-        src: convertItemToString(seoDetails.image?.image),
+        src: constructMediaSrc(seoDetails.image?.image),
         alt: convertItemToString(seoDetails.image?.caption),
       },
       type: convertItemToString(seoDetails.type),
