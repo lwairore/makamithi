@@ -1,4 +1,4 @@
-import { ItemPreviewHttpResponse } from ".";
+import { ItemPreviewHttpResponse } from "./item-preview-http-response";
 
 export type CoreValueHttpResponse = Readonly<{
     title?: string;
