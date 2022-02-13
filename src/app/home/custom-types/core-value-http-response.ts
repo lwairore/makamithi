@@ -1,2 +1,2 @@
-export interface CoreValueHttpResponse {
+export type CoreValueHttpResponse = {
 }
