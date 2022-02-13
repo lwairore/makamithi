@@ -30,4 +30,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
       this._retrieveHomeSEODetailsSubscription.unsubscribe();
     }
   }
+
+  private _retrieveHomeSEODetails() {
+  }
 }
