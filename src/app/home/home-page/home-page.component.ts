@@ -19,6 +19,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   constructor(
     private _seoService: SeoService,
+    private _seoSocialShareService: SeoSocialShareService
   ) { }
 
   ngOnInit(): void {
@@ -36,9 +37,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   private _retrieveHomeSEODetails() {
     this._retrieveHomeSEODetailsSubscription = this._seoService
-    .retrieveHomeSEODetails$()
-    .subscribe(details => {
-      
-    }, err=>console.error(err))
+      .retrieveHomeSEODetails$()
+      .subscribe(details => {
+
+      }, err => console.error(err))
   }
 }
