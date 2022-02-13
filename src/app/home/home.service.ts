@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { retryWithBackoff } from '@sharedModule/operators';
-import { convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty, stringIsEmpty } from '@sharedModule/utilities';
+import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty, stringIsEmpty } from '@sharedModule/utilities';
 import { ExpectedType, whichValueShouldIUse } from '@sharedModule/utilities/which-value-should-i-use.util';
-import { memoize } from 'lodash';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse, WhyChooseUsSectionFormatHttpResponse, WhyChooseUsSectionHttpResponse } from './custom-types';
@@ -19,22 +18,11 @@ export class HomeService {
     private _httpClient: HttpClient
   ) { }
 
-  constructMediaSrc = memoize((src: any) => {
-    if (stringIsEmpty(src)) { return ''; }
-
-    const convertSrcToString = convertItemToString(src);
-
-    const newSrc = (environment.production)
-      ? convertSrcToString : `${environment.imageBaseURL}${convertSrcToString}`;
-
-    return newSrc;
-  })
-
   private _formatShowcaseItemWithPhoto(
     photo?: ItemPreviewHttpResponse) {
     const formattedPhoto: ItemPreviewFormatHttpResponse = {
       alt: convertItemToString(photo?.caption),
-      src: this.constructMediaSrc(photo?.image),
+      src: constructMediaSrc(photo?.image),
     }
 
     return formattedPhoto;
