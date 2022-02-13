@@ -46,7 +46,7 @@ export class CounterDefaultComponent implements OnInit {
     this.worldWideBranchCount++;
 
     if(this.worldWideBranchCount == 85){
-      clearInterval(this.winAwardsCountStop)
+      clearInterval(this.worldWideBranchCountStop)
     }
   },100)
 
