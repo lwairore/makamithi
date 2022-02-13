@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
+import { HomeService } from 'src/app/home/home.service';
 
 @Component({
   selector: 'mak-pit-h1-gallery-section',
@@ -17,6 +18,7 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
+    private _homeService: HomeService,
   ) { }
 
   ngOnInit(): void {
