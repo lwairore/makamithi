@@ -22,7 +22,9 @@ export class H1GallerySectionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy(): void { 
+    this._unsubscribeLoadRequiredDetailsSubscription();
+  }
 
   private _unsubscribeLoadRequiredDetailsSubscription() {
     if (this._loadRequiredDetailsSubscription instanceof Subscription) {
