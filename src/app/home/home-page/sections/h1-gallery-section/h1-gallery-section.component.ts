@@ -18,4 +18,7 @@ export class H1GallerySectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private _manuallyTriggerChangeDetection() {
+    this._changeDetectorRef.detectChanges();
+  }
 }
