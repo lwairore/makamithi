@@ -1,2 +1,2 @@
-export type GallerySectionFormatHttpResponse = {
-}
+export type GallerySectionFormatHttpResponse = Readonly<{
+}>
