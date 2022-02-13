@@ -36,7 +36,8 @@ export class SeoService {
   }
 
   retrieveHomeSEODetails$() {
-    const API = environment.home.rootURL
+    const API = environment.baseURL
+      + environment.home.rootURL
       + environment.home.seo;
 
     return this._httpClient.get<SeoDetailsHttpResponse>(API)
