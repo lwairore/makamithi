@@ -62,7 +62,9 @@ export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDest
             this.listCoreValue = Immutable.fromJS(details);
           }))
     ]).subscribe(_ => {
-      if (!this.chooseUsSectionDetails.isEmpty()) {
+      if (
+        !this.chooseUsSectionDetails.isEmpty() ||
+        !this.listCoreValue.isEmpty()) {
         this._manuallyTriggerChangeDetection();
       }
     }, err => console.error(err))
