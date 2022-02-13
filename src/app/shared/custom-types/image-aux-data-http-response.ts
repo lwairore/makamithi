@@ -1,2 +1,2 @@
-export type ImageAuxDataHttpResponse = {
-}
+export type ImageAuxDataHttpResponse = Readonly<{
+}>
