@@ -14,6 +14,8 @@ import { HomeService } from 'src/app/home/home.service';
 export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestroy {
   gallerySectionDetails = Immutable.fromJS({});
 
+  homeGalley = Immutable.fromJS([]);
+
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
 
