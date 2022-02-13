@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SeoSocialShareService } from 'ngx-seo';
+import { SeoSocialShareData, SeoSocialShareService } from 'ngx-seo';
+import { Subscription } from 'rxjs';
 import { HomeService } from '../home.service';
 
 @Component({
@@ -12,9 +13,9 @@ import { HomeService } from '../home.service';
   ]
 })
 export class HomePageComponent implements OnInit {
+  private _retrieveHomeSEODetailsSubscription: Subscription | undefined;
 
   constructor(
-    private seoService: SeoSocialShareService
   ) { }
 
   ngOnInit(): void {
