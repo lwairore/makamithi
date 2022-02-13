@@ -4,6 +4,7 @@ import { SeoService } from '@sharedModule/seo.service';
 import * as Immutable from 'immutable';
 import { SeoSocialShareData, SeoSocialShareService } from 'ngx-seo';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { HomeService } from '../home.service';
 
 @Component({
@@ -63,7 +64,7 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
           section: details.section,
           published: details.published,
           modified: details.modified,
-          url: this._location.path(),
+          url: `${environment.hostURL}${this._location.path()}`,
         })
       }, err => console.error(err))
   }
