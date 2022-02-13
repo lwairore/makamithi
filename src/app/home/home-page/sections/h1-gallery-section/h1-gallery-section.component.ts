@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 
 @Component({
@@ -8,7 +8,7 @@ import * as Immutable from 'immutable';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class H1GallerySectionComponent implements OnInit {
+export class H1GallerySectionComponent implements OnInit, OnDestroy {
   gallerySectionDetails = Immutable.fromJS({});
 
   constructor(
@@ -17,6 +17,8 @@ export class H1GallerySectionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void { }
 
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
