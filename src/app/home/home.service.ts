@@ -5,7 +5,7 @@ import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber
 import { ExpectedType, whichValueShouldIUse } from '@sharedModule/utilities/which-value-should-i-use.util';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, CoreValueFormatHttpResponse, CoreValueHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse, WhyChooseUsSectionFormatHttpResponse, WhyChooseUsSectionHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, CoreValueFormatHttpResponse, CoreValueHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, GallerySectionFormatHttpResponse, GallerySectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse, WhyChooseUsSectionFormatHttpResponse, WhyChooseUsSectionHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -161,6 +161,28 @@ export class HomeService {
           return formattedDetails;
         })
       )
+  }
+
+  retrieveGallerySection$() {
+    const API = environment.baseURL +
+      environment.home.rootURL +
+      environment.home.gallerySection;
+
+    return this._httpClient.get<GallerySectionHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS: GallerySectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
+            summary: convertItemToString(details.summary),
+            sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
+            backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
+          }
+
+          return FORMATTED_DETAILS;
+        })
+      )
+
   }
 
   retrieveWhyChooseUsSection$() {
