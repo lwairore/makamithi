@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import * as Immutable from 'immutable';
 
 @Component({
   selector: 'mak-pit-h1-gallery-section',
@@ -8,6 +9,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class H1GallerySectionComponent implements OnInit {
+  gallerySectionDetails = Immutable.fromJS({});
 
   constructor() { }
 
