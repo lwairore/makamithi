@@ -25,7 +25,9 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    this._retrieveHomeSEODetails();
+  }
 
   ngOnDestroy(): void {
     this._unsubscribeRetrieveHomeSEODetailsSubscription();
