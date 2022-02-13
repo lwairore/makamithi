@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mak-pit-h1-gallery-section',
@@ -10,6 +11,9 @@ import * as Immutable from 'immutable';
 })
 export class H1GallerySectionComponent implements OnInit, OnDestroy {
   gallerySectionDetails = Immutable.fromJS({});
+
+  private _loadRequiredDetailsSubscription: Subscription | undefined;
+
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
