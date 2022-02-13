@@ -12,38 +12,7 @@ import { HomeService } from 'src/app/home/home.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDestroy {
-  listCoreValue = [
-    {
-      title: 'Integrity',
-      image: 'assets/img/icon/1.png',
-      description: 'Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor incidide.'
-    },
-    {
-      title: 'Team work',
-      image: 'assets/img/icon/2.png',
-      description: 'Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor incidide.'
-    },
-    {
-      title: 'Efficiency',
-      image: 'assets/img/icon/3.png',
-      description: 'Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor incidide.'
-    },
-    {
-      title: 'Professionalism',
-      image: 'assets/img/icon/1.png',
-      description: 'Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor incidide.'
-    },
-    {
-      title: 'Respect for all',
-      image: 'assets/img/icon/2.png',
-      description: 'Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor incidide.'
-    },
-    {
-      title: 'Social Responsible',
-      image: 'assets/img/icon/3.png',
-      description: 'Sorem ipsum dolor sit amet consecta dipisicing elit sed do eiusmod tempor incidide.'
-    },
-  ]
+  listCoreValue = Immutable.fromJS([]);
 
   chooseUsSectionDetails = Immutable.fromJS({});
 
@@ -87,11 +56,11 @@ export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDest
           tap(details => {
             this.chooseUsSectionDetails = Immutable.fromJS(details);
           })),
-          LIST_CORE_VALUE$
-          .pipe(
-            tap(details => {
-              this.listCoreValue = Immutable.fromJS(details);
-            }))
+      LIST_CORE_VALUE$
+        .pipe(
+          tap(details => {
+            this.listCoreValue = Immutable.fromJS(details);
+          }))
     ]).subscribe(_ => {
       if (!this.chooseUsSectionDetails.isEmpty()) {
         this._manuallyTriggerChangeDetection();
