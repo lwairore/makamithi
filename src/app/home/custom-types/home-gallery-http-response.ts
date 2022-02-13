@@ -1,2 +1,2 @@
-export interface HomeGalleryHttpResponse {
+export type HomeGalleryHttpResponse = {
 }
