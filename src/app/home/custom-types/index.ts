@@ -17,3 +17,4 @@ export { WhyChooseUsSectionHttpResponse } from './why-choose-us-section-http-res
 export { CoreValueFormatHttpResponse } from './core-value-format-http-response';
 export { CoreValueHttpResponse } from './core-value-http-response';
 export { GallerySectionHttpResponse } from './gallery-section-http-response';
+export { GallerySectionFormatHttpResponse } from './gallery-section-format-http-response';
