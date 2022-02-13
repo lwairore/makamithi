@@ -5,7 +5,7 @@ import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber
 import { ExpectedType, whichValueShouldIUse } from '@sharedModule/utilities/which-value-should-i-use.util';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse, WhyChooseUsSectionFormatHttpResponse, WhyChooseUsSectionHttpResponse } from './custom-types';
+import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, CoreValueFormatHttpResponse, CoreValueHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse, WhyChooseUsSectionFormatHttpResponse, WhyChooseUsSectionHttpResponse } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -131,6 +131,36 @@ export class HomeService {
 
           return FORMATTED_DETAILS;
         }))
+  }
+
+  listCoreValue$() {
+    const API = environment.baseURL +
+      environment.home.rootURL +
+      environment.home.listCoreValue;
+
+    return this._httpClient.get<Array<CoreValueHttpResponse>>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = details.map(detail => {
+            const DETAIL_ID = convertItemToNumeric(detail.id);
+            if (!isANumber(detail.id)) {
+              return null;
+            }
+
+            const formattedDetail: CoreValueFormatHttpResponse = {
+              title: convertItemToString(detail.title),
+              description: convertItemToString(detail.description),
+              id: DETAIL_ID,
+              image: this._formatShowcaseItemWithPhoto(detail.image),
+            }
+
+            return formattedDetail;
+          }).filter(item => !isObjectEmpty(item));
+
+          return formattedDetails;
+        })
+      )
   }
 
   retrieveWhyChooseUsSection$() {
