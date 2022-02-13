@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { SeoService } from '@sharedModule/seo.service';
 import * as Immutable from 'immutable';
@@ -19,7 +20,8 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private _seoService: SeoService,
-    private _seoSocialShareService: SeoSocialShareService
+    private _seoSocialShareService: SeoSocialShareService,
+    private _location: Location,
   ) { }
 
   ngOnInit(): void {
