@@ -1,2 +1,2 @@
-export type CoreValueHttpResponse = {
-}
+export type CoreValueHttpResponse = Readonly<{
+}>
