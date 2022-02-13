@@ -14,6 +14,27 @@ export class SeoService {
 
   constructor(private _httpClient: HttpClient) { }
 
+  formatSEODetails(seoDetails: SeoDetailsHttpResponse) {
+    const formattedDetails = {
+      title: convertItemToString(seoDetails.title),
+      keywords: convertItemToString(seoDetails.keywords),
+      description: convertItemToString(seoDetails.description),
+      image: {
+        width: whichValueShouldIUse(seoDetails.image?.width, null, ExpectedType.NUMBER),
+        height: whichValueShouldIUse(seoDetails.image?.height, null, ExpectedType.NUMBER),
+        src: convertItemToString(seoDetails.image?.image),
+        alt: convertItemToString(seoDetails.image?.caption),
+      },
+      type: convertItemToString(seoDetails.type),
+      author: convertItemToString(seoDetails.author),
+      section: convertItemToString(seoDetails.section),
+      published: convertItemToString(seoDetails.published),
+      modified: convertItemToString(seoDetails.modified),
+    }
+
+    return formattedDetails;
+  }
+
   retrieveHomeSEODetails$() {
     const API = environment.home.rootURL
       + environment.home.seo;
@@ -22,22 +43,7 @@ export class SeoService {
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          const formattedDetails = {
-            title: convertItemToString(details.title),
-            keywords: convertItemToString(details.keywords),
-            description: convertItemToString(details.description),
-            image: {
-              width: whichValueShouldIUse(details.image?.width, null, ExpectedType.NUMBER),
-              height: whichValueShouldIUse(details.image?.height, null, ExpectedType.NUMBER),
-              src: convertItemToString(details.image?.image),
-              alt: convertItemToString(details.image?.caption),
-            },
-            type: convertItemToString(details.type),
-            author: convertItemToString(details.author),
-            section: convertItemToString(details.section),
-            published: convertItemToString(details.published),
-            modified: convertItemToString(details.modified),
-          }
+          const formattedDetails = this.formatSEODetails(details)
 
           return formattedDetails;
         })
