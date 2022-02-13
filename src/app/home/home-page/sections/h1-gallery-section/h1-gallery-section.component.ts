@@ -45,6 +45,10 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
     this._changeDetectorRef.detectChanges();
   }
 
+  homeGalleryTrackByFn(loopIndex: number, item: any) {
+    return item.get('id');
+  }
+
   private _loadRequiredDetails() {
     const RETRIEVE_GALLERY_SECTION$ = this._homeService.retrieveGallerySection$();
 
