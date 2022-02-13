@@ -62,6 +62,5 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
           this._manuallyTriggerChangeDetection();
         }
       }, err => console.error(err));
-
   }
 }
