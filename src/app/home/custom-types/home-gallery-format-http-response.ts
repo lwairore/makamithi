@@ -2,4 +2,5 @@ import { ItemPreviewFormatHttpResponse } from "./item-preview-format-http-respon
 
 export type HomeGalleryFormatHttpResponse = Readonly<{
     image: ItemPreviewFormatHttpResponse;
+    id: number;
 }>
