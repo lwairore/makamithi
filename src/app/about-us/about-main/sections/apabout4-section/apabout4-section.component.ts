@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
+import { AboutUsService } from 'src/app/about-us/about-us.service';
 
 @Component({
   selector: 'mak-pit-apabout4-section',
@@ -16,12 +17,13 @@ export class APAbout4SectionComponent implements OnInit, AfterViewInit, OnDestro
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
+    private _aboutUsService: AboutUsService,
   ) { }
 
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { 
+  ngAfterViewInit(): void {
     this._retrieveApAboutSection();
   }
 
