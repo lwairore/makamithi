@@ -1,2 +1,2 @@
-export type SiteBreadcrumbDetailsHttpResponse = {
-}
+export type SiteBreadcrumbDetailsHttpResponse = Readonly<{
+}>
