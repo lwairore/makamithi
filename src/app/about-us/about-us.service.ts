@@ -1,4 +1,4 @@
-import { TitleCasePipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from '@sharedModule/custom-types';
@@ -15,11 +15,11 @@ export class AboutUsService {
 
   constructor(
     private _httpClient: HttpClient,
-    private _titleCasePipe: TitleCasePipe,
+    private _upperCasePipe: UpperCasePipe,
   ) { }
 
-  private _transformToTitleCase(value: string) {
-    return this._titleCasePipe.transform(value);
+  private _transformToUpperCase(value: string) {
+    return this._upperCasePipe.transform(value);
   }
 
   private _formatShowcaseItemWithPhoto(
@@ -43,7 +43,7 @@ export class AboutUsService {
         retryWithBackoff(1000, 5),
         map(details => {
           const FORMATTED_DETAILS: ApAboutSectionFormatHttpResponse = {
-            heading: this._transformToTitleCase(convertItemToString(details.heading)),
+            heading: this._transformToUpperCase(convertItemToString(details.heading)),
             subheading: convertItemToString(details.subheading),
             description: convertItemToString(details.description),
             sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
