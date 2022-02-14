@@ -23,6 +23,12 @@ export class SiteBreadcrumbComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private _unsubscribeRetrieveSiteBreadcrumbDetailsSubscription() {
+    if (this._retrieveSiteBreadcrumbDetailsSubscription instanceof Subscription) {
+      this._retrieveSiteBreadcrumbDetailsSubscription.unsubscribe();
+    }
+  }
+
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
