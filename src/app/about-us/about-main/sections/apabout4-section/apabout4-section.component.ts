@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mak-pit-apabout4-section',
@@ -10,6 +11,8 @@ import * as Immutable from 'immutable';
 })
 export class APAbout4SectionComponent implements OnInit {
   apAboutSectionDetails = Immutable.fromJS({});
+
+  private _retrieveApAboutSectionSubscription: Subscription | undefined;
 
   constructor() { }
 
