@@ -1,4 +1,4 @@
-import { ItemPreviewHttpResponse } from "./item-preview-http-response";
+import { ItemPreviewHttpResponse } from "@sharedModule/custom-types";
 
 export type BannerAdHttpResponse = Readonly<{
     title?: string;

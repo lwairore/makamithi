@@ -1,4 +1,4 @@
-import { ItemPreviewHttpResponse } from "./item-preview-http-response";
+import { ItemPreviewHttpResponse } from "@sharedModule/custom-types";
 
 export type FeatureSectionHttpResponse = Readonly<{
     summary?: string;
