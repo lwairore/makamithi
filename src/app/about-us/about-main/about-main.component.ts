@@ -31,6 +31,12 @@ export class AboutMainComponent implements OnInit, AfterViewInit {
     this._retrieveAboutUsSEODetails();
   }
 
+  private _unsubscribeRetrieveAboutUsSEODetailsSubscription() {
+    if (this._retrieveAboutUsSEODetailsSubscription instanceof Subscription) {
+      this._retrieveAboutUsSEODetailsSubscription.unsubscribe();
+    }
+  }
+
   private _retrieveAboutUsSEODetails() { }
 
 }
