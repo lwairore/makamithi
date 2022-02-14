@@ -18,6 +18,10 @@ export class AboutUsService {
     private _titleCasePipe: TitleCasePipe,
   ) { }
 
+  private _transformToTitleCase(value: string) {
+    return this._titleCasePipe.transform(value);
+  }
+
   private _formatShowcaseItemWithPhoto(
     photo?: ItemPreviewHttpResponse) {
     const formattedPhoto: ItemPreviewFormatHttpResponse = {
