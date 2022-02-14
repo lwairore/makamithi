@@ -18,12 +18,13 @@ export class AboutMainComponent implements OnInit, AfterViewInit {
   constructor(
     private _seoService: SeoService,
     private _seoSocialShareService: SeoSocialShareService,
+    private _location: Location,
   ) { }
 
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { 
+  ngAfterViewInit(): void {
     this._retrieveAboutUsSEODetails();
   }
 
