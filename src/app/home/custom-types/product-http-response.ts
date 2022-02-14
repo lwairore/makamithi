@@ -1,4 +1,4 @@
-import { ItemPreviewHttpResponse } from ".";
+import { ItemPreviewHttpResponse } from "@sharedModule/custom-types";
 
 export type ProductHttpResponse = Readonly<{
     title?: string;
