@@ -1,4 +1,4 @@
-export interface ItemPreviewFormatHttpResponse {
+export type ItemPreviewFormatHttpResponse = {
     src: string;
     alt: string;
 }
