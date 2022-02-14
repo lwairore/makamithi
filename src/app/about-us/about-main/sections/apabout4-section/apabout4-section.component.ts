@@ -23,8 +23,11 @@ export class APAbout4SectionComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._unsubscribeRetrieveApAboutSectionSubscription();
-   }
+  }
 
+  private _manuallyTriggerChangeDetection() {
+    this._changeDetectorRef.detectChanges();
+  }
 
   private _unsubscribeRetrieveApAboutSectionSubscription() {
     if (this._retrieveApAboutSectionSubscription instanceof Subscription) {
