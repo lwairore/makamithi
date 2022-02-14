@@ -11,6 +11,7 @@ import { APTeam4SectionComponent } from './about-main/sections/apteam4-section/a
 import { ClientSlider2Component } from './about-main/sections/client-slider2/client-slider2.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSkeletonLoaderComponent } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     ApWhatWeDo2SectionComponent,
     APTeam4SectionComponent,
     ClientSlider2Component,
+    NgxSkeletonLoaderComponent,
   ],
   imports: [
     CommonModule,
