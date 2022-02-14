@@ -1,5 +1,5 @@
 import { ItemPreviewFormatHttpResponse } from "./item-preview-format-http-response";
 
-export interface SiteBreadcrumbDetailsFormatHttpResponse {
+export type SiteBreadcrumbDetailsFormatHttpResponse = {
     backgroundImage: ItemPreviewFormatHttpResponse;
 }
