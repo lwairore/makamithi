@@ -1,5 +1,5 @@
 import { ItemPreviewFormatHttpResponse } from "./item-preview-format-http-response";
 
-export type SiteBreadcrumbDetailsFormatHttpResponse = {
+export type SiteBreadcrumbDetailsFormatHttpResponse = Readonly<{
     backgroundImage: ItemPreviewFormatHttpResponse;
-}
+}>
