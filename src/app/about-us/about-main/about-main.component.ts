@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SeoService } from '@sharedModule/services/seo.service';
 import { SeoSocialShareService } from 'ngx-seo';
 import { AboutUsService } from '../about-us.service';
@@ -13,7 +13,7 @@ import { AboutUsService } from '../about-us.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AboutMainComponent implements OnInit {
+export class AboutMainComponent implements OnInit, AfterViewInit {
 
   constructor(
     private _seoService: SeoService,
@@ -22,6 +22,8 @@ export class AboutMainComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void { }
 
   private _retrieveAboutUsSEODetails() { }
 
