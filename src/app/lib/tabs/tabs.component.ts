@@ -1,7 +1,5 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, ContentChildren, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { memoize } from 'lodash';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, Input, OnInit, QueryList } from '@angular/core';
 import { TabPanelDirective } from './directives/tab-panel.directive';
-import { TabDirective } from './directives/tab.directive';
 import { TabItemComponent } from './tab-item/tab-item.component';
 import { TabListComponent } from './tab-list/tab-list.component';
 
