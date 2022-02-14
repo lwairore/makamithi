@@ -6,7 +6,7 @@ import { retryWithBackoff } from '@sharedModule/operators';
 import { constructMediaSrc, convertItemToString } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse } from './custom-types';
+import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse, FaqSectionFormatHttpResponse, FaqSectionHttpResponse } from './custom-types';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,25 @@ export class AboutUsService {
     }
 
     return formattedPhoto;
+  }
+
+  retrieveFaqSection$() {
+    const API = environment.baseURL +
+      environment.aboutUs.rootURL +
+      environment.aboutUs.retrieveFaqSection;
+
+    return this._httpClient.get<FaqSectionHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS: FaqSectionFormatHttpResponse = {
+            title: convertItemToString(details.title),
+            backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
+          }
+
+          return FORMATTED_DETAILS;
+        })
+      )
   }
 
   retrieveApAboutSection$() {
