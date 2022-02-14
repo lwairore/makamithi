@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { AboutUsRoutingModule } from './about-us-routing.module';
 import { AboutMainComponent } from './about-main/about-main.component';
 import { APAbout4SectionComponent } from './about-main/sections/apabout4-section/apabout4-section.component';
@@ -31,6 +31,9 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     AccordionModule,
     CarouselModule,
     NgxSkeletonLoaderModule,
+  ],
+  providers: [
+    TitleCasePipe,
   ]
 })
 export class AboutUsModule { }
