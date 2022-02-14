@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { SeoService } from '@sharedModule/services/seo.service';
 import { SeoSocialShareService } from 'ngx-seo';
 import { Subscription } from 'rxjs';
@@ -15,7 +15,7 @@ import { AboutUsService } from '../about-us.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AboutMainComponent implements OnInit, AfterViewInit {
+export class AboutMainComponent implements OnInit, AfterViewInit, OnDestroy {
   private _retrieveAboutUsSEODetailsSubscription: Subscription | undefined;
 
   constructor(
@@ -30,6 +30,8 @@ export class AboutMainComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this._retrieveAboutUsSEODetails();
   }
+
+  ngOnDestroy(): void { }
 
   private _unsubscribeRetrieveAboutUsSEODetailsSubscription() {
     if (this._retrieveAboutUsSEODetailsSubscription instanceof Subscription) {
