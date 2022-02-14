@@ -35,6 +35,22 @@ export class SeoService {
     return formattedDetails;
   }
 
+  retrieveAboutUsSEODetails$() {
+    const API = environment.baseURL
+      + environment.aboutUs.rootURL
+      + environment.aboutUs.seo;
+
+    return this._httpClient.get<SeoDetailsHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = this.formatSEODetails(details)
+
+          return formattedDetails;
+        })
+      )
+  }
+
   retrieveHomeSEODetails$() {
     const API = environment.baseURL
       + environment.home.rootURL
