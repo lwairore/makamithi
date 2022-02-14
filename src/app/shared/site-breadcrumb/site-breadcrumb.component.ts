@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SiteBreadcrumbComponent implements OnInit {
+export class SiteBreadcrumbComponent implements OnInit, OnDestroy {
   @Input() pageTitle = 'Blog';
 
   siteBreadcrumbDetails = Immutable.fromJS({});
@@ -22,6 +22,8 @@ export class SiteBreadcrumbComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void { }
 
   private _unsubscribeRetrieveSiteBreadcrumbDetailsSubscription() {
     if (this._retrieveSiteBreadcrumbDetailsSubscription instanceof Subscription) {
