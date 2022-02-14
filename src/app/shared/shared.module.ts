@@ -12,6 +12,7 @@ import { TopHeader2Component } from './header-style-two/sections/top-header2/top
 import { RouterModule } from '@angular/router';
 import { GPCtaSectionComponent } from './gpcta-section/gpcta-section.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -32,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule,
     RouterModule,
+    NgxSkeletonLoaderModule,
   ],
   exports: [
     SiteBreadcrumbComponent,
