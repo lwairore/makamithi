@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from '@sharedModule/services/seo.service';
 import { AboutUsService } from '../about-us.service';
 
 @Component({
@@ -12,7 +13,9 @@ import { AboutUsService } from '../about-us.service';
 })
 export class AboutMainComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _seoService: SeoService,
+  ) { }
 
   ngOnInit(): void {
   }
