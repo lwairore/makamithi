@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SeoService } from '@sharedModule/services/seo.service';
+import { SeoSocialShareService } from 'ngx-seo';
 import { AboutUsService } from '../about-us.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class AboutMainComponent implements OnInit {
 
   constructor(
     private _seoService: SeoService,
+    private _seoSocialShareService: SeoSocialShareService,
   ) { }
 
   ngOnInit(): void {
