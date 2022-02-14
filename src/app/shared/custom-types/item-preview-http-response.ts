@@ -1,0 +1,2 @@
+export interface ItemPreviewHttpResponse {
+}
