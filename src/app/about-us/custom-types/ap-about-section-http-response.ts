@@ -1,6 +1,6 @@
 import { ItemPreviewHttpResponse } from "@sharedModule/custom-types";
 
-export interface ApAboutSectionHttpResponse {
+export type ApAboutSectionHttpResponse = {
     heading?: string;
     subheading?: string;
     description?: string;
