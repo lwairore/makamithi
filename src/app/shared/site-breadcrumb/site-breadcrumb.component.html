@@ -1,16 +1,25 @@
 <div class="breadcrumb-area pt-160 pb-170"
-    [style.background-image]="'url('+ siteBreadcrumbDetails.getIn(['backgroundImage', 'src'])+')'">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="breadcrumb-text text-center">
-                    <h1>{{ pageTitle }}</h1>
-                    <ul class="breadcrumb-menu">
-                        <li><a routerLink="/">Home</a></li>
-                        <li><span>{{ pageTitle }}</span></li>
-                    </ul>
+    *ngIf="siteBreadcrumbDetails.isEmpty(); else siteBreadcrumbDetailsHasLoaded;">
+    <ngx-skeleton-loader [theme]="{
+        width: '100%',
+        height: '475px'
+    }"></ngx-skeleton-loader>
+</div>
+<ng-template #siteBreadcrumbDetailsHasLoaded>
+    <div class="breadcrumb-area pt-160 pb-170"
+        [style.background-image]="'url('+ siteBreadcrumbDetails.getIn(['backgroundImage', 'src'])+')'">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-text text-center">
+                        <h1>{{ pageTitle }}</h1>
+                        <ul class="breadcrumb-menu">
+                            <li><a routerLink="/">Home</a></li>
+                            <li><span>{{ pageTitle }}</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>
