@@ -23,7 +23,9 @@ export class AboutMainComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void { 
+    this._retrieveAboutUsSEODetails();
+  }
 
   private _retrieveAboutUsSEODetails() { }
 
