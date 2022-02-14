@@ -1,2 +1,2 @@
-export type ApAboutSectionFormatHttpResponse = {
-}
+export type ApAboutSectionFormatHttpResponse = Readonly<{
+}>
