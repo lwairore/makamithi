@@ -17,4 +17,7 @@ export class SiteBreadcrumbComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private _manuallyTriggerChangeDetection() {
+    this._changeDetectorRef.detectChanges();
+  }
 }
