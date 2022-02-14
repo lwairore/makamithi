@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SeoService } from '@sharedModule/services/seo.service';
 import { SeoSocialShareService } from 'ngx-seo';
