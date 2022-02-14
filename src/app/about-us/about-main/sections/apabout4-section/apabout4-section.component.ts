@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class APAbout4SectionComponent implements OnInit, OnDestroy {
+export class APAbout4SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   apAboutSectionDetails = Immutable.fromJS({});
 
   private _retrieveApAboutSectionSubscription: Subscription | undefined;
@@ -20,6 +20,8 @@ export class APAbout4SectionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void { }
 
   ngOnDestroy(): void {
     this._unsubscribeRetrieveApAboutSectionSubscription();
