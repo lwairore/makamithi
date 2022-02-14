@@ -40,4 +40,7 @@ export class SiteBreadcrumbComponent implements OnInit, AfterViewInit, OnDestroy
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
+
+  private _retrieveSiteBreadcrumbDetails() {
+  }
 }
