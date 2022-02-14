@@ -42,6 +42,14 @@ export class APAbout4SectionComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   private _retrieveApAboutSection() {
+    this._retrieveApAboutSectionSubscription = this._aboutUsService.retrieveApAboutSection$()
+      .subscribe(details => {
+        this.apAboutSectionDetails = Immutable.fromJS(details);
+
+        if (!this.apAboutSectionDetails.isEmpty()) {
+          this._manuallyTriggerChangeDetection();
+        }
+      }, (err) => console.error(err))
   }
 
 }
