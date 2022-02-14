@@ -1,2 +1,2 @@
-export interface FaqSectionHttpResponse {
+export type FaqSectionHttpResponse = {
 }
