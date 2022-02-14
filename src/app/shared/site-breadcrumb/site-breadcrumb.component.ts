@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
+import { HomeService } from 'src/app/home/home.service';
 
 @Component({
   selector: 'mak-pit-site-breadcrumb',
@@ -18,6 +19,7 @@ export class SiteBreadcrumbComponent implements OnInit, AfterViewInit, OnDestroy
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
+    private _homeService: HomeService,
   ) { }
 
   ngOnInit(): void {
