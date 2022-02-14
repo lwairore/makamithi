@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mak-pit-site-breadcrumb',
@@ -10,7 +10,9 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 export class SiteBreadcrumbComponent implements OnInit {
   @Input() pageTitle = 'Blog';
 
-  constructor() { }
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+  ) { }
 
   ngOnInit(): void {
   }
