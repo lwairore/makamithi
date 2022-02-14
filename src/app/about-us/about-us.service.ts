@@ -1,3 +1,4 @@
+import { TitleCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from '@sharedModule/custom-types';
@@ -14,6 +15,7 @@ export class AboutUsService {
 
   constructor(
     private _httpClient: HttpClient,
+    private _titleCasePipe: TitleCasePipe,
   ) { }
 
   private _formatShowcaseItemWithPhoto(
