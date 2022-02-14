@@ -31,7 +31,9 @@ export class AboutMainComponent implements OnInit, AfterViewInit, OnDestroy {
     this._retrieveAboutUsSEODetails();
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy(): void { 
+    this._unsubscribeRetrieveAboutUsSEODetailsSubscription();
+  }
 
   private _unsubscribeRetrieveAboutUsSEODetailsSubscription() {
     if (this._retrieveAboutUsSEODetailsSubscription instanceof Subscription) {
