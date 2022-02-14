@@ -19,4 +19,10 @@ export class APAbout4SectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private _unsubscribeRetrieveApAboutSectionSubscription() {
+    if (this._retrieveApAboutSectionSubscription instanceof Subscription) {
+      this._retrieveApAboutSectionSubscription.unsubscribe();
+    }
+  }
+
 }
