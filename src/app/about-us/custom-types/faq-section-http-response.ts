@@ -1,2 +1,2 @@
-export type FaqSectionHttpResponse = {
-}
+export type FaqSectionHttpResponse = Readonly<{
+}>
