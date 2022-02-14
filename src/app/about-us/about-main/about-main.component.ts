@@ -23,4 +23,6 @@ export class AboutMainComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private _retrieveAboutUsSEODetails() { }
+
 }
