@@ -35,4 +35,7 @@ export class APAbout4SectionComponent implements OnInit, OnDestroy {
     }
   }
 
+  private _retrieveApAboutSection() {
+  }
+
 }
