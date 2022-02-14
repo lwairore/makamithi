@@ -43,7 +43,7 @@ export class AboutUsService {
         retryWithBackoff(1000, 5),
         map(details => {
           const FORMATTED_DETAILS: ApAboutSectionFormatHttpResponse = {
-            heading: convertItemToString(details.heading),
+            heading: this._transformToTitleCase(convertItemToString(details.heading)),
             subheading: convertItemToString(details.subheading),
             description: convertItemToString(details.description),
             sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
