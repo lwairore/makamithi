@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { SeoDetailsHttpResponse } from './custom-types';
-import { retryWithBackoff } from './operators';
-import { constructMediaSrc, convertItemToString } from './utilities';
-import { ExpectedType, whichValueShouldIUse } from './utilities/which-value-should-i-use.util';
+import { SeoDetailsHttpResponse } from '../custom-types';
+import { retryWithBackoff } from '../operators';
+import { constructMediaSrc, convertItemToString } from '../utilities';
+import { ExpectedType, whichValueShouldIUse } from '../utilities/which-value-should-i-use.util';
 
 @Injectable({
   providedIn: 'root'
