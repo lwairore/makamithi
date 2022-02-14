@@ -1,4 +1,4 @@
-import { ItemPreviewFormatHttpResponse } from "./item-preview-format-http-response";
+import { ItemPreviewFormatHttpResponse } from "@sharedModule/custom-types";
 
 export type AboutSectionFormatHttpResponse = {
     heading: string;
