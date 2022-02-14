@@ -1,4 +1,4 @@
-export interface ItemPreviewHttpResponse {
+export type ItemPreviewHttpResponse = {
     image?: string;
     caption?: string;
 }
