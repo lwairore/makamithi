@@ -44,5 +44,14 @@ export class SiteBreadcrumbComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   private _retrieveSiteBreadcrumbDetails() {
+    this._retrieveSiteBreadcrumbDetailsSubscription = this._siteBreadcrumbService
+      .retrieveSiteBreadcrumbDetails$()
+      .subscribe(details => {
+        this.siteBreadcrumbDetails = Immutable.fromJS(details);
+
+        if (!this.siteBreadcrumbDetails.isEmpty()) {
+          this._manuallyTriggerChangeDetection();
+        }
+      }, err => console.error(err))
   }
 }
