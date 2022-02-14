@@ -1,8 +1,7 @@
 import { Location } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { SeoService } from '@sharedModule/seo.service';
-import * as Immutable from 'immutable';
-import { SeoSocialShareData, SeoSocialShareService } from 'ngx-seo';
+import { SeoService } from '@sharedModule/services/seo.service';
+import { SeoSocialShareService } from 'ngx-seo';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HomeService } from '../home.service';
