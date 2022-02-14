@@ -21,7 +21,9 @@ export class APAbout4SectionComponent implements OnInit, AfterViewInit, OnDestro
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void { 
+    this._retrieveApAboutSection();
+  }
 
   ngOnDestroy(): void {
     this._unsubscribeRetrieveApAboutSectionSubscription();
