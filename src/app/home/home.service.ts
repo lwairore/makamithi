@@ -114,12 +114,12 @@ export class HomeService {
   }
 
   retrieveVisitNowCtaSection$() {
-    const api = environment.baseURL +
+    const API = environment.baseURL +
       environment.home.rootURL +
       environment.home.visitNowCtaSection;
 
     return this._httpClient.get<VisitNowCtaSectionHttpResponse>(
-      api)
+      API)
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
