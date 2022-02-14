@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { SiteBreadcrumbService } from '@sharedModule/services/site-breadcrumb.service';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
@@ -18,6 +19,7 @@ export class SiteBreadcrumbComponent implements OnInit, AfterViewInit, OnDestroy
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
+    private _siteBreadcrumbService: SiteBreadcrumbService,
   ) { }
 
   ngOnInit(): void {
