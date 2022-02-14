@@ -23,7 +23,9 @@ export class SiteBreadcrumbComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy(): void {
+    this._unsubscribeRetrieveSiteBreadcrumbDetailsSubscription();
+  }
 
   private _unsubscribeRetrieveSiteBreadcrumbDetailsSubscription() {
     if (this._retrieveSiteBreadcrumbDetailsSubscription instanceof Subscription) {
