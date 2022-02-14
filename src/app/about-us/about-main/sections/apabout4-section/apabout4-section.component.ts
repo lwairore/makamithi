@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
@@ -14,7 +14,9 @@ export class APAbout4SectionComponent implements OnInit, OnDestroy {
 
   private _retrieveApAboutSectionSubscription: Subscription | undefined;
 
-  constructor() { }
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+  ) { }
 
   ngOnInit(): void {
   }
