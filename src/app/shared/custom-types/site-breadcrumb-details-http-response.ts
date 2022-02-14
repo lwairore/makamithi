@@ -1,2 +1,2 @@
-export interface SiteBreadcrumbDetailsHttpResponse {
+export type SiteBreadcrumbDetailsHttpResponse = {
 }
