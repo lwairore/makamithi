@@ -70,6 +70,9 @@ export class FaqComponent implements OnInit, AfterViewInit, OnDestroy {
         })),
     ])
       .subscribe(_ => {
+        if (!this.faqSectionDetails.isEmpty()) {
+          this._manuallyTriggerChangeDetection();
+        }
       }, err => console.error(err))
 
   }
