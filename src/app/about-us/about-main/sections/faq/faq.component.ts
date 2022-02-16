@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AboutUsService} from '../../../about-us.service';
 
 @Component({
   selector: 'mak-pit-faq',
@@ -24,7 +25,9 @@ export class FaqComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(
+    private _aboutUsService: AboutUsService
+  ) { }
 
   ngOnInit(): void {
   }
