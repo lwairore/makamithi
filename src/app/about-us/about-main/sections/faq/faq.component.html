@@ -12,11 +12,11 @@
 
                     <!-- Accordion Start -->
                     <mak-pit-accordion [collapsing]="collapsing">
-                        <makPitAccordionItem [title]="faq.title" *ngFor="let faq of faqs">
+                        <makPitAccordionItem [title]="faq.get('question')" *ngFor="let faq of faqs">
                             <ng-template makPitAccordionContent>
                                 <div class="accordion__panel">
                                     <p>
-                                        {{ faq.description }}
+                                        {{ faq.get('answer') }}
                                     </p>
                                 </div>
                             </ng-template>
