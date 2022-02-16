@@ -35,4 +35,10 @@ export class FaqComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  private _unsubscribeLoadRequiredDetailsSubscription() {
+    if (this._loadRequiredDetailsSubscription instanceof Subscription) {
+      this._loadRequiredDetailsSubscription.unsubscribe();
+    }
+  }
+
 }
