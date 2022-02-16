@@ -1,2 +1,2 @@
-export interface WhatWeDoSectionHttpResponse {
+export type WhatWeDoSectionHttpResponse = {
 }
