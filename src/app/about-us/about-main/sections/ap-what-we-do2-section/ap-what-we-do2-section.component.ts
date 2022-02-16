@@ -54,7 +54,9 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDes
     this._loadRequiredDetails();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this._unsubscribeLoadRequiredDetailsSubscription();
+  }
 
   private _unsubscribeLoadRequiredDetailsSubscription() {
     if (this._loadRequiredDetailsSubscription instanceof Subscription) {
