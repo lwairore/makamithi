@@ -1,5 +1,6 @@
 <div class="faq-area gray2-bg pt-105 pb-100">
-    <div class="faq-img d-none d-md-block" [style.background-image]="'url(assets/img/bg/bg13.jpg)'"></div>
+    <div class="faq-img d-none d-md-block"
+        [style.background-image]="'url('+faqSectionDetails.getIn(['backgroundImage', 'src'])+')'"></div>
 
     <div class="container-fluid">
         <div class="row">
