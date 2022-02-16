@@ -233,7 +233,7 @@ export class HomeService {
   listOurFeature$() {
     const api = environment.baseURL +
       environment.service.rootURL +
-      environment.service.ourFeature;
+      environment.service.ourFeatureHome;
 
     return this._httpClient.get<Array<ServiceHttpResponse>>(api)
       .pipe(
