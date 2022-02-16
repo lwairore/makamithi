@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AboutUsService } from '../../../about-us.service';
 
@@ -29,7 +29,8 @@ export class FaqComponent implements OnInit, OnDestroy {
   ]
 
   constructor(
-    private _aboutUsService: AboutUsService
+    private _aboutUsService: AboutUsService,
+    private _changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
