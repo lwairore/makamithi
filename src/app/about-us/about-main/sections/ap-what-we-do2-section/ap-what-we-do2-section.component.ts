@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 import { AboutUsService } from 'src/app/about-us/about-us.service';
@@ -10,7 +10,7 @@ import { AboutUsService } from 'src/app/about-us/about-us.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit {
+export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   listService = [
     {
       image: 'assets/img/icon/icon1.png',
@@ -54,12 +54,14 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit {
     this._loadRequiredDetails();
   }
 
+  ngOnDestroy(): void {}
+
   private _unsubscribeLoadRequiredDetailsSubscription() {
     if (this._loadRequiredDetailsSubscription instanceof Subscription) {
       this._loadRequiredDetailsSubscription.unsubscribe();
     }
   }
-  
+
   private _loadRequiredDetails() { }
 
 }
