@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AboutUsService } from '../../../about-us.service';
 
@@ -9,7 +9,7 @@ import { AboutUsService } from '../../../about-us.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FaqComponent implements OnInit, OnDestroy {
+export class FaqComponent implements OnInit, AfterViewInit, OnDestroy {
   collapsing = true;
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
@@ -37,7 +37,9 @@ export class FaqComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void { 
+  ngAfterViewInit(): void { }
+
+  ngOnDestroy(): void {
     this._unsubscribeLoadRequiredDetailsSubscription();
   }
 
@@ -52,6 +54,6 @@ export class FaqComponent implements OnInit, OnDestroy {
   }
 
   private _loadRequiredDetails() {
-    
+
   }
 }
