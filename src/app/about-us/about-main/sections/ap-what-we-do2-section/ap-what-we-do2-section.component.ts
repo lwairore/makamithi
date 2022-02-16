@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 import { AboutUsService } from 'src/app/about-us/about-us.service';
 
@@ -37,6 +38,8 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt ut labore et dolore magna aliqua.'
     },
   ]
+
+  whatWeDoSectionDetails = Immutable.fromJS({});
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
