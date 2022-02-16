@@ -61,6 +61,7 @@ export class FaqComponent implements OnInit, AfterViewInit, OnDestroy {
       LIST_FAQS$.pipe(
         tap(details => {
           this.faqs = Immutable.fromJS(details);
+          console.log(this.faqs);
         })),
     ])
       .subscribe(_ => {

@@ -1,7 +1,7 @@
 import { ItemPreviewHttpResponse } from "@sharedModule/custom-types";
 
 export type ServiceHttpResponse = Readonly<{
-    photo?: ItemPreviewHttpResponse;
+    home_photo?: ItemPreviewHttpResponse;
     id?: number;
     title?: string;
     summary?: string;
