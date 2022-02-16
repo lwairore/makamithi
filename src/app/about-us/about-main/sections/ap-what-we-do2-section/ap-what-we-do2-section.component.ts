@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mak-pit-ap-what-we-do2-section',
   templateUrl: './ap-what-we-do2-section.component.html',
   styles: [
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ApWhatWeDo2SectionComponent implements OnInit {
   listService = [
