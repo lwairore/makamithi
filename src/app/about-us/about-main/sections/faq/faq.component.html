@@ -11,7 +11,7 @@
                     </div>
 
                     <!-- Accordion Start -->
-                    <mak-pit-accordion [collapsing]="collapsing">
+                    <mak-pit-accordion [collapsing]="collapsing" *ngIf="!faqs.isEmpty();">
                         <makPitAccordionItem [title]="faq.get('question')" *ngFor="let faq of faqs">
                             <ng-template makPitAccordionContent>
                                 <div class="accordion__panel">
