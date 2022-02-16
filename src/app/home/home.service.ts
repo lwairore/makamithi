@@ -247,7 +247,7 @@ export class HomeService {
               }
 
               const formattedItem: ServiceFormatHttpResponse = {
-                photo: this._formatShowcaseItemWithPhoto(item.photo),
+                homePhoto: this._formatShowcaseItemWithPhoto(item.home_photo),
                 title: convertItemToString(item.title),
                 summary: convertItemToString(item.summary),
                 id: itemID
