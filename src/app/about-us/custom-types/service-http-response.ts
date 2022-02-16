@@ -1,2 +1,2 @@
-export type ServiceHttpResponse = {
-}
+export type ServiceHttpResponse = Readonly<{
+}>
