@@ -49,6 +49,8 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this._loadRequiredDetails();
-   }
+  }
+
+  private _loadRequiredDetails() { }
 
 }
