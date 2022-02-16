@@ -50,4 +50,8 @@ export class FaqComponent implements OnInit, OnDestroy {
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
+
+  private _loadRequiredDetails() {
+    
+  }
 }
