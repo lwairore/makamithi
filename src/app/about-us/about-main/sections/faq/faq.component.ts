@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AboutUsService } from '../../../about-us.service';
 
@@ -6,7 +6,8 @@ import { AboutUsService } from '../../../about-us.service';
   selector: 'mak-pit-faq',
   templateUrl: './faq.component.html',
   styles: [
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FaqComponent implements OnInit, OnDestroy {
   collapsing = true;
