@@ -54,6 +54,12 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit {
     this._loadRequiredDetails();
   }
 
+  private _unsubscribeLoadRequiredDetailsSubscription() {
+    if (this._loadRequiredDetailsSubscription instanceof Subscription) {
+      this._loadRequiredDetailsSubscription.unsubscribe();
+    }
+  }
+  
   private _loadRequiredDetails() { }
 
 }
