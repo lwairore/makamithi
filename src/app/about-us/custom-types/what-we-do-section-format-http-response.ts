@@ -1,2 +1,2 @@
-export type WhatWeDoSectionFormatHttpResponse = {
-}
+export type WhatWeDoSectionFormatHttpResponse = Readonly<{
+}>
