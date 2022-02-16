@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AboutUsService } from 'src/app/about-us/about-us.service';
 
 @Component({
   selector: 'mak-pit-ap-what-we-do2-section',
@@ -36,7 +37,9 @@ export class ApWhatWeDo2SectionComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(
+    private _aboutUsService: AboutUsService,
+  ) { }
 
   ngOnInit(): void {
   }
