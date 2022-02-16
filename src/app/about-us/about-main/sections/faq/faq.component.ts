@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AboutUsService } from '../../../about-us.service';
 
@@ -8,7 +8,7 @@ import { AboutUsService } from '../../../about-us.service';
   styles: [
   ]
 })
-export class FaqComponent implements OnInit {
+export class FaqComponent implements OnInit, OnDestroy {
   collapsing = true;
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
@@ -34,6 +34,8 @@ export class FaqComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void { }
 
   private _unsubscribeLoadRequiredDetailsSubscription() {
     if (this._loadRequiredDetailsSubscription instanceof Subscription) {
