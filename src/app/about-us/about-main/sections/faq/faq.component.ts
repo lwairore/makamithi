@@ -63,14 +63,21 @@ export class FaqComponent implements OnInit, AfterViewInit, OnDestroy {
     const FAQ_SECTION_DETAILS$ = this._aboutUsService
       .retrieveFaqSection$();
 
+    const LIST_FAQS$ = this._aboutUsService
+      .listFaq$();
+
     this._loadRequiredDetailsSubscription = forkJoin([
       FAQ_SECTION_DETAILS$.pipe(
         tap(details => {
           this.faqSectionDetails = Immutable.fromJS(details);
         })),
+      LIST_FAQS$.pipe(
+        tap(details => {
+          this.faqs = Immutable.fromJS(details);
+        })),
     ])
       .subscribe(_ => {
-        if (!this.faqSectionDetails.isEmpty()) {
+        if (!this.faqSectionDetails.isEmpty() || !this.faqs.isEmpty()) {
           this._manuallyTriggerChangeDetection();
         }
       }, err => console.error(err))
