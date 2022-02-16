@@ -37,7 +37,9 @@ export class FaqComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    this._loadRequiredDetails();
+   }
 
   ngOnDestroy(): void {
     this._unsubscribeLoadRequiredDetailsSubscription();
