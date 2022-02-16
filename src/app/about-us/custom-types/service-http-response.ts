@@ -4,4 +4,5 @@ export type ServiceHttpResponse = Readonly<{
     about_photo?: ItemPreviewHttpResponse;
     id?: number;
     title?: string;
+    summary?: string;
 }>
