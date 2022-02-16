@@ -4,3 +4,4 @@ export { FaqSectionHttpResponse } from './faq-section-http-response';
 export { FaqSectionFormatHttpResponse } from './faq-section-format-http-response';
 export { FaqHttpResponse } from './faq-http-response';
 export { ServiceFormatHttpResponse } from './service-format-http-response';
+export { ServiceHttpResponse } from './service-http-response';
