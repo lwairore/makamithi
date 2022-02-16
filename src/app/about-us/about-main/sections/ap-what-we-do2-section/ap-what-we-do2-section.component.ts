@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AboutUsService } from 'src/app/about-us/about-us.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { AboutUsService } from 'src/app/about-us/about-us.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ApWhatWeDo2SectionComponent implements OnInit {
+export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit {
   listService = [
     {
       image: 'assets/img/icon/icon1.png',
@@ -43,5 +43,7 @@ export class ApWhatWeDo2SectionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void { }
 
 }
