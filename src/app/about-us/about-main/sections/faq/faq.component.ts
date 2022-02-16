@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AboutUsService} from '../../../about-us.service';
+import { Subscription } from 'rxjs';
+import { AboutUsService } from '../../../about-us.service';
 
 @Component({
   selector: 'mak-pit-faq',
@@ -9,6 +10,8 @@ import {AboutUsService} from '../../../about-us.service';
 })
 export class FaqComponent implements OnInit {
   collapsing = true;
+
+  private _loadRequiredDetailsSubscription: Subscription | undefined;
 
   faqs = [
     {
