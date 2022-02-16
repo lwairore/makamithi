@@ -14,6 +14,8 @@ import { AboutUsService } from '../../../about-us.service';
 export class FaqComponent implements OnInit, AfterViewInit, OnDestroy {
   collapsing = true;
 
+  faqSectionDetails = Immutable.fromJS({});
+
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
   faqs = [
