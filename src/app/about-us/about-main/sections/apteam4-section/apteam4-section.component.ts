@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 import { AboutUsService } from 'src/app/about-us/about-us.service';
@@ -19,6 +19,7 @@ export class APTeam4SectionComponent implements OnInit {
 
   constructor(
     private _aboutUsService: AboutUsService,
+    private _changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
