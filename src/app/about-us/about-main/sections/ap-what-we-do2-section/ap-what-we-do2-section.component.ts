@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
-import { Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { AboutUsService } from 'src/app/about-us/about-us.service';
 
 @Component({
@@ -64,6 +65,30 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDes
     }
   }
 
-  private _loadRequiredDetails() { }
+  private _loadRequiredDetails() {
+    const WHAT_WE_DO_SECTION_DETAILS$ = this._aboutUsService
+      .retrieveFaqSection$();
+
+    const LIST_FAQS$ = this._aboutUsService
+      .listFaq$();
+
+    this._loadRequiredDetailsSubscription = forkJoin([
+      WHAT_WE_DO_SECTION_DETAILS$.pipe(
+        tap(details => {
+          this.faqSectionDetails = Immutable.fromJS(details);
+        })),
+      LIST_FAQS$.pipe(
+        tap(details => {
+          this.faqs = Immutable.fromJS(details);
+          console.log(this.faqs);
+        })),
+    ])
+      .subscribe(_ => {
+        if (!this.faqSectionDetails.isEmpty() || !this.faqs.isEmpty()) {
+          this._manuallyTriggerChangeDetection();
+        }
+      }, err => console.error(err))
+
+  }
 
 }
