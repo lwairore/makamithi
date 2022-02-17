@@ -1,2 +1,2 @@
-export interface AreaSectionHttpResponse {
+export type AreaSectionHttpResponse = {
 }
