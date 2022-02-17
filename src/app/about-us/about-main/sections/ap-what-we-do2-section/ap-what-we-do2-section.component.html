@@ -4,8 +4,8 @@
             <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
                 <div class="section-title text-center section-circle mb-70">
                     <div class="section-img">
-                        <img [src]="whatWeDoSectionDetails.getIn(['aboutPhoto', 'src'])"
-                            [alt]="whatWeDoSectionDetails.getIn(['aboutPhoto', 'alt'])">
+                        <img [src]="whatWeDoSectionDetails.getIn(['sectionImage', 'src'])"
+                            [alt]="whatWeDoSectionDetails.getIn(['sectionImage', 'alt'])">
                     </div>
                     <h1>
                         {{ whatWeDoSectionDetails.get('title') }}
@@ -20,14 +20,14 @@
             <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let service of listService;">
                 <div class="we-do-wrapper text-center mb-30">
                     <div class="we-do-img">
-                        <img [src]="service.image" alt="icon">
+                        <img [src]="service.getIn(['aboutPhoto','src'])" [alt]="service.getIn(['aboutPhoto','alt'])">
                     </div>
                     <div class="we-do-text">
                         <h4>
-                            <a routerLink="/services/services-details">{{ service.title | slice: 0:17}}</a>
+                            <a routerLink="/services/services-details">{{ service.get('title') | slice: 0:17}}</a>
                         </h4>
                         <p>
-                            {{ service.description }}
+                            {{ service.get('summary') }}
                         </p>
                         <a routerLink="/services/services-details">Read More <i
                                 class="dripicons-arrow-thin-right"></i></a>
