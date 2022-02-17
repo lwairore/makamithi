@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mak-pit-apteam4-section',
@@ -8,6 +9,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class APTeam4SectionComponent implements OnInit {
+
+  private _loadRequiredDetailsSubscription: Subscription | undefined;
 
   constructor() { }
 
