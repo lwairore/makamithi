@@ -7,6 +7,8 @@ import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse, FaqHttpResponse, FaqSectionFormatHttpResponse, FaqSectionHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
+import { WhatWeDoSectionFormatHttpResponse } from './custom-types/what-we-do-section-format-http-response';
+import { WhatWeDoSectionHttpResponse } from './custom-types/what-we-do-section-http-response';
 
 @Injectable({
   providedIn: 'root'
@@ -37,14 +39,17 @@ export class AboutUsService {
       environment.aboutUs.rootURL +
       environment.aboutUs.retrieveWhatWeDoSection;
 
-    return this._httpClient.get<FaqSectionHttpResponse>(API)
+    return this._httpClient.get<WhatWeDoSectionHttpResponse>(API)
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          const FORMATTED_DETAILS: FaqSectionFormatHttpResponse = {
-            title: convertItemToString(details.title),
-            backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
+          const FORMATTED_DETAILS: WhatWeDoSectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
+            summary: convertItemToString(details.summary),
+            sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
           }
+
+          console.log({ FORMATTED_DETAILS })
 
           return FORMATTED_DETAILS;
         })
