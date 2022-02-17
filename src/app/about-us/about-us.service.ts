@@ -32,6 +32,25 @@ export class AboutUsService {
     return formattedPhoto;
   }
 
+  retrieveWhatWeDoSection$() {
+    const API = environment.baseURL +
+      environment.aboutUs.rootURL +
+      environment.aboutUs.retrieveWhatWeDoSection;
+
+    return this._httpClient.get<FaqSectionHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS: FaqSectionFormatHttpResponse = {
+            title: convertItemToString(details.title),
+            backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
+          }
+
+          return FORMATTED_DETAILS;
+        })
+      )
+  }
+
   retrieveFaqSection$() {
     const API = environment.baseURL +
       environment.aboutUs.rootURL +
