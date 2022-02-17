@@ -54,6 +54,28 @@ export class AboutUsService {
       )
   }
 
+  retrieveTeamAreaSection$() {
+    const API = environment.baseURL +
+      environment.aboutUs.rootURL +
+      environment.aboutUs.retrieveTeamAreaSection;
+
+    return this._httpClient.get<AreaSectionHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
+            summary: convertItemToString(details.summary),
+            sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
+          }
+
+          console.log({ FORMATTED_DETAILS })
+
+          return FORMATTED_DETAILS;
+        })
+      )
+  }
+
   retrieveFaqSection$() {
     const API = environment.baseURL +
       environment.aboutUs.rootURL +
