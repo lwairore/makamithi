@@ -12,6 +12,8 @@ import { Subscription } from 'rxjs';
 export class APTeam4SectionComponent implements OnInit {
   listTeam = Immutable.fromJS([]);
 
+  teamAreaSectionDetails = Immutable.fromJS({});
+
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
   constructor() { }
