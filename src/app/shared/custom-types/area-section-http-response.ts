@@ -1,2 +1,2 @@
-export type AreaSectionHttpResponse = {
-}
+export type AreaSectionHttpResponse = Readonly<{
+}>
