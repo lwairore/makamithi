@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
+import { AboutUsService } from 'src/app/about-us/about-us.service';
 
 @Component({
   selector: 'mak-pit-apteam4-section',
@@ -16,7 +17,9 @@ export class APTeam4SectionComponent implements OnInit {
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
-  constructor() { }
+  constructor(
+    private _aboutUsService: AboutUsService,
+  ) { }
 
   ngOnInit(): void {
   }
