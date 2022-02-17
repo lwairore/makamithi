@@ -25,6 +25,13 @@ export class APTeam4SectionComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
+  private _unsubscribeLoadRequiredDetailsSubscription() {
+    if (this._loadRequiredDetailsSubscription instanceof Subscription) {
+      this._loadRequiredDetailsSubscription.unsubscribe();
+    }
+  }
+
+
   ngAfterViewInit(): void {
     this._loadRequiredDetails();
   }
