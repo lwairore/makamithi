@@ -42,7 +42,7 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDes
 
   private _loadRequiredDetails() {
     const WHAT_WE_DO_SECTION_DETAILS$ = this._aboutUsService
-      .retrieveFaqSection$();
+      .retrieveWhatWeDoSection$();
 
     const LIST_SERVICE$ = this._aboutUsService
       .listOurFeature$();
