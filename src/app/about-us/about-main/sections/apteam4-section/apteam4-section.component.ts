@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 import { AboutUsService } from 'src/app/about-us/about-us.service';
@@ -10,7 +10,7 @@ import { AboutUsService } from 'src/app/about-us/about-us.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class APTeam4SectionComponent implements OnInit {
+export class APTeam4SectionComponent implements OnInit, AfterViewInit {
   listTeam = Immutable.fromJS([]);
 
   teamAreaSectionDetails = Immutable.fromJS({});
@@ -23,6 +23,10 @@ export class APTeam4SectionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this._loadRequiredDetails();
   }
 
 }
