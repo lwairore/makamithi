@@ -1,13 +1,12 @@
 import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AreaSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from '@sharedModule/custom-types';
+import { AreaSectionFormatHttpResponse, AreaSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from '@sharedModule/custom-types';
 import { retryWithBackoff } from '@sharedModule/operators';
 import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse, FaqHttpResponse, FaqSectionFormatHttpResponse, FaqSectionHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
-import { WhatWeDoSectionFormatHttpResponse } from './custom-types/what-we-do-section-format-http-response';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +41,7 @@ export class AboutUsService {
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          const FORMATTED_DETAILS: WhatWeDoSectionFormatHttpResponse = {
+          const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
             heading: convertItemToString(details.heading),
             summary: convertItemToString(details.summary),
             sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
