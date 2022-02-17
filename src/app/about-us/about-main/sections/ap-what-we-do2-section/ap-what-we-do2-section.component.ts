@@ -69,22 +69,22 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDes
     const WHAT_WE_DO_SECTION_DETAILS$ = this._aboutUsService
       .retrieveFaqSection$();
 
-    const LIST_FAQS$ = this._aboutUsService
-      .listFaq$();
+    const LIST_SERVICE$ = this._aboutUsService
+      .listOurFeature$();
 
     this._loadRequiredDetailsSubscription = forkJoin([
       WHAT_WE_DO_SECTION_DETAILS$.pipe(
         tap(details => {
-          this.faqSectionDetails = Immutable.fromJS(details);
+          this.whatWeDoSectionDetails = Immutable.fromJS(details);
         })),
-      LIST_FAQS$.pipe(
+      LIST_SERVICE$.pipe(
         tap(details => {
-          this.faqs = Immutable.fromJS(details);
-          console.log(this.faqs);
+          this.listService = Immutable.fromJS(details);
+          console.log(this.listService);
         })),
     ])
       .subscribe(_ => {
-        if (!this.faqSectionDetails.isEmpty() || !this.faqs.isEmpty()) {
+        if (!this.whatWeDoSectionDetails.isEmpty() || !this.listService.isEmpty()) {
           this._manuallyTriggerChangeDetection();
         }
       }, err => console.error(err))
