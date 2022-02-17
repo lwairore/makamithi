@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,6 +10,7 @@ import { Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class APTeam4SectionComponent implements OnInit {
+  listTeam = Immutable.fromJS([]);
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
