@@ -1,14 +1,13 @@
 import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from '@sharedModule/custom-types';
+import { AreaSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from '@sharedModule/custom-types';
 import { retryWithBackoff } from '@sharedModule/operators';
 import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse, FaqHttpResponse, FaqSectionFormatHttpResponse, FaqSectionHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
 import { WhatWeDoSectionFormatHttpResponse } from './custom-types/what-we-do-section-format-http-response';
-import { WhatWeDoSectionHttpResponse } from './custom-types/what-we-do-section-http-response';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +38,7 @@ export class AboutUsService {
       environment.aboutUs.rootURL +
       environment.aboutUs.retrieveWhatWeDoSection;
 
-    return this._httpClient.get<WhatWeDoSectionHttpResponse>(API)
+    return this._httpClient.get<AreaSectionHttpResponse>(API)
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
