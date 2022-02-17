@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import * as Immutable from 'immutable';
 import { forkJoin, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -20,6 +20,7 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDes
 
   constructor(
     private _aboutUsService: AboutUsService,
+    private _changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
