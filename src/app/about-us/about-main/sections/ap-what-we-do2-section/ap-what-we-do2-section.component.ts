@@ -62,7 +62,10 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDes
           this._manuallyTriggerChangeDetection();
         }
       }, err => console.error(err))
+  }
 
+  private _manuallyTriggerChangeDetection() {
+    this._changeDetectorRef.detectChanges();
   }
 
 }
