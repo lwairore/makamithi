@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from '@sharedModule/custom-types';
 import { retryWithBackoff } from '@sharedModule/operators';
-import { constructMediaSrc, convertItemToString } from '@sharedModule/utilities';
+import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse, FaqHttpResponse, FaqSectionFormatHttpResponse, FaqSectionHttpResponse } from './custom-types';
+import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse, FaqHttpResponse, FaqSectionFormatHttpResponse, FaqSectionHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
 
 @Injectable({
   providedIn: 'root'
@@ -110,6 +110,37 @@ export class AboutUsService {
           }
 
           return FORMATTED_DETAILS;
+        })
+      )
+  }
+
+  listOurFeature$() {
+    const api = environment.baseURL +
+      environment.service.rootURL +
+      environment.service.ourFeatureAbout;
+
+    return this._httpClient.get<Array<ServiceHttpResponse>>(api)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = details.map(
+            item => {
+              const itemID = convertItemToNumeric(item.id);
+              if (!isANumber(itemID)) {
+                return null;
+              }
+
+              const formattedItem: ServiceFormatHttpResponse = {
+                aboutPhoto: this._formatShowcaseItemWithPhoto(item.about_photo),
+                title: convertItemToString(item.title),
+                summary: convertItemToString(item.summary),
+                id: itemID
+              };
+
+              return formattedItem;
+            }).filter(item => !isObjectEmpty(item));
+
+          return formattedDetails;
         })
       )
   }
