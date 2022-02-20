@@ -6,7 +6,7 @@ import { retryWithBackoff } from '@sharedModule/operators';
 import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse, FaqHttpResponse, FaqSectionFormatHttpResponse, FaqSectionHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse } from './custom-types';
+import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse, FaqHttpResponse, FaqSectionFormatHttpResponse, FaqSectionHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, TeamFormatHttpResponse, TeamHttpResponse } from './custom-types';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +69,35 @@ export class AboutUsService {
             sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
           }
 
+          console.log({ FORMATTED_DETAILS })
+
+          return FORMATTED_DETAILS;
+        })
+      )
+  }
+
+  listTeam$() {
+    const API = environment.baseURL +
+      environment.team.rootURL +
+      environment.team.listTeam;
+
+    return this._httpClient.get<Array<TeamHttpResponse>>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS = details.map(detail => {
+            const FORMATTED_DETAIL: TeamFormatHttpResponse = {
+              fullName: convertItemToString(detail.full_name),
+              role: convertItemToString(detail.role),
+              image: this._formatShowcaseItemWithPhoto(detail.image),
+              contacts: {
+                facebook: convertItemToString(detail.facebook),
+                twitter: convertItemToString(detail.twitter),
+              }
+            }
+
+            return FORMATTED_DETAIL;
+          })
           console.log({ FORMATTED_DETAILS })
 
           return FORMATTED_DETAILS;
