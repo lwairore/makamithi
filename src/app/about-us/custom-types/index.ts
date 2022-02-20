@@ -6,3 +6,4 @@ export { FaqHttpResponse } from './faq-http-response';
 export { ServiceFormatHttpResponse } from './service-format-http-response';
 export { ServiceHttpResponse } from './service-http-response';
 export { TeamHttpResponse } from './team-http-response';
+export { TeamFormatHttpResponse } from './team-format-http-response';
