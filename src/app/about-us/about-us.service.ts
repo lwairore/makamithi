@@ -1,12 +1,33 @@
 import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AreaSectionFormatHttpResponse, AreaSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from '@sharedModule/custom-types';
+import {
+  AreaSectionFormatHttpResponse,
+  AreaSectionHttpResponse,
+  ItemPreviewFormatHttpResponse,
+  ItemPreviewHttpResponse
+} from '@sharedModule/custom-types';
 import { retryWithBackoff } from '@sharedModule/operators';
-import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty } from '@sharedModule/utilities';
+import {
+  constructMediaSrc,
+  convertItemToNumeric,
+  convertItemToString,
+  isANumber,
+  isObjectEmpty
+} from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ApAboutSectionFormatHttpResponse, ApAboutSectionHttpResponse, FaqHttpResponse, FaqSectionFormatHttpResponse, FaqSectionHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, TeamFormatHttpResponse, TeamHttpResponse } from './custom-types';
+import {
+  ApAboutSectionFormatHttpResponse,
+  ApAboutSectionHttpResponse,
+  ClientReviewFormatHttpResponse,
+  ClientReviewHttpResponse,
+  FaqHttpResponse,
+  ServiceFormatHttpResponse,
+  ServiceHttpResponse,
+  TeamFormatHttpResponse,
+  TeamHttpResponse
+} from './custom-types';
 
 @Injectable({
   providedIn: 'root'
@@ -105,17 +126,66 @@ export class AboutUsService {
       )
   }
 
+  listClientReview$() {
+    const API = environment.baseURL +
+      environment.aboutUs.rootURL +
+      environment.aboutUs.listClientReview;
+
+    return this._httpClient.get<Array<ClientReviewHttpResponse>>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS = details.map(detail => {
+            const FORMATTED_DETAIL: ClientReviewFormatHttpResponse = {
+              fullName: convertItemToString(detail.full_name),
+              review: convertItemToString(detail.review),
+              position: convertItemToString(detail.position),
+              image: this._formatShowcaseItemWithPhoto(detail.image),
+            }
+
+            return FORMATTED_DETAIL;
+          })
+          console.log({ FORMATTED_DETAILS })
+
+          return FORMATTED_DETAILS;
+        })
+      )
+  }
+
+  retrieveClientReviewSection$() {
+    const API = environment.baseURL +
+      environment.aboutUs.rootURL +
+      environment.aboutUs.retrieveClientReviewSection;
+
+    return this._httpClient.get<AreaSectionHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
+            summary: convertItemToString(details.summary),
+            sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
+            backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
+          }
+
+          console.log({ FORMATTED_DETAILS })
+
+          return FORMATTED_DETAILS;
+        })
+      )
+  }
+
   retrieveFaqSection$() {
     const API = environment.baseURL +
       environment.aboutUs.rootURL +
       environment.aboutUs.retrieveFaqSection;
 
-    return this._httpClient.get<FaqSectionHttpResponse>(API)
+    return this._httpClient.get<AreaSectionHttpResponse>(API)
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          const FORMATTED_DETAILS: FaqSectionFormatHttpResponse = {
-            title: convertItemToString(details.title),
+          const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
             backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
           }
 

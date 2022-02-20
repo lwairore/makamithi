@@ -30,17 +30,15 @@ export class APTeam4SectionComponent implements OnInit, AfterViewInit, OnDestroy
     this._unsubscribeLoadRequiredDetailsSubscription();
   }
 
+  ngAfterViewInit(): void {
+    this._loadRequiredDetails();
+  }
+
   private _unsubscribeLoadRequiredDetailsSubscription() {
     if (this._loadRequiredDetailsSubscription instanceof Subscription) {
       this._loadRequiredDetailsSubscription.unsubscribe();
     }
   }
-
-
-  ngAfterViewInit(): void {
-    this._loadRequiredDetails();
-  }
-
 
   private _loadRequiredDetails() {
     const TEAM_AREA_SECTION_DETAILS$ = this._aboutUsService
