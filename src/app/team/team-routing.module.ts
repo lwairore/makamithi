@@ -6,8 +6,13 @@ import { TeamMainComponent } from './team-main/team-main.component';
 const routes: Routes = [
   {
     path: '',
-    component: TeamMainComponent,
-  }
+    redirectTo: '1',
+  },
+  {
+    path: ':pageNumber',
+    component: TeamMainComponent
+  },
+
 ];
 
 @NgModule({
