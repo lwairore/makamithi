@@ -4,3 +4,8 @@ export { ItemPreviewHttpResponse } from './item-preview-http-response';
 export { ItemPreviewFormatHttpResponse } from './item-preview-format-http-response';
 export { AreaSectionFormatHttpResponse } from './area-section-format-http-response';
 export { AreaSectionHttpResponse } from './area-section-http-response';
+export { ProductFormatHttpResponse } from './product-format-http-response';
+export { ProductHttpResponse } from './product-http-response';
+export { TeamFormatHttpResponse } from './team-format-http-response';
+export { TeamHttpResponse } from './team-http-response';
+export { PaginatedItemHttpResponse } from './paginated-item-http-response';
