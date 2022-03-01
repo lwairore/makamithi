@@ -1,6 +1,6 @@
 import { ItemPreviewFormatHttpResponse } from "@sharedModule/custom-types";
 
 export type HomeGalleryFormatHttpResponse = Readonly<{
-    image: ItemPreviewFormatHttpResponse;
+    homePreview: ItemPreviewFormatHttpResponse;
     id: number;
 }>
