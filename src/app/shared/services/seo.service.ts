@@ -35,6 +35,54 @@ export class SeoService {
     return formattedDetails;
   }
 
+  retrieveShopSEODetails$() {
+    const API = environment.baseURL
+      + environment.shop.rootURL
+      + environment.shop.shopSeo;
+
+    return this._httpClient.get<SeoDetailsHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = this.formatSEODetails(details)
+
+          return formattedDetails;
+        })
+      )
+  }
+
+  retrieveGallerySEODetails$() {
+    const API = environment.baseURL
+      + environment.gallery.rootURL
+      + environment.gallery.gallerySeo;
+
+    return this._httpClient.get<SeoDetailsHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = this.formatSEODetails(details)
+
+          return formattedDetails;
+        })
+      )
+  }
+
+  retrieveServiceSEODetails$() {
+    const API = environment.baseURL
+      + environment.service.rootURL
+      + environment.service.serviceSeo;
+
+    return this._httpClient.get<SeoDetailsHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = this.formatSEODetails(details)
+
+          return formattedDetails;
+        })
+      )
+  }
+
   retrieveAboutUsSEODetails$() {
     const API = environment.baseURL
       + environment.aboutUs.rootURL
@@ -55,6 +103,38 @@ export class SeoService {
     const API = environment.baseURL
       + environment.home.rootURL
       + environment.home.seo;
+
+    return this._httpClient.get<SeoDetailsHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = this.formatSEODetails(details)
+
+          return formattedDetails;
+        })
+      )
+  }
+
+  retrieveTeamSEODetails$() {
+    const API = environment.baseURL
+      + environment.team.rootURL
+      + environment.team.seo;
+
+    return this._httpClient.get<SeoDetailsHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const formattedDetails = this.formatSEODetails(details)
+
+          return formattedDetails;
+        })
+      )
+  }
+
+  retrieveContactUsSEODetails$() {
+    const API = environment.baseURL
+      + environment.contactUs.rootURL
+      + environment.contactUs.seo;
 
     return this._httpClient.get<SeoDetailsHttpResponse>(API)
       .pipe(
