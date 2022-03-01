@@ -5,8 +5,12 @@ import { ContactsMainComponent } from './contacts-main/contacts-main.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':pageNumber',
     component: ContactsMainComponent
+  },
+  {
+    path: '',
+    redirectTo: '1'
   },
 ];
 
