@@ -14,7 +14,7 @@ const routes: Routes = [
         component: ServiceOneMainComponent,
       },
       {
-        path: 'services-details',
+        path: ':serviceID/services-details',
         loadChildren: () => import('./services-details/services-details.module')
           .then(s => s.ServicesDetailsModule),
       },
