@@ -1,12 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse } from '@sharedModule/custom-types';
+import {
+  ItemPreviewFormatHttpResponse,
+  ItemPreviewHttpResponse,
+  ProductFormatHttpResponse,
+  ProductHttpResponse
+} from '@sharedModule/custom-types';
 import { retryWithBackoff } from '@sharedModule/operators';
-import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty, stringIsEmpty } from '@sharedModule/utilities';
-import { ExpectedType, whichValueShouldIUse } from '@sharedModule/utilities/which-value-should-i-use.util';
+import {
+  constructMediaSrc,
+  convertItemToNumeric,
+  convertItemToString,
+  ExpectedType,
+  isANumber,
+  isObjectEmpty,
+  whichValueShouldIUse,
+} from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { AboutSectionFormatHttpResponse, AboutSectionHttpResponse, CoreValueFormatHttpResponse, CoreValueHttpResponse, FeatureSectionFormatHttpResponse, FeatureSectionHttpResponse, GallerySectionFormatHttpResponse, GallerySectionHttpResponse, HomeGalleryFormatHttpResponse, HomeGalleryHttpResponse, ProductCategoryFormatHttpResponse, ProductCategoryHttpResponse, ProductFormatHttpResponse, ProductHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, VisitNowCtaSectionFormatHttpResponse, VisitNowCtaSectionHttpResponse, WhyChooseUsSectionFormatHttpResponse, WhyChooseUsSectionHttpResponse } from './custom-types';
+import {
+  AboutSectionFormatHttpResponse,
+  AboutSectionHttpResponse,
+  CoreValueFormatHttpResponse,
+  CoreValueHttpResponse,
+  FeatureSectionFormatHttpResponse,
+  FeatureSectionHttpResponse,
+  GallerySectionFormatHttpResponse,
+  GallerySectionHttpResponse,
+  HomeGalleryFormatHttpResponse,
+  HomeGalleryHttpResponse,
+  ProductCategoryFormatHttpResponse,
+  ProductCategoryHttpResponse,
+  ServiceFormatHttpResponse,
+  ServiceHttpResponse,
+  VisitNowCtaSectionFormatHttpResponse,
+  VisitNowCtaSectionHttpResponse,
+  WhyChooseUsSectionFormatHttpResponse,
+  WhyChooseUsSectionHttpResponse
+} from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
 
@@ -36,7 +67,8 @@ export class HomeService {
 
     return this._httpClient.get<Array<BannerAdHttpResponse>>(
       api).pipe(
-        retryWithBackoff<Array<BannerAdHttpResponse>>(1000, 5),
+        retryWithBackoff<Array<BannerAdHttpResponse>>(1000,
+          5),
         map(ads => {
           const formattedAds = ads.map(ad => {
             const formattedAd: BannerAdFormatHttpResponse = {
@@ -53,10 +85,10 @@ export class HomeService {
       );
   }
 
-  listProduct$(productCategoryID: string) {
+  listProductForACategory$(productCategoryID: string) {
     const api = (environment.baseURL +
       environment.shop.rootURL +
-      environment.shop.listProduct)
+      environment.shop.listProductForACategory)
       .replace(':productCategoryID',
         productCategoryID);
 
@@ -71,8 +103,9 @@ export class HomeService {
             }
 
             const formattedDetail: ProductFormatHttpResponse = {
+              totalSales: whichValueShouldIUse(detail.total_sales, 0, ExpectedType.NUMBER),
               title: convertItemToString(detail.title),
-              photo: this._formatShowcaseItemWithPhoto(detail.photo),
+              productPreview: this._formatShowcaseItemWithPhoto(detail.product_preview),
               id: detailID,
               price: whichValueShouldIUse(detail.price, 0, ExpectedType.NUMBER),
             }
@@ -187,7 +220,7 @@ export class HomeService {
   listHomeGallerySection$() {
     const API = environment.baseURL
       + environment.gallery.rootURL
-      + environment.gallery.listHomeGallery;
+      + environment.gallery.listGalleryForHomeSection;
 
     return this._httpClient.get<Array<HomeGalleryHttpResponse>>(API)
       .pipe(
@@ -200,7 +233,7 @@ export class HomeService {
             }
 
             const FORMATTED_DETAIL: HomeGalleryFormatHttpResponse = {
-              image: this._formatShowcaseItemWithPhoto(detail.image),
+              homePreview: this._formatShowcaseItemWithPhoto(detail.home_preview),
               id: DETAIL_ID
             };
 
