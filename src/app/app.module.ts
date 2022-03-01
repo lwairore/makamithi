@@ -12,7 +12,7 @@ import { ErrorSectionComponent } from './page-not-found/sections/error-section/e
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    ErrorSectionComponent
+    ErrorSectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +22,6 @@ import { ErrorSectionComponent } from './page-not-found/sections/error-section/e
     SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
