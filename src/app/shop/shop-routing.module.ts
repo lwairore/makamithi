@@ -11,10 +11,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        redirectTo: '1',
+      },
+      {
+        path: ':pageNumber',
         component: ShopMainComponent,
       },
       {
-        path: 'shop-details',
+        path: ':productID/shop-details',
         loadChildren: () => import('./shop-details/shop-details.module')
           .then(s => s.ShopDetailsModule),
       },
