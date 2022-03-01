@@ -13,6 +13,11 @@ import { RouterModule } from '@angular/router';
 import { GPCtaSectionComponent } from './gpcta-section/gpcta-section.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { GenerateFakeObjectsPipe } from './pipes/generate-fake-objects.pipe';
+import { ImgLazyComponent } from './img-lazy/img-lazy.component';
+import { DynamicallySetHeightUsingScrollHeightDirective } from './directives/dynamically-set-height-using-scroll-height.directive';
+import { DisplayFormFieldErrorsComponent } from './display-form-field-errors/display-form-field-errors.component';
+import { AjaxButtonComponent } from './ajax-button/ajax-button.component';
 
 
 
@@ -28,6 +33,11 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     TopHeader2Component,
     StickyHeaderComponent,
     GPCtaSectionComponent,
+    GenerateFakeObjectsPipe,
+    ImgLazyComponent,
+    DynamicallySetHeightUsingScrollHeightDirective,
+    DisplayFormFieldErrorsComponent,
+    AjaxButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +50,11 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     HeaderComponent,
     HeaderStyleTwoComponent,
     GPCtaSectionComponent,
+    GenerateFakeObjectsPipe,
+    ImgLazyComponent,
+    DynamicallySetHeightUsingScrollHeightDirective,
+    DisplayFormFieldErrorsComponent,
+    AjaxButtonComponent,
   ]
 })
 export class SharedModule { }
