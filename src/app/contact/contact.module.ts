@@ -5,6 +5,7 @@ import { ContactsMainComponent } from './contacts-main/contacts-main.component';
 import { SharedModule } from '@sharedModule/shared.module';
 import { CPContactInfoSectionComponent } from './contacts-main/sections/cpcontact-info-section/cpcontact-info-section.component';
 import { CPContactFormSectionComponent } from './contacts-main/sections/cpcontact-form-section/cpcontact-form-section.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { CPContactFormSectionComponent } from './contacts-main/sections/cpcontac
   imports: [
     CommonModule,
     ContactRoutingModule,
+    ReactiveFormsModule,
     SharedModule,
   ]
 })
