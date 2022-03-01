@@ -44,9 +44,14 @@ const routes: Routes = [
       .then(c => c.ContactModule),
   },
   {
+    path: 'terms-and-privacy-policy',
+    loadChildren: () => import('./terms-and-privacy-policy/terms-and-privacy-policy.module')
+      .then(t => t.TermsAndPrivacyPolicyModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
-  }
+  },
 ];
 
 @NgModule({
