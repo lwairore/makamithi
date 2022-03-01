@@ -11,10 +11,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        redirectTo: '1',
+      },
+      {
+        path: ':pageNumber',
         component: GalleryOneMainComponent
       },
       {
-        path: 'gallery-details',
+        path: ':galleryID/gallery-details',
         loadChildren: () => import('./gallery-details1/gallery-details1.module')
           .then(g => g.GalleryDetails1Module),
       },
