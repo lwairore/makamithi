@@ -1,48 +1,52 @@
 <div class="contact-address-area pt-120 pb-90">
     <div class="container">
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let info of contactUs;">
                 <div class="contact-address-wrapper mb-30">
                     <div class="contact-address-title">
-                        <h2>London</h2>
+                        <h2>
+                            {{ info.get('addressTitle') }}
+                        </h2>
                         <div class="contact-address-img">
                             <img src="assets/img/shape/c.png" alt="image" />
                         </div>
                     </div>
                     <ul class="contact-link">
-                        <li>82 Bernie Greens Apt. 210, <br /> Hendon Way, London, UK</li>
-                        <li>zomata@example.com</li>
-                        <li>+53 213 5941 295</li>
+                        <li>
+                            {{ info.get('address') }}
+                        </li>
+                        <li>
+                            <a [href]="'mailto:' + info.get('email')" [style.color]="'inherit'"> {{ info.get('email') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a [href]="'tel:' + info.get('phoneNumber')" [style.color]="'inherit'">
+                                {{ info.get('phoneNumber') }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="contact-address-wrapper mb-30">
-                    <div class="contact-address-title">
-                        <h2>New York</h2>
-                        <div class="contact-address-img">
-                            <img src="assets/img/shape/c.png" alt="image" />
-                        </div>
-                    </div>
-                    <ul class="contact-link">
-                        <li>205 Bernie Greens Apt. 210, <br /> Hendon Way, London, UK</li>
-                        <li>zomata@example.com</li>
-                        <li>+53 213 5941 295</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="contact-address-wrapper mb-30">
-                    <div class="contact-address-title">
-                        <h2>Paris</h2>
-                        <div class="contact-address-img">
-                            <img src="assets/img/shape/c.png" alt="image" />
-                        </div>
-                    </div>
-                    <ul class="contact-link">
-                        <li>82 Bernie Greens Apt. 210, <br /> Hendon Way, London, UK</li>
-                        <li>zomata@example.com</li>
-                        <li>+53 213 5941 295</li>
+        </div>
+
+        <div class="row" *ngIf="fakeObjectArray().length > 1">
+            <div class="col-12">
+                <div class="basic-pagination basic-pagination-2 text-center mt-20">
+                    <ul>
+                        <li *ngIf="fetchPrevious()">
+                            <a [routerLink]="['..', fetchPrevious()]">
+                                <i class="fas fa-angle-double-left"></i>
+                            </a>
+                        </li>
+                        <li *ngFor="let itemNumber of fakeObjectArray()"
+                            [class.active]="markPageNavItemActive(itemNumber)">
+                            <a [routerLink]="['/team',itemNumber + 1]">{{itemNumber + 1}}</a>
+                        </li>
+                        <li *ngIf="fetchNext()">
+                            <a [routerLink]="['/team', fetchNext()]">
+                                <i class="fas fa-angle-double-right"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

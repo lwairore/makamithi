@@ -1,34 +1,156 @@
 <div class="contact-area">
     <div class="container">
-        <div class="contact-bg pt-90 pb-70" [style.background-image]="'url(assets/img/bg/bg18.jpg)'">
+        <div class="contact-bg pt-90 pb-70"
+            [style.background-image]="'url('+ leaveUsAMessageSectionDetails.getIn(['backgroundImage', 'src']) +')'">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="contact-title text-center mb-35">
-                        <h1>Leave a Message</h1>
+                        <h1> {{ leaveUsAMessageSectionDetails.get('heading') }} </h1>
+                        <div [innerHTML]="leaveUsAMessageSectionDetails.get('summary')"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12">
                     <div class="contact-wrapper mb-30">
-                        <form id="contact-us-form">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6">
-                                    <input name="name" placeholder="Name :" type="text" />
+                        <form [formGroup]="leaveAMessageFormGroup">
+                            <ng-template #formFieldErrorsTemplate let-formControlFormGroup="formGroup"
+                                let-formFieldErrors="errors">
+
+                                <mak-pit-display-form-field-errors [formGroupElement]="formControlFormGroup"
+                                    [submitted]="submitted"
+                                    [requiredOrNullOrNoValueProvidedErrorMessage]="formFieldErrors.requiredOrNullOrNoValueProvidedErrorMessage || null"
+                                    [minCharacterNotGenuinelyAchievedErrorMessage]="formFieldErrors.minCharacterNotGenuinelyAchievedErrorMessage || null"
+                                    [maxLengthPrefixErrorMessage]="formFieldErrors.maxLengthPrefixErrorMessage || null"
+                                    [minLengthPrefixErrorMessage]="formFieldErrors.minLengthPrefixErrorMessage || null"
+                                    [emailErrorMessage]="formFieldErrors.emailErrorMessage || null">
+                                </mak-pit-display-form-field-errors>
+                            </ng-template>
+
+                            <div class="form-row">
+                                <div class="form-group col-xl-6 col-lg-6">
+                                    <label for="leaveAMessageFormGroup__name"
+                                        [class.text-danger]="leaveAMessageFormGroup?.get('name')?.invalid && (leaveAMessageFormGroup?.get('name')?.touched || submitted)">Your
+                                        Name (required) :</label>
+                                    <input class="form-control form-control-lg" placeholder="" type="text"
+                                        id="leaveAMessageFormGroup__name" formControlName="name" [class.is-invalid]="leaveAMessageFormGroup?.get('name')
+                                        ?.invalid && (leaveAMessageFormGroup?.get('name')
+                                        ?.touched || submitted)"
+                                        [attr.aria-invalid]="leaveAMessageFormGroup?.get('name')?.invalid"
+                                        aria-required="true" />
+
+                                    <ng-container [ngTemplateOutlet]="formFieldErrorsTemplate"
+                                        [ngTemplateOutletContext]="{
+                                            formGroup: leaveAMessageFormGroup?.get('name'),
+                                            errors: {
+                                                requiredOrNullOrNoValueProvidedErrorMessage: 'Enter your full name.',
+                                                minCharacterNotGenuinelyAchievedErrorMessage: 'Are you sure you entered your name correctly?',
+                                                maxLengthPrefixErrorMessage: 'That name is too long. You need to shortern that name.',
+                                                minLengthPrefixErrorMessage: 'That name is too short. You need to lengthen that name.'
+                                            }
+                                        }"></ng-container>
                                 </div>
-                                <div class="col-xl-6 col-lg-6">
-                                    <input name="email" placeholder="Email :" type="email" />
+                                <div class="form-group col-xl-6 col-lg-6">
+                                    <label for="leaveAMessageFormGroup__email"
+                                        [class.text-danger]="leaveAMessageFormGroup?.get('email')?.invalid && (leaveAMessageFormGroup?.get('email')?.touched || submitted)">Your
+                                        Email :</label>
+                                    <input class="form-control form-control-lg" id="leaveAMessageFormGroup__email"
+                                        type="email" formControlName="email" [class.is-invalid]="leaveAMessageFormGroup
+                                    ?.get('email')
+                                    ?.invalid && (leaveAMessageFormGroup
+                                    ?.get('email')
+                                    ?.touched || submitted)" [attr.aria-invalid]="leaveAMessageFormGroup
+                                    ?.get('email')?.invalid" aria-required="false" />
+
+                                    <ng-container [ngTemplateOutlet]="formFieldErrorsTemplate"
+                                        [ngTemplateOutletContext]="{
+                                        formGroup: leaveAMessageFormGroup?.get('email'),
+                                        errors: {
+                                            emailErrorMessage: 'Are you sure you entered your email correctly?'
+                                        }
+                                    }"></ng-container>
                                 </div>
-                                <div class="col-xl-12 col-lg-12">
-                                    <input name="website" placeholder="Website :" type="text" />
+                                <div class="form-group col-xl-12 col-lg-12">
+                                    <label for="leaveAMessageFormGroup__phoneNumber"
+                                        [class.text-danger]="leaveAMessageFormGroup?.get('phoneNumber')?.invalid && (leaveAMessageFormGroup?.get('phoneNumber')?.touched || submitted)">
+                                        Your Phone Number (required) :
+                                    </label>
+
+                                    <input class="form-control form-control-lg" id="leaveAMessageFormGroup__phoneNumber"
+                                        placeholder="" type="tel" formControlName="phoneNumber" [class.is-invalid]="leaveAMessageFormGroup?.get('phoneNumber')
+                                ?.invalid && (leaveAMessageFormGroup?.get('phoneNumber')
+                                ?.touched || submitted)"
+                                        [attr.aria-invalid]="leaveAMessageFormGroup?.get('phoneNumber')?.invalid"
+                                        aria-required="true" />
+
+                                    <ng-container [ngTemplateOutlet]="formFieldErrorsTemplate"
+                                        [ngTemplateOutletContext]="{
+                                        formGroup: leaveAMessageFormGroup?.get('phoneNumber'),
+                                        errors: {
+                                            requiredOrNullOrNoValueProvidedErrorMessage: 'Enter your phone number.',
+                                            minCharacterNotGenuinelyAchievedErrorMessage: 'Are you sure you entered your phone number correctly?',
+                                            maxLengthPrefixErrorMessage: 'That phone number is too long. You need to shortern that phone number.',
+                                            minLengthPrefixErrorMessage: 'That phone number is too short. You need to lengthen that phone number.'
+                                        }
+                                    }"></ng-container>
                                 </div>
-                                <div class="col-xl-12 col-lg-12">
-                                    <textarea name="message" cols="30" rows="10"
-                                        placeholder="Write your comments :"></textarea>
+                                <div class="form-group col-xl-12 col-lg-12">
+                                    <label for="leaveAMessageFormGroup__subject"
+                                        [class.text-danger]="leaveAMessageFormGroup?.get('subject')?.invalid && (leaveAMessageFormGroup?.get('subject')?.touched || submitted)">
+                                        Subject :</label>
+
+                                    <input class="form-control form-control-lg" id="leaveAMessageFormGroup__subject"
+                                        placeholder="" type="text" formControlName="subject" [class.is-invalid]="leaveAMessageFormGroup?.get('subject')
+                                    ?.invalid && (leaveAMessageFormGroup?.get('subject')
+                                    ?.touched || submitted)"
+                                        [attr.aria-invalid]="leaveAMessageFormGroup?.get('subject')?.invalid"
+                                        aria-required="false" />
+
+                                    <ng-container [ngTemplateOutlet]="formFieldErrorsTemplate"
+                                        [ngTemplateOutletContext]="{
+                                            formGroup: leaveAMessageFormGroup?.get('subject'),
+                                            errors: {
+                                                maxLengthPrefixErrorMessage: 'That subject is too long. You need to shortern that subject.'
+                                            }
+                                        }"></ng-container>
                                 </div>
+                                <div class="form-group col-xl-12 col-lg-12">
+                                    <label for="leaveAMessageFormGroup__message"
+                                        [class.text-danger]="leaveAMessageFormGroup?.get('message')?.invalid && (leaveAMessageFormGroup?.get('message')?.touched || submitted)">
+                                        Your Message :
+                                    </label>
+
+                                    <textarea class="form-control form-control-lg" id="leaveAMessageFormGroup__message"
+                                        makPitDynamicallySetHeightUsingScrollHeight placeholder=""
+                                        formControlName="message" [class.is-invalid]="leaveAMessageFormGroup?.get('message')
+                                    ?.invalid && (leaveAMessageFormGroup?.get('message')
+                                    ?.touched || submitted)"
+                                        [attr.aria-invalid]="leaveAMessageFormGroup?.get('message')?.invalid"
+                                        aria-required="false"></textarea>
+
+                                    <ng-container [ngTemplateOutlet]="formFieldErrorsTemplate"
+                                        [ngTemplateOutletContext]="{
+                                            formGroup: leaveAMessageFormGroup?.get('message'),
+                                            errors: {
+                                                maxLengthPrefixErrorMessage: 'That message is too long. You need to shortern that message.'
+                                            }
+                                        }"></ng-container>
+                                </div>
+                                <p class="col-xl-12 col-lg-12">
+                                    We use the data you voluntarily provide to answer your questions and guarantee the
+                                    assistance requested. Your data will not be used for marketing purposes and will not
+                                    be disclosed to third parties.</p>
                                 <div class="col-xl-12 col-lg-12">
                                     <div class="contact-button text-center">
-                                        <button class="btn" type="submit">Send Message</button>
+                                        <mak-pit-ajax-button [execute]="onSubmit" [parameter]="leaveAMessageFormGroup">
+                                            <ng-container data-animator>
+                                                <span [ngClass]="['spinner-border', 'spinner-border-sm']" role="status"
+                                                    aria-hidden="true"></span>
+                                                Sending message...
+                                            </ng-container>
+                                            
+                                            <span data-content>Send message</span>
+                                        </mak-pit-ajax-button>
                                     </div>
                                 </div>
                             </div>

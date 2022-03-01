@@ -20,11 +20,12 @@
             <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let gallery of homeGalley;trackBy:homeGalleryTrackByFn">
                 <div class="gallery-wrapper mb-30">
                     <div class="gallery-img">
-                        <a routerLink="/gallery/gallery-details">
-                            <img [src]="gallery.getIn(['image', 'src'])" [alt]="gallery.getIn(['image', 'alt'])" />
+                        <a [routerLink]="['/gallery', gallery.get('id'), 'gallery-details']">
+                            <img [src]="gallery.getIn(['homePreview', 'src'])"
+                                [alt]="gallery.getIn(['homePreview', 'alt'])" />
                         </a>
                         <div class="gallery-icon">
-                            <a class="popup-image" routerLink="/gallery/gallery-details">
+                            <a class="popup-image" [routerLink]="['/gallery', gallery.get('id'), 'gallery-details']">
                                 <i class="ti-plus"></i>
                             </a>
                         </div>

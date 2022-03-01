@@ -1,0 +1,57 @@
+<main>
+    <div class="gallery-area pt-120 pb-60 gray-bg mb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let galleryItem of gallery;">
+                    <div class="gallery-wrapper mb-60">
+                        <div class="gallery-img">
+                            <a [routerLink]="['/gallery', galleryItem.get('id'), 'gallery-details']">
+                                <img [src]="galleryItem.getIn(['galleryPreview', 'src'])"
+                                    [alt]="galleryItem.getIn(['galleryPreview', 'alt'])">
+                            </a>
+                            <div class="gallery-icon">
+                                <a class="popup-image"
+                                    [routerLink]="['/gallery', galleryItem.get('id'), 'gallery-details']">
+                                    <i class="ti-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gallery-text text-center">
+                            <h3>
+                                <a [routerLink]="['/gallery', galleryItem.get('id'), 'gallery-details']">
+                                    {{ galleryItem.get('title')|titlecase }}
+                                </a>
+                            </h3>
+                            <span>
+                                {{ galleryItem.get('category')|titlecase }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="basic-pagination basic-pagination-2 text-center mt-20">
+                        <ul>
+                            <li *ngIf="fetchPrevious()">
+                                <a [routerLink]="['..', fetchPrevious()]">
+                                    <i class="fas fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                            <li *ngFor="let itemNumber of fakeObjectArray()"
+                                [class.active]="markPageNavItemActive(itemNumber)">
+                                <a [routerLink]="['..',itemNumber + 1]">{{itemNumber + 1}}</a>
+                            </li>
+                            <li *ngIf="fetchNext()">
+                                <a [routerLink]="['..', fetchNext()]">
+                                    <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

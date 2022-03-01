@@ -1,12 +1,57 @@
-<div class="video-area pt-360 pb-360" [style.background-image]="'url(assets/img/bg/bg16.jpg)'">
+<div class="video-area pt-360 pb-360" [style.background-image]="'url('+videoDetails.getIn(['thumbnail', 'src'])+')'">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="video-icon text-center">
-                    <a class="popup-video" href="https://www.youtube.com/watch?v=yVb0mfmMV9w" target="_blank">
+                    <a class="popup-video" href="#videoPlaybackMediaCenterModal" data-toggle="modal"
+                        data-target="#videoPlaybackMediaCenterModal">
                         <i class="fas fa-play"> </i>
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="videoPlaybackMediaCenterModal" tabindex="-1" *ngIf="!videoDetails.isEmpty();"
+    aria-labelledby="videoPlaybackMediaCenterModalTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="videoPlaybackMediaCenterModalTitle">
+                    {{videoDetails.get('title') }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <vg-player>
+                        <vg-overlay-play></vg-overlay-play>
+                        <vg-buffering></vg-buffering>
+                        <vg-scrub-bar>
+                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                        </vg-scrub-bar>
+                        <vg-controls>
+                            <vg-play-pause></vg-play-pause>
+                            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                            <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                            <vg-fullscreen></vg-fullscreen>
+                        </vg-controls>
+                        <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" crossorigin>
+                            <source [src]="videoDetails.get('video')">
+                        </video>
+                    </vg-player>
+                </div>
+
+                <p ngClass="mt-5">
+                    {{ videoDetails.get('caption') }}
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

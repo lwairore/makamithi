@@ -3,26 +3,18 @@
         <div class="row">
             <div class="col-xl-6 col-lg-6 cl-md-6">
                 <div class="zomata-img mb-30">
-                    <img src="assets/img/bg/4.png" alt="image" />
+                    <img [src]="serviceAboutSectionDetails.getIn(['sectionImage', 'src'])"
+                        [alt]="serviceAboutSectionDetails.getIn(['sectionImage', 'alt'])" />
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 cl-md-6">
                 <div class="zomata-wrapper mb-30">
                     <div class="zomata-text">
                         <h1>
-                            Going Green
+                            {{ serviceAboutSectionDetails.get('heading') }}
                         </h1>
                         <p>
-                            We also do consultation for stockists as we understand the challenges faced by them. We go
-                            out of our
-                            way to offer world class customer service with utmost professionalism and integrity while
-                            maintaining a
-                            personal relationship with all our customers.
-                            We keep up with new and upcoming trends in the industry and share the same with all our
-                            customers
-                            ensuring everyone makes informed decisions in their purchases to both farmers and business
-                            owners
-                            because, At Makamithi, we are small enough to care, but large enough for the expertise.
+                            {{ serviceAboutSectionDetails.get('summary') }}
                         </p>
                     </div>
                 </div>

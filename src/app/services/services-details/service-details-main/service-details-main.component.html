@@ -1,7 +1,8 @@
 <mak-pit-site-breadcrumb pageTitle="Service Details"></mak-pit-site-breadcrumb>
 
 <main>
-    <mak-pit-spservice-details-section></mak-pit-spservice-details-section>
+    <mak-pit-spservice-details-section (plansFetched)="pricingSectionEl.plans=$event; pricingSectionEl.manuallyTriggerChangeDetection();">
+    </mak-pit-spservice-details-section>
 
-    <mak-pit-spservice-pricing-section></mak-pit-spservice-pricing-section>
+    <mak-pit-spservice-pricing-section #pricingSectionEl></mak-pit-spservice-pricing-section>
 </main>
