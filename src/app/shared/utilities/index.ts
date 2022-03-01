@@ -5,3 +5,4 @@ export { isANumber } from './is-a-number.util';
 export { isObjectEmpty } from './is-object-empty.util';
 export { stringIsEmpty } from './string-is-empty.util';
 export { constructMediaSrc } from './construct-media-src.util';
+export { whichValueShouldIUse, ExpectedType } from './which-value-should-i-use.util';
