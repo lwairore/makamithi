@@ -9,7 +9,10 @@ import { SPVideoSectionComponent } from './service-one-main/sections/spvideo-sec
 import { SPAboutSectionComponent } from './service-one-main/sections/spabout-section/spabout-section.component';
 import { SPPricingComponent } from './service-one-main/sections/sppricing/sppricing.component';
 import { ServiceOneMainComponent } from './service-one-main/service-one-main.component';
-
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,10 @@ import { ServiceOneMainComponent } from './service-one-main/service-one-main.com
     CommonModule,
     ServicesRoutingModule,
     SharedModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
   ]
 })
 export class ServicesModule { }
