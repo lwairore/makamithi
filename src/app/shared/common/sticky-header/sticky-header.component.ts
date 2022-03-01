@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Router, Event as NavigationEvent, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mak-pit-sticky-header',
@@ -6,7 +9,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styles: [
   ]
 })
-export class StickyHeaderComponent implements OnInit {
+export class StickyHeaderComponent implements OnInit, OnDestroy {
   @Input() stickerHeaderExtraClasses = '';
 
   @Input() menuOpen = false;
@@ -21,9 +24,44 @@ export class StickyHeaderComponent implements OnInit {
 
   @Output() setSidebarOpen = new EventEmitter<boolean>();
 
-  constructor() { }
+  routerEventSubscription: Subscription | undefined;
+
+  private readonly ROOT_URL = '';
+
+  isRoot = false;
+
+  constructor(
+    private _router: Router,
+    private _location: Location
+  ) {
+    this.routerEventSubscription
+      = this._router.events
+        .subscribe(
+          (event: NavigationEvent) => {
+
+            if (event instanceof NavigationEnd) {
+              console.log('Route changed')
+              if (this._location.path() !== this.ROOT_URL) {
+                this.isRoot = false;
+              } else {
+                this.isRoot = true;
+              }
+            }
+          });
+  }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeRouterEventSubscription();
+  }
+
+
+  private _unsubscribeRouterEventSubscription() {
+    if (this.routerEventSubscription instanceof Subscription) {
+      this.routerEventSubscription.unsubscribe();
+    }
   }
 
   dispatchSetMenuOpenEvt() {

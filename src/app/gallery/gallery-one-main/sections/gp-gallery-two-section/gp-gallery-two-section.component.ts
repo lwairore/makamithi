@@ -1,30 +1,28 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ProductFormatHttpResponse } from '@sharedModule/custom-types';
 import { ScrollService } from '@sharedModule/services/scroll-service.service';
 import { convertItemToNumeric, convertItemToString, ExpectedType, isANumber, whichValueShouldIUse } from '@sharedModule/utilities';
 import { generateFakeObjectArray } from '@sharedModule/utilities/generate-fake-objects.util';
 import * as Immutable from 'immutable';
-import { of, Subscription } from 'rxjs';
-import { ShopService } from 'src/app/shop/shop.service';
+import { Subscription } from 'rxjs';
+import { GalleryService } from 'src/app/gallery/gallery.service';
 
 @Component({
-  selector: 'mak-pit-spproduct-section',
-  templateUrl: './spproduct-section.component.html',
+  selector: 'mak-pit-gp-gallery-two-section',
+  templateUrl: './gp-gallery-two-section.component.html',
   styles: [
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestroy {
-  products = Immutable.fromJS([]);
+export class GpGalleryTwoSectionComponent implements OnInit, AfterViewInit, OnDestroy {
+  gallery = Immutable.fromJS([]);
 
   paginationDetails = Immutable.Map({
     count: 0,
     next: 0,
   });
 
-  private _listProductSubscription: Subscription | undefined;
+  private _listGallerySubscription: Subscription | undefined;
 
   private _routeParamsSubscription: Subscription | undefined;
 
@@ -32,23 +30,8 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
 
   private _routeParams = Immutable.Map({});
 
-  // sortByOptions = Immutable.fromJS([
-  //   {
-  //     value: 'Top Sales',
-  //     slug: 'top_sales',
-  //   },
-  //   {
-  //     value: 'New Product',
-  //     slug: 'new_product',
-  //   },
-  //   {
-  //     value: 'A to Z Product',
-  //     slug: 'a2z',
-  //   },
-  // ]);
-
   constructor(
-    private _shopService: ShopService,
+    private _galleryService: GalleryService,
     private _changeDetectorRef: ChangeDetectorRef,
     private _activatedRoute: ActivatedRoute,
     private _scrollService: ScrollService,
@@ -64,12 +47,12 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
   ngOnDestroy(): void {
     this._unsubscribeRouteParamsSubscription();
 
-    this._unsubscribeListProductSubscription();
+    this._unsubscribeListGallerySubscription();
   }
 
 
-  private _resetProductsOnRouteChange() {
-    this.products = Immutable.fromJS([]);
+  private _resetGallerysOnRouteChange() {
+    this.gallery = Immutable.fromJS([]);
   }
 
   getTotalNumberOfResults() {
@@ -78,8 +61,8 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
     return isANumber(TOTAL_RESULTS) ? TOTAL_RESULTS : 0;
   }
 
-  getCurrentLengthOfProducts() {
-    const CURRENT_LENGTH = this.products.toList().size;
+  getCurrentLengthOfGallerys() {
+    const CURRENT_LENGTH = this.gallery.toList().size;
 
     return CURRENT_LENGTH;
   }
@@ -134,9 +117,9 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
         this._routeParams = this._routeParams.set(
           'pageNumber', pageNumber);
 
-        this._resetProductsOnRouteChange();
+        this._resetGallerysOnRouteChange();
 
-        this._listProduct();
+        this._listGallery();
       });
   }
 
@@ -201,9 +184,9 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
     }
   }
 
-  private _unsubscribeListProductSubscription() {
-    if (this._listProductSubscription instanceof Subscription) {
-      this._listProductSubscription.unsubscribe();
+  private _unsubscribeListGallerySubscription() {
+    if (this._listGallerySubscription instanceof Subscription) {
+      this._listGallerySubscription.unsubscribe();
     }
   }
 
@@ -224,17 +207,17 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
       'totalNumberOfPages', totalNumberOfPages);
   }
 
-  private _listProduct() {
+  private _listGallery() {
     const FETCH_PAGE_NUMBER = convertItemToString(
       this._routeParams.get('pageNumber'));
 
-    this._listProductSubscription = this._shopService.
-      listProductForShopSection$(FETCH_PAGE_NUMBER)
+    this._listGallerySubscription = this._galleryService.
+      listGalleryForGallerySection$(FETCH_PAGE_NUMBER)
       .subscribe(details => {
         console.log({ details })
-        // this.products = Immutable.mergeDeepWith(
+        // this.gallery = Immutable.mergeDeepWith(
         //   (oldVal, newVal) => oldVal + newVal,
-        //   this.products, details.results
+        //   this.gallery, details.results
         // )
         const count = convertItemToNumeric(details.count);
         if (isANumber(count)) {
@@ -246,16 +229,16 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
 
         console.log({ newVal })
 
-        this.products = Immutable.mergeDeep(
-          this.products, newVal);
+        this.gallery = Immutable.mergeDeep(
+          this.gallery, newVal);
 
         if (!newVal.isEmpty()) {
           this._manuallyTriggerChangeDetection();
         }
 
-        console.log("this.products");
+        console.log("this.gallery");
 
-        console.log(this.products);
+        console.log(this.gallery);
 
         this._scrollToTop();
       })
@@ -268,4 +251,5 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
   private _manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
+
 }

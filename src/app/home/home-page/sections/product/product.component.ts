@@ -69,30 +69,30 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
       }, err => console.error(err));
   }
 
-  handleTabSelectedEvent(productID?: number) {
-    if (!isANumber(productID)) {
+  handleTabSelectedEvent(productCategoryID?: number) {
+    if (!isANumber(productCategoryID)) {
       return;
     }
 
     this._listProduct(
-      convertItemToString(productID));
+      convertItemToString(productCategoryID));
   }
 
-  private _listProduct(productID: string) {
-    if (this.productsAvailable.has(productID)) {
+  private _listProduct(productCategoryID: string) {
+    if (this.productsAvailable.has(productCategoryID)) {
       return;
     }
 
-    this._listProductSubscription = this._homeService.listProduct$(
-      productID)
+    this._listProductSubscription = this._homeService.listProductForACategory$(
+      productCategoryID)
       .subscribe(details => {
         this.productsAvailable = this.productsAvailable
           .set(
-            productID, details);
+            productCategoryID, details);
 
         console.log("this.productsAvailable");
         console.log(this.productsAvailable);
-        console.log(this.productsAvailable.get(productID))
+        console.log(this.productsAvailable.get(productCategoryID))
 
         this._manuallyTriggerChangeDetection();
       }, err => console.error(err))

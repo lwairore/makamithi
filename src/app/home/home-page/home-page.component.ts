@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { SeoService } from '@sharedModule/services/seo.service';
 import { SeoSocialShareService } from 'ngx-seo';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,8 @@ import { HomeService } from '../home.service';
   ],
   providers: [
     HomeService,
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
   private _retrieveHomeSEODetailsSubscription: Subscription | undefined;
