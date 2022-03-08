@@ -4,7 +4,7 @@ import { AreaSectionFormatHttpResponse, AreaSectionHttpResponse, ItemPreviewForm
 import { retryWithBackoff } from '@sharedModule/operators';
 import { constructMediaSrc, convertItemToString, isObjectEmpty } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

@@ -4,7 +4,7 @@ import { ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, PaginatedItemHt
 import { retryWithBackoff } from '@sharedModule/operators';
 import { constructMediaSrc, convertItemToNumeric, convertItemToString, ExpectedType, isANumber, isObjectEmpty, whichValueShouldIUse } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

@@ -7,7 +7,7 @@ import { SeoSocialShareService } from 'ngx-seo';
 import { forkJoin, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ServiceAreaService } from 'src/app/services/service-area.service';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'mak-pit-spservice-details-section',

@@ -8,7 +8,7 @@ import { SeoSocialShareService } from 'ngx-seo';
 import { forkJoin, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { GalleryService } from 'src/app/gallery/gallery.service';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'mak-pit-gpgallery-details-one-section',

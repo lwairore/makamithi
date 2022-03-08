@@ -4,7 +4,7 @@ import { ContactInfoFormatHttpResponse, ContactInfoHttpResponse, HeaderSectionFo
 import { retryWithBackoff } from '@sharedModule/operators';
 import { constructMediaSrc, convertItemToNumeric, convertItemToString, isANumber, isObjectEmpty, stringIsEmpty } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'

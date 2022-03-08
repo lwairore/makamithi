@@ -7,7 +7,7 @@ import * as Immutable from 'immutable';
 import { SeoSocialShareService } from 'ngx-seo';
 import { Subscription } from 'rxjs';
 import { ShopService } from 'src/app/shop/shop.service';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'mak-pit-spshop-details-section',

@@ -3,7 +3,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } 
 import { SeoService } from '@sharedModule/services/seo.service';
 import { SeoSocialShareService } from 'ngx-seo';
 import { Subscription } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { HomeService } from '../home.service';
 
 @Component({

@@ -4,7 +4,7 @@ import { AreaSectionFormatHttpResponse, AreaSectionHttpResponse, ItemPreviewForm
 import { retryWithBackoff } from '@sharedModule/operators';
 import { constructMediaSrc, convertItemToNumeric, convertItemToString, ExpectedType, isANumber, isObjectEmpty, whichValueShouldIUse } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { ServiceAreaSectionFormatHttpResponse, ServiceAreaSectionHttpResponse, ServiceDetailFormatHttpResponse, ServiceDetailHttpResponse, ServiceFormatHttpResponse, ServiceHttpResponse, ServiceSidebarHttpResponse, VideoFormatHttpResponse, VideoHttpResponse } from './custom-types';
 import { PlanFormatHttpResponse } from './custom-types/service-detail-format-http-response';
 

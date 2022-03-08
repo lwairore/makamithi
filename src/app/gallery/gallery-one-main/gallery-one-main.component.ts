@@ -4,7 +4,7 @@ import { ScrollService } from '@sharedModule/services/scroll-service.service';
 import { SeoService } from '@sharedModule/services/seo.service';
 import { SeoSocialShareService } from 'ngx-seo';
 import { Subscription } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'mak-pit-gallery-one-main',

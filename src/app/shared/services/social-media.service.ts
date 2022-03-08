@@ -4,7 +4,7 @@ import { SocialMediaFormatHttpResponse, SocialMediaHttpResponse } from '@sharedM
 import { retryWithBackoff } from '@sharedModule/operators';
 import { convertItemToString, isObjectEmpty } from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
