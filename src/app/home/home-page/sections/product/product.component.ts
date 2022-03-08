@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { convertItemToString, isANumber } from '@sharedModule/utilities';
-import { generateFakeObjectArray } from '@sharedModule/utilities/generate-fake-objects.util';
 import * as Immutable from 'immutable';
-import { Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HomeService } from 'src/app/home/home.service';
 
 @Component({
@@ -17,11 +17,13 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
 
   productCategories = Immutable.fromJS([]);
 
-  private _listProductCategoriesSubscription: Subscription | undefined;
+  productAreaSectionDetails = Immutable.fromJS({});
+
+  private _loadRequiredDetailsSubscription: Subscription | undefined;
 
   private _listProductSubscription: Subscription | undefined;
 
-  fakeObjectArray = generateFakeObjectArray();
+  showLoader = false;
 
   constructor(
     private _homeService: HomeService,
@@ -32,11 +34,11 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this._listProductCategory();
+    this._loadRequiredDetails();
   }
 
   ngOnDestroy(): void {
-    this._unsubscribeListProductCategoriesSubscription();
+    this._unsubscribeLoadRequiredDetailsSubscription();
 
     this._unsubscribeListProductSubscription();
   }
@@ -45,9 +47,9 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     return item.id;
   }
 
-  private _unsubscribeListProductCategoriesSubscription() {
-    if (this._listProductCategoriesSubscription instanceof Subscription) {
-      this._listProductCategoriesSubscription.unsubscribe();
+  private _unsubscribeLoadRequiredDetailsSubscription() {
+    if (this._loadRequiredDetailsSubscription instanceof Subscription) {
+      this._loadRequiredDetailsSubscription.unsubscribe();
     }
   }
 
@@ -57,16 +59,40 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private _listProductCategory() {
-    this._listProductCategoriesSubscription = this._homeService
-      .listProductCategory$()
-      .subscribe(details => {
-        this.productCategories = Immutable.fromJS(details);
+  private _loadRequiredDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
 
-        if (!this.productCategories.isEmpty()) {
+      this._manuallyTriggerChangeDetection();
+    }
+
+    const LIST_CATEGORIES$ = this._homeService
+      .listProductCategory$().pipe(
+        tap(details => {
+          this.productCategories = Immutable.fromJS(details);
+        }));
+
+    const RETRIEVE_PRODUCT_AREA_SECTION$ = this._homeService
+      .retrieveProductAreaSection$()
+      .pipe(tap(details => {
+        this.productAreaSectionDetails = Immutable.fromJS(details);
+      }))
+
+    this._loadRequiredDetailsSubscription = forkJoin([
+      LIST_CATEGORIES$,
+      RETRIEVE_PRODUCT_AREA_SECTION$
+    ])
+      .subscribe(_ => {
+        if (!this.productCategories.isEmpty() || !this.productAreaSectionDetails.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err));
+      }, err => {
+        console.error(err);
+      
+        this.showLoader = false;
+      });
   }
 
   handleTabSelectedEvent(productCategoryID?: number) {
@@ -86,13 +112,11 @@ export class ProductComponent implements OnInit, AfterViewInit, OnDestroy {
     this._listProductSubscription = this._homeService.listProductForACategory$(
       productCategoryID)
       .subscribe(details => {
+        const newVal = Immutable.fromJS(details);
+
         this.productsAvailable = this.productsAvailable
           .set(
-            productCategoryID, details);
-
-        console.log("this.productsAvailable");
-        console.log(this.productsAvailable);
-        console.log(this.productsAvailable.get(productCategoryID))
+            productCategoryID, newVal);
 
         this._manuallyTriggerChangeDetection();
       }, err => console.error(err))

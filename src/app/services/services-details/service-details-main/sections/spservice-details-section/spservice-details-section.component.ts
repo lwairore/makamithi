@@ -6,7 +6,6 @@ import * as Immutable from 'immutable';
 import { SeoSocialShareService } from 'ngx-seo';
 import { forkJoin, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ServiceDetailFormatHttpResponse } from 'src/app/services/custom-types';
 import { ServiceAreaService } from 'src/app/services/service-area.service';
 import { environment } from 'src/environments/environment';
 
@@ -32,6 +31,8 @@ export class SPServiceDetailsSectionComponent implements OnInit, AfterViewInit, 
 
   @Output() plansFetched = new EventEmitter<any>();
 
+  showLoader = false;
+
   constructor(
     private _serviceAreaService: ServiceAreaService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -45,7 +46,6 @@ export class SPServiceDetailsSectionComponent implements OnInit, AfterViewInit, 
   }
 
   ngAfterViewInit(): void {
-    this._loadRequiredDetails();
   }
 
   ngOnDestroy(): void {
@@ -57,11 +57,12 @@ export class SPServiceDetailsSectionComponent implements OnInit, AfterViewInit, 
   private _extractServiceID() {
     this._routeParamsSubscription = this._activatedRoute.params
       .subscribe(params => {
-        console.log(params)
-
+        console.log({ params })
         this._routeParams = this._routeParams.set(
           'serviceID',
           convertItemToNumeric(params['serviceID']));
+
+        this._loadRequiredDetails();
       });
   }
 
@@ -78,6 +79,12 @@ export class SPServiceDetailsSectionComponent implements OnInit, AfterViewInit, 
   }
 
   private _loadRequiredDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     const serviceID = convertItemToString(
       this._routeParams.get('serviceID'));
 
@@ -126,7 +133,6 @@ export class SPServiceDetailsSectionComponent implements OnInit, AfterViewInit, 
       LIST_SERVICE$.pipe(
         tap(details => {
           this.listService = Immutable.fromJS(details);
-          console.log(this.listService);
         })),
     ])
       .subscribe(_ => {
@@ -135,9 +141,15 @@ export class SPServiceDetailsSectionComponent implements OnInit, AfterViewInit, 
 
           this.plansFetched.emit(this.serviceDetails.get('plans'));
 
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err))
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      })
   }
 
   private _manuallyTriggerChangeDetection() {

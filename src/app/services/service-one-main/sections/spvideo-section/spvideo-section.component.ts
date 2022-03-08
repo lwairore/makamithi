@@ -15,6 +15,8 @@ export class SPVideoSectionComponent implements OnInit, AfterViewInit, OnDestroy
 
   private _retrieveVideoDetailsSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _serviceAreaService: ServiceAreaService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -38,14 +40,26 @@ export class SPVideoSectionComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   private __retrieveVideoDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     this._retrieveVideoDetailsSubscription = this._serviceAreaService
       .retrieveVideo$().subscribe(details => {
         this.videoDetails = Immutable.fromJS(details);
 
         if (!this.videoDetails.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err));
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      });
   }
 
   private _manuallyTriggerChangeDetection() {

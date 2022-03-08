@@ -20,6 +20,8 @@ export class FaqComponent implements OnInit, AfterViewInit, OnDestroy {
 
   faqs = Immutable.fromJS([]);
 
+  showLoader = false;
+
   constructor(
     private _aboutUsService: AboutUsService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -47,6 +49,12 @@ export class FaqComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _loadRequiredDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     const FAQ_SECTION_DETAILS$ = this._aboutUsService
       .retrieveFaqSection$();
 
@@ -61,14 +69,19 @@ export class FaqComponent implements OnInit, AfterViewInit, OnDestroy {
       LIST_FAQS$.pipe(
         tap(details => {
           this.faqs = Immutable.fromJS(details);
-          console.log(this.faqs);
         })),
     ])
       .subscribe(_ => {
         if (!this.faqSectionDetails.isEmpty() || !this.faqs.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err))
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      })
 
   }
 }

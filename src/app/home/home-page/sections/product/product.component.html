@@ -1,125 +1,145 @@
-<div class="product-area pos-relative pt-110 pb-85 fix">
-    <div class="shape spahe1 bounce-animate">
-        <img src="assets/img/shape/shape1.png" alt="shape" />
-    </div>
-    <div class="shape spahe2 bounce-animate">
-        <img src="assets/img/shape/shape2.png" alt="shape" />
-    </div>
-    <div class="shape spahe3 bounce-animate">
-        <img src="assets/img/shape/shape3.png" alt="shape" />
-    </div>
-    <div class="shape spahe4 bounce-animate">
-        <img src="assets/img/shape/shape4.png" alt="shape" />
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
-                <div class="section-title text-center section-circle mb-70">
-                    <div class="section-img">
-                        <img src="assets/img/shape/1.png" alt="" />
+<ng-container *ngIf="showLoader; else showCtaSectionDetails;">
+    <ngx-skeleton-loader [theme]="{
+        height: '400px',
+        width: '100%'
+    }"></ngx-skeleton-loader>
+</ng-container>
+
+<ng-template #showCtaSectionDetails>
+    <div class="product-area pos-relative pt-110 pb-85 fix">
+        <div class="shape spahe1 bounce-animate">
+            <img src="assets/img/shape/shape1.png" alt="shape" />
+        </div>
+        <div class="shape spahe2 bounce-animate">
+            <img src="assets/img/shape/shape2.png" alt="shape" />
+        </div>
+        <div class="shape spahe3 bounce-animate">
+            <img src="assets/img/shape/shape3.png" alt="shape" />
+        </div>
+        <div class="shape spahe4 bounce-animate">
+            <img src="assets/img/shape/shape4.png" alt="shape" />
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
+                    <div class="section-title text-center section-circle mb-70">
+                        <div class="section-img">
+                            <mak-pit-img-lazy [src]="productAreaSectionDetails.getIn(['sectionImage', 'src'])"
+                                [alt]="productAreaSectionDetails.getIn(['sectionImage', 'alt'])" height="6px"
+                                width="100%">
+                            </mak-pit-img-lazy>
+                        </div>
+                        <h1>
+                            {{ productAreaSectionDetails.get('heading') }}
+                        </h1>
+                        <p>
+                            {{ productAreaSectionDetails.get('summary') }}
+                        </p>
                     </div>
-                    <h1>Our Product</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmotempor
-                        incididunt ut labore et dolore magna aliqua enim minim veniam</p>
                 </div>
             </div>
-        </div>
-        <div class="row" data-tabs="true">
-            <div class="col-xl-12">
-                <mak-pit-tabs selectedTabClassName="active" *ngIf="!productCategories.isEmpty()">
-                    <mak-pit-tab-list className="nav product-tab justify-content-center mb-75"
-                        (tabSelectedEvent)="handleTabSelectedEvent($event)">
-                        <ng-container *ngFor="let product of productCategories">
-                            <ng-template makPitTab className="nav-item" [tabID]="product.get('id')">
-                                <div class="product-tab-content text-center">
-                                    <div class="product-tab-img">
-                                        <i class="flaticon-{{ product.get('flaticon') }}"></i>
+            <div class="row" data-tabs="true">
+                <div class="col-xl-12">
+                    <mak-pit-tabs selectedTabClassName="active" *ngIf="!productCategories.isEmpty()">
+                        <mak-pit-tab-list className="nav product-tab justify-content-center mb-75"
+                            (tabSelectedEvent)="handleTabSelectedEvent($event)">
+                            <ng-container *ngFor="let product of productCategories">
+                                <ng-template makPitTab className="nav-item" [tabID]="product.get('id')">
+                                    <div class="product-tab-content text-center">
+                                        <!-- <div class="product-tab-img">
+                                            <i class="flaticon-{{ product.get('flaticon') }}"></i>
+                                        </div> -->
+                                        <h4>
+                                            {{ product.get('title') }}
+                                        </h4>
                                     </div>
-                                    <h4>
-                                        {{ product.get('title') }}
-                                    </h4>
-                                </div>
-                            </ng-template>
-                        </ng-container>
-                    </mak-pit-tab-list>
+                                </ng-template>
+                            </ng-container>
+                        </mak-pit-tab-list>
 
-                    <mak-pit-tab-item>
-                        <ng-container *ngFor="let category of productCategories;">
-                            <ng-template makPitTabPanel>
-                                <div class="row">
-                                    <ng-container *ngIf="productsAvailable.get(
+                        <mak-pit-tab-item>
+                            <ng-container *ngFor="let category of productCategories;">
+                                <ng-template makPitTabPanel>
+                                    <div class="row">
+                                        <ng-container *ngIf="productsAvailable.get(
                                         category.get('id')?.toString() ); else productsAreLoading">
-                                        <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let product of productsAvailable.get(
+                                            <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let product of productsAvailable.get(
                                         category.get('id')?.toString() );">
-                                            <div class="product-wrapper text-center mb-30">
-                                                <div class="product-img">
-                                                    <a routerLink="/shop/shop-details">
-                                                        <img [src]="product?.productPreview?.src" [alt]="product?.productPreview?.alt" />
-                                                    </a>
-
-                                                    <div class="product-action">
-                                                        <a [routerLink]="null"><i class="fas fa-shopping-cart"></i></a>
-                                                        <a [routerLink]="null"><i class="fas fa-heart"></i></a>
-                                                        <a [routerLink]="null"><i class="fas fa-search"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-text">
-                                                    <h4>
-                                                        <a routerLink="/shop/shop-details">
-                                                            {{ product.title }}
+                                                <div class="product-wrapper text-center mb-30">
+                                                    <div class="product-img">
+                                                        <a [routerLink]="['/shop',product?.get('id') ,'shop-details']">
+                                                            <mak-pit-img-lazy
+                                                                [src]="product?.getIn(['productPreview', 'src'])"
+                                                                [alt]="product?.getIn(['productPreview', 'alt'])"
+                                                                height="280px" width="100%">
+                                                            </mak-pit-img-lazy>
                                                         </a>
-                                                    </h4>
-                                                    <div class="pro-rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
+
+                                                        <div class="product-action">
+                                                            <a
+                                                                [routerLink]="['/shop',product?.get('id') ,'shop-details']">
+                                                                <i class="fas fa-search"> </i>
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                    <div class="pro-price">
-                                                        <span>
-                                                            {{ product.price | currency:'KES':'symbol':'.2-2' }}
-                                                        </span>
+                                                    <div class="product-text">
+                                                        <h4>
+                                                            <a
+                                                                [routerLink]="['/shop',product?.get('id') ,'shop-details']">
+                                                                {{ product?.get('title') }}
+                                                            </a>
+                                                        </h4>
+                                                        <div class="pro-rating">
+                                                            <span>Sales: <strong>{{ product?.get('totalSales') |
+                                                                    number:'1.0':'en-US'}}</strong></span>
+                                                        </div>
+                                                        <div class="pro-price">
+                                                            <span>
+                                                                {{ product?.get('price') |
+                                                                currency:'KES':'symbol':'.2-2' }}
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </ng-container>
-                                    <ng-template #productsAreLoading>
-                                        <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let item of fakeObjectArray;">
-                                            <div class="product-wrapper text-center mb-30">
-                                                <ngx-skeleton-loader [theme]="{
+                                        </ng-container>
+                                        <ng-template #productsAreLoading>
+                                            <div class="col-xl-3 col-lg-3 col-md-6"
+                                                *ngFor="let item of 4|generateFakeObjects;">
+                                                <div class="product-wrapper text-center mb-30">
+                                                    <ngx-skeleton-loader [theme]="{
                                                     width: '100%',
                                                     height: '280px'
                                                 }"></ngx-skeleton-loader>
-                                                <div class="product-text">
-                                                    <h4>
-                                                        <a routerLink="/shop/shop-details">
-                                                            <ngx-skeleton-loader></ngx-skeleton-loader>
-                                                        </a>
-                                                    </h4>
-                                                    <div class="pro-rating">
-                                                        <i class="far far-star"></i>
-                                                        <i class="far far-star"></i>
-                                                        <i class="far far-star"></i>
-                                                        <i class="far far-star"></i>
-                                                        <i class="far far-star"></i>
-                                                    </div>
-                                                    <div class="pro-price">
-                                                        <span>
-                                                            <ngx-skeleton-loader></ngx-skeleton-loader>
-                                                        </span>
+                                                    <div class="product-text">
+                                                        <h4>
+                                                            <a [routerLink]="null">
+                                                                <ngx-skeleton-loader></ngx-skeleton-loader>
+                                                            </a>
+                                                        </h4>
+                                                        <div class="pro-rating">
+                                                            <i class="far far-star"></i>
+                                                            <i class="far far-star"></i>
+                                                            <i class="far far-star"></i>
+                                                            <i class="far far-star"></i>
+                                                            <i class="far far-star"></i>
+                                                        </div>
+                                                        <div class="pro-price">
+                                                            <span>
+                                                                <ngx-skeleton-loader></ngx-skeleton-loader>
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </ng-template>
-                                </div>
-                            </ng-template>
-                        </ng-container>
-                    </mak-pit-tab-item>
-                </mak-pit-tabs>
+                                        </ng-template>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+                        </mak-pit-tab-item>
+                    </mak-pit-tabs>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

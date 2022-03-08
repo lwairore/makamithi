@@ -1,40 +1,60 @@
-<div class="choose-us-area pt-100 pb-70 pos-relative">
-    <div class="shape spahe2 bounce-animate">
-        <img src="assets/img/shape/why-shape.png" alt="" />
-    </div>
+<div class="choose-us-area pt-100 pb-70 pos-relative" *ngIf="showLoader; else showLoaderItems;">
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-12">
                 <div class="choose-img mb-30">
-                    <img [src]="chooseUsSectionDetails.getIn(['sectionImage', 'src'])"
-                        [alt]="chooseUsSectionDetails.getIn(['sectionImage', 'alt'])" />
+                    <ngx-skeleton-loader [theme]="{
+                        height: '400px',
+                        width: '100%'
+                    }"></ngx-skeleton-loader>
                 </div>
             </div>
-            <div class="col-xl-5 col-lg-12">
-                <div class="choose-wrapper mb-30">
-                    <div class="choose-section">
-                        <h1>
-                            {{ chooseUsSectionDetails.get('heading') }}
-                        </h1>
-                        <p>
-                            {{ chooseUsSectionDetails.get('description')}}
-                        </p>
+        </div>
+    </div>
+</div>
+<ng-template #showLoaderItems>
+    <div class="choose-us-area pt-100 pb-70 pos-relative">
+        <div class="shape spahe2 bounce-animate">
+            <img src="assets/img/shape/why-shape.png" alt="" />
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-7 col-lg-12">
+                    <div class="choose-img mb-30">
+                        <mak-pit-img-lazy [src]="chooseUsSectionDetails.getIn(['sectionImage', 'src'])"
+                            [alt]="chooseUsSectionDetails.getIn(['sectionImage', 'alt'])" height="218px"
+                            width="100%"></mak-pit-img-lazy>
                     </div>
-                    <div class="choose-content"
-                        *ngFor="let coreValue of listCoreValue; let isLast=last;trackBy: coreValueTrackByFn"
-                        [class.mb-40]="!isLast">
-                        <div class="choose-us-img">
-                            <img [src]="coreValue.getIn(['image', 'src'])" [alt]="coreValue.getIn(['image', 'alt'])" />
-                        </div>
-                        <div class="choose-text">
-                            <h4>{{ coreValue.get('title') }}</h4>
+                </div>
+                <div class="col-xl-5 col-lg-12">
+                    <div class="choose-wrapper mb-30">
+                        <div class="choose-section">
+                            <h1>
+                                {{ chooseUsSectionDetails.get('heading') }}
+                            </h1>
                             <p>
-                                {{ coreValue.get('description') }}
+                                {{ chooseUsSectionDetails.get('description')}}
                             </p>
+                        </div>
+                        <div class="choose-content"
+                            *ngFor="let coreValue of listCoreValue; let isLast=last;trackBy: coreValueTrackByFn"
+                            [class.mb-40]="!isLast">
+                            <div class="choose-us-img">
+                                <mak-pit-img-lazy [src]="coreValue.getIn(['image', 'src'])"
+                                    [alt]="coreValue.getIn(['image', 'alt'])" width="100%" height="60px"
+                                    appearance='circle'>
+                                </mak-pit-img-lazy>
+                            </div>
+                            <div class="choose-text">
+                                <h4>{{ coreValue.get('title') }}</h4>
+                                <p>
+                                    {{ coreValue.get('description') }}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

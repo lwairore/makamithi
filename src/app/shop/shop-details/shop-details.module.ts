@@ -5,6 +5,7 @@ import { ShopDetailsMainComponent } from './shop-details-main/shop-details-main.
 import { SharedModule } from '@sharedModule/shared.module';
 import { SPShopDetailsSectionComponent } from './shop-details-main/sections/spshop-details-section/spshop-details-section.component';
 import { TabsModule } from 'src/app/lib/tabs/tabs.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { TabsModule } from 'src/app/lib/tabs/tabs.module';
     ShopDetailsRoutingModule,
     SharedModule,
     TabsModule,
+    NgxSkeletonLoaderModule,
   ]
 })
 export class ShopDetailsModule { }

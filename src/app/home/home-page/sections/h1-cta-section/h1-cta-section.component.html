@@ -1,4 +1,9 @@
-<ng-container *ngIf="ctaSectionDetails.isEmpty(); else showCtaSectionDetails;"></ng-container>
+<ng-container *ngIf="showLoader; else showCtaSectionDetails;">
+    <ngx-skeleton-loader [theme]="{
+        height: '400px',
+        width: '100%'
+    }"></ngx-skeleton-loader>
+</ng-container>
 <ng-template #showCtaSectionDetails>
     <div class="cta-area pt-100 pb-90"
         [style.background-image]="'url('+ ctaSectionDetails.getIn(['backgroundImage', 'src']) +')'">
@@ -7,8 +12,9 @@
                 <div class="col-xl-8 col-lg-8 col-md-8">
                     <div class="cta-wrapper mb-15">
                         <div class="cta-img">
-                            <img [src]="ctaSectionDetails.getIn(['sectionImage', 'src'])"
-                                [alt]="ctaSectionDetails.getIn(['sectionImage', 'alt'])" />
+                            <mak-pit-img-lazy [src]="ctaSectionDetails.getIn(['sectionImage', 'src'])"
+                                [alt]="ctaSectionDetails.getIn(['sectionImage', 'alt'])" height="6px"
+                                width="100%"></mak-pit-img-lazy>
                         </div>
                         <div class="cta-text">
                             <h1>

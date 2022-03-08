@@ -18,6 +18,7 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
+  showLoader = false;
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
@@ -50,6 +51,12 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   private _loadRequiredDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     const RETRIEVE_GALLERY_SECTION$ = this._homeService.retrieveGallerySection$();
 
     const LIST_HOME_GALLERY$ = this._homeService.listHomeGallerySection$();
@@ -63,8 +70,14 @@ export class H1GallerySectionComponent implements OnInit, AfterViewInit, OnDestr
     ])
       .subscribe(_ => {
         if (!this.gallerySectionDetails.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err));
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      });
   }
 }

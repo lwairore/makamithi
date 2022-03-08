@@ -1,21 +1,80 @@
-<div class="product-area pos-relative pt-110 pb-120 fix">
+<div class="product-area pos-relative pt-110 pb-120 fix" *ngIf="showLoader; else showCtaSectionDetails;">
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-5 col-md-6 col-sm-7">
                 <div class="product-showing">
-                    <p *ngIf="getMyCurrentPageNumber()">
-                        Showing {{ getMyCurrentPageNumber() }}–{{getCurrentLengthOfProducts()}} of
-                        {{getTotalNumberOfResults()}}
-                        <ng-container [ngPlural]="getTotalNumberOfResults()">
-                            <ng-template ngPluralCase="0">results</ng-template>
-                            <ng-template ngPluralCase="1">result</ng-template>
-                            <ng-template ngPluralCase="other">results</ng-template>
-                        </ng-container>
-
-                    </p>
+                    <ngx-skeleton-loader [theme]="{
+                        height: '30px',
+                        width: '70%'
+                    }"></ngx-skeleton-loader>
                 </div>
             </div>
-            <!-- <div class="col-xl-6 col-md-6 col-sm-5">
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let item of 6|generateFakeObjects;">
+                <div class="product-wrapper text-center mb-30">
+                    <ngx-skeleton-loader [theme]="{
+                        height: '356px',
+                        width: '100%'
+                    }"></ngx-skeleton-loader>
+                    <div class="product-text">
+                        <h4>
+                            <ngx-skeleton-loader [theme]="{
+                                height: '22px',
+                                width: '100%'
+                            }"></ngx-skeleton-loader>
+                        </h4>
+                        <div class="pro-rating">
+                            <ngx-skeleton-loader [theme]="{
+                                height: '19px',
+                                width: '100%'
+                            }"></ngx-skeleton-loader>
+                        </div>
+                        <div class="pro-price">
+                            <ngx-skeleton-loader [theme]="{
+                                height: '17px',
+                                width: '100%'
+                            }"></ngx-skeleton-loader>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="basic-pagination basic-pagination-2 text-center mt-20">
+                    <ul>
+                        <li *ngFor="let navItem of 3|generateFakeObjects">
+                            <ngx-skeleton-loader appearance="circle" [theme]="{
+                                height: '60px',
+                                width: '60px'
+                            }"></ngx-skeleton-loader>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #showCtaSectionDetails>
+    <div class="product-area pos-relative pt-110 pb-120 fix">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-5 col-md-6 col-sm-7">
+                    <div class="product-showing">
+                        <p *ngIf="getMyCurrentPageNumber()">
+                            Showing {{ getMyCurrentPageNumber() }}–{{getCurrentLengthOfProducts()}} of
+                            {{getTotalNumberOfResults()}}
+                            <ng-container [ngPlural]="getTotalNumberOfResults()">
+                                <ng-template ngPluralCase="0">results</ng-template>
+                                <ng-template ngPluralCase="1">result</ng-template>
+                                <ng-template ngPluralCase="other">results</ng-template>
+                            </ng-container>
+
+                        </p>
+                    </div>
+                </div>
+                <!-- <div class="col-xl-6 col-md-6 col-sm-5">
                 <div class="pro-filter mb-40 f-right">
                     <form [formGroup]="sortByFormGroup">
                         <select formControlName="sort" name="pro-filter" id="pro-filter">
@@ -27,62 +86,64 @@
                     </form>
                 </div>
             </div> -->
-        </div>
-        <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let item of products;">
-                <div class="product-wrapper text-center mb-30">
-                    <div class="product-img">
-                        <a routerLink="./shop-details">
-                            <img [src]="item?.getIn(['productPreview', 'src'])"
-                                [alt]="item?.getIn(['productPreview', 'src'])">
-                        </a>
-                        <div class="product-action">
-                            <a [routerLink]="['../',item.get('id') ,'shop-details']">
-                                <i class="fas fa-search"> </i>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let item of products;">
+                    <div class="product-wrapper text-center mb-30">
+                        <div class="product-img">
+                            <a routerLink="./shop-details">
+                                <mak-pit-img-lazy [src]="item?.getIn(['productPreview', 'src'])"
+                                    [alt]="item?.getIn(['productPreview', 'src'])" height="300px" width="100%">
+                                </mak-pit-img-lazy>
                             </a>
+                            <div class="product-action">
+                                <a [routerLink]="['../',item.get('id') ,'shop-details']">
+                                    <i class="fas fa-search"> </i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-text">
-                        <h4>
-                            <a [routerLink]="['../',item.get('id') ,'shop-details']">
-                                {{ item?.get('title') }}
-                            </a>
-                        </h4>
-                        <div class="pro-rating">
-                            <span>Sales: <strong>{{ item?.get('totalSales') | number:'1.0':'en-US'}}</strong></span>
-                        </div>
-                        <div class="pro-price">
-                            <span>
-                                {{ item?.get('price') | currency:'KES':'symbol':'.2-2' }}
-                            </span>
+                        <div class="product-text">
+                            <h4>
+                                <a [routerLink]="['../',item.get('id') ,'shop-details']">
+                                    {{ item?.get('title') }}
+                                </a>
+                            </h4>
+                            <div class="pro-rating">
+                                <span>Sales: <strong>{{ item?.get('totalSales') | number:'1.0':'en-US'}}</strong></span>
+                            </div>
+                            <div class="pro-price">
+                                <span>
+                                    {{ item?.get('price') | currency:'KES':'symbol':'.2-2' }}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="basic-pagination basic-pagination-2 text-center mt-20">
-                    <ul>
-                        <li *ngIf="fetchPrevious()">
-                            <a [routerLink]="['..', fetchPrevious()]">
-                                <i class="fas fa-angle-double-left"></i>
-                            </a>
-                        </li>
-                        <li *ngFor="let itemNumber of fakeObjectArray()"
-                            [class.active]="markPageNavItemActive(itemNumber)">
-                            <a [routerLink]="['..',
+            <div class="row">
+                <div class="col-12">
+                    <div class="basic-pagination basic-pagination-2 text-center mt-20">
+                        <ul>
+                            <li *ngIf="fetchPrevious()">
+                                <a [routerLink]="['..', fetchPrevious()]">
+                                    <i class="fas fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                            <li *ngFor="let itemNumber of fakeObjectArray()"
+                                [class.active]="markPageNavItemActive(itemNumber)">
+                                <a [routerLink]="['..',
                             
                             itemNumber + 1]">{{itemNumber + 1}}</a>
-                        </li>
-                        <li *ngIf="fetchNext()">
-                            <a [routerLink]="['..', fetchNext()]">
-                                <i class="fas fa-angle-double-right"></i>
-                            </a>
-                        </li>
-                    </ul>
+                            </li>
+                            <li *ngIf="fetchNext()">
+                                <a [routerLink]="['..', fetchNext()]">
+                                    <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

@@ -1,9 +1,9 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ClientSliderService } from '@sharedModule/services/client-slider.service';
 import * as Immutable from 'immutable';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { forkJoin, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { AboutUsService } from 'src/app/about-us/about-us.service';
 
 @Component({
   selector: 'mak-pit-client-slider2',
@@ -12,7 +12,7 @@ import { AboutUsService } from 'src/app/about-us/about-us.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ClientSlider2Component implements OnInit,AfterViewInit ,OnDestroy {
+export class ClientSlider2Component implements OnInit, AfterViewInit, OnDestroy {
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -43,9 +43,11 @@ export class ClientSlider2Component implements OnInit,AfterViewInit ,OnDestroy {
   listClientReviews = Immutable.fromJS([]);
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
-  
+
+  showLoader = false;
+
   constructor(
-    private _aboutUsService: AboutUsService,
+    private _clientSliderService: ClientSliderService,
     private _changeDetectorRef: ChangeDetectorRef,
   ) { }
 
@@ -67,10 +69,16 @@ export class ClientSlider2Component implements OnInit,AfterViewInit ,OnDestroy {
   }
 
   private _loadRequiredDetails() {
-    const CLIENT_REVIEW_SECTION_DETAILS$ = this._aboutUsService
-      .retrieveTeamAreaSection$();
+    if (!this.showLoader) {
+      this.showLoader = true;
 
-    const LIST_CLIENT_REVIEW$ = this._aboutUsService
+      this._manuallyTriggerChangeDetection();
+    }
+
+    const CLIENT_REVIEW_SECTION_DETAILS$ = this._clientSliderService
+      .retrieveClientReviewSection$();
+
+    const LIST_CLIENT_REVIEW$ = this._clientSliderService
       .listClientReview$();
 
     this._loadRequiredDetailsSubscription = forkJoin([
@@ -81,14 +89,19 @@ export class ClientSlider2Component implements OnInit,AfterViewInit ,OnDestroy {
       LIST_CLIENT_REVIEW$.pipe(
         tap(details => {
           this.listClientReviews = Immutable.fromJS(details);
-          console.log(this.listClientReviews);
         })),
     ])
       .subscribe(_ => {
         if (!this.clientReviewSectionDetails.isEmpty() || !this.listClientReviews.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err))
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      })
   }
 
   private _manuallyTriggerChangeDetection() {

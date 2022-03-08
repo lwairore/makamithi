@@ -30,7 +30,9 @@ export class GPGalleryDetailsOneSectionComponent implements OnInit, AfterViewIni
 
   paginationDetailsForReviews = Immutable.Map({
     next: 0,
-  })
+  });
+
+  showLoader = false;
 
   constructor(
     private _galleryService: GalleryService,
@@ -58,8 +60,6 @@ export class GPGalleryDetailsOneSectionComponent implements OnInit, AfterViewIni
   private _extractRouteParams() {
     this._routeParamsSubscription = this._activatedRoute.params
       .subscribe(params => {
-        console.log(params);
-
         const GALLERY_ID = convertItemToNumeric(
           params['galleryID']);
 
@@ -88,6 +88,12 @@ export class GPGalleryDetailsOneSectionComponent implements OnInit, AfterViewIni
   }
 
   private _loadRequiredDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     const GALLERY_ID = this._routeParams.get('galleryID');
 
     if (!isANumber(GALLERY_ID)) {
@@ -130,9 +136,15 @@ export class GPGalleryDetailsOneSectionComponent implements OnInit, AfterViewIni
     ])
       .subscribe(_ => {
         if (!this.galleryDetails.isEmpty() || !this.gallerySectionDetails.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, (err) => console.error(err));
+      }, (err) => {
+        console.error(err);
+
+        this.showLoader = false;
+      });
   }
 
 

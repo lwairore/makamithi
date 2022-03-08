@@ -10,67 +10,38 @@
         </a>
     </div>
     <div class="side-info mb-30">
-        <div class="contact-list mb-30">
+        <div class="contact-list mb-30" *ngIf="contactInfos?.has('addresses')">
             <h4>Office Address</h4>
-            <p>Mbolu Malu Rd, Machakos, Kenya</p>
+            <p *ngFor="let address of contactInfos.get('addresses')">
+                {{ address.get('addressTitle') }} ({{ address.get('address') }})
+            </p>
         </div>
-        <div class="contact-list mb-30">
+        <div class="contact-list mb-30" *ngIf="contactInfos?.has('phoneNumbers')">
             <h4>Phone Number</h4>
-            <p>
-                <a [style.color]="'inherit'" href="tel:254707069409">+254 707 069409</a>
-            </p>
-            <p>
-                <a [style.color]="'inherit'" href="tel:254768164336">
-                    +254 768 164336
+            <p *ngFor="let phoneNumber of contactInfos.get('phoneNumbers')">
+                <a [style.color]="'inherit'" href="tel:{{phoneNumber|formatPhoneNumber:true}}">
+                    {{ phoneNumber|formatPhoneNumber }}
                 </a>
-
-            </p>
-            <p>
-                <a [style.color]="'inherit'" href="tel:254724236529">
-                    +254 724 236529
-                </a>
-
             </p>
         </div>
-        <div class="contact-list mb-30">
+        <div class="contact-list mb-30" *ngIf="contactInfos?.has('emails')">
             <h4>Email Address</h4>
-            <p>
-                <a href="mailto:info@makamithi.com" [style.color]="'inherit'">info@makamithi.com</a>
+            <p *ngFor="let email of contactInfos.get('emails')">
+                <a href="mailto:{{email}}" [style.color]="'inherit'">
+                    {{ email }}
+                </a>
             </p>
         </div>
     </div>
     <div class="instagram">
-        <a [routerLink]="null">
-            <img src="assets/img/gallery/gallery1.jpg" alt="gallery" />
-        </a>
-        <a [routerLink]="null">
-            <img src="assets/img/gallery/gallery2.jpg" alt="gallery" />
-        </a>
-        <a [routerLink]="null">
-            <img src="assets/img/gallery/gallery3.jpg" alt="gallery" />
-        </a>
-        <a [routerLink]="null">
-            <img src="assets/img/gallery/gallery4.jpg" alt="gallery" />
-        </a>
-        <a [routerLink]="null">
-            <img src="assets/img/gallery/gallery5.jpg" alt="gallery" />
-        </a>
-        <a [routerLink]="null">
-            <img src="assets/img/gallery/gallery6.jpg" alt="gallery" />
+        <a [routerLink]="['/services', service.get('id'), 'services-details']" *ngFor="let service of services;">
+            <mak-pit-img-lazy [src]="service.getIn(['navSidebarPhoto', 'src'])"
+                [alt]="service.getIn(['navSidebarPhoto', 'alt'])" width="100%" height="70px"></mak-pit-img-lazy>
         </a>
     </div>
     <div class="social-icon-right mt-20">
-        <a [routerLink]="null">
-            <i class="fab fa-facebook-f fa-w-10"></i>
-        </a>
-        <a [routerLink]="null">
-            <i class="fab fa-twitter fa-w-16"></i>
-        </a>
-        <a [routerLink]="null">
-            <i class="fab fa-google-plus-g fa-w-20"></i>
-        </a>
-        <a [routerLink]="null">
-            <i class="fab fa-instagram fa-w-14"></i>
+        <a [href]="socialItem.get('link')" *ngFor="let socialItem of socialMedias;" target="_blank">
+            <i [class]="socialItem.get('icon')"></i>
         </a>
     </div>
 </div>

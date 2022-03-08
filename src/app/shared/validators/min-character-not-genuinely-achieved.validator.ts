@@ -9,9 +9,7 @@ export class MinCharacterNotGenuinelyAchievedValidator {
             if (stringIsEmpty(controlValue) && !control.touched)
                 // if control is empty return no error
                 return null;
-            // const regexExpression = new RegExp(`/[a-z,.'-]{${minCharacters},}/`, 'i');
-            // const regexExpression = new RegExp(`/[a-z]/`, 'gi');
-            // console.log(regexExpression.test(controlValue))
+
             let valid: boolean;
             try {
                 valid = controlValue.length >= minCharacters;

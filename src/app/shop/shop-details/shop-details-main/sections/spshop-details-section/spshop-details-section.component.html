@@ -1,14 +1,17 @@
-<section class="shop-banner-area pt-120 pb-80">
+<section class="shop-banner-area pt-120 pb-80" *ngIf="showLoader; else showCtaSectionDetails;">
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6">
-                <mak-pit-tabs selectedTabClassName="active" *ngIf="productDetails.has('productImages')">
+                <mak-pit-tabs selectedTabClassName="active">
                     <div class="product-details-img mb-20">
                         <mak-pit-tab-item>
-                            <ng-container *ngFor="let productImage of productDetails.get('productImages')">
+                            <ng-container *ngFor="let productImage of 3|generateFakeObjects">
                                 <ng-template makPitTabPanel>
                                     <div class="product-large-img">
-                                        <img [src]="productImage.get('src')" [alt]="productImage.get('alt')" />
+                                        <ngx-skeleton-loader [theme]="{
+                                            height: '300px',
+                                            width: '100%'
+                                        }"></ngx-skeleton-loader>
                                     </div>
                                 </ng-template>
                             </ng-container>
@@ -16,10 +19,13 @@
                     </div>
 
                     <mak-pit-tab-list className="shop-thumb-tab mb-30">
-                        <ng-container *ngFor="let productImage of productDetails.get('productImages')">
+                        <ng-container *ngFor="let productImage of 3|generateFakeObjects">
                             <ng-template makPitTab>
                                 <a class="nav-link">
-                                    <img [src]="productImage.get('src')" [alt]="productImage.get('alt')" />
+                                    <ngx-skeleton-loader [theme]="{
+                                        height: '90px',
+                                        width: '90px'
+                                    }"></ngx-skeleton-loader>
                                 </a>
                             </ng-template>
                         </ng-container>
@@ -31,113 +37,215 @@
                 <div class="product-details mb-30">
                     <div class="product-details-title">
                         <h1>
-                            {{ productDetails.get('title') }}
+                            <ngx-skeleton-loader [theme]="{
+                                height: '25px',
+                                width: '100%'
+                            }"></ngx-skeleton-loader>
                         </h1>
                         <div class="details-price mb-20">
                             <span>
-                                {{ productDetails.getIn(['price', 'now'])| currency:'KES':'symbol':'.2-2' }}
+                                <ngx-skeleton-loader [theme]="{
+                                    height: '25px',
+                                    width: '70%'
+                                }"></ngx-skeleton-loader>
                             </span>
-                            <span class="old-price" *ngIf="productDetails.hasIn(['price', 'was'])">
-                                {{ productDetails.getIn(['price', 'was'])| currency:'KES':'symbol':'.2-2' }}
+                            <span class="old-price">
+                                <ngx-skeleton-loader [theme]="{
+                                    height: '25px',
+                                    width: '70%'
+                                }"></ngx-skeleton-loader>
                             </span>
                         </div>
                         <div class="pro-rating mb-20">
                             <span *ngIf="productDetails.has('totalSales')">
-                                Sales: <strong>{{productDetails?.get('totalSales') | number:'1.0':'en-US'}}</strong>
+                                <ngx-skeleton-loader [theme]="{
+                                    height: '25px',
+                                    width: '70%'
+                                }"></ngx-skeleton-loader>
                             </span>
                         </div>
                     </div>
                     <p>
-                        {{ productDetails.get('description')}}
+                        <ngx-skeleton-loader [theme]="{
+                            height: '150px',
+                            width: '100%'
+                        }"></ngx-skeleton-loader>
                     </p>
                     <div class="product-social mb-30">
-                        <a [routerLink]="null">
-                            <span class="fab fa-facebook-f"></span>
-                        </a>
-                        <a [routerLink]="null">
-                            <span class="fab fa-twitter"></span>
-                        </a>
-                        <a [routerLink]="null">
-                            <span class="fab fa-behance"></span>
-                        </a>
-                        <a [routerLink]="null">
-                            <span class="fab fa-linkedin-in"></span>
-                        </a>
-                        <a [routerLink]="null">
-                            <span class="fab fa-youtube"></span>
-                        </a>
+                        <ngx-skeleton-loader appearance="circle" [theme]="{
+                            height: '50px',
+                            width: '50px'
+                        }"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader appearance="circle" [theme]="{
+                            height: '50px',
+                            width: '50px'
+                        }"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader appearance="circle" [theme]="{
+                            height: '50px',
+                            width: '50px'
+                        }"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader appearance="circle" [theme]="{
+                            height: '50px',
+                            width: '50px'
+                        }"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader appearance="circle" [theme]="{
+                            height: '50px',
+                            width: '50px'
+                        }"></ngx-skeleton-loader>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mt-50" *ngIf="productDetails.get('totalReviews')">
-            <div class="col-xl-12">
-                <div class="product-review">
-                    <mak-pit-tabs selectedTabClassName="active">
-                        <mak-pit-tab-list className="nav review-tab"
-                            (tabSelectedEvent)="handleTabSelectedEvent($event)">
-                            <ng-template makPitTab className="nav-item">
-                                <a class="nav-link">Description</a>
-                            </ng-template>
-                            <ng-template makPitTab className="nav-item">
-                                <a class="nav-link">Reviews ({{ productDetails.get('totalReviews') }})</a>
-                            </ng-template>
-                        </mak-pit-tab-list>
-
-                        <div class="tab-content">
-                            <mak-pit-tab-item>
-                                <ng-template makPitTabPanel>
-                                    <div class="review-text mt-30">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod
-                                            tempor incididunt ut labore
-                                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                            exercitation ullamco laboris nisi
-                                            ut aliquip ex ea commodo consequat.</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                            eiusmod
-                                            tempor incididunt ut labore
-                                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                            exercitation ullamco laboris nisi
-                                            ut aliquip ex ea commodo consequat.</p>
-                                    </div>
-                                </ng-template>
-                                <ng-template makPitTabPanel>
-                                    <div class="review-text mt-30">
-                                        <div class="product-commnets">
-                                            <div class="product-commnets-list" *ngFor="let review of reviews;">
-                                                <div class="pro-comments-img">
-                                                    <img [src]="review.getIn(['clientImage', 'src'])"
-                                                        [alt]="review.getIn(['clientImage', 'alt'])">
-                                                </div>
-                                                <div class="pro-commnets-text">
-                                                    <h4>{{ review.get('fullName') }} - <span>{{ review.get('createdAt')
-                                                            | date: 'longDate' }}</span>
-                                                    </h4>
-                                                    <div class="pro-rating">
-                                                        <span class="far fa-star"
-                                                            *ngFor="let star of review.get('rating')|generateFakeObjects"></span>
-                                                    </div>
-                                                    <p>
-                                                        {{ review.get('review') }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-40" *ngIf="paginationDetailsForReviews.get('next')">
-                                        <div class="col-xl-12">
-                                            <button class="btn brand-btn" (click)="listProductReview()">Load more
-                                                reviews</button>
-                                        </div>
-                                    </div>
-                                </ng-template>
-                            </mak-pit-tab-item>
-                        </div>
-                    </mak-pit-tabs>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<ng-template #showCtaSectionDetails>
+    <section class="shop-banner-area pt-120 pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                    <mak-pit-tabs selectedTabClassName="active" *ngIf="productDetails.has('productImages')">
+                        <div class="product-details-img mb-20">
+                            <mak-pit-tab-item>
+                                <ng-container *ngFor="let productImage of productDetails.get('productImages')">
+                                    <ng-template makPitTabPanel>
+                                        <div class="product-large-img">
+                                            <mak-pit-img-lazy [src]="productImage.get('src')"
+                                                [alt]="productImage.get('alt')" height="300px" width="100%">
+                                            </mak-pit-img-lazy>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </mak-pit-tab-item>
+                        </div>
+
+                        <mak-pit-tab-list className="shop-thumb-tab mb-30">
+                            <ng-container *ngFor="let productImage of productDetails.get('productImages')">
+                                <ng-template makPitTab>
+                                    <a class="nav-link">
+                                        <mak-pit-img-lazy [src]="productImage.get('src')"
+                                            [alt]="productImage.get('alt')" height="90px" width="100%">
+                                        </mak-pit-img-lazy>
+                                    </a>
+                                </ng-template>
+                            </ng-container>
+                        </mak-pit-tab-list>
+                    </mak-pit-tabs>
+                </div>
+
+                <div class="col-xl-6 col-lg-6">
+                    <div class="product-details mb-30">
+                        <div class="product-details-title">
+                            <h1>
+                                {{ productDetails.get('title') }}
+                            </h1>
+                            <div class="details-price mb-20">
+                                <span>
+                                    {{ productDetails.getIn(['price', 'now'])| currency:'KES':'symbol':'.2-2' }}
+                                </span>
+                                <span class="old-price" *ngIf="productDetails.hasIn(['price', 'was'])">
+                                    {{ productDetails.getIn(['price', 'was'])| currency:'KES':'symbol':'.2-2' }}
+                                </span>
+                            </div>
+                            <div class="pro-rating mb-20">
+                                <span *ngIf="productDetails.has('totalSales')">
+                                    Sales: <strong>{{productDetails?.get('totalSales') | number:'1.0':'en-US'}}</strong>
+                                </span>
+                            </div>
+                        </div>
+                        <p>
+                            {{ productDetails.get('description')}}
+                        </p>
+                        <div class="product-social mb-30">
+                            <!-- <a [routerLink]="null">
+                                <span class="fab fa-facebook-f"></span>
+                            </a>
+                            <a [routerLink]="null">
+                                <span class="fab fa-twitter"></span>
+                            </a>
+                            <a [routerLink]="null">
+                                <span class="fab fa-behance"></span>
+                            </a>
+                            <a [routerLink]="null">
+                                <span class="fab fa-linkedin-in"></span>
+                            </a>
+                            <a [routerLink]="null">
+                                <span class="fab fa-youtube"></span>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-50">
+                <div class="col-xl-12">
+                    <div class="product-review">
+                        <mak-pit-tabs selectedTabClassName="active"
+                            *ngIf="productDetails.get('totalReviews') || productDetails.get('description')">
+                            <mak-pit-tab-list className="nav review-tab"
+                                (tabSelectedEvent)="handleTabSelectedEvent($event)">
+                                <ng-container *ngIf="productDetails.get('description')">
+                                    <ng-template makPitTab className="nav-item">
+                                        <a class="nav-link">Description</a>
+                                    </ng-template>
+                                </ng-container>
+                                <ng-container *ngIf="productDetails.get('totalReviews')">
+                                    <ng-template makPitTab className="nav-item">
+                                        <a class="nav-link">Reviews ({{ productDetails.get('totalReviews') }})</a>
+                                    </ng-template>
+                                </ng-container>
+                            </mak-pit-tab-list>
+
+                            <div class="tab-content">
+                                <mak-pit-tab-item>
+                                    <ng-container *ngIf="productDetails.get('description')">
+                                        <ng-template makPitTabPanel>
+                                            <div class="review-text mt-30">
+                                                <p [innerHTML]="productDetails.get('description')"></p>
+                                            </div>
+                                        </ng-template>
+                                    </ng-container>
+                                    <ng-container *ngIf="productDetails.get('totalReviews')">
+                                        <ng-template makPitTabPanel>
+                                            <div class="review-text mt-30">
+                                                <div class="product-commnets">
+                                                    <div class="product-commnets-list" *ngFor="let review of reviews;">
+                                                        <div class="pro-comments-img">
+                                                            <mak-pit-img-lazy
+                                                                [src]="review.getIn(['clientImage', 'src'])"
+                                                                [alt]="review.getIn(['clientImage', 'alt'])"
+                                                                height="60px" width="100%"></mak-pit-img-lazy>
+                                                        </div>
+                                                        <div class="pro-commnets-text">
+                                                            <h4>{{ review.get('fullName') }} - <span>{{
+                                                                    review.get('createdAt')
+                                                                    | date: 'longDate' }}</span>
+                                                            </h4>
+                                                            <div class="pro-rating">
+                                                                <span class="far fa-star"
+                                                                    *ngFor="let star of review.get('rating')|generateFakeObjects"></span>
+                                                            </div>
+                                                            <p>
+                                                                {{ review.get('review') }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-40" *ngIf="paginationDetailsForReviews.get('next')">
+                                                <div class="col-xl-12">
+                                                    <button class="btn brand-btn" (click)="listProductReview()">Load
+                                                        more
+                                                        reviews</button>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </ng-container>
+                                </mak-pit-tab-item>
+                            </div>
+                        </mak-pit-tabs>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>

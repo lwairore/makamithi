@@ -1,37 +1,59 @@
-<div class="gallery-area pb-80">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
-                <div class="section-title text-center section-circle mb-70">
-                    <div class="section-img">
-                        <img [src]="gallerySectionDetails.getIn(['sectionImage', 'src'])"
-                            [alt]="gallerySectionDetails.getIn(['sectionImage', 'alt'])" />
-                    </div>
-                    <h1>{{gallerySectionDetails.get('heading')}}</h1>
-                    <p>
-                        {{gallerySectionDetails.get('summary')}}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="gallery-area pb-80" *ngIf="showLoader; else showLoadedItems">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let gallery of homeGalley;trackBy:homeGalleryTrackByFn">
+            <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let gallery of 4|generateFakeObjects;">
                 <div class="gallery-wrapper mb-30">
                     <div class="gallery-img">
-                        <a [routerLink]="['/gallery', gallery.get('id'), 'gallery-details']">
-                            <img [src]="gallery.getIn(['homePreview', 'src'])"
-                                [alt]="gallery.getIn(['homePreview', 'alt'])" />
-                        </a>
-                        <div class="gallery-icon">
-                            <a class="popup-image" [routerLink]="['/gallery', gallery.get('id'), 'gallery-details']">
-                                <i class="ti-plus"></i>
-                            </a>
-                        </div>
+                        <ngx-skeleton-loader [theme]="{
+                            height: '400px',
+                            width: '100%'
+                        }"></ngx-skeleton-loader>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #showLoadedItems>
+    <div class="gallery-area pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
+                    <div class="section-title text-center section-circle mb-70">
+                        <div class="section-img">
+                            <mak-pit-img-lazy [src]="gallerySectionDetails.getIn(['sectionImage', 'src'])"
+                                [alt]="gallerySectionDetails.getIn(['sectionImage', 'alt'])" width="100%" height="6px">
+                            </mak-pit-img-lazy>
+                        </div>
+                        <h1>{{gallerySectionDetails.get('heading')}}</h1>
+                        <p>
+                            {{gallerySectionDetails.get('summary')}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let gallery of homeGalley;trackBy:homeGalleryTrackByFn">
+                    <div class="gallery-wrapper mb-30">
+                        <div class="gallery-img">
+                            <a [routerLink]="['/gallery', gallery.get('id'), 'gallery-details']">
+                                <mak-pit-img-lazy [src]="gallery.getIn(['homePreview', 'src'])"
+                                    [alt]="gallery.getIn(['homePreview', 'alt'])" width="100%" height="340px">
+                                </mak-pit-img-lazy>
+                            </a>
+                            <div class="gallery-icon">
+                                <a class="popup-image"
+                                    [routerLink]="['/gallery', gallery.get('id'), 'gallery-details']">
+                                    <i class="ti-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

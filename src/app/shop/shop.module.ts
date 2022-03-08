@@ -5,6 +5,7 @@ import { ShopComponent } from './shop.component';
 import { SharedModule } from '@sharedModule/shared.module';
 import { ShopMainComponent } from './shop-main/shop-main.component';
 import { SPProductSectionComponent } from './shop-main/sections/spproduct-section/spproduct-section.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SPProductSectionComponent } from './shop-main/sections/spproduct-sectio
     CommonModule,
     ShopRoutingModule,
     SharedModule,
+    NgxSkeletonLoaderModule,
   ]
 })
 export class ShopModule { }

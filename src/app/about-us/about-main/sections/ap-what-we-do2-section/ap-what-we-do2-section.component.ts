@@ -18,6 +18,8 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDes
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _aboutUsService: AboutUsService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -41,6 +43,12 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDes
   }
 
   private _loadRequiredDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     const WHAT_WE_DO_SECTION_DETAILS$ = this._aboutUsService
       .retrieveWhatWeDoSection$();
 
@@ -55,14 +63,19 @@ export class ApWhatWeDo2SectionComponent implements OnInit, AfterViewInit, OnDes
       LIST_SERVICE$.pipe(
         tap(details => {
           this.listService = Immutable.fromJS(details);
-          console.log(this.listService);
         })),
     ])
       .subscribe(_ => {
         if (!this.whatWeDoSectionDetails.isEmpty() || !this.listService.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err))
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      })
   }
 
   private _manuallyTriggerChangeDetection() {

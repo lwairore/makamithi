@@ -1,24 +1,33 @@
-<div class="zomata-area pt-120 pb-80">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 cl-md-6">
-                <div class="zomata-img mb-30">
-                    <img [src]="serviceAboutSectionDetails.getIn(['sectionImage', 'src'])"
-                        [alt]="serviceAboutSectionDetails.getIn(['sectionImage', 'alt'])" />
+<ng-container *ngIf="showLoader; else showCtaSectionDetails;">
+    <ngx-skeleton-loader [theme]="{
+        height: '400px',
+        width: '100%'
+    }"></ngx-skeleton-loader>
+</ng-container>
+<ng-template #showCtaSectionDetails>
+    <div class="zomata-area pt-120 pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 cl-md-6">
+                    <div class="zomata-img mb-30">
+                        <mak-pit-img-lazy [src]="serviceAboutSectionDetails.getIn(['sectionImage', 'src'])"
+                            [alt]="serviceAboutSectionDetails.getIn(['sectionImage', 'alt'])" width="100%"
+                            height="200px"></mak-pit-img-lazy>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 cl-md-6">
-                <div class="zomata-wrapper mb-30">
-                    <div class="zomata-text">
-                        <h1>
-                            {{ serviceAboutSectionDetails.get('heading') }}
-                        </h1>
-                        <p>
-                            {{ serviceAboutSectionDetails.get('summary') }}
-                        </p>
+                <div class="col-xl-6 col-lg-6 cl-md-6">
+                    <div class="zomata-wrapper mb-30">
+                        <div class="zomata-text">
+                            <h1>
+                                {{ serviceAboutSectionDetails.get('heading') }}
+                            </h1>
+                            <p>
+                                {{ serviceAboutSectionDetails.get('summary') }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

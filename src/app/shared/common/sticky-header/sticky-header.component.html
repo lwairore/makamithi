@@ -3,9 +3,12 @@
         <div class="row align-items-center">
             <div class="col-xl-2 col-lg-2 col-md-4 col-6">
                 <div class="logo">
-                    <a routerLink="/">
-                        <img class="standard-logo" src="assets/img/logo/logo.png" alt="logo" />
-                        <img class="retina-logo" src="assets/img/logo/logo@2x.png" alt="logo@2x" />
+                    <a routerLink="/"
+                        *ngIf="!this.logos.isEmpty()">
+                        <img class="standard-logo" [src]="logos.getIn(['standardLogo', 'src'])"
+                            [alt]="logos.getIn(['standardLogo', 'alt'])">
+                        <img class="retina-logo" [src]="logos.getIn(['retinaLogo', 'src'])"
+                            [alt]="logos.getIn(['retinaLogo', 'alt'])">
                     </a>
                 </div>
             </div>

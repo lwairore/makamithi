@@ -34,8 +34,6 @@ export class TabListComponent implements AfterViewInit {
       // get all active tabs
       let activeTabs = this.tabs.filter((tab) => tab.active);
 
-      console.log({ activeTabs })
-
       // if there is no active tab set, activate the first
       if (activeTabs.length === 0) {
         this.selectTab(this.tabs.first, 0);
@@ -53,14 +51,11 @@ export class TabListComponent implements AfterViewInit {
 
   selectTab(tab: TabDirective, index: number) {
     if (this.tabs instanceof QueryList) {
-      console.log({ tab })
       // deactivate all tabs
       this.tabs.toArray().forEach(tab => tab.active = false);
 
       // activate the tab the user has clicked on.
       tab.active = true;
-
-      console.log({ tab });
 
       this._manuallyTriggerChangeDetection();
 

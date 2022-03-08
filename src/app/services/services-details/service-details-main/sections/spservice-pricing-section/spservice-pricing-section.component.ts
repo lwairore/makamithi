@@ -17,6 +17,8 @@ export class SPServicePricingSectionComponent implements OnInit, AfterViewInit, 
 
   private _retrievePriceSectionDetailsSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _serviceAreaService: ServiceAreaService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -41,17 +43,29 @@ export class SPServicePricingSectionComponent implements OnInit, AfterViewInit, 
   }
 
   private __retrievePriceSectionDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this.manuallyTriggerChangeDetection();
+    }
+
     this._retrievePriceSectionDetailsSubscription = this._serviceAreaService
       .retrievePriceSection$().subscribe(details => {
         this.priceSectionDetails = Immutable.fromJS(details);
 
         if (!this.priceSectionDetails.isEmpty()) {
+          this.showLoader = false;
+
           this.manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err));
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      });
   }
 
-   manuallyTriggerChangeDetection() {
+  manuallyTriggerChangeDetection() {
     this._changeDetectorRef.detectChanges();
   }
 

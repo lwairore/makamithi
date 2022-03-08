@@ -15,6 +15,8 @@ export class SPStyleOneComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _retrieveServiceAreaSectionDetailsSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _serviceAreaService: ServiceAreaService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -38,14 +40,26 @@ export class SPStyleOneComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private __retrieveServiceAreaSectionDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     this._retrieveServiceAreaSectionDetailsSubscription = this._serviceAreaService
       .retrieveServiceAreaSection$().subscribe(details => {
         this.serviceAreaSectionDetails = Immutable.fromJS(details);
 
         if (!this.serviceAreaSectionDetails.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err));
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      });
   }
 
   private _manuallyTriggerChangeDetection() {

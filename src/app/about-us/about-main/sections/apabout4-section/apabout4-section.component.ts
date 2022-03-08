@@ -15,6 +15,8 @@ export class APAbout4SectionComponent implements OnInit, AfterViewInit, OnDestro
 
   private _retrieveApAboutSectionSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
     private _aboutUsService: AboutUsService,
@@ -42,14 +44,26 @@ export class APAbout4SectionComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   private _retrieveApAboutSection() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     this._retrieveApAboutSectionSubscription = this._aboutUsService.retrieveApAboutSection$()
       .subscribe(details => {
         this.apAboutSectionDetails = Immutable.fromJS(details);
 
         if (!this.apAboutSectionDetails.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, (err) => console.error(err))
+      }, (err) => {
+        console.error(err);
+
+        this.showLoader = false;
+      })
   }
 
 }

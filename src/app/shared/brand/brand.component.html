@@ -1,0 +1,45 @@
+<div class="brand-area" *ngIf="showLoader; else showLoaderItems;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-12">
+                <div class="choose-img mb-30">
+                    <ngx-skeleton-loader [theme]="{
+                        height: '400px',
+                        width: '100%'
+                    }"></ngx-skeleton-loader>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #showLoaderItems>
+    <div class="brand-area">
+        <div class="container">
+            <div class="brand-bg pt-80 pb-80"
+                [style.background-image]="'url('+ partnerAreaSectionDetails.getIn(['backgroundImage', 'src'])+')'">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="brand-active">
+                            <owl-carousel-o [options]="customOptions">
+                                <ng-container *ngFor="let partnerItem of listPartner;">
+                                    <ng-template carouselSlide>
+                                        <div class="col-xl-12">
+                                            <div class="brans-img text-center">
+                                                <a [href]="partnerItem.get('link')" target="_blank">
+                                                    <mak-pit-img-lazy [src]="partnerItem.getIn(['image', 'src'])"
+                                                        [alt]="partnerItem.getIn(['image', 'alt'])" height="24px"
+                                                        width="100%">
+                                                    </mak-pit-img-lazy>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </owl-carousel-o>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

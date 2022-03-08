@@ -1,39 +1,28 @@
-<div class="counter-area pt-110 pb-85" style="background-image:url(assets/img/bg/bg3.jpg)">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="counter-title text-center mb-60">
-                    <h1>We Are Startup Company.Experts In Field <br> Organic Startup Movement.</h1>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="counter-wrapper mb-30">
-                    <div class="counter-text">
-                        <h1><span>25</span>+</h1><span>Years Experience</span>
+<div class="counter-area pt-110 pb-85" *ngIf="showLoader; else showLoadedItems;">
+    <ngx-skeleton-loader [theme]="{
+    height: '551px',
+    width: '100%'
+}"></ngx-skeleton-loader>
+</div>
+
+<ng-template #showLoadedItems>
+    <div class="counter-area pt-110 pb-85"
+        [style.background-image]="'url('+counterAreaSectionDetails.getIn(['backgroundImage', 'src'])+')'">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="counter-title text-center mb-60">
+                        <h1 [innerHTML]="counterAreaSectionDetails.get('heading')"></h1>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="counter-wrapper mb-30">
-                    <div class="counter-text">
-                        <h1><span>98</span>+</h1><span>Expert Member</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="counter-wrapper mb-30">
-                    <div class="counter-text">
-                        <h1><span>49</span>+</h1><span>Win Awards</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
-                <div class="counter-wrapper mb-30">
-                    <div class="counter-text">
-                        <h1><span>85</span>+</h1><span>World Wide Branch</span>
+                <div class="col-xl-3 col-lg-3 col-md-6" *ngFor="let badge of badges">
+                    <div class="counter-wrapper mb-30">
+                        <div class="counter-text">
+                            <h1><span>{{ badge.get('numberOfYears') }}</span>+</h1><span>{{ badge.get('title') }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

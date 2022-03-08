@@ -1,8 +1,8 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { TeamService } from '@sharedModule/services/team.service';
 import * as Immutable from 'immutable';
 import { forkJoin, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { AboutUsService } from 'src/app/about-us/about-us.service';
 
 @Component({
   selector: 'mak-pit-apteam4-section',
@@ -18,9 +18,11 @@ export class APTeam4SectionComponent implements OnInit, AfterViewInit, OnDestroy
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
-    private _aboutUsService: AboutUsService,
     private _changeDetectorRef: ChangeDetectorRef,
+    private _teamService: TeamService,
   ) { }
 
   ngOnInit(): void {
@@ -41,10 +43,16 @@ export class APTeam4SectionComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   private _loadRequiredDetails() {
-    const TEAM_AREA_SECTION_DETAILS$ = this._aboutUsService
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
+    const TEAM_AREA_SECTION_DETAILS$ = this._teamService
       .retrieveTeamAreaSection$();
 
-    const LIST_SERVICE$ = this._aboutUsService
+    const LIST_TEAM$ = this._teamService
       .listTeam$();
 
     this._loadRequiredDetailsSubscription = forkJoin([
@@ -52,7 +60,7 @@ export class APTeam4SectionComponent implements OnInit, AfterViewInit, OnDestroy
         tap(details => {
           this.teamAreaSectionDetails = Immutable.fromJS(details);
         })),
-      LIST_SERVICE$.pipe(
+      LIST_TEAM$.pipe(
         tap(details => {
           this.listTeam = Immutable.fromJS(details);
           console.log(this.listTeam);
@@ -60,9 +68,15 @@ export class APTeam4SectionComponent implements OnInit, AfterViewInit, OnDestroy
     ])
       .subscribe(_ => {
         if (!this.teamAreaSectionDetails.isEmpty() || !this.listTeam.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err))
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      })
   }
 
   private _manuallyTriggerChangeDetection() {

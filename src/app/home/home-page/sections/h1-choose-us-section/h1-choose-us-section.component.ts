@@ -18,6 +18,8 @@ export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDest
 
   private _loadRequiredDetailsSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _homeService: HomeService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -45,6 +47,12 @@ export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDest
   }
 
   private _loadRequiredDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     const RETRIEVE_WHY_CHOOSE_US_SECTION$ = this._homeService
       .retrieveWhyChooseUsSection$();
 
@@ -65,9 +73,15 @@ export class H1ChooseUsSectionComponent implements OnInit, AfterViewInit, OnDest
       if (
         !this.chooseUsSectionDetails.isEmpty() ||
         !this.listCoreValue.isEmpty()) {
+        this.showLoader = false;
+
         this._manuallyTriggerChangeDetection();
       }
-    }, err => console.error(err))
+    }, err => {
+      console.error(err);
+
+      this.showLoader = false;
+    })
   }
 
   coreValueTrackByFn(loopIndex: number, item: any) {

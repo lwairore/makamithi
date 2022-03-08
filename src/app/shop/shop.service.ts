@@ -76,8 +76,6 @@ export class ShopService {
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          console.log({ details });
-
           const FORMATTED_PRODUCT_IMAGES = details?.product_images?.map(image => {
             const FORMATTED_IMAGE = this._formatShowcaseItemWithPhoto(image);
 

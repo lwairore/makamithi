@@ -1,23 +1,69 @@
-<div class="about-us-area pt-115 pb-90" [style.background-image]="'url(assets/img/bg/about.png)'">
+<div class="about-us-area pt-115 pb-90" *ngIf="showLoader; else itemsAlreadLoaded;">
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6">
                 <div class="about-us-img mb-30">
-                    <img [src]="aboutSectionDetails.getIn(['photo', 'src'])"
-                        [alt]="aboutSectionDetails.getIn(['photo', 'alt'])" />
+                    <ngx-skeleton-loader [theme]="{
+                        height: '282px',
+                        width: '345px'
+                    }"></ngx-skeleton-loader>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 ">
                 <div class="about-us-text mb-30">
-                    <h1 [innerHTML]="aboutSectionDetails.get('heading')"> </h1>
-                    <span>{{ aboutSectionDetails.get('subheading') }}</span>
+                    <h1>
+                        <ngx-skeleton-loader [theme]="{
+                            height: '80px',
+                            width: '345px'
+                        }"></ngx-skeleton-loader>
+                    </h1>
+                    <span>
+                        <ngx-skeleton-loader [theme]="{
+                            height: '24px',
+                            width: '280px'
+                        }"></ngx-skeleton-loader>
+                    </span>
                     <p>
-                        {{ aboutSectionDetails.get('description') }}
+                        <ngx-skeleton-loader [theme]="{
+                            height: '330px',
+                            width: '345px'
+                        }"></ngx-skeleton-loader>
                     </p>
-                    <a class="btn" routerLink="/about-us">Learn
-                        More</a>
+
+                    <ngx-skeleton-loader [theme]="{
+                        height: '58px',
+                        width: '180px'
+                    }"></ngx-skeleton-loader>
                 </div>
             </div>
         </div>
     </div>
+
+
 </div>
+<ng-template #itemsAlreadLoaded>
+    <div class="about-us-area pt-115 pb-90" [style.background-image]="'url(assets/img/bg/about.png)'">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="about-us-img mb-30">
+                        <mak-pit-img-lazy [src]="aboutSectionDetails.getIn(['photo', 'src'])"
+                            [alt]="aboutSectionDetails.getIn(['photo', 'alt'])" width="100%" height="512px">
+                        </mak-pit-img-lazy>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 ">
+                    <div class="about-us-text mb-30">
+                        <h1 [innerHTML]="aboutSectionDetails.get('heading')"> </h1>
+                        <span>{{ aboutSectionDetails.get('subheading') }}</span>
+                        <p>
+                            {{ aboutSectionDetails.get('description') }}
+                        </p>
+                        <a class="btn" routerLink="/about-us">Learn
+                            More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -44,13 +44,6 @@ export class AccordionComponent implements OnInit {
    * @param index - Index of the accordion item
    */
   getToggleState = memoize((index: number) => {
-    console.log('Callled getToggleState');
-
-    console.log("getToggleState", index)
-    console.log("expanded")
-    console.log(this.expanded)
-    console.log("items")
-    console.log(this.items)
     return this.toggleState.bind(this, index);
   });
 

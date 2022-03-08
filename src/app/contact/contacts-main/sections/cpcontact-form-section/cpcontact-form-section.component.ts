@@ -59,9 +59,6 @@ export class CPContactFormSectionComponent implements OnInit, AfterViewInit, OnD
       subject: ['', Validators.maxLength(250)],
       message: ['', Validators.maxLength(5000)],
     });
-
-    this.leaveAMessageFormGroup.valueChanges.subscribe(
-      details => console.log(this.leaveAMessageFormGroup))
   }
 
   private _unsubscribeLoadRequiredDetailsSubscription() {
@@ -89,8 +86,6 @@ export class CPContactFormSectionComponent implements OnInit, AfterViewInit, OnD
 
   onSubmit = (formGroupForNewMessage: FormGroup): Promise<any> => {
     this.submitted = true;
-
-    console.log(formGroupForNewMessage);
 
     // stop here if form is invalid
     if (formGroupForNewMessage.invalid) {

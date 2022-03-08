@@ -1,15 +1,18 @@
 import { Location } from '@angular/common';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router, Event as NavigationEvent, NavigationEnd } from '@angular/router';
+import { HeaderService } from '@sharedModule/services/header.service';
+import * as Immutable from 'immutable';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mak-pit-sticky-header',
   templateUrl: './sticky-header.component.html',
   styles: [
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StickyHeaderComponent implements OnInit, OnDestroy {
+export class StickyHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() stickerHeaderExtraClasses = '';
 
   @Input() menuOpen = false;
@@ -30,17 +33,21 @@ export class StickyHeaderComponent implements OnInit, OnDestroy {
 
   isRoot = false;
 
+  private _retrieveLogosSubscription: Subscription | undefined;
+
+  logos = Immutable.fromJS({});
+
   constructor(
     private _router: Router,
-    private _location: Location
+    private _location: Location,
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _headerService: HeaderService,
   ) {
     this.routerEventSubscription
       = this._router.events
         .subscribe(
           (event: NavigationEvent) => {
-
             if (event instanceof NavigationEnd) {
-              console.log('Route changed')
               if (this._location.path() !== this.ROOT_URL) {
                 this.isRoot = false;
               } else {
@@ -53,10 +60,22 @@ export class StickyHeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void {
-    this._unsubscribeRouterEventSubscription();
+  ngAfterViewInit(): void {
+    this._retrieveLogos();
   }
 
+
+  ngOnDestroy(): void {
+    this._unsubscribeRouterEventSubscription();
+
+    this._unsubscribeRetrieveLogosSubscription();
+  }
+
+  private _unsubscribeRetrieveLogosSubscription() {
+    if (this._retrieveLogosSubscription instanceof Subscription) {
+      this._retrieveLogosSubscription.unsubscribe();
+    }
+  }
 
   private _unsubscribeRouterEventSubscription() {
     if (this.routerEventSubscription instanceof Subscription) {
@@ -74,6 +93,23 @@ export class StickyHeaderComponent implements OnInit, OnDestroy {
 
   dispatchSetSidebarOpenEvt() {
     this.setSidebarOpen.emit(!this.sidebarOpen);
+  }
+
+  private _retrieveLogos() {
+    this._retrieveLogosSubscription = this._headerService
+      .retrieveLogosForStickyHeader$()
+      .subscribe(details => {
+        this.logos = Immutable.fromJS(details);
+
+        if (!this.logos.isEmpty()) {
+          this._manuallyTriggerChangeDetection();
+        }
+      }, (err) => console.error(err))
+
+  }
+
+  private _manuallyTriggerChangeDetection() {
+    this._changeDetectorRef.detectChanges();
   }
 
 }

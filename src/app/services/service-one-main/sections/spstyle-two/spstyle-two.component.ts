@@ -15,6 +15,8 @@ export class SPStyleTwoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _listServiceSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _serviceAreaService: ServiceAreaService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -38,16 +40,26 @@ export class SPStyleTwoComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private __listService() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     this._listServiceSubscription = this._serviceAreaService
       .listOurFeature$().subscribe(details => {
         this.listService = Immutable.fromJS(details);
 
-        console.log(this.listService)
-
         if (!this.listService.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err));
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      });
   }
 
   private _manuallyTriggerChangeDetection() {

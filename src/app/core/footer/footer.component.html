@@ -1,124 +1,135 @@
 <footer>
-    <div class="footer-area pt-200" [style.background-image]="'url(assets/img/bg/bg6.jpg)'">
-        <div class="container">
-            <div class="footer-bg pb-50">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-6">
-                        <div class="footer-wrapper mb-30">
-                            <div class="footer-logo">
-                                <a routerLink="/">
-                                    <img src="assets/img/logo/white.png" alt="" />
-                                </a>
-                            </div>
-                            <div class="footer-text">
-                                <p>Lorem ipsum dolor amet cons adipisicing elit sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip.</p>
-                            </div>
-                            <div class="footer-icon">
-                                <a [routerLink]="null">
-                                    <i class="fab fa-facebook-f"> </i>
-                                </a>
-                                <a [routerLink]="null">
-                                    <i class="fab fa-twitter"> </i>
-                                </a>
-                                <a [routerLink]="null">
-                                    <i class="fab fa-linkedin"> </i>
-                                </a>
-                                <a [routerLink]="null">
-                                    <i class="fab fa-youtube"> </i>
-                                </a>
-                                <a [routerLink]="null">
-                                    <i class="fab fa-behance"> </i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6">
-                        <div class="footer-wrapper pl-45 mb-30">
-                            <div class="footer-title">
-                                <h4>Customer Support</h4>
-                                <img src="assets/img/shape/f.png" alt="shape" />
-                            </div>
-                            <ul class="fotter-menu">
-                                <li>
-                                    <a [routerLink]="null">Help and Ordering</a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="null">Privacy Policy</a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="null">Return &amp; Cancellation</a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="null">Delevery Schedule</a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="null">Get a Call</a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="null">Online Enquiry</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6">
-                        <div class="footer-wrapper pl-45 mb-30">
-                            <div class="footer-title">
-                                <h4>Contact Info</h4>
-                                <img src="assets/img/shape/f.png" alt="shape" />
-                            </div>
-                            <ul class="fotter-link">
-                                <li>
-                                    <i class="far fa-paper-plane"> </i><span>205 Olazu Familia, Herba Street Front
-                                        USA</span>
-                                </li>
-                                <li>
-                                    <i class="far fa-envelope-open"> </i>
-                                    <span>
-                                        <a href="mailto:info@makamithi.com"
-                                            [style.color]="'inherit'">info@makamithi.com</a>
-                                    </span>
-                                </li>
-                                <li>
-                                    <i class="fa fa-headphones fa-w-16"> </i>
-                                    <span>
-                                        <a href="tel:+254707069409" [style.color]="'inherit'">+254 707 069409</a>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6">
-                        <div class="footer-wrapper pl-40 mb-30">
-                            <div class="footer-title">
-                                <h4>Newsletters</h4>
-                                <img src="assets/img/shape/f.png" alt="shape" />
-                            </div>
-                            <div class="footer-content">
-                                <p>Enter your email and we’ll send you latest information plans.</p>
-                            </div>
-                            <div class="subscribes-form">
-                                <div class="form-wrap"><input type="email" placeholder="Enter your emaill" /><button
-                                        class="btn">Subscribe</button>
+    <ng-container *ngIf="showLoader; else showCtaSectionDetails;">
+        <ngx-skeleton-loader [theme]="{
+            height: '400px',
+            width: '100%'
+        }"></ngx-skeleton-loader>
+    </ng-container>
+    <ng-template #showCtaSectionDetails>
+        <div class="footer-area pt-200"
+            [style.background-image]="'url('+sectionDetails.getIn(['backgroundImage', 'src'])+')'">
+            <div class="container">
+                <div class="footer-bg pb-50">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="footer-wrapper mb-30">
+                                <div class="footer-logo">
+                                    <a routerLink="/">
+                                        <mak-pit-img-lazy [src]="sectionDetails.getIn(['footerLogo', 'src'])"
+                                            [alt]="sectionDetails.getIn(['footerLogo', 'alt'])" height="48px"
+                                            width="100%">
+                                        </mak-pit-img-lazy>
+                                    </a>
+                                </div>
+                                <div class="footer-text">
+                                    <p>
+                                        {{ sectionDetails.get('footerText') }}
+                                    </p>
+                                </div>
+                                <div class="footer-icon">
+                                    <a [href]="socialItem.get('link')" *ngFor="let socialItem of socialMedias;"
+                                        target="_blank">
+                                        <i [class]="socialItem.get('icon')"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="footer-wrapper pl-45 mb-30">
+                                <div class="footer-title">
+                                    <h4>Customer Support</h4>
+                                    <mak-pit-img-lazy [src]="sectionDetails.getIn(['sectionImage', 'src'])"
+                                        [alt]="sectionDetails.getIn(['sectionImage', 'alt'])" height="5px" width="100%">
+                                    </mak-pit-img-lazy>
+                                </div>
+                                <ul class="fotter-menu">
+                                    <li>
+                                        <a [routerLink]="null">Terms of service</a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="null">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/contact">Work with us</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/contact">Online Enquiry</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="footer-wrapper pl-45 mb-30">
+                                <div class="footer-title">
+                                    <h4>Contact Info</h4>
+                                    <mak-pit-img-lazy [src]="sectionDetails.getIn(['sectionImage', 'src'])"
+                                        [alt]="sectionDetails.getIn(['sectionImage', 'alt'])" height="5px" width="100%">
+                                    </mak-pit-img-lazy>
+                                </div>
+                                <ng-container *ngFor="let contact of contactInfos;">
+                                    <div class="footer-content">
+                                        <p>{{ contact.get('addressTitle') }}</p>
+                                    </div>
+                                    <ul class="fotter-link">
+                                        <li>
+                                            <i class="far fa-paper-plane"> </i><span>
+                                                {{ contact.get('address') }}
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <i class="far fa-envelope-open"> </i>
+                                            <span>
+                                                <a href="mailto:{{contact.get('email')}}"
+                                                    [style.color]="'inherit'">{{contact.get('email')}}</a>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-headphones fa-w-16"> </i>
+                                            <span>
+                                                <a href="tel:{{ contact.get('phoneNumber')|formatPhoneNumber:true }}"
+                                                    [style.color]="'inherit'">
+                                                    {{ contact.get('phoneNumber')|formatPhoneNumber }}
+                                                </a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <!--  <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="footer-wrapper pl-40 mb-30">
+                                <div class="footer-title">
+                                    <h4>Newsletters</h4>
+                                    <mak-pit-img-lazy [src]="sectionDetails.getIn(['sectionImage', 'src'])"
+                                        [alt]="sectionDetails.getIn(['sectionImage', 'alt'])" height="5px" width="100%">
+                                    </mak-pit-img-lazy>
+                                </div>
+                                <div class="footer-content">
+                                    <p>Enter your email and we’ll send you latest information plans.</p>
+                                </div>
+                                <div class="subscribes-form">
+                                    <div class="form-wrap"><input type="email" placeholder="Enter your emaill" /><button
+                                            class="btn">Subscribe</button>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>-->
                     </div>
                 </div>
-            </div>
-            <div class="footer-bottom-area">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="copyright text-center">
-                            <p>Copyright
-                                <i class="far fa-copyright"></i>
-                                2020 <a [routerLink]="null">BDevs</a>. All Rights Reserved
-                            </p>
+                <div class="footer-bottom-area">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="copyright text-center">
+                                <p>Copyright
+                                    <i class="far fa-copyright"></i>
+                                    {{ currentFullYear }} <a [routerLink]="null">Pro Innovation & Technologies</a>. All
+                                    Rights Reserved
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </ng-template>
 </footer>

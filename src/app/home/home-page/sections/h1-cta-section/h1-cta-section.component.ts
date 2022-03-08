@@ -15,6 +15,8 @@ export class H1CtaSectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _retrieveVisitNowCtaSectionSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _homeService: HomeService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -23,7 +25,7 @@ export class H1CtaSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void { 
+  ngAfterViewInit(): void {
     this._retrieveCtaSectionDetails();
   }
 
@@ -38,15 +40,27 @@ export class H1CtaSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _retrieveCtaSectionDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     this._retrieveVisitNowCtaSectionSubscription = this._homeService
       .retrieveVisitNowCtaSection$()
       .subscribe(details => {
         this.ctaSectionDetails = Immutable.fromJS(details);
 
         if (!this.ctaSectionDetails.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err));
+      }, err => {
+        this.showLoader = false;
+
+        console.error(err)
+      });
   }
 
   private _manuallyTriggerChangeDetection() {

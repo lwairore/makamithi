@@ -2,7 +2,7 @@
     state.get('loaded'))" [theme]="{
     height: height,
     width: width
-}"></ngx-skeleton-loader>
+}" [appearance]="appearance"></ngx-skeleton-loader>
 
 <ng-container *ngIf="getBoolean(state.get('visible'))" [style.height.%]="100">
     <img [hidden]="!getBoolean(state.get('loaded'))" (load)="onLoad()" [src]="src" [alt]="alt" />

@@ -30,6 +30,8 @@ export class GpGalleryTwoSectionComponent implements OnInit, AfterViewInit, OnDe
 
   private _routeParams = Immutable.Map({});
 
+  showLoader = false;
+
   constructor(
     private _galleryService: GalleryService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -90,12 +92,8 @@ export class GpGalleryTwoSectionComponent implements OnInit, AfterViewInit, OnDe
   }
 
   markPageNavItemActive(pageNumber: number) {
-    console.log({ pageNumber });
-
     const storedPageNumber = convertItemToNumeric(
       this._routeParams.get('pageNumber'));
-
-    console.log({ storedPageNumber })
 
     if (!isANumber(storedPageNumber)) {
       return false;
@@ -107,7 +105,6 @@ export class GpGalleryTwoSectionComponent implements OnInit, AfterViewInit, OnDe
   private _extractCurrentPageNumber() {
     this._routeParamsSubscription = this._activatedRoute.params
       .subscribe(params => {
-        console.log(params);
 
         const pageNumber = whichValueShouldIUse(
           params['pageNumber'], 1, ExpectedType.NUMBER);
@@ -208,17 +205,18 @@ export class GpGalleryTwoSectionComponent implements OnInit, AfterViewInit, OnDe
   }
 
   private _listGallery() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     const FETCH_PAGE_NUMBER = convertItemToString(
       this._routeParams.get('pageNumber'));
 
     this._listGallerySubscription = this._galleryService.
       listGalleryForGallerySection$(FETCH_PAGE_NUMBER)
       .subscribe(details => {
-        console.log({ details })
-        // this.gallery = Immutable.mergeDeepWith(
-        //   (oldVal, newVal) => oldVal + newVal,
-        //   this.gallery, details.results
-        // )
         const count = convertItemToNumeric(details.count);
         if (isANumber(count)) {
           this._computeTheTotalNumberOfPages(count
@@ -227,20 +225,20 @@ export class GpGalleryTwoSectionComponent implements OnInit, AfterViewInit, OnDe
 
         const newVal = Immutable.fromJS(details.results);
 
-        console.log({ newVal })
-
         this.gallery = Immutable.mergeDeep(
           this.gallery, newVal);
 
         if (!newVal.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
 
-        console.log("this.gallery");
-
-        console.log(this.gallery);
-
         this._scrollToTop();
+      }, (err) => {
+        console.error(err);
+
+        this.showLoader = false;
       })
   }
 

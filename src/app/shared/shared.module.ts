@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, UpperCasePipe } from '@angular/common';
 import { SiteBreadcrumbComponent } from './site-breadcrumb/site-breadcrumb.component';
 import { HeaderComponent } from './header/header.component';
 import { TopHeaderComponent } from './header/sections/top-header/top-header.component';
@@ -18,7 +18,9 @@ import { ImgLazyComponent } from './img-lazy/img-lazy.component';
 import { DynamicallySetHeightUsingScrollHeightDirective } from './directives/dynamically-set-height-using-scroll-height.directive';
 import { DisplayFormFieldErrorsComponent } from './display-form-field-errors/display-form-field-errors.component';
 import { AjaxButtonComponent } from './ajax-button/ajax-button.component';
-
+import { FormatPhoneNumberPipe } from './pipes/format-phone-number.pipe';
+import { BrandComponent } from './brand/brand.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -38,12 +40,15 @@ import { AjaxButtonComponent } from './ajax-button/ajax-button.component';
     DynamicallySetHeightUsingScrollHeightDirective,
     DisplayFormFieldErrorsComponent,
     AjaxButtonComponent,
+    FormatPhoneNumberPipe,
+    BrandComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
     NgxSkeletonLoaderModule,
+    CarouselModule,
   ],
   exports: [
     SiteBreadcrumbComponent,
@@ -55,6 +60,8 @@ import { AjaxButtonComponent } from './ajax-button/ajax-button.component';
     DynamicallySetHeightUsingScrollHeightDirective,
     DisplayFormFieldErrorsComponent,
     AjaxButtonComponent,
-  ]
+    FormatPhoneNumberPipe,
+    BrandComponent,
+  ],
 })
 export class SharedModule { }

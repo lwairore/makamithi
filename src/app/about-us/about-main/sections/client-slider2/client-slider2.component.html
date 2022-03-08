@@ -1,56 +1,66 @@
-<div class="our-client-area pt-110 pb-120" *ngIf="clientReviewSectionDetails"
-    [style.background-image]="'url('+clientReviewSectionDetails.getIn(['backgroundImage', 'src'])+')'">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
-                <div class="section-title text-center section-circle mb-70">
-                    <div class="section-img">
-                        <img [src]="clientReviewSectionDetails.getIn(['sectionImage', 'src'])"
-                            [alt]="clientReviewSectionDetails.getIn(['sectionImage', 'alt'])" />
+<ng-container *ngIf="showLoader; else showCtaSectionDetails;">
+    <ngx-skeleton-loader [theme]="{
+        height: '400px',
+        width: '100%'
+    }"></ngx-skeleton-loader>
+</ng-container>
+<ng-template #showCtaSectionDetails>
+    <div class="our-client-area pt-110 pb-120"
+        [style.background-image]="'url('+clientReviewSectionDetails.getIn(['backgroundImage', 'src'])+')'">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
+                    <div class="section-title text-center section-circle mb-70">
+                        <div class="section-img">
+                            <mak-pit-img-lazy [src]="clientReviewSectionDetails.getIn(['sectionImage', 'src'])"
+                                [alt]="clientReviewSectionDetails.getIn(['sectionImage', 'alt'])" height="6px"
+                                width="100%"></mak-pit-img-lazy>
+                        </div>
+                        <h1>
+                            {{ clientReviewSectionDetails.get('heading') }}
+                        </h1>
+                        <p>
+                            {{clientReviewSectionDetails.get('summary')}}
+                        </p>
                     </div>
-                    <h1>
-                        {{ clientReviewSectionDetails.get('heading') }}
-                    </h1>
-                    <p>
-                        {{clientReviewSectionDetails.get('summary')}}
-                    </p>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="client-active">
-                    <owl-carousel-o [options]="customOptions">
-                        <ng-container *ngFor="let reviewItem of listClientReviews;">
-                            <ng-template carouselSlide>
-                                <div class="testimonial2-wrapper mb-30">
-                                    <div class="testimonial-text">
-                                        <p>
-                                            {{ reviewItem.get('review') }}
-                                        </p>
-                                        <div class="testimonial-content">
-                                            <div class="testimonial2-img">
-                                                <img [src]="reviewItem.getIn(['image', 'src'])"
-                                                    [alt]="reviewItem.getIn(['image', 'alt'])" />
-                                            </div>
-                                            <div class="testimonial-name">
-                                                <h4>
-                                                    {{ reviewItem.get('fullName') }}
-                                                </h4>
-                                                <span>
-                                                    {{ reviewItem.get('position') }}
-                                                </span>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="client-active">
+                        <owl-carousel-o [options]="customOptions">
+                            <ng-container *ngFor="let reviewItem of listClientReviews;">
+                                <ng-template carouselSlide>
+                                    <div class="testimonial2-wrapper mb-30">
+                                        <div class="testimonial-text">
+                                            <p>
+                                                {{ reviewItem.get('review') }}
+                                            </p>
+                                            <div class="testimonial-content">
+                                                <div class="testimonial2-img">
+                                                    <mak-pit-img-lazy [src]="reviewItem.getIn(['image', 'src'])"
+                                                        [alt]="reviewItem.getIn(['image', 'alt'])" width="60px"
+                                                        height="60px"></mak-pit-img-lazy>
+                                                </div>
+                                                <div class="testimonial-name">
+                                                    <h4>
+                                                        {{ reviewItem.get('fullName') }}
+                                                    </h4>
+                                                    <span>
+                                                        {{ reviewItem.get('position') }}
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </ng-template>
-                        </ng-container>
-                    </owl-carousel-o>
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

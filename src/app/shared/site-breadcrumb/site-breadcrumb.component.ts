@@ -17,6 +17,8 @@ export class SiteBreadcrumbComponent implements OnInit, AfterViewInit, OnDestroy
 
   private _retrieveSiteBreadcrumbDetailsSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
     private _siteBreadcrumbService: SiteBreadcrumbService,
@@ -44,14 +46,26 @@ export class SiteBreadcrumbComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   private _retrieveSiteBreadcrumbDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     this._retrieveSiteBreadcrumbDetailsSubscription = this._siteBreadcrumbService
       .retrieveSiteBreadcrumbDetails$()
       .subscribe(details => {
         this.siteBreadcrumbDetails = Immutable.fromJS(details);
 
         if (!this.siteBreadcrumbDetails.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err))
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      })
   }
 }

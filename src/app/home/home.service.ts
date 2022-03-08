@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
+  AreaSectionFormatHttpResponse,
+  AreaSectionHttpResponse,
   ItemPreviewFormatHttpResponse,
   ItemPreviewHttpResponse,
   ProductFormatHttpResponse,
@@ -21,22 +23,16 @@ import { environment } from 'src/environments/environment';
 import {
   AboutSectionFormatHttpResponse,
   AboutSectionHttpResponse,
+  BadgeFormatHttpResponse,
+  BadgeHttpResponse,
   CoreValueFormatHttpResponse,
   CoreValueHttpResponse,
-  FeatureSectionFormatHttpResponse,
-  FeatureSectionHttpResponse,
-  GallerySectionFormatHttpResponse,
-  GallerySectionHttpResponse,
   HomeGalleryFormatHttpResponse,
   HomeGalleryHttpResponse,
   ProductCategoryFormatHttpResponse,
   ProductCategoryHttpResponse,
   ServiceFormatHttpResponse,
   ServiceHttpResponse,
-  VisitNowCtaSectionFormatHttpResponse,
-  VisitNowCtaSectionHttpResponse,
-  WhyChooseUsSectionFormatHttpResponse,
-  WhyChooseUsSectionHttpResponse
 } from './custom-types';
 import { BannerAdFormatHttpResponse } from './custom-types/banner-ad-format-http-response';
 import { BannerAdHttpResponse } from './custom-types/banner-ad-http-response';
@@ -58,6 +54,36 @@ export class HomeService {
     }
 
     return formattedPhoto;
+  }
+
+  listBadge$() {
+    const api = environment.baseURL +
+      environment.home.rootURL +
+      environment.home.listBadge;
+
+    return this._httpClient.get<Array<BadgeHttpResponse>>(
+      api).pipe(
+        retryWithBackoff(1000,
+          5),
+        map(details => {
+          const formattedDetails = details.map(detail => {
+            const numberOfYears = convertItemToNumeric(detail.number_of_years);
+
+            if (!isANumber(numberOfYears)) {
+              return null;
+            }
+
+            const formattedDetail: BadgeFormatHttpResponse = {
+              title: convertItemToString(detail.title),
+              numberOfYears: convertItemToNumeric(detail.number_of_years),
+            };
+
+            return formattedDetail;
+          }).filter(item => !isObjectEmpty(item));
+
+          return formattedDetails;
+        })
+      );
   }
 
   listBannerAds$() {
@@ -117,6 +143,25 @@ export class HomeService {
         }))
   }
 
+  retrieveProductAreaSection$() {
+    const API = environment.baseURL +
+      environment.home.rootURL +
+      environment.home.productAreaSection;
+
+    return this._httpClient.get<AreaSectionHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
+            heading: convertItemToString(details.heading),
+            summary: convertItemToString(details.summary),
+            sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
+          }
+
+          return FORMATTED_DETAILS
+        }));
+  }
+
   listProductCategory$() {
     const api = environment.baseURL +
       environment.shop.rootURL +
@@ -151,12 +196,12 @@ export class HomeService {
       environment.home.rootURL +
       environment.home.visitNowCtaSection;
 
-    return this._httpClient.get<VisitNowCtaSectionHttpResponse>(
+    return this._httpClient.get<AreaSectionHttpResponse>(
       API)
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          const FORMATTED_DETAILS: VisitNowCtaSectionFormatHttpResponse = {
+          const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
             heading: convertItemToString(details.heading),
             description: convertItemToString(details.description),
             backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
@@ -197,16 +242,36 @@ export class HomeService {
       )
   }
 
+  retrieveCounterAreaSection$() {
+    const API = environment.baseURL +
+      environment.home.rootURL +
+      environment.home.counterAreaSection;
+
+    return this._httpClient.get<AreaSectionHttpResponse>(API)
+      .pipe(
+        retryWithBackoff(1000, 5),
+        map(details => {
+          const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
+            heading: convertItemToString(
+              details.heading),
+            backgroundImage: this._formatShowcaseItemWithPhoto(
+              details.background_image),
+          }
+
+          return FORMATTED_DETAILS;
+        }));
+  }
+
   retrieveGallerySection$() {
     const API = environment.baseURL +
       environment.home.rootURL +
       environment.home.gallerySection;
 
-    return this._httpClient.get<GallerySectionHttpResponse>(API)
+    return this._httpClient.get<AreaSectionHttpResponse>(API)
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          const FORMATTED_DETAILS: GallerySectionFormatHttpResponse = {
+          const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
             heading: convertItemToString(details.heading),
             summary: convertItemToString(details.summary),
             sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
@@ -249,11 +314,11 @@ export class HomeService {
       environment.home.rootURL +
       environment.home.whyChooseUsSection;
 
-    return this._httpClient.get<WhyChooseUsSectionHttpResponse>(API)
+    return this._httpClient.get<AreaSectionHttpResponse>(API)
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          const FORMATTED_DETAILS: WhyChooseUsSectionFormatHttpResponse = {
+          const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
             heading: convertItemToString(details.heading),
             description: convertItemToString(details.description),
             sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),
@@ -299,11 +364,11 @@ export class HomeService {
       environment.home.rootURL +
       environment.home.featureSection;
 
-    return this._httpClient.get<FeatureSectionHttpResponse>(
+    return this._httpClient.get<AreaSectionHttpResponse>(
       api).pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          const formattedDetails: FeatureSectionFormatHttpResponse = {
+          const formattedDetails: AreaSectionFormatHttpResponse = {
             summary: convertItemToString(details.summary),
             backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
             sectionImage: this._formatShowcaseItemWithPhoto(details.section_image),

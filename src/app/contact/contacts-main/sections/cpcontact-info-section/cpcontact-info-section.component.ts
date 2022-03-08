@@ -90,12 +90,8 @@ export class CPContactInfoSectionComponent implements OnInit, AfterViewInit, OnD
   }
 
   markPageNavItemActive(pageNumber: number) {
-    console.log({ pageNumber });
-
     const storedPageNumber = convertItemToNumeric(
       this._routeParams.get('pageNumber'));
-
-    console.log({ storedPageNumber })
 
     if (!isANumber(storedPageNumber)) {
       return false;
@@ -107,8 +103,6 @@ export class CPContactInfoSectionComponent implements OnInit, AfterViewInit, OnD
   private _extractCurrentPageNumber() {
     this._routeParamsSubscription = this._activatedRoute.params
       .subscribe(params => {
-        console.log(params);
-
         const pageNumber = whichValueShouldIUse(
           params['pageNumber'], 1, ExpectedType.NUMBER);
 
@@ -214,11 +208,6 @@ export class CPContactInfoSectionComponent implements OnInit, AfterViewInit, OnD
     this._listContactUsSubscription = this._contactService
       .listContactInfo$(FETCH_PAGE_NUMBER)
       .subscribe(details => {
-        console.log({ details })
-        // this.contactUs = Immutable.mergeDeepWith(
-        //   (oldVal, newVal) => oldVal + newVal,
-        //   this.contactUs, details.results
-        // )
         const count = convertItemToNumeric(details.count);
         if (isANumber(count)) {
           this._computeTheTotalNumberOfPages(count
@@ -227,18 +216,12 @@ export class CPContactInfoSectionComponent implements OnInit, AfterViewInit, OnD
 
         const newVal = Immutable.fromJS(details.results);
 
-        console.log({ newVal })
-
         this.contactUs = Immutable.mergeDeep(
           this.contactUs, newVal);
 
         if (!newVal?.isEmpty()) {
           this._manuallyTriggerChangeDetection();
         }
-
-        console.log("this.contactUs");
-
-        console.log(this.contactUs);
 
         this._scrollToTop();
       })

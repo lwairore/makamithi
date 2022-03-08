@@ -1,36 +1,100 @@
-<div class="features-area pt-110 pb-90"
-    [style.background-image]="'url('+ featureSection.getIn(['backgroundImage', 'src'])+')'">
+<div class="features-area pt-110 pb-90" *ngIf="showLoader; else itemsAlreadLoaded;">
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
                 <div class="section-title text-center section-circle mb-70">
                     <div class="section-img">
-                        <img [src]="featureSection.getIn(['sectionImage', 'src'])"
-                            [alt]="featureSection.getIn(['sectionImage', 'alt'])" />
+                        <ngx-skeleton-loader [theme]="{
+                            height: '6px',
+                            width: '76px'
+                        }"></ngx-skeleton-loader>
                     </div>
-                    <h1>Our Features</h1>
+                    <h1>
+                        <ngx-skeleton-loader [theme]="{
+                            height: '24px',
+                            width: '80%'
+                        }"></ngx-skeleton-loader>
+                    </h1>
                     <p>
-                        {{ featureSection.get('summary') }}
+                        <ngx-skeleton-loader [theme]="{
+                            height: '90px',
+                            width: '80%'
+                        }"></ngx-skeleton-loader>
                     </p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let service of listOurFeature;">
+            <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let service of 3|generateFakeObjects;">
                 <div class="features-wrapper text-center mb-30">
                     <div class="features-img">
-                        <img [src]="service.getIn(['homePhoto', 'src'])" [alt]="service.getIn(['homePhoto', 'alt'])" />
+                        <ngx-skeleton-loader [theme]="{
+                            height: '100px',
+                            width: '100px'
+                        }"></ngx-skeleton-loader>
                     </div>
                     <div class="features-text">
-                        <h4>{{ service.get('title') }}</h4>
+                        <h4>
+                            <ngx-skeleton-loader [theme]="{
+                                width: '205px',
+                                height: '32px'
+                            }"></ngx-skeleton-loader>
+                        </h4>
                         <p>
-                            {{ service.get('summary') }}
+                            <ngx-skeleton-loader [theme]="{
+                                height: '120px',
+                                width: '220px'
+                            }"></ngx-skeleton-loader>
                         </p>
-                        <a routerLink="/services/services-details">Read
-                            More <i class="dripicons-arrow-thin-right"></i></a>
+                        <ngx-skeleton-loader [theme]="{
+                                height: '53px',
+                                width: '166px'
+                            }"></ngx-skeleton-loader>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #itemsAlreadLoaded>
+    <div class="features-area pt-110 pb-90"
+        [style.background-image]="'url('+ featureSection.getIn(['backgroundImage', 'src'])+')'">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
+                    <div class="section-title text-center section-circle mb-70">
+                        <div class="section-img">
+                            <mak-pit-img-lazy [src]="featureSection.getIn(['sectionImage', 'src'])"
+                                [alt]="featureSection.getIn(['sectionImage', 'alt'])" width="100%" height="6px">
+                            </mak-pit-img-lazy>
+                        </div>
+                        <h1>Our Features</h1>
+                        <p>
+                            {{ featureSection.get('summary') }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let service of listOurFeature;">
+                    <div class="features-wrapper text-center mb-30">
+                        <div class="features-img">
+                            <mak-pit-img-lazy [src]="service.getIn(['homePhoto', 'src'])"
+                                [alt]="service.getIn(['homePhoto', 'alt'])" width="100%" height="100px">
+                            </mak-pit-img-lazy>
+                        </div>
+                        <div class="features-text">
+                            <h4>{{ service.get('title') }}</h4>
+                            <p>
+                                {{ service.get('summary') }}
+                            </p>
+                            <a [routerLink]="['/services', service.get('id'), 'services-details']">Read
+                                More <i class="dripicons-arrow-thin-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

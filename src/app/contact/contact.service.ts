@@ -1,11 +1,24 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AreaSectionFormatHttpResponse, AreaSectionHttpResponse, ItemPreviewFormatHttpResponse, ItemPreviewHttpResponse, PaginatedItemHttpResponse } from '@sharedModule/custom-types';
+import {
+  AreaSectionFormatHttpResponse,
+  AreaSectionHttpResponse,
+  ContactInfoFormatHttpResponse,
+  ContactInfoHttpResponse,
+  ItemPreviewFormatHttpResponse,
+  ItemPreviewHttpResponse,
+  PaginatedItemHttpResponse
+} from '@sharedModule/custom-types';
 import { retryWithBackoff } from '@sharedModule/operators';
-import { constructMediaSrc, convertItemToString, ExpectedType, isANumber, whichValueShouldIUse } from '@sharedModule/utilities';
+import {
+  constructMediaSrc,
+  convertItemToString,
+  ExpectedType,
+  isANumber,
+  whichValueShouldIUse
+} from '@sharedModule/utilities';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ContactInfoFormatHttpResponse, ContactInfoHttpResponse } from './custom-types';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +60,7 @@ export class ContactService {
           const FORMATTED_DETAILS: AreaSectionFormatHttpResponse = {
             heading: convertItemToString(details.heading),
             summary: convertItemToString(details.summary),
+            ourPromise: convertItemToString(details.our_promise),
             backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
           }
 
@@ -56,7 +70,7 @@ export class ContactService {
   }
 
   listContactInfo$(pageNumber?: string) {
-    let api = environment.baseURL +
+    const API = environment.baseURL +
       environment.contactUs.rootURL +
       environment.contactUs.listContactInfo;
 
@@ -68,7 +82,7 @@ export class ContactService {
     }
 
     return this._httpClient.get<PaginatedItemHttpResponse<ContactInfoHttpResponse>>(
-      api, { params })
+      API, { params })
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {

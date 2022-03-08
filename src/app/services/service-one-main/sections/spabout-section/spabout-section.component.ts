@@ -15,6 +15,8 @@ export class SPAboutSectionComponent implements OnInit, AfterViewInit, OnDestroy
 
   private _retrieveServiceAboutSectionDetailsSubscription: Subscription | undefined;
 
+  showLoader = false;
+
   constructor(
     private _serviceAreaService: ServiceAreaService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -38,14 +40,26 @@ export class SPAboutSectionComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   private __retrieveServiceAboutSectionDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     this._retrieveServiceAboutSectionDetailsSubscription = this._serviceAreaService
       .retrieveServiceAboutSection$().subscribe(details => {
         this.serviceAboutSectionDetails = Immutable.fromJS(details);
 
         if (!this.serviceAboutSectionDetails.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
-      }, err => console.error(err));
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
+      });
   }
 
   private _manuallyTriggerChangeDetection() {

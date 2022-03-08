@@ -15,7 +15,6 @@ import { H1TeamSectionComponent } from './home-page/sections/h1-team-section/h1-
 import { CounterDefaultComponent } from './home-page/sections/counter-default/counter-default.component';
 import { ClientSliderComponent } from './home-page/sections/client-slider/client-slider.component';
 import { H1BlogSectionComponent } from './home-page/sections/h1-blog-section/h1-blog-section.component';
-import { BrandComponent } from './home-page/sections/brand/brand.component';
 import { SharedModule } from '@sharedModule/shared.module';
 import { TabsModule } from '../lib/tabs/tabs.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -36,7 +35,6 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     CounterDefaultComponent,
     ClientSliderComponent,
     H1BlogSectionComponent,
-    BrandComponent,
   ],
   imports: [
     CommonModule,

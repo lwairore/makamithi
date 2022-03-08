@@ -4,11 +4,14 @@
             <div class="col-xl-7 col-lg-7 col-md-9">
                 <div class="header-wrapper">
                     <div class="header-text">
-                        <span>
-                            <i class="far fa-map"></i>Makamithi Enterprises Ltd</span>
-                        <span>
-                            <a href="mailto:info@makamithi.com" [style.color]="'inherit'">
-                                <i class="far fa-envelope"></i>info@makamithi.com
+                        <span *ngIf="sectionDetails.has('primaryLocation')">
+                            <i class="far fa-map"></i>{{ sectionDetails.get('primaryLocation') }}
+                        </span>
+                        <span *ngIf="sectionDetails.has('whatsappBusinessNumber')">
+                            <a href="tel:{{ sectionDetails.get('whatsappBusinessNumber') | formatPhoneNumber:true }}"
+                                [style.color]="'inherit'">
+                                <i class="fab fa-whatsapp"></i>{{ sectionDetails.get('whatsappBusinessNumber') |
+                                formatPhoneNumber }}
                             </a>
                         </span>
                     </div>
@@ -16,20 +19,8 @@
             </div>
             <div class="col-xl-5 col-lg-5 col-md-3">
                 <div class="header-icon text-md-right">
-                    <a [routerLink]="null">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a [routerLink]="null">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a [routerLink]="null">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a [routerLink]="null">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a [routerLink]="null">
-                        <i class="fab fa-behance"></i>
+                    <a [href]="socialItem.get('link')" *ngFor="let socialItem of socialMedias;" target="_blank">
+                        <i [class]="socialItem.get('icon')"></i>
                     </a>
                 </div>
             </div>

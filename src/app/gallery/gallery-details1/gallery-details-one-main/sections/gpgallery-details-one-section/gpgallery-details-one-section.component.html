@@ -1,58 +1,90 @@
-<div class="gallery-layout-area pt-120 pb-105">
+<div class="gallery-layout-area pt-120 pb-105" *ngIf="showLoader; else showCtaSectionDetails;">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="gallery-layout-wrapper">
                     <div class="gallery-layout-img">
-                        <img [src]="galleryDetails.getIn(['layoutImage', 'src'])"
-                            [alt]="galleryDetails.getIn(['layoutImage', 'alt'])">
+                        <ngx-skeleton-loader [theme]="{
+                            height: '200px',
+                            width: '100%'
+                        }"></ngx-skeleton-loader>
                     </div>
-                    <div class="gallery-layout-bg"
-                        [style.background-image]="'url('+ gallerySectionDetails.getIn(['backgroundImage', 'src']) +')'">
-                        <div class="gallery-layout-info">
-                            <span>Category:</span>
-                            <h5>{{ galleryDetails.get('category') }}</h5>
-                        </div>
-                        <div class="gallery-layout-info">
-                            <span>Date</span>
-                            <h5>
-                                {{ galleryDetails.get('occuredOn')|date:'medium' }}
-                            </h5>
-                        </div>
-                    </div>
+                   
                     <div class="gallery-layout-text">
-                        <h1>{{ galleryDetails.get('title') }}</h1>
+                        <ngx-skeleton-loader [theme]="{
+                            height: '17px',
+                            width: '100%'
+                        }"></ngx-skeleton-loader>
                         <p>
-                            {{ galleryDetails.get('description') }}
+                            <ngx-skeleton-loader [theme]="{
+                                height: '25px',
+                                width: '100%'
+                            }"></ngx-skeleton-loader>
                         </p>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-7 col-lg-7 col-md-6">
-                            <div class="gallery-post-tag">
-                                <span>Tags: </span>
-                                <a [routerLink]="null">
-                                    {{ galleryDetails.get('keywords') }}
-                                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #showCtaSectionDetails>
+    <div class="gallery-layout-area pt-120 pb-105">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="gallery-layout-wrapper">
+                        <div class="gallery-layout-img">
+                            <mak-pit-img-lazy [src]="galleryDetails.getIn(['layoutImage', 'src'])"
+                                [alt]="galleryDetails.getIn(['layoutImage', 'alt'])" height="200px" width="100%">
+                            </mak-pit-img-lazy>
+                        </div>
+                        <div class="gallery-layout-bg"
+                            [style.background-image]="'url('+ gallerySectionDetails.getIn(['backgroundImage', 'src']) +')'">
+                            <div class="gallery-layout-info">
+                                <span>Category:</span>
+                                <h5>{{ galleryDetails.get('category') }}</h5>
+                            </div>
+                            <div class="gallery-layout-info">
+                                <span>Date</span>
+                                <h5>
+                                    {{ galleryDetails.get('occuredOn')|date:'medium' }}
+                                </h5>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-lg-5 col-md-6">
-                            <div class="gallery-share-icon text-left text-md-right">
-                                <span>Project Share : </span>
-                                <a [routerLink]="null">
-                                    <span class="fab fa-facebook-f"> </span>
-                                </a>
-                                <a [routerLink]="null">
-                                    <span class="fab fa-twitter"></span>
-                                </a>
-                                <a [routerLink]="null">
-                                    <span class="fab fa-linkedin"></span>
-                                </a>
-                                <a [routerLink]="null">
-                                    <span class="fab fa-youtube"></span>
-                                </a>
-                                <a [routerLink]="null">
-                                    <span class="fab fa-behance"></span>
-                                </a>
+                        <div class="gallery-layout-text">
+                            <h1>{{ galleryDetails.get('title') }}</h1>
+                            <p>
+                                {{ galleryDetails.get('description') }}
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-7 col-md-6">
+                                <div class="gallery-post-tag">
+                                    <span>Tags: </span>
+                                    <a [routerLink]="null">
+                                        {{ galleryDetails.get('keywords') }}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-5 col-md-6">
+                                <!-- <div class="gallery-share-icon text-left text-md-right">
+                                    <span>Project Share : </span>
+                                    <a [routerLink]="null">
+                                        <span class="fab fa-facebook-f"> </span>
+                                    </a>
+                                    <a [routerLink]="null">
+                                        <span class="fab fa-twitter"></span>
+                                    </a>
+                                    <a [routerLink]="null">
+                                        <span class="fab fa-linkedin"></span>
+                                    </a>
+                                    <a [routerLink]="null">
+                                        <span class="fab fa-youtube"></span>
+                                    </a>
+                                    <a [routerLink]="null">
+                                        <span class="fab fa-behance"></span>
+                                    </a>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -60,4 +92,4 @@
             </div>
         </div>
     </div>
-</div>
+</ng-template>

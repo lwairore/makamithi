@@ -32,6 +32,8 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
 
   private _routeParams = Immutable.Map({});
 
+  showLoader = false;
+
   // sortByOptions = Immutable.fromJS([
   //   {
   //     value: 'Top Sales',
@@ -107,12 +109,8 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   markPageNavItemActive(pageNumber: number) {
-    console.log({ pageNumber });
-
     const storedPageNumber = convertItemToNumeric(
       this._routeParams.get('pageNumber'));
-
-    console.log({ storedPageNumber })
 
     if (!isANumber(storedPageNumber)) {
       return false;
@@ -124,8 +122,6 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
   private _extractCurrentPageNumber() {
     this._routeParamsSubscription = this._activatedRoute.params
       .subscribe(params => {
-        console.log(params);
-
         const pageNumber = whichValueShouldIUse(
           params['pageNumber'], 1, ExpectedType.NUMBER);
 
@@ -225,17 +221,18 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   private _listProduct() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     const FETCH_PAGE_NUMBER = convertItemToString(
       this._routeParams.get('pageNumber'));
 
     this._listProductSubscription = this._shopService.
       listProductForShopSection$(FETCH_PAGE_NUMBER)
       .subscribe(details => {
-        console.log({ details })
-        // this.products = Immutable.mergeDeepWith(
-        //   (oldVal, newVal) => oldVal + newVal,
-        //   this.products, details.results
-        // )
         const count = convertItemToNumeric(details.count);
         if (isANumber(count)) {
           this._computeTheTotalNumberOfPages(count
@@ -244,20 +241,20 @@ export class SPProductSectionComponent implements OnInit, AfterViewInit, OnDestr
 
         const newVal = Immutable.fromJS(details.results);
 
-        console.log({ newVal })
-
         this.products = Immutable.mergeDeep(
           this.products, newVal);
 
         if (!newVal.isEmpty()) {
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
 
-        console.log("this.products");
-
-        console.log(this.products);
-
         this._scrollToTop();
+      }, err => {
+        console.error(err);
+
+        this.showLoader = false;
       })
   }
 

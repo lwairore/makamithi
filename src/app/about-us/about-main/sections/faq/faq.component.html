@@ -1,29 +1,37 @@
-<div class="faq-area gray2-bg pt-105 pb-100">
-    <div class="faq-img d-none d-md-block"
-        [style.background-image]="'url('+faqSectionDetails.getIn(['backgroundImage', 'src'])+')'"></div>
+<ng-container *ngIf="showLoader; else showCtaSectionDetails;">
+    <ngx-skeleton-loader [theme]="{
+        height: '400px',
+        width: '100%'
+    }"></ngx-skeleton-loader>
+</ng-container>
+<ng-template #showCtaSectionDetails>
+    <div class="faq-area gray2-bg pt-105 pb-100">
+        <div class="faq-img d-none d-md-block"
+            [style.background-image]="'url('+faqSectionDetails.getIn(['backgroundImage', 'src'])+')'"></div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-6 offset-xl-6 col-lg-6 offset-lg-6 col-md-6 offset-md-6">
-                <div class="question-collapse">
-                    <div class="faq-title">
-                        <h1 [innerHTML]="faqSectionDetails.get('title')"></h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 offset-xl-6 col-lg-6 offset-lg-6 col-md-6 offset-md-6">
+                    <div class="question-collapse">
+                        <div class="faq-title">
+                            <h1 [innerHTML]="faqSectionDetails.get('title')"></h1>
+                        </div>
+
+                        <!-- Accordion Start -->
+                        <mak-pit-accordion [collapsing]="collapsing" *ngIf="!faqs.isEmpty();">
+                            <makPitAccordionItem [title]="faq.get('question')" *ngFor="let faq of faqs">
+                                <ng-template makPitAccordionContent>
+                                    <div class="accordion__panel">
+                                        <p>
+                                            {{ faq.get('answer') }}
+                                        </p>
+                                    </div>
+                                </ng-template>
+                            </makPitAccordionItem>
+                        </mak-pit-accordion>
                     </div>
-
-                    <!-- Accordion Start -->
-                    <mak-pit-accordion [collapsing]="collapsing" *ngIf="!faqs.isEmpty();">
-                        <makPitAccordionItem [title]="faq.get('question')" *ngFor="let faq of faqs">
-                            <ng-template makPitAccordionContent>
-                                <div class="accordion__panel">
-                                    <p>
-                                        {{ faq.get('answer') }}
-                                    </p>
-                                </div>
-                            </ng-template>
-                        </makPitAccordionItem>
-                    </mak-pit-accordion>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

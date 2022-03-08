@@ -35,6 +35,8 @@ export class SPShopDetailsSectionComponent implements OnInit, AfterViewInit, OnD
 
   hasAlreadyFetchedReviewsAtLeastOnce = false;
 
+  showLoader = false;
+
   constructor(
     private _shopService: ShopService,
     private _changeDetectorRef: ChangeDetectorRef,
@@ -67,9 +69,6 @@ export class SPShopDetailsSectionComponent implements OnInit, AfterViewInit, OnD
   }
 
   handleTabSelectedEvent(event?: any) {
-    console.log("handleTabSelectedEvent")
-    console.log(event);
-
     if (!this.hasAlreadyFetchedReviewsAtLeastOnce) {
       this.listProductReview();
     }
@@ -78,7 +77,6 @@ export class SPShopDetailsSectionComponent implements OnInit, AfterViewInit, OnD
   private _extractRouteParams() {
     this._routeParamsSubscription = this._activatedRoute.params
       .subscribe(params => {
-        console.log(params);
 
         const PRODUCT_ID = convertItemToNumeric(
           params['productID']);
@@ -108,6 +106,12 @@ export class SPShopDetailsSectionComponent implements OnInit, AfterViewInit, OnD
   }
 
   private _retrieveProductDetails() {
+    if (!this.showLoader) {
+      this.showLoader = true;
+
+      this._manuallyTriggerChangeDetection();
+    }
+
     const PRODUCT_ID = this._routeParams.get('productID');
 
     if (!isANumber(PRODUCT_ID)) {
@@ -118,6 +122,8 @@ export class SPShopDetailsSectionComponent implements OnInit, AfterViewInit, OnD
       .retrieveProductDetail$(convertItemToString(PRODUCT_ID))
       .subscribe(details => {
         this.productDetails = Immutable.fromJS(details);
+
+        console.log({details})
 
         if (!this.productDetails.isEmpty()) {
           this._seoSocialShareService.setData({
@@ -135,7 +141,10 @@ export class SPShopDetailsSectionComponent implements OnInit, AfterViewInit, OnD
             published: details.createdAt,
             modified: details.modifiedDate,
             url: `${environment.hostURL}${this._location.path()}`,
-          })
+          });
+
+          this.showLoader = false;
+
           this._manuallyTriggerChangeDetection();
         }
       }, (err) => console.error(err));
@@ -163,14 +172,11 @@ export class SPShopDetailsSectionComponent implements OnInit, AfterViewInit, OnD
     this._listProductReviewSubscription = this._shopService
       .listProductReview$(PRODUCT_ID, FETCH_PAGE_NUMBER)
       .subscribe(details => {
-        console.log({ details });
         this.paginationDetailsForReviews = this.paginationDetailsForReviews
           .set('next', convertItemToNumeric(
             details.next));
 
         const newVal = Immutable.fromJS(details.results);
-
-        console.log({ newVal })
 
         this.reviews = Immutable.mergeDeep(
           this.reviews, newVal);
@@ -178,10 +184,6 @@ export class SPShopDetailsSectionComponent implements OnInit, AfterViewInit, OnD
         if (!newVal.isEmpty()) {
           this._manuallyTriggerChangeDetection();
         }
-
-        console.log("this.reviews");
-
-        console.log(this.reviews);
 
         if (!this.hasAlreadyFetchedReviewsAtLeastOnce) {
           this.hasAlreadyFetchedReviewsAtLeastOnce = true;

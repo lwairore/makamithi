@@ -84,13 +84,10 @@ export class GalleryService {
             backgroundImage: this._formatShowcaseItemWithPhoto(details.background_image),
           }
 
-          console.log({ FORMATTED_DETAILS })
-
           return FORMATTED_DETAILS;
         })
       )
   }
-
 
   retrieveGalleryDetail$(galleryID: string) {
     const API = (environment.baseURL +
@@ -103,8 +100,6 @@ export class GalleryService {
       .pipe(
         retryWithBackoff(1000, 5),
         map(details => {
-          console.log({ details });
-
           const FORMATTED_DETAILS: GalleryDetailFormatHttpResponse = {
             title: convertItemToString(details.title),
             layoutImage: this._formatShowcaseItemWithPhoto(details.layout_image),

@@ -25,8 +25,6 @@ export class TabItemComponent implements OnInit {
   isPanelTabsSelected = (panelLoopIndex: number) => {
     const panelTab = this.tabListTabs?.toArray()[panelLoopIndex];
 
-    console.log(panelTab)
-
     return panelTab?.active;
   }
 

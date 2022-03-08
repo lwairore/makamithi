@@ -19,6 +19,8 @@ export class ImgLazyComponent implements OnInit {
 
   @Output() isVisible = new EventEmitter();
 
+  @Input() appearance: ('' | 'line' | 'circle') = '';
+
   // Modify with setState
   state = Immutable.Map({
     visible: false,

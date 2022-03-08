@@ -136,10 +136,9 @@
                                             }
                                         }"></ng-container>
                                 </div>
-                                <p class="col-xl-12 col-lg-12">
-                                    We use the data you voluntarily provide to answer your questions and guarantee the
-                                    assistance requested. Your data will not be used for marketing purposes and will not
-                                    be disclosed to third parties.</p>
+                                <p class="col-xl-12 col-lg-12" *ngIf="leaveUsAMessageSectionDetails.get('ourPromise')">
+                                    {{ leaveUsAMessageSectionDetails.get('ourPromise') }}
+                                    </p>
                                 <div class="col-xl-12 col-lg-12">
                                     <div class="contact-button text-center">
                                         <mak-pit-ajax-button [execute]="onSubmit" [parameter]="leaveAMessageFormGroup">

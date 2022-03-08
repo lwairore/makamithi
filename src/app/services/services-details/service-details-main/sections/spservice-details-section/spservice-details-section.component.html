@@ -1,45 +1,70 @@
-<div class="services-details-area pt-120 pb-75">
+<div class="services-details-area pt-120 pb-75" *ngIf="showLoader; else showCtaSectionDetails;">
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-lg-4 mb-30">
-                <div class="services-sidebar mb-60"
-                    [style.background-image]="'url('+serviceSidebarSectionDetails.getIn(['backgroundImage', 'src'])+')'">
-                    <div class="services-title">
-                        <h1>
-                            {{serviceSidebarSectionDetails.get('heading')}}
-                        </h1>
-                        <div class="servicest-t-img">
-                            <img [src]="serviceSidebarSectionDetails.getIn(['sectionImage', 'src'])"
-                                [alt]="serviceSidebarSectionDetails.getIn(['sectionImage', 'alt'])">
-                        </div>
-                    </div>
-                    <ul class="services-link">
-                        <li *ngFor="let serviceItem of listService;">
-                            <a [routerLink]="['/services',serviceItem.get('id'),'services-details']">
-                                <i class="fas fa-angle-right fa-w-8"></i>
-                                {{ serviceItem.get('title') }}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <ngx-skeleton-loader [theme]="{
+                    height: '400px',
+                    width: '80%'
+                }"></ngx-skeleton-loader>
 
             </div>
             <div class="col-xl-8 col-lg-8 mb-30">
-                <div class="services-details-wrapper">
-                    <div class="services-details-img mb-50">
-                        <img [src]="serviceDetails.getIn(['serviceDetailPhoto', 'src'])"
-                            [alt]="serviceDetails.getIn(['serviceDetailPhoto', 'alt'])">
+                <ngx-skeleton-loader [theme]="{
+                    height: '400px',
+                    width: '100%'
+                }"></ngx-skeleton-loader>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #showCtaSectionDetails>
+    <div class="services-details-area pt-120 pb-75">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 mb-30">
+                    <div class="services-sidebar mb-60"
+                        [style.background-image]="'url('+serviceSidebarSectionDetails.getIn(['backgroundImage', 'src'])+')'">
+                        <div class="services-title">
+                            <h1>
+                                {{serviceSidebarSectionDetails.get('heading')}}
+                            </h1>
+                            <div class="servicest-t-img">
+                                <mak-pit-img-lazy [src]="serviceSidebarSectionDetails.getIn(['sectionImage', 'src'])"
+                                    [alt]="serviceSidebarSectionDetails.getIn(['sectionImage', 'alt'])" height="6px"
+                                    width="100%">
+                                </mak-pit-img-lazy>
+                            </div>
+                        </div>
+                        <ul class="services-link">
+                            <li *ngFor="let serviceItem of listService;">
+                                <a [routerLink]="['/services',serviceItem.get('id'),'services-details']">
+                                    <i class="fas fa-angle-right fa-w-8"></i>
+                                    {{ serviceItem.get('title') }}
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="services-details-text">
-                        <h1>
-                            {{ serviceDetails.get('title') }}
-                        </h1>
-                        <p>
-                            {{ serviceDetails.get('description') }}
-                        </p>
+
+                </div>
+                <div class="col-xl-8 col-lg-8 mb-30">
+                    <div class="services-details-wrapper">
+                        <div class="services-details-img mb-50">
+                            <mak-pit-img-lazy [src]="serviceDetails.getIn(['serviceDetailPhoto', 'src'])"
+                                [alt]="serviceDetails.getIn(['serviceDetailPhoto', 'alt'])" height="200px"
+                                width="100%">
+                            </mak-pit-img-lazy>
+                        </div>
+                        <div class="services-details-text">
+                            <h1>
+                                {{ serviceDetails.get('title') }}
+                            </h1>
+                            <p>
+                                {{ serviceDetails.get('description') }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

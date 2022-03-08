@@ -16,20 +16,8 @@
             </div>
             <div class="col-xl-5 col-lg-5 col-md-3">
                 <div class="header-icon text-md-right">
-                    <a [routerLink]="null">
-                        <i class="fab fa-facebook-f"> </i>
-                    </a>
-                    <a [routerLink]="null">
-                        <i class="fab fa-twitter"> </i>
-                    </a>
-                    <a [routerLink]="null">
-                        <i class="fab fa-linkedin"> </i>
-                    </a>
-                    <a [routerLink]="null">
-                        <i class="fab fa-youtube"> </i>
-                    </a>
-                    <a [routerLink]="null">
-                        <i class="fa fa-behance"> </i>
+                    <a [href]="socialItem.get('link')" *ngFor="let socialItem of socialMedias;" target="_blank">
+                        <i [class]="socialItem.get('icon')"></i>
                     </a>
                 </div>
             </div>
