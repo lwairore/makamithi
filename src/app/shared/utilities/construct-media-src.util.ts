@@ -8,8 +8,7 @@ export const constructMediaSrc = memoize((src: any) => {
 
     const convertSrcToString = convertItemToString(src);
 
-    const newSrc = (environment.production)
-        ? convertSrcToString : `${environment.imageBaseURL}${convertSrcToString}`;
+    const newSrc = `${environment.imageBaseURL}${convertSrcToString}`;
 
     return newSrc;
 });
